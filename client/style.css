@@ -1,0 +1,53 @@
+nav {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100%;
+}
+nav a {
+  margin-left: 250px;
+}
+nav .btn-primary {
+    position: fixed;
+    right: 250px;
+}
+nav .btn-light {
+    position: fixed;
+    right: 350px;
+    background-color: lightgray;
+}
+nav p {
+    background-color: rgb(226, 225, 225);
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 55px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+}
+nav p a{
+    color: blue;
+}
+.search-car {
+    margin-top: 20px;
+    margin-left: 250px;
+    margin-right: 250px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(112, 112, 112, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+.tab-pane {
+    padding: 30px;
+}
+.form-login input {
+    width: 100%;
+}
+.form-login {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.modalfooter{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}

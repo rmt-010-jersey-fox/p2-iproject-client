@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>SewaMobil.com</title>
+</head>
+<body>
+   
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="#">
+            <strong>SewaMobil.com</strong> 
+            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> -->
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button type="button" class="btn btn-primary">Register</button>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">Login</button>
+        </div>
+        <p>Anda memiliki usaha rental mobil ? Bergabunglah bersama kami !<a style="color: blue;">Click disini untuk bergabung</a></p>
+    </nav>
+
+    <!-- HEADER -->
+    <div>
+        <img src="https://cars.usnews.com/pics/size/640x420/static/images/article/202006/128503/216702_New_Volvo_XC40_-_exterior_640x420.jpg" class="img" alt="Responsive image" style="width: 100%; height: 50vh;">
+    </div>
+
+    <!-- FORM CARI MOBIL -->
+    <div class="search-car border border-secondary">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sewa Lepas Kunci</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Sewa dengan Sopir</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <form>
+                    <div class="form-group">
+                      <label for="input-location">Lokasi Sewa Mobil</label>
+                      <select id="input-location" class="form-control">
+                        <option selected disabled>----- Pilih Lokasi -----</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-cars">Tipe / Merk Mobil</label>
+                        <select id="select-cars" class="form-control">
+                          <option selected disabled>----- Pilih Tipe / Merek Mobil -----</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="startBook">Tanggal Mulai Sewa</label>
+                        <input type="date" class="form-control" id="startBook">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="time-start">Pukul</label>
+                        <input type="text" class="form-control" id="time-start">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="startBook">Tanggal Selesai Sewa</label>
+                        <input type="date" class="form-control" id="startBook">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="time-start">Pukul</label>
+                        <input type="text" class="form-control" id="time-start">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cari Mobil</button>
+                  </form>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+          </div>
+    </div>
+
+    <!-- MODAL LOGIN -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><strong>Login ke Akun anda</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-login" action="/action_page.php">
+                    <div>
+                        <label for="email">Email atau No. Handphone</label><br>
+                        <input type="text" id="email" name="email" placeholder="Input email atau no. handphone ..." style="width: 100%"><br><br>
+                    </div>
+                    <div>
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" placeholder="Input Password ..." style="width: 100%"><br><br>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="submit" value="Submit" class="btn btn-primary">   
+                            </div>
+                            <div class="col">
+                                <h6>Belum punya akun ? <a style="color: blue;">Daftar disini</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                  </form>
+            </div>
+            <div class="modalfooter"style="background-color: rgb(226, 225, 225);">
+                <center><p>Atau masuk dengan Google</p></center>
+            <button type="button" class="btn btn-primary" style="width: 100%;">Login with Google</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
