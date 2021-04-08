@@ -1,0 +1,16 @@
+.tagline {
+    background-color: rgb(196, 190, 190);
+}
+
+.home-body-left {
+    margin-top: 15px;
+}
+
+.home-body-right {
+    margin-top: 15px;
+}
+
+.footer {
+    height: 15vh;
+    background-color: midnightblue;
+}
