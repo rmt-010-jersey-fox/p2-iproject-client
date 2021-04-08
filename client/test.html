@@ -1,0 +1,281 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@maulidyahintan 
+rmt-010-jersey-fox
+/
+p2-iproject-client
+Private
+7
+0
+19
+Code
+Issues
+Pull requests
+4
+Actions
+Projects
+Security
+Insights
+Muhammad Reza Amarullah #4
+ Open
+rezanasu wants to merge 1 commit into rmt-010-jersey-fox:main from rezanasu:main
++215 −0 
+ Conversation 0
+ Commits 1
+ Checks 0
+ Files changed 11
+ Open
+Muhammad Reza Amarullah
+#4
+File filter... 
+mockup dan wireframes
+
+This commit does not belong to any branch on this repository.
+@rezanasurezanasu committed 9 minutes ago
+commit 02359158a1f71af75befee5238f7818e92dddb4e
+ BIN +16.8 KB assets/comics-venom.jpg 
+Binary file not shown.
+ BIN +531 KB assets/discover.jpg 
+Binary file not shown.
+ BIN +1.18 MB assets/dragon-fantasy.png 
+Binary file not shown.
+ BIN +38.7 KB assets/nature.jpg 
+Binary file not shown.
+ BIN +153 KB assets/photography.jpg 
+Binary file not shown.
+ BIN +55 KB assets/science-fiction.jpg 
+Binary file not shown.
+ 12  darkly.css 
+Large diffs are not rendered by default.
+
+ 149  index.html 
+@@ -0,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkly.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Art</title>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <section id="navigation-bar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand">FANCY ARTWORK</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link active">HOME
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">GALLERIES</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">SUBMIT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link">BLOG</a>
+                </li>
+
+              </ul>
+
+                <button class="btn btn-danger my-2 my-sm-0" type="button">LOGOUT</button>
+
+            </div>
+          </nav>
+    </section>
+
+
+      <!-- IMAGE BANNER -->
+    <section id="image-banner">
+        <div class="container-fluid" style="padding: 0;">
+            <div class="image-widescreen">
+                <img id="img-head" src="./assets/discover.jpg" alt="image-banner">
+                <div class="centered h1 text-warning">DISCOVER AWESOME ARTWORKS</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SEARCH BAR -->
+    <section id="search-bar" class="mb-5 p-5" style="background-color: #0f4c75;">
+        <div class="container">
+            <div class="input-group">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                  aria-describedby="search-addon" />
+                <button type="button" class="btn btn-info">SEARCH</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- EXPLORE TOPICS -->
+    <section id="explore-topics">
+
+        <div class="container" style="padding: 0;">
+            <p class="h3 mb-3 text-light">EXPLORE TOPICS</p>
+            <div class="row">
+                <div class="col-md-3 mb-5">
+                    <img src="./assets/dragon-fantasy.png" alt="fantasy" class="rounded topics-img mb-3">
+                    <p class="h3 text-warning" >FANTASY</p>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <img src="./assets/comics-venom.jpg" alt="comics" class="rounded topics-img mb-3">
+                    <p class="h3 text-warning" >COMICS</p>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <img src="./assets/science-fiction.jpg" alt="sci-fi" class="rounded topics-img mb-3">
+                    <p class="h3 text-warning" >SCI-FI</p>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <img src="./assets/photography.jpg" alt="photography" class="rounded topics-img mb-3">
+                    <p class="h3 text-warning" >PHOTOS</p>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENTS -->
+    <section id="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb218ccf-7a10-4ab7-91da-d596d1b65c0a/ded6d2v-3eb032d1-09a7-4e89-b3f8-f2d44f6f1a2b.jpg/v1/fill/w_622,h_350,q_70,strp/treason__the_descendants_war_book_2_by_lorddoomhammer_ded6d2v-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC9jYjIxOGNjZi03YTEwLTRhYjctOTFkYS1kNTk2ZDFiNjVjMGFcL2RlZDZkMnYtM2ViMDMyZDEtMDlhNy00ZTg5LWIzZjgtZjJkNDRmNmYxYTJiLmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OkAg-0XZDVARfbI4k7OkvKW1Mf_2SM32y2d3_njttAU" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3eaea6cb-95ee-49cd-a24f-ac5308d293ec/dehb9lu-3b663415-479a-4b49-8218-f844d37d741e.jpg/v1/fill/w_448,h_250,q_70,strp/guard_by_kimchi8072_dehb9lu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTQ0IiwicGF0aCI6IlwvZlwvM2VhZWE2Y2ItOTVlZS00OWNkLWEyNGYtYWM1MzA4ZDI5M2VjXC9kZWhiOWx1LTNiNjYzNDE1LTQ3OWEtNGI0OS04MjE4LWY4NDRkMzdkNzQxZS5qcGciLCJ3aWR0aCI6Ijw9MjA0OCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.YHVjTb2NDe42KhM-udqBxg-Kb97pcJ8os0c7Wex5RcI" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/94f2fa80-c632-4d84-8c93-790cb7fceb5f/deh8xm4-8c90b0cd-2a6d-4350-9ccf-2950c06c4dbe.jpg/v1/fill/w_498,h_350,q_70,strp/magic_sea_galaxy_by_thaisdematte_deh8xm4-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTI1IiwicGF0aCI6IlwvZlwvOTRmMmZhODAtYzYzMi00ZDg0LThjOTMtNzkwY2I3ZmNlYjVmXC9kZWg4eG00LThjOTBiMGNkLTJhNmQtNDM1MC05Y2NmLTI5NTBjMDZjNGRiZS5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.89uKO2R8K-IA0XSBlyiHRItpBQnUzYE6-zyN8SMfp9Q" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/94f2fa80-c632-4d84-8c93-790cb7fceb5f/deh8xm4-8c90b0cd-2a6d-4350-9ccf-2950c06c4dbe.jpg/v1/fill/w_498,h_350,q_70,strp/magic_sea_galaxy_by_thaisdematte_deh8xm4-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTI1IiwicGF0aCI6IlwvZlwvOTRmMmZhODAtYzYzMi00ZDg0LThjOTMtNzkwY2I3ZmNlYjVmXC9kZWg4eG00LThjOTBiMGNkLTJhNmQtNDM1MC05Y2NmLTI5NTBjMDZjNGRiZS5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.89uKO2R8K-IA0XSBlyiHRItpBQnUzYE6-zyN8SMfp9Q" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/94f2fa80-c632-4d84-8c93-790cb7fceb5f/deh8xm4-8c90b0cd-2a6d-4350-9ccf-2950c06c4dbe.jpg/v1/fill/w_498,h_350,q_70,strp/magic_sea_galaxy_by_thaisdematte_deh8xm4-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTI1IiwicGF0aCI6IlwvZlwvOTRmMmZhODAtYzYzMi00ZDg0LThjOTMtNzkwY2I3ZmNlYjVmXC9kZWg4eG00LThjOTBiMGNkLTJhNmQtNDM1MC05Y2NmLTI5NTBjMDZjNGRiZS5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.89uKO2R8K-IA0XSBlyiHRItpBQnUzYE6-zyN8SMfp9Q" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb218ccf-7a10-4ab7-91da-d596d1b65c0a/ded6d2v-3eb032d1-09a7-4e89-b3f8-f2d44f6f1a2b.jpg/v1/fill/w_622,h_350,q_70,strp/treason__the_descendants_war_book_2_by_lorddoomhammer_ded6d2v-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC9jYjIxOGNjZi03YTEwLTRhYjctOTFkYS1kNTk2ZDFiNjVjMGFcL2RlZDZkMnYtM2ViMDMyZDEtMDlhNy00ZTg5LWIzZjgtZjJkNDRmNmYxYTJiLmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OkAg-0XZDVARfbI4k7OkvKW1Mf_2SM32y2d3_njttAU" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb218ccf-7a10-4ab7-91da-d596d1b65c0a/ded6d2v-3eb032d1-09a7-4e89-b3f8-f2d44f6f1a2b.jpg/v1/fill/w_622,h_350,q_70,strp/treason__the_descendants_war_book_2_by_lorddoomhammer_ded6d2v-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC9jYjIxOGNjZi03YTEwLTRhYjctOTFkYS1kNTk2ZDFiNjVjMGFcL2RlZDZkMnYtM2ViMDMyZDEtMDlhNy00ZTg5LWIzZjgtZjJkNDRmNmYxYTJiLmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OkAg-0XZDVARfbI4k7OkvKW1Mf_2SM32y2d3_njttAU" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html> 
+ 54  style.css 
+@@ -0,0 +1,54 @@
+* {
+   font-family: 'Roboto', sans-serif !important;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+.image-widescreen{
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 20rem;
+    max-height: 20rem; 
+    overflow-y: hidden;
+  }
+
+.image-widescreen #img-head {
+    width: 100%;
+    display: block;
+}
+
+.margin-top-image{
+    margin-top: 330px;
+}
+
+  /* Centered text */
+.centered {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.topics-img {
+    width: 200px;
+    height: 200px;
+}
+
+.img-content {
+    width: 250px;
+    height: 200px;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+ BIN +86.3 KB wireframes/blog-page.png 
+Binary file not shown.
+ BIN +58.2 KB wireframes/home-page.png 
+Binary file not shown.
+ ProTip! Use n and p to navigate between commits in a pull request.
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
