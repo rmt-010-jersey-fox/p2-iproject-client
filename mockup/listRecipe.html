@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./listRecipe.html">Recipes</a>
+                <a class="nav-link" href="#">Recipes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">How To Order</a>
@@ -44,24 +44,15 @@
         </div>
     </nav>
 
-    <!-- HEADER -->
-
-    <div class="jumbotron" style="background-color: lightsalmon;">
-        <div class="container-fluid">
-            <h1 class="display-4 col-6" style="padding: 50px 30px 0px">Everyone can cook, anything that you want</h1>
-            <p class="col-6" style="padding: 0px 30px 0px">We will deliver the ingredients to you, Just Sit & Wait!</p>
-            <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="button" autocomplete="off" style="margin: 0px 30px 50px">Explore Our Menu >></button>
-            </div>
-        </div>
-    </div>
-
     <!-- CARD -->
     <div class="container-fluid" style="padding: 50px 30px">
         <div class="navbar">
-            <h3 class="col-4">Check our popular recipes ...</h3>
-            <a href="#" class="col-2">Explore More Recipes</a>
+            <h3 class="col-6">What are you looking for cooking today?</h3>
         </div>
+        <form class="d-flex">
+            <input class="form-control me-3" type="search" placeholder="Anything you want" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Let's Cook</button>
+        </form>
         <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 5px;">
             <div class="col">
               <div class="card h-100">
