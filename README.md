@@ -1,2 +1,2 @@
-# p2-iproject-client
-Individual Project client site
+# flash-card-hero
+Simple flash card app with a simple gamification twist in form of leveling up the user with each progress
