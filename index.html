@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8Hag</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav id="navbar" class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <a id="nav-home" class="navbar-brand" href="#">8Hag</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a id="nav-add" class="nav-link" href="#"> Add Meme</a>
+                </li>
+            </ul>
+            <span id="navbar-user" class="navbar-text mr-3">
+                <i class="far fa-user"></i> Hai {{ user }}
+            </span>
+            <button id="btn-login" class="btn btn-outline-primary my-2 my-sm-0 mr-1" onclick="login()"><i
+                    class="fas fa-sign-out-alt"></i> Login</button>
+            <button id="btn-logout" class="btn btn-outline-danger my-2 my-sm-0 mr-1" onclick="logout()"><i
+                    class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <div id="app" class="container mb-2 mt-2">
+
+        <div class="row">
+
+            <div class="col-9">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4> Nama user </h4>
+                    </div>
+                    <img src="http://arah.in/memes-8" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ini adalah title</h5>
+                        <h5 class="card-subtitle mb-2"><small><i>Posted on February 19, 2016</i></small></h5>
+                        <button class="btn btn-success"><i class="far fa-heart"></i> Love it</button>
+                        <button class="btn btn-danger"> Hate it </button>
+                        <button class="btn btn-warning"> Report </button>
+                        <p class="card-text"><small class="text-muted">You, Andi wakwaw and 20 people love it</small>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4> Nama user </h4>
+                    </div>
+                    <img src="http://arah.in/memes-1" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ini adalah title</h5>
+                        <h5 class="card-subtitle mb-2"><small><i>Posted on February 19, 2016</i></small></h5>
+                        <button class="btn btn-success"><i class="far fa-heart"></i> Love it</button>
+                        <button class="btn btn-danger"> Hate it </button>
+                        <button class="btn btn-warning"> Report </button>
+                        <p class="card-text"><small class="text-muted">You, Andi wakwaw and 20 people love it</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <h1 style="text-align: center;">Api</h1>
+            </div>
+        </div>
+
+            <section id="page-login" style="overflow-x: hidden; background-color: white">
+                <div class="row" style="height : 100vh; ">
+                    <div class="col">
+                        <div class="form-signin">
+                            <hr />
+                            <form>
+                                <h1 class="h3 mb-3 fw-normal">Hai there, welcome !</h1><br>
+                                <label for="email">Email address</label><br>
+                                <input type="email" id="email" class="form-control" placeholder="Email address" required
+                                    autofocus><br>
+                                <label for="password">Password</label><br>
+                                <input type="password" id="password" class="form-control" placeholder="Password"
+                                    required><br>
+                                <button class="w-100 btn btn-lg btn-primary" id="btn-login"
+                                    type="submit">Login</button><br>
+                                <hr />
+                            </form>
+                            <hr />
+                            <p>Not having account yet? <a href="#" id="link-register">Register Now</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <section id="page-register" style="overflow-x: hidden; background-color: white">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-register">
+                        <form>
+                            <hr />
+                            <h1 class="h3 mb-3 fw-normal">Join Us Now !</h1><br>
+                            <label for="name">Your name</label><br>
+                            <input type="text" id="name-regis" class="form-control" placeholder="Udin"
+                                required autofocus><br>
+                            <label for="email">Email address</label><br>
+                            <input type="email" id="email-regis" class="form-control" placeholder="udin@mail.com"
+                                required autofocus><br>
+                            <label for="password">Password</label><br>
+                            <input type="password" id="password-regis" class="form-control" placeholder="Password"
+                                required><br>
+                            <button class="w-100 btn btn-lg btn-primary" id="btn-register" type="submit">Sign
+                                Up</button><br>
+                            <hr />
+                        </form>
+                        <p style="color:black;">Have an Account ? <a href="#" id="link-login">Login Now</a></p>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <!-- <img src="/resouces/undraw_Updated_resume_re_q1or.svg" alt="" width="500" height="500"> -->
+                </div>
+            </div>
+        </section>
+
+        <section id="add-meme" style="overflow-x: hidden; background-color: white">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="add-meme">
+                        <form>
+                            <hr />
+                            <h1 class="h3 mb-3 fw-normal">Add memes</h1><br>
+                            <label for="title">Title</label><br>
+                            <input class="w-100" type="text" id="title" placeholder="Kamu ketika makan siang" required
+                                autofocus><br><br>
+                            <label for="imageURL">Image source</label><br>
+                            <input type="file" id="myfile" name="myfile"><br>
+                            <hr />
+                            <button class="w-100 btn btn-lg btn-success" id="btn-add" type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="edit-meme" style="overflow-x: hidden; background-color: white">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="edit-meme">
+                        <form>
+                            <hr />
+                            <h1 class="h3 mb-3 fw-normal">Edit memes</h1><br>
+                            <label for="title">Title</label><br>
+                            <input class="w-100" type="text" id="title" placeholder="Kamu ketika makan siang" required
+                                autofocus><br><br>
+                            <label for="imageURL">Image source</label><br>
+                            <input type="file" id="myfile" name="myfile"><br>
+                            <hr />
+                            <button class="w-100 btn btn-lg btn-success" id="btn-add" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</body>
+
+</html>
