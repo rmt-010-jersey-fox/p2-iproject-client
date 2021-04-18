@@ -1,15 +1,19 @@
 <template>
     <!-- AWAL FORM REGISTER -->
-  <form >
+  <form @submit.prevent="register">
     <div class="container">
       <h3 class="mb-4 text-success">Register</h3>
+      <div class="mb-3 col-md-3">
+        <label class="form-label">User Name</label>
+        <input v-model="username" type="text" class="form-control">
+      </div>
       <div class=" mb-3 col-md-3">
         <label class="form-label">Email address</label>
-        <input type="email" class="form-control">
+        <input v-model="inputRegisterEmail" type="email" class="form-control">
       </div>
       <div class="mb-3 col-md-3">
         <label class="form-label">Password</label>
-        <inputtype="password" class="form-control">
+        <input v-model="inputRegisterPassword" type="password" class="form-control">
       </div>
       <button type="submit" style="width:245px; height:40px" class="btn btn-primary">Register</button>
     </div>
@@ -19,7 +23,23 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      username : '',
+      inputRegisterEmail : '',
+      inputRegisterPassword : ''
+    }
+  },
+  methods : {
+    register () {
+      let payload = {
+        username : this.username,
+        email : this.inputRegisterEmail,
+        password : this.inputRegisterPassword
+      }
+      this.$store.dispatch('register', payload)
+    }
+  }
 }
 </script>
 

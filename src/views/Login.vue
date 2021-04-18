@@ -1,15 +1,15 @@
 <template>
       <!-- START FORM LOGIN -->
-  <form >
+  <form @submit.prevent="login">
     <div class="container">
       <h3 class="mb-4 text-success">Log In</h3>
       <div class="mb-3 col-3">
         <label class="form-label">Email address</label>
-        <input type="email" class="form-control">
+        <input v-model="email" type="email" class="form-control">
       </div>
       <div class="mb-3 col-3">
         <label class="form-label">Password</label>
-        <input type="password" class="form-control">
+        <input v-model="password" type="password" class="form-control">
       </div>
       <div class="d-flex col-3">
         <button type="submit" class="btn btn-primary" style="width:250px; height:40px">Sign In</button><br>
@@ -25,7 +25,23 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      email : '',
+      password : ''
+    }
+  },
+  methods : {
+    login () {
+      // console.log('setelah store');
+      let payload = {
+        email : this.email,
+        password : this.password
+      }
+      // console.log(payload);
+      this.$store.dispatch('login',payload)
+    }
+  }
 }
 </script>
 
