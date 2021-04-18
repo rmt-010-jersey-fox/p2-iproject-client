@@ -1,54 +1,54 @@
-let baseUrl = 'http://localhost:3000'
+// let baseUrl = 'http://localhost:3000'
 
-$(document).ready(function () {
-    console.log("ready!");
-    $('section').hide()
-    if (localStorage.getItem('token')) {
-        fetchCatalog()
-        $('#catalog').show()
-    }
-    else {
-        $('#loginForm').show()
-    }
-    $("#loginSubmit").submit(function (e) {
-        e.preventDefault();
-        let email = $('#email-login').val()
-        let password = $('#password-login').val()
-        $.ajax({
-            method: 'POST',
-            url: baseUrl + '/login',
-            data: { email, password }
-        })
-            .done(response => {
-                localStorage.setItem('token', response.token)
-                $('#email-login').val('')
-                $('#password-login').val('')
-                $('section').hide()
-                $('#catalog').show()
-            })
-            .fail(err => {
-                console.log(err);
-            })
-    });
-    $('#navCatalog').click(function (event) {
-        event.preventDefault()
-        $('section').hide()
-        fetchCatalog()
-        $('#catalog').show()
-    })
-    $('#navMyList').click(function (event) {
-        event.preventDefault()
-        $('section').hide()
-        fetchWishList()
-        $('#wishList').show()
-    })
-    $("#navLogout").click(function (event) {
-        event.preventDefault()
-        localStorage.removeItem('token')
-        $('section').hide()
-        $('#loginForm').show()
-    });
-});
+// $(document).ready(function () {
+//     console.log("ready!");
+//     $('section').hide()
+//     if (localStorage.getItem('token')) {
+//         fetchCatalog()
+//         $('#catalog').show()
+//     }
+//     else {
+//         $('#loginForm').show()
+//     }
+//     $("#loginSubmit").submit(function (e) {
+//         e.preventDefault();
+//         let email = $('#email-login').val()
+//         let password = $('#password-login').val()
+//         $.ajax({
+//             method: 'POST',
+//             url: baseUrl + '/login',
+//             data: { email, password }
+//         })
+//             .done(response => {
+//                 localStorage.setItem('token', response.token)
+//                 $('#email-login').val('')
+//                 $('#password-login').val('')
+//                 $('section').hide()
+//                 $('#catalog').show()
+//             })
+//             .fail(err => {
+//                 console.log(err);
+//             })
+//     });
+//     $('#navCatalog').click(function (event) {
+//         event.preventDefault()
+//         $('section').hide()
+//         fetchCatalog()
+//         $('#catalog').show()
+//     })
+//     $('#navMyList').click(function (event) {
+//         event.preventDefault()
+//         $('section').hide()
+//         fetchWishList()
+//         $('#wishList').show()
+//     })
+//     $("#navLogout").click(function (event) {
+//         event.preventDefault()
+//         localStorage.removeItem('token')
+//         $('section').hide()
+//         $('#loginForm').show()
+//     });
+// });
 
 function fetchCatalog() {
     $('#catalogCard').empty()
