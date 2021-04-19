@@ -11,8 +11,9 @@ export default new Vuex.Store({
     count: 0,
     isLogin: false,
     mangaList: [],
-    mangaId: "",
+    mangaId: "", //MANGA TITLE
     mangaDetail: {},
+    chapterLink: ""
   },
   mutations: {
     increment(state) {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     getMangaDetail(state, payload) {
       state.mangaDetail = payload;
     },
+    readManga(state,payload){
+     state.chapterLink = payload
+    }
   },
   actions: {
     userLogin(context, payload) {
@@ -132,5 +136,13 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    created() {
+        if (localStorage.access_token) {
+          this.state.isLogin = true
+          router.push("/");
+        } else {
+          router.push("/login");
+        }
+      },
   },
 });

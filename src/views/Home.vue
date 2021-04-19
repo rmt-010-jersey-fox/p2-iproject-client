@@ -4,22 +4,22 @@
       <div class="container"></div>
     </nav>
     <section id="header" class="jumbotron text-center">
-      <h1 class="display-3">MangAPP</h1>
+      <h1 class="display-3" style="font-family: Montserrat; font-size: 150px; margin-bottom: 20px">MangAPP</h1>
       <p class="lead">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+       here are the most popular manga for you!
       </p>
       <a href="" class="btn btn-primary">EN</a>
       <a href="" class="btn btn-secondary">ID</a>
     </section>
 
-    <section id="gallery">
+    <section id="gallery" style="margin-top: 20px">
       <div class="container">
         <div class="row">
           <div class="col-lg-2 mb-2" v-for="(manga, i) in mangaList" :key="i">
             <div class="card">
               <img :src="manga.MangaCover" alt="" class="card-img-top" />
               <div class="card-body">
-                <h5 class="card-title">{{ manga.MangaTitle }}</h5>
+                <h5 class="card-title" style="font-family: poppins">{{ manga.MangaTitle }}</h5>
                 <a
                   href=""
                   class="btn btn-outline-success btn-sm"
@@ -27,7 +27,7 @@
                   >Read More</a
                 >
                 <a href="" class="btn btn-outline-danger btn-sm"
-                  ><i class="far fa-heart"></i
+                   @click.prevent="bookmarkManga"><i class="far fa-heart"></i
                 ></a>
               </div>
             </div>
@@ -39,10 +39,10 @@
 </template>
 
 <style scoped>
-#header {
-  background: url(https://images.unsplash.com/photo-1415795854641-f4a487a0fdc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80)
+/* #header {
+  background: url(http://amli-lptk.org/amli/wp-content/uploads/2017/09/KO-background-header.jpg)
     center center / cover no-repeat;
-}
+} */
 </style>
 
 <script>
@@ -64,8 +64,10 @@ export default {
       console.log(mangaId)
       this.$store.commit("getMangaId", mangaId)
       this.$router.push("/mangadetail");
-      
     },
+    bookmarkManga(){
+      this.$router.push("/bookmark")
+    }
   },
 };
 </script>

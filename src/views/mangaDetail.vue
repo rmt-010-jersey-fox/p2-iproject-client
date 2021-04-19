@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <div class="card" style="width: 18rem; display: flex">
+  <div class="row">
+    <div class="card" style="width: 18rem; margin-left: 10px; col">
       <img :src="mangaDetail.MangaCover" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ mangaDetail.MangaTitle }}</h5>
         <p class="card-text">
           {{ mangaDetail.Summary }}
         </p>
-      </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
@@ -17,7 +16,9 @@
         <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a>
       </div>
-      <!-- <div id="mangaChapter">
+      </div>
+    </div>
+    <div id="mangaChapter" class="col">
         <table class="table">
           <thead>
             <tr>
@@ -25,14 +26,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>{{manga.Chapter[0].ChapterName}}</td>
+            <tr v-for="ch in mangaDetail.Chapter" :key="ch.ChapterName">
+              
+              <td @click.prevent="readManga(ch.ChapterLink)">{{ ch.ChapterName }}</td>
             </tr>
           </tbody>
         </table>
-      </div> -->
-    </div>
+      </div>
   </div>
 </template>
 
@@ -46,6 +46,12 @@ export default {
     mangaDetail() {
       return this.$store.state.mangaDetail;
     },
+    methods: {
+      readManga(chapterLink){
+        this.$store.commit("readManga", chapterLink)
+        this.$router.push("/read")
+      }
+    }
   },
 };
 </script>

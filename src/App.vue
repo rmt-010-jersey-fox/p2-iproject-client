@@ -15,12 +15,22 @@ import Navbar from "./components/navbar"
 export default {
   components: {
     Navbar
+  },
+  created(){
+    if(localStorage.access_token){
+      this.$store.commit('setLogin', true)
+    }else {
+       this.$store.commit('setLogin', false)
+    }
   }
 }
 </script>
 
 
 <style>
+html,body {
+  background-image: url(https://img.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg?size=626&ext=jpg);
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

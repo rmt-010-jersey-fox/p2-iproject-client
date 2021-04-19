@@ -26,11 +26,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav" style="font-family: Montserrat">
-          <a class="nav-link" href="#" v-on:click.prevent="changePage('/Login')"
-            >Login</a
+          <a class="nav-link" href="#" v-on:click.prevent="changePage('/Login') "
+             v-if="getAccessToken === false">Login</a
           >
           <a class="nav-link" href="#" v-on:click.prevent="changePage('/register')"
-            >Register</a
+             v-if="getAccessToken === false">Register</a
           >
           <a class="nav-link" href="#" v-on:click.prevent="changePage('/')"
             >Home</a
@@ -38,8 +38,8 @@
           <a
             class="nav-link"
             href="#"
-            v-on:click.prevent="changePage('/register')"
-            >Bookmarks</a
+            v-on:click.prevent="changePage('/bookmarks')"
+             v-if="getAccessToken === true">Bookmarks</a
           >
           <a
             v-on:click.prevent="changePage('/search')"
@@ -48,7 +48,7 @@
             href="#"
             >search</a
           >
-            <a class="nav-link" @click.prevent="userLogout" href="#">logout</a>
+            <a class="nav-link" @click.prevent="userLogout" href="#" v-if="getAccessToken === true">logout</a>
         </div>
         <div class="navbar-nav">
           <div>
@@ -74,8 +74,6 @@ export default {
   },
   computed: {
     getAccessToken() {
-      // console.log(localStorage.getItem('access_token'))
-      // return localStorage.getItem('access_token')
       return this.$store.state.isLogin
     },
   },
