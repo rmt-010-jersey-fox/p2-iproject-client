@@ -6,6 +6,7 @@ import Register from '../views/Register.vue'
 import AddAnime from '../views/AddAnime.vue'
 import NotFound from '../views/NotFound.vue'
 import EditAnime from '../views/EditAnime.vue'
+import Quotes from '../views/Quotes.vue'
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,11 @@ const routes = [
     path: '*',
     name: 'NotFound',
     component: NotFound
+  },
+  {
+    path: '/quotes',
+    name: 'QuotesCarousel',
+    component: Quotes
   }
 ]
 

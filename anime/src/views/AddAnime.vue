@@ -77,7 +77,7 @@ export default {
           this.$swal.fire({
             icon: 'success',
             title: 'Add success',
-            text: `Successing add Anime "${res.data.name}"`,
+            text: `Successing add Anime "${res.data.title}"`,
             timer: 5000
           })
           this.$store.dispatch('fetchAnime')
