@@ -1,2 +1,24 @@
-# flash-card-hero
-Simple flash card app with a simple gamification twist in form of leveling up the user with each progress
+# p2-iproject-client
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
