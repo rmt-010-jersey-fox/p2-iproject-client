@@ -51,19 +51,18 @@ export default new Vuex.Store({
           password: obj.password
         }
       })
+    },
+    login (context, obj) {
+      return axios({
+        url: '/login',
+        method: 'post',
+        data: {
+          email: obj.email,
+          password: obj.password
+        }
+      })
     }
   },
-  //   login (context, obj) {
-  //     return axios({
-  //       url: '/login',
-  //       method: 'post',
-  //       data: {
-  //         email: obj.email,
-  //         password: obj.password
-  //       }
-  //     })
-  //   }
-  // },
   // addAnime (context, obj) {
   //   return axios({
   //     url: '/anime',
