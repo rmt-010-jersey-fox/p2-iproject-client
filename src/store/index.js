@@ -27,6 +27,28 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    googleLogin (context, payload) {
+      axios({
+        method: 'post',
+        url: '/googleLogin',
+        data: {
+          id_token: payload
+        }
+      })
+        .then(response => {
+          localStorage.setItem('token', response.data.token)
+          context.commit('setLogin')
+          router.push({ name: 'Home' })
+        })
+        .catch(err => {
+          Swal.fire({
+            title: 'Warning!',
+            text: err.response.data,
+            icon: 'error',
+            confirmButtonText: 'close'
+          })
+        })
+    },
     login(context, payload) {
       console.log(payload);
       axios({
