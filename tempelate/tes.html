@@ -17,132 +17,106 @@
 </head>
 
 <body>
-  <!--START NAVBAR -->
-  <div id=navbar>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class=navbar-nav>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown link
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Fiction</a></li>
-                <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="navCatalog">Catalog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="navMyList">My List</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" id="navRegister">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="navLogin">Log In</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" id="navLogout">Log Out</a>
-            </li>
-          </ul>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1597851065532-055f97d12e47?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuaW1lfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.75">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text text-white">This is a longer card with supporting text below as a natural lead-in to
+              additional
+              content. This content is a little bit longer.</p>
+          </div>
         </div>
       </div>
-    </nav>
-  </div></br>
-  <!-- END NAVBAR -->
-
-  <!-- START FORM LOGIN -->
-  <section id="loginForm">
-    <form id="loginSubmit">
-      <div class="container">
-        <h3 class="mb-4 text-success">Log In</h3>
-        <div class="mb-3 col-md-3">
-          <label for="InputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5pbWFsc3xlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.8">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
         </div>
-        <div class="mb-3 col-md-3">
-          <label for="InputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password-login">
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Sign In</button>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
       </div>
-    </form>
-  </section>
-  <!-- END FORM LOGIN -->
-
-  <!--START CATALOG LIST  -->
-  <section id="catalog">
-    <H1 class="text-center">Product List</H1>
-    <div class="container">
-      <div class="row" id="catalogCard">
-        <!-- awal loop -->
-        <div class="col-3 mt-4">
-          <div class="card overflow-auto" style="height:70vh">
-            <img src="https://storage.googleapis.com/du-prd/books/images/9781421589602.jpg" class="card-img-top" alt="...">
-            <div class="card-body ">
-              <h5 class="card-title">THE LEGEND OF ZELDA: LEGENDARY EDITION, VOL. 2</h5>
-              <p class="card-text">The adaptation of several story arcs from Nintendo’s Zelda video game series continues. In this volume, the Oracle of Seasons.</p>
-              <span class="card-text"><strong>Author: </strong>Akira Himekawa</span><br>
-              <span class="card-text"><strong>Publisher: </strong>VIZ Media</span><br>
-              <p class="card-text"><strong>ISBN: </strong>1421589605</p>
-              <p>Buy :<a href="${productURL}" target="_blank"> Amazon </a></p>
-            </div>
-          </div>
-          <div class="card text-center ">
-            <button  class="btn btn-primary">Add To Wish List</button>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZWR1Y2F0aW9ufGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.7">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content.</p>
           </div>
         </div>
-        <!-- akhir loop -->
       </div>
-    </div>
-  </section>
-  <!-- END CATALOG LIST -->
-
-  <!--START WISHLIST  -->
-  <section id="wishList">
-    <H1 class="text-center">Your Wish List</H1>
-    <div class="container">
-      <div class="row" id="wishListCard">
-        <!-- awal loop -->
-        <div class="col-3 mt-4">
-          <div class="card overflow-auto" style="height:70vh">
-            <img src="https://storage.googleapis.com/du-prd/books/images/9781421589602.jpg" class="card-img-top" alt="...">
-            <div class="card-body ">
-              <h5 class="card-title">THE LEGEND OF ZELDA: LEGENDARY EDITION, VOL. 2</h5>
-              <p class="card-text">The adaptation of several story arcs from Nintendo’s Zelda video game series continues. In this volume, the Oracle of Seasons.</p>
-
-              <span class="card-text"><strong>Author: </strong>Akira Himekawa</span><br>
-              <span class="card-text"><strong>Publisher: </strong>VIZ Media</span><br>
-              <p class="card-text"><strong>ISBN: </strong>1421589605</p>
-              <p>Buy :<a href="${productURL}" target="_blank"> Amazon </a></p>
-            </div>
-          </div>
-          <div class="card text-center ">
-            <button class="btn btn-danger">Delete From Wish List</button>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1526297003708-f5a1c2c9c6e7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtb3J8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.7">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
           </div>
         </div>
-        <!-- akhir loop -->
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1478061653917-455ba7f4a541?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZmFtaWx5fGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.7">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8dHJhdmVsfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.7">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aGVhbHRofGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.7">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="" class="card-img-top" alt="...">
+          <div class="card-body"
+            style="background: url(https://images.unsplash.com/photo-1577741314755-048d8525d31e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z2FtZXN8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.7">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-  <!-- END WISHLIST -->
+  </div>
+
+  </div>
+
+
+  <!-- button text to voice -->
   <button onclick="responsiveVoice.speak('The Internet is a series of tubes!');" type="button"
     value="Play">Play</button>
-
-
   <!-- TEXT TO VOICE -->
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=0eHtOLNi"></script>
   <!-- Option 1: Bootstrap Bundle with Popper -->

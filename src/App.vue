@@ -1,7 +1,7 @@
 <template>
     <div id="app">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-12 fixed-top">
         <div class="container">
             <a class="navbar-brand" >
               <img src="https://images.unsplash.com/photo-1534226501678-2988ac084d54?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Ym9vayUyMGljb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class=navbar-nav>
                     <li class="nav-item">
-                        <router-link class="nav-link btn-success text-white fs-5" to="/" v-if="isLogin && $route.name!='Home'"> Home</router-link>
+                        <router-link class="nav-link btn-success text-white fs-5 me-3" to="/" v-if="isLogin && $route.name!='Home'"> Home</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link btn-success text-white fs-5" to="/wishlists" v-if="isLogin && $route.name!='Wishlists' && $route.name!='Error404'"> My Wish List</router-link>

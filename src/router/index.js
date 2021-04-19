@@ -26,7 +26,7 @@ const routes = [
     component: Register
   },
   {
-    path: '/books',
+    path: '/books/:category',
     name: 'Books',
     component: Books
   },

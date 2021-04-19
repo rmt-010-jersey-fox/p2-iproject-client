@@ -1,6 +1,10 @@
 <template>
     <!-- AWAL FORM REGISTER -->
   <form @submit.prevent="register">
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
       <h3 class="mb-4 text-success">Register</h3>
       <div class="mb-3 col-md-3">
