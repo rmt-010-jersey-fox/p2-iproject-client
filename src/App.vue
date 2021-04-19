@@ -22,6 +22,9 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <p class="nav-link text-white fs-5 me-4" v-if="isLogin">Hello {{username}}</p>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link btn-info text-dark fs-5" to="/login" v-if="!isLogin && $route.name!='Login'">Login</router-link>
                     </li>
                     <li class="nav-item">
@@ -41,6 +44,11 @@
 
 <script>
 export default {
+  data () {
+    return {
+      username :localStorage.getItem('username')
+    }
+  },
   computed : {
     isLogin () {
       return this.$store.state.isLogin
@@ -50,6 +58,7 @@ export default {
     logout () {
       this.$store.commit('setLogout')
       localStorage.removeItem('token')
+      localStorage.removeItem('username')
       this.$router.push({name : 'Login'})
     }
   }

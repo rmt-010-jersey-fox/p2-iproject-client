@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     isLogin: localStorage.getItem('token') ? true : false,
     books: [],
+    book : {},
     wishlists: []
   },
   mutations: {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     fetchBooks(state, payload) {
       state.books = payload
+    },
+    fetchOneBook(state, payload) {
+      state.book = payload
     },
     fetchWishlist(state, payload) {
       state.wishlists = payload
@@ -57,8 +61,9 @@ export default new Vuex.Store({
         data: payload
       })
       .then(response => {
-          console.log('dilogin');
+          // console.log('dilogin');
           localStorage.setItem('token', response.data.token)
+          localStorage.setItem('username', response.data.username)
           context.commit('setLogin')
           router.push({name:'Home'})
         })
@@ -108,6 +113,28 @@ export default new Vuex.Store({
         })
         .catch(err=>{
           console.log(err.response.data);
+        })
+    },
+    fetchOneBook (context, payload) {
+      console.log(payload);
+      axios({
+        method : 'GET',
+        url : `/book/${payload}`,
+        headers : {
+          token : localStorage.getItem('token')
+        }
+      })
+      .then(response=>{
+          console.log(response.data);
+          context.commit('fetchOneBook', response.data)
+        })
+        .catch(err=>{
+          Swal.fire({
+            title: 'Warning!',
+            text: err.response.data,
+            icon: 'error',
+            confirmButtonText: 'close'
+          })
         })
     },
     fetchWishlists (context, payload) {

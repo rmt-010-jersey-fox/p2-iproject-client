@@ -6,6 +6,7 @@ import Books from '../views/Books.vue'
 import Error404 from '../views/Error404.vue'
 import Register from '../views/Register.vue'
 import Wishlists from '../views/Wishlists.vue'
+import BookDetail from '../views/BookDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/wishlists',
     name: 'Wishlists',
     component: Wishlists
+  },
+  {
+    path: '/books/bookdetail/:isbn',
+    name: 'BookDetail',
+    component: BookDetail
   },
   {
     path: '*',
