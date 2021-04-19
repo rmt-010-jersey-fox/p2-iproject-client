@@ -1,281 +1,200 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@maulidyahintan 
-rmt-010-jersey-fox
-/
-p2-iproject-client
-Private
-7
-0
-19
-Code
-Issues
-Pull requests
-4
-Actions
-Projects
-Security
-Insights
-Muhammad Reza Amarullah #4
- Open
-rezanasu wants to merge 1 commit into rmt-010-jersey-fox:main from rezanasu:main
-+215 −0 
- Conversation 0
- Commits 1
- Checks 0
- Files changed 11
- Open
-Muhammad Reza Amarullah
-#4
-File filter... 
-mockup dan wireframes
-
-This commit does not belong to any branch on this repository.
-@rezanasurezanasu committed 9 minutes ago
-commit 02359158a1f71af75befee5238f7818e92dddb4e
- BIN +16.8 KB assets/comics-venom.jpg 
-Binary file not shown.
- BIN +531 KB assets/discover.jpg 
-Binary file not shown.
- BIN +1.18 MB assets/dragon-fantasy.png 
-Binary file not shown.
- BIN +38.7 KB assets/nature.jpg 
-Binary file not shown.
- BIN +153 KB assets/photography.jpg 
-Binary file not shown.
- BIN +55 KB assets/science-fiction.jpg 
-Binary file not shown.
- 12  darkly.css 
-Large diffs are not rendered by default.
-
- 149  index.html 
-@@ -0,0 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="darkly.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Art</title>
-</head>
-<body>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.myLink {display: none}
+</style>
+<body class="w3-light-grey">
 
-    <!-- NAVIGATION BAR -->
-    <section id="navigation-bar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand">FANCY ARTWORK</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+<!-- Navigation Bar -->
+<div class="w3-bar w3-white w3-border-bottom w3-xlarge">
+  <a href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-map-marker w3-margin-right"></i>Logo</b></a>
+  <a href="#" class="w3-bar-item w3-button w3-right w3-hover-red w3-text-grey"><i class="fa fa-search"></i></a>
+</div>
 
-            <div class="collapse navbar-collapse" id="navbarColor02">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link active">HOME
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link">GALLERIES</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link">SUBMIT</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link">BLOG</a>
-                </li>
+<!-- Header -->
+<header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+  <img class="w3-image" src="/w3images/london2.jpg" alt="London" width="1500" height="700">
+  <div class="w3-display-middle" style="width:65%">
+    <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');"><i class="fa fa-plane w3-margin-right"></i>Flight</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');"><i class="fa fa-bed w3-margin-right"></i>Hotel</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Car');"><i class="fa fa-car w3-margin-right"></i>Rental</button>
+    </div>
 
-              </ul>
-
-                <button class="btn btn-danger my-2 my-sm-0" type="button">LOGOUT</button>
-
-            </div>
-          </nav>
-    </section>
-
-
-      <!-- IMAGE BANNER -->
-    <section id="image-banner">
-        <div class="container-fluid" style="padding: 0;">
-            <div class="image-widescreen">
-                <img id="img-head" src="./assets/discover.jpg" alt="image-banner">
-                <div class="centered h1 text-warning">DISCOVER AWESOME ARTWORKS</div>
-            </div>
+    <!-- Tabs -->
+    <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Travel the world with us</h3>
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half">
+          <label>From</label>
+          <input class="w3-input w3-border" type="text" placeholder="Departing from">
         </div>
-    </section>
-
-
-    <!-- SEARCH BAR -->
-    <section id="search-bar" class="mb-5 p-5" style="background-color: #0f4c75;">
-        <div class="container">
-            <div class="input-group">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                  aria-describedby="search-addon" />
-                <button type="button" class="btn btn-info">SEARCH</button>
-            </div>
+        <div class="w3-half">
+          <label>To</label>
+          <input class="w3-input w3-border" type="text" placeholder="Arriving at">
         </div>
+      </div>
+      <p><button class="w3-button w3-dark-grey">Search and find dates</button></p>
+    </div>
 
-    </section>
+    <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Find the best hotels</h3>
+      <p>Book a hotel with us and get the best fares and promotions.</p>
+      <p>We know hotels - we know comfort.</p>
+      <p><button class="w3-button w3-dark-grey">Search Hotels</button></p>
+    </div>
 
-    <!-- EXPLORE TOPICS -->
-    <section id="explore-topics">
+    <div id="Car" class="w3-container w3-white w3-padding-16 myLink">
+      <h3>Best car rental in the world!</h3>
+      <p><span class="w3-tag w3-deep-orange">DISCOUNT!</span> Special offer if you book today: 25% off anywhere in the world with CarServiceRentalRUs</p>
+      <input class="w3-input w3-border" type="text" placeholder="Pick-up point">
+      <p><button class="w3-button w3-dark-grey">Search Availability</button></p>
+    </div>
+  </div>
+</header>
 
-        <div class="container" style="padding: 0;">
-            <p class="h3 mb-3 text-light">EXPLORE TOPICS</p>
-            <div class="row">
-                <div class="col-md-3 mb-5">
-                    <img src="./assets/dragon-fantasy.png" alt="fantasy" class="rounded topics-img mb-3">
-                    <p class="h3 text-warning" >FANTASY</p>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <img src="./assets/comics-venom.jpg" alt="comics" class="rounded topics-img mb-3">
-                    <p class="h3 text-warning" >COMICS</p>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <img src="./assets/science-fiction.jpg" alt="sci-fi" class="rounded topics-img mb-3">
-                    <p class="h3 text-warning" >SCI-FI</p>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <img src="./assets/photography.jpg" alt="photography" class="rounded topics-img mb-3">
-                    <p class="h3 text-warning" >PHOTOS</p>
-                </div>
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px;">
 
-            </div>
-            <hr>
+  <!-- Good offers -->
+  <div class="w3-container w3-margin-top">
+    <h3>Good Offers Right Now</h3>
+    <h6>Up to <strong>50%</strong> discount.</h6>
+  </div>
+  <div class="w3-row-padding w3-text-white w3-large">
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-display-container">
+        <img src="/w3images/cinqueterre.jpg" alt="Cinque Terre" style="width:100%">
+        <span class="w3-display-bottomleft w3-padding">Cinque Terre</span>
+      </div>
+    </div>
+    <div class="w3-half">
+      <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="/w3images/newyork2.jpg" alt="New York" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">New York</span>
+          </div>
         </div>
-    </section>
-
-    <!-- MAIN CONTENTS -->
-    <section id="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb218ccf-7a10-4ab7-91da-d596d1b65c0a/ded6d2v-3eb032d1-09a7-4e89-b3f8-f2d44f6f1a2b.jpg/v1/fill/w_622,h_350,q_70,strp/treason__the_descendants_war_book_2_by_lorddoomhammer_ded6d2v-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC9jYjIxOGNjZi03YTEwLTRhYjctOTFkYS1kNTk2ZDFiNjVjMGFcL2RlZDZkMnYtM2ViMDMyZDEtMDlhNy00ZTg5LWIzZjgtZjJkNDRmNmYxYTJiLmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OkAg-0XZDVARfbI4k7OkvKW1Mf_2SM32y2d3_njttAU" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3eaea6cb-95ee-49cd-a24f-ac5308d293ec/dehb9lu-3b663415-479a-4b49-8218-f844d37d741e.jpg/v1/fill/w_448,h_250,q_70,strp/guard_by_kimchi8072_dehb9lu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTQ0IiwicGF0aCI6IlwvZlwvM2VhZWE2Y2ItOTVlZS00OWNkLWEyNGYtYWM1MzA4ZDI5M2VjXC9kZWhiOWx1LTNiNjYzNDE1LTQ3OWEtNGI0OS04MjE4LWY4NDRkMzdkNzQxZS5qcGciLCJ3aWR0aCI6Ijw9MjA0OCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.YHVjTb2NDe42KhM-udqBxg-Kb97pcJ8os0c7Wex5RcI" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/94f2fa80-c632-4d84-8c93-790cb7fceb5f/deh8xm4-8c90b0cd-2a6d-4350-9ccf-2950c06c4dbe.jpg/v1/fill/w_498,h_350,q_70,strp/magic_sea_galaxy_by_thaisdematte_deh8xm4-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTI1IiwicGF0aCI6IlwvZlwvOTRmMmZhODAtYzYzMi00ZDg0LThjOTMtNzkwY2I3ZmNlYjVmXC9kZWg4eG00LThjOTBiMGNkLTJhNmQtNDM1MC05Y2NmLTI5NTBjMDZjNGRiZS5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.89uKO2R8K-IA0XSBlyiHRItpBQnUzYE6-zyN8SMfp9Q" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/94f2fa80-c632-4d84-8c93-790cb7fceb5f/deh8xm4-8c90b0cd-2a6d-4350-9ccf-2950c06c4dbe.jpg/v1/fill/w_498,h_350,q_70,strp/magic_sea_galaxy_by_thaisdematte_deh8xm4-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTI1IiwicGF0aCI6IlwvZlwvOTRmMmZhODAtYzYzMi00ZDg0LThjOTMtNzkwY2I3ZmNlYjVmXC9kZWg4eG00LThjOTBiMGNkLTJhNmQtNDM1MC05Y2NmLTI5NTBjMDZjNGRiZS5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.89uKO2R8K-IA0XSBlyiHRItpBQnUzYE6-zyN8SMfp9Q" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/94f2fa80-c632-4d84-8c93-790cb7fceb5f/deh8xm4-8c90b0cd-2a6d-4350-9ccf-2950c06c4dbe.jpg/v1/fill/w_498,h_350,q_70,strp/magic_sea_galaxy_by_thaisdematte_deh8xm4-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0xMTI1IiwicGF0aCI6IlwvZlwvOTRmMmZhODAtYzYzMi00ZDg0LThjOTMtNzkwY2I3ZmNlYjVmXC9kZWg4eG00LThjOTBiMGNkLTJhNmQtNDM1MC05Y2NmLTI5NTBjMDZjNGRiZS5qcGciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.89uKO2R8K-IA0XSBlyiHRItpBQnUzYE6-zyN8SMfp9Q" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb218ccf-7a10-4ab7-91da-d596d1b65c0a/ded6d2v-3eb032d1-09a7-4e89-b3f8-f2d44f6f1a2b.jpg/v1/fill/w_622,h_350,q_70,strp/treason__the_descendants_war_book_2_by_lorddoomhammer_ded6d2v-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC9jYjIxOGNjZi03YTEwLTRhYjctOTFkYS1kNTk2ZDFiNjVjMGFcL2RlZDZkMnYtM2ViMDMyZDEtMDlhNy00ZTg5LWIzZjgtZjJkNDRmNmYxYTJiLmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OkAg-0XZDVARfbI4k7OkvKW1Mf_2SM32y2d3_njttAU" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cb218ccf-7a10-4ab7-91da-d596d1b65c0a/ded6d2v-3eb032d1-09a7-4e89-b3f8-f2d44f6f1a2b.jpg/v1/fill/w_622,h_350,q_70,strp/treason__the_descendants_war_book_2_by_lorddoomhammer_ded6d2v-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03MjAiLCJwYXRoIjoiXC9mXC9jYjIxOGNjZi03YTEwLTRhYjctOTFkYS1kNTk2ZDFiNjVjMGFcL2RlZDZkMnYtM2ViMDMyZDEtMDlhNy00ZTg5LWIzZjgtZjJkNDRmNmYxYTJiLmpwZyIsIndpZHRoIjoiPD0xMjgwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.OkAg-0XZDVARfbI4k7OkvKW1Mf_2SM32y2d3_njttAU" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img class="img-content" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/degsicu-b7a72aa6-4ebb-46d2-9b90-2004d3293be7.jpg/v1/fill/w_444,h_250,q_70,strp/heavens_gate_by_tadp0l3_degsicu-250t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yMTYwIiwicGF0aCI6IlwvZlwvYTM0MmRjZTMtNjdjYS00MWFiLTgwZjktYzUzMGNjNTIyNTljXC9kZWdzaWN1LWI3YTcyYWE2LTRlYmItNDZkMi05YjkwLTIwMDRkMzI5M2JlNy5qcGciLCJ3aWR0aCI6Ijw9Mzg0MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QfYf56f5z9cNxFICNT3qRZyz4q0j8d6p5bLmiFcGvAI" alt="">
-                </div>
-            </div>
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="/w3images/sanfran.jpg" alt="San Francisco" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">San Francisco</span>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="/w3images/pisa.jpg" alt="Pisa" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">Pisa</span>
+          </div>
+        </div>
+        <div class="w3-half w3-margin-bottom">
+          <div class="w3-display-container">
+            <img src="/w3images/paris.jpg" alt="Paris" style="width:100%">
+            <span class="w3-display-bottomleft w3-padding">Paris</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Explore Nature -->
+  <div class="w3-container">
+    <h3>Explore Nature</h3>
+    <p>Travel with us and see nature at its finest.</p>
+  </div>
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <img src="/w3images/ocean2.jpg" alt="Norway" style="width:100%">
+      <div class="w3-container w3-white">
+        <h3>West Coast, Norway</h3>
+        <p class="w3-opacity">Roundtrip from $79</p>
+        <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+        <button class="w3-button w3-margin-bottom">Buy Tickets</button>
+      </div>
+    </div>
+    <div class="w3-half w3-margin-bottom">
+      <img src="/w3images/mountains2.jpg" alt="Austria" style="width:100%">
+      <div class="w3-container w3-white">
+        <h3>Mountains, Austria</h3>
+        <p class="w3-opacity">One-way from $39</p>
+        <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+        <button class="w3-button w3-margin-bottom">Buy Tickets</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-</body>
-</html> 
- 54  style.css 
-@@ -0,0 +1,54 @@
-* {
-   font-family: 'Roboto', sans-serif !important;
-}
+  <!-- Newsletter -->
+  <div class="w3-container">
+    <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
+      <h2>Get the best offers first!</h2>
+      <p>Join our newsletter.</p>
+      <label>E-mail</label>
+      <input class="w3-input w3-border" type="text" placeholder="Your Email address">
+      <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
+    </div>
+  </div>
+  
+  <!-- Contact -->
+  <div class="w3-container">
+    <h2>Contact</h2>
+    <p>Let us book your next trip!</p>
+    <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
+    <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+    <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
+      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+  
+<!-- End page content -->
+</div>
 
-body {
-    padding: 0;
-    margin: 0;
-}
+<!-- Footer -->
+<footer class="w3-container w3-center w3-opacity w3-margin-bottom">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
 
-
-.image-widescreen{
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 20rem;
-    max-height: 20rem; 
-    overflow-y: hidden;
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
   }
-
-.image-widescreen #img-head {
-    width: 100%;
-    display: block;
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
 }
 
-.margin-top-image{
-    margin-top: 330px;
-}
+// Click on the first tablink on load
+document.getElementsByClassName("tablink")[0].click();
+</script>
 
-  /* Centered text */
-.centered {
-    position: absolute;
-    top: 32%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.topics-img {
-    width: 200px;
-    height: 200px;
-}
-
-.img-content {
-    width: 250px;
-    height: 200px;
-}
-
-/* Centered text */
-.centered {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
- BIN +86.3 KB wireframes/blog-page.png 
-Binary file not shown.
- BIN +58.2 KB wireframes/home-page.png 
-Binary file not shown.
- ProTip! Use n and p to navigate between commits in a pull request.
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
+</body>
+</html>

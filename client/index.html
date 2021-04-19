@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>SewaMobil.com</title>
 </head>
@@ -20,7 +21,7 @@
             <button type="button" class="btn btn-primary">Register</button>
             <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">Login</button>
         </div>
-        <p>Anda memiliki usaha rental mobil ? Bergabunglah bersama kami !<a style="color: blue;">Click disini untuk bergabung</a></p>
+        <p>Anda memiliki usaha rental mobil ? Bergabunglah bersama kami !<a style="color: blue; margin-left: 3px;">Click disini untuk bergabung</a></p>
     </nav>
 
     <!-- HEADER -->
@@ -120,7 +121,201 @@
         </div>
     </div>
 
+    <!-- REGISTER -->
+    <div class="w3-cell-row register" style="margin-top: 30px;">
 
+      <div class="w3-container w3-cell" style="padding: 50px;">
+        <div class="row register-toptext">
+          <h2>Bergabung jadi member SewaMobil.com dan nikmati beragam keuntungannya!</h2>
+          <h5>Daftar via registrasi yang mudah dan aman untuk berbagai keuntungan berikut:</h5>
+        </div>
+        <div class="row reward">
+          <div class="col" style="padding-right: 50px;">
+            <img src="https://ik.imagekit.io/tvlk/image/imageResource/2018/07/03/1530611739902-f842496c03a0da13f009612ca38b671d.svg?tr=q-75" alt="">
+            <h5>Poin untuk Tiap Pemesanan</h5>
+            <p>Dapatkan Poin saat memesan mobil. Tukar untuk diskon perjalanan dan berbagai kupon reward!</p>
+          </div>
+
+          <div class="col">
+            <img src="https://ik.imagekit.io/tvlk/image/imageResource/2018/07/03/1530611748295-e4aeb162c550ac0871337edb53a8a08d.svg?tr=q-75" alt="">
+            <h5>Kenyamanan Ekstra Setelah Pemesanan</h5>
+            <p>Pilih kursi saat check-in melalui aplikasi dan gunakan fitur refund/reschedule jika ada perubahan rencana terbang atau menginap.</p>
+          </div>
+        </div>
+        <div class="row reward">
+          <div class="col" style="padding-right: 50px;">
+            <img src="https://ik.imagekit.io/tvlk/image/imageResource/2018/07/03/1530611746199-2965f73ada3e780f295517523e2573b3.svg?tr=q-75" alt="">
+            <h5>Transaksi Non-tunai dengan travelokaPay</h5>
+            <p>Transaksi aman dan nyaman dengan Saldo UANGKU atau Kartu Saya. Persiapkan juga pengeluaran bulanan dan traveling Anda dengan PayLater</p>
+          </div>
+
+          <div class="col">
+            <img src="https://ik.imagekit.io/tvlk/image/imageResource/2018/07/03/1530611737727-07b960a3c0f14f1bbf6f52bbd6b371cf.svg?tr=q-75" alt="">
+            <h5>Pesan Tanpa Repot</h5>
+            <p>Set Notifikasi Harga untuk pesan saat waktu yang tepat. Pesan lebih cepat saat bepergian bersama dengan Passenger Quick Pick.</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="w3-container w3-cell" style="width: 700px; padding: 50px;">
+        <div class="row set-color">
+          <h2>Responsive Checkout Form</h2>
+          <p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
+            <div class="container" >
+              <form action="/action_page.php">
+                <div class="row">
+                  <div class="col-50">
+                    <h3>Billing Address</h3>
+                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="text" id="email" name="email" placeholder="john@example.com">
+                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                    <input type="text" id="city" name="city" placeholder="New York">
+
+                    <div class="row">
+                      <div class="col-50">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="NY">
+                      </div>
+                      <div class="col-50">
+                        <label for="zip">Zip</label>
+                        <input type="text" id="zip" name="zip" placeholder="10001">
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <label>
+                  <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                </label>
+                <input type="submit" value="Continue to checkout" class="btn">
+              </form>
+            </div>
+      </div>
+    
+    </div>
+    </div>
+
+    <!-- Detail Order -->
+    <div class="w3-container" style="margin-left: 250px; margin-right: 250px;">
+      <div class="w3-panel w3-padding-16 w3-black w3-opacity w3-card w3-hover-opacity-off">
+        <h2>Get the best offers first!</h2>
+        <p>Join our newsletter.</p>
+        <label>E-mail</label>
+        <input class="w3-input w3-border" type="text" placeholder="Your Email address">
+        <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
+      </div>
+    </div>
+
+    <!-- Detail Car -->
+    <div class="w3-row-padding w3-padding-16" style="margin-left: 250px; margin-right: 250px;">
+      <div class="w3-third w3-margin-bottom">
+        <img src="https://cdcssl.ibsrv.net/cimg/www.carsdirect.com/285x160_85/181/2020-Chevrolet-CamaroSS-001-621181.jpg" alt="Norway" style="width:100%">
+        <div class="w3-container w3-white">
+          <h3>Single Room</h3>
+          <h6 class="w3-opacity">From $99</h6>
+          <p>Single bed</p>
+          <p>15m<sup>2</sup></p>
+          <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+          <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+        </div>
+      </div>
+      <div class="w3-third w3-margin-bottom">
+        <img src="https://cdcssl.ibsrv.net/cimg/www.carsdirect.com/285x160_85/181/2020-Chevrolet-CamaroSS-001-621181.jpg" alt="Norway" style="width:100%">
+        <div class="w3-container w3-white">
+          <h3>Double Room</h3>
+          <h6 class="w3-opacity">From $149</h6>
+          <p>Queen-size bed</p>
+          <p>25m<sup>2</sup></p>
+          <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
+          <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+        </div>
+      </div>
+      <div class="w3-third w3-margin-bottom">
+        <img src="https://cdcssl.ibsrv.net/cimg/www.carsdirect.com/285x160_85/181/2020-Chevrolet-CamaroSS-001-621181.jpg" alt="Norway" style="width:100%">
+        <div class="w3-container w3-white">
+          <h3>Deluxe Room</h3>
+          <h6 class="w3-opacity">From $199</h6>
+          <p>King-size bed</p>
+          <p>40m<sup>2</sup></p>
+          <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i></p>
+          <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking detail -->
+    <div class="w3-col l8 s12" style="margin-left: 250px; width: 900px;">
+      <!-- Mobil yg di pick -->
+      <div class="w3-card-4 w3-margin w3-white">
+        <img src="/w3images/woods.jpg" alt="Nature" style="width:100%">
+        <div class="w3-container">
+          <h3><b>TITLE HEADING</b></h3>
+          <h5>Title description, <span class="w3-opacity">April 7, 2014</span></h5>
+        </div>
+
+        <div class="w3-container">
+          <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed
+            tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          <div class="w3-row">
+            <div class="w3-col m8 s12">
+              <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+            </div>
+            <div class="w3-col m4 w3-hide-small">
+              <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <!-- Detail Rental dan Pembayaran -->
+    <div class="w3-col l4" style="width: 500px;">
+      <!-- Rental -->
+      <div class="w3-card w3-margin w3-margin-top">
+      <img src="/w3images/avatar_g.jpg" style="width:100%">
+        <div class="w3-container w3-white">
+          <h4><b>My Name</b></h4>
+          <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
+        </div>
+      </div><hr>
+      
+      <!-- Pembayaran -->
+      <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+          <h4>Popular Posts</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          <li class="w3-padding-16">
+            <img src="/w3images/workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Lorem</span><br>
+            <span>Sed mattis nunc</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="/w3images/gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Ipsum</span><br>
+            <span>Praes tinci sed</span>
+          </li> 
+          <li class="w3-padding-16">
+            <img src="/w3images/skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Dorum</span><br>
+            <span>Ultricies congue</span>
+          </li>   
+          <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+            <img src="/w3images/rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Mingsum</span><br>
+            <span>Lorem ipsum dipsum</span>
+          </li>  
+        </ul>
+      </div>
+      <hr> 
+      
+    <!-- END Introduction Menu -->
+    </div>
 
 
     
