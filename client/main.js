@@ -1,11 +1,11 @@
-    
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="#">
-            <strong>SewaMobil.com</strong> 
+            <strong>SewaMobil.com</strong>
             <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> -->
           </a>
-      
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
