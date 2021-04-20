@@ -1,15 +1,44 @@
 <template>
   <div>
-    <h1>Halo</h1>
+      <div class="container bg-gradient-to-br from-purple-200 to-gray-300 flex justify-center items-center h-screen">
+          <div class="bg-white w-4/5 h-4/5 rounded-3xl overflow-auto shadow-2xl flex">
+              <Sidebar></Sidebar>
+              <!-- <Library></Library> -->
+              <!-- <Search></Search> -->
+          </div>
+      </div>
   </div>
 </template>
 
 <script>
+import Sidebar from '../components/Sidebar'
+import Library from '../components/Library'
+import Search from '../components/Search'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+      Sidebar,
+      Library,
+      Search
+  }
 }
 </script>
 
 <style>
+::-webkit-scrollbar {
+    
+  width: 20px;
+  height: 20px;
+}
 
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
 </style>
