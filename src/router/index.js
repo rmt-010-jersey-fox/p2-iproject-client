@@ -42,6 +42,11 @@ const routes = [
     path: '/tournament',
     name: 'Tournament',
     component: () => import('../views/Tournament.vue')
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: () => import('../views/404.vue')
   }
 
 ]
