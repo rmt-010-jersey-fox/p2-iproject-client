@@ -16,6 +16,13 @@ export default new Vuex.Store({
       let { data } = await axios.post("/login", { email, password });
       localStorage.access_token = data.access_token;
       return data;
+    },
+
+    fetchQuote(context) {
+      return axios.get("/random-quote");
+    },
+    fetchCatImage() {
+      return axios.get("/cat-api");
     }
   },
   modules: {}

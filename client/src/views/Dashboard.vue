@@ -4,14 +4,13 @@
       <!-- sidebar left -->
       <div class="col-3 bg-white h-100">
         <!-- sidebar header -->
-        <div class="row sidebar-header text-white" style="height: 8vh">
+        <div
+          class="row sidebar-header text-white shadow-sm"
+          style="height: 8vh"
+        >
           <div class="col-3 p-0">
             <div class="d-flex justify-content-center align-items-center h-100">
-              <img
-                src="https://i.imgur.com/AD3MbBi.jpeg"
-                alt=""
-                class="rounded-circle w-50"
-              />
+              <img :src="image" alt="" class="avatar" />
             </div>
           </div>
           <div
@@ -32,7 +31,7 @@
         <!-- category -->
         <div class="p-2">
           <button class="btn btn-outline-secondary m-0 rounded">
-            messages
+            Rooms
           </button>
         </div>
         <!-- list of messages -->
@@ -46,35 +45,13 @@
                   <img
                     src="https://i.imgur.com/AD3MbBi.jpeg"
                     alt=""
-                    class="rounded-circle w-75"
+                    class="avatar"
                   />
                 </div>
               </div>
               <div class="col-7 p-0 d-flex align-items-center">
                 <div>
                   <p class="text m-0">@yoru</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="border-bottom" style="width: 18rem">
-          <div class="p-3">
-            <div class="row" style="height: 5vh">
-              <div class="col-3 p-0 h-100">
-                <div
-                  class="d-flex justify-content-start align-items-center h-100"
-                >
-                  <img
-                    src="https://i.imgur.com/AD3MbBi.jpeg"
-                    alt=""
-                    class="rounded-circle w-75"
-                  />
-                </div>
-              </div>
-              <div class="col-7 p-0 d-flex align-items-center">
-                <div>
-                  <p class="text m-0">@kanna</p>
                 </div>
               </div>
             </div>
@@ -108,7 +85,28 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Dashboard",
+  data() {
+    return {
+      image: ""
+    };
+  },
+  methods: {
+    async fetchCatImage() {
+      try {
+        let { data } = await this.$store.dispatch("fetchCatImage");
+        this.image = data.image_url;
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
+  created() {
+    this.fetchCatImage();
+  }
+};
 </script>
 
 <style>
@@ -133,5 +131,11 @@ export default {};
   height: 55vh;
   width: 35vh;
   border-radius: 30px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 </style>

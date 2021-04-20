@@ -3,16 +3,15 @@
     <div class="h-100 d-flex justify-content-center align-items-center">
       <div class="card mb-3 h-75 w-75">
         <div class="row g-0 h-100">
-          <div class="col-md-8 banner">
-            <div class="card-body text-white">
-              <h5 class="card-title">Card title</h5>
+          <div
+            class="col-md-8 banner d-flex justify-content-center align-items-center"
+          >
+            <div class="card-body text-white text-center">
+              <h4 class="card-text">
+                {{ quote.content }}
+              </h4>
               <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-light">-{{ quote.author }}</small>
               </p>
             </div>
           </div>
@@ -59,7 +58,11 @@ export default {
   name: "SignIn",
   data() {
     return {
-      stateSign: false
+      stateSign: false,
+      quote: {
+        content: "",
+        author: ""
+      }
     };
   },
   components: {
@@ -69,7 +72,19 @@ export default {
   methods: {
     landingPage() {
       this.$router.replace("/");
+    },
+    async fetchQuote() {
+      try {
+        let { data } = await this.$store.dispatch("fetchQuote");
+        console.log(data);
+        this.quote = data;
+      } catch (error) {
+        console.log(error);
+      }
     }
+  },
+  created() {
+    this.fetchQuote();
   }
 };
 </script>
