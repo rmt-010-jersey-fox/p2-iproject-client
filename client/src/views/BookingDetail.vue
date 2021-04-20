@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-top:120px">
         <!-- Booking detail -->
     <div class="w3-col l8 s12" style="margin-left: 250px; width: 900px;">
       <!-- Mobil yg di pick -->

@@ -94,7 +94,7 @@ export default {
   methods: {
     register () {
       axios({
-        methods: 'POST',
+        method: 'POST',
         url: 'register',
         data: {
           firstName: this.firstName,
