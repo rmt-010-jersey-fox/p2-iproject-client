@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <h1>Search your manga here!</h1>
+    <h1 style="font-family: 'Bungee Inline', cursive;">Search your manga here!</h1>
     <div class="search-box">
       <input
         type="text"
         class="search-box-input"
         placeholder="What are you looking for ?"
       />
-      <button class="search-box-btn">
+      <button class="search-box-btn" @submit.prevent="searchManga">
         <i class="search-box-icon material-icons">search</i>
       </button>
     </div>
@@ -15,7 +15,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "search",
+  methods: {
+    searchManga(){
+      
+    }
+
+  }
+
+};
 </script>
 
 <style scoped>

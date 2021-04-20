@@ -3,32 +3,24 @@
     <div class="card" style="width: 18rem; margin-left: 10px; col">
       <img :src="mangaDetail.MangaCover" class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title">{{ mangaDetail.MangaTitle }}</h5>
-        <p class="card-text">
+        <h5 class="card-title">Descriptions<hr></h5>
+        <p class="card-text" style=" text-align: justify;">
           {{ mangaDetail.Summary }}
         </p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
+      
       </div>
     </div>
     <div id="mangaChapter" class="col">
-        <table class="table">
+        <table class="table table-light" >
           <thead>
             <tr>
-              <th scope="col">Chapter Name</th>
+              <th scope="col">Chapter Number</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="ch in mangaDetail.Chapter" :key="ch.ChapterName">
               
-              <td @click.prevent="readManga(ch.ChapterLink)">{{ ch.ChapterName }}</td>
+              <td> <a href="#" @click.prevent="readManga(ch.ChapterLink)">{{ ch.ChapterName }}</a> </td>
             </tr>
           </tbody>
         </table>
@@ -46,14 +38,29 @@ export default {
     mangaDetail() {
       return this.$store.state.mangaDetail;
     },
+  },
     methods: {
       readManga(chapterLink){
+        
+        // let payload = {
+        //   chapterLink
+        // }
+         this.$router.push('/read')
         this.$store.commit("readManga", chapterLink)
-        this.$router.push("/read")
+        // this.$store.dispatch('readManga',payload)
       }
     }
-  },
 };
 </script>
 
-<style></style>
+<style scoped>
+th {
+  font-family: poppins;
+  color: black 
+}
+td {
+  font-family: poppins;
+  color: white 
+}
+
+</style>

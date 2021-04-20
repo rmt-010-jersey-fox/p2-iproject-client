@@ -6,15 +6,19 @@
     </div> -->
     <navbar></navbar>
     <router-view/>
+    <HFooter></HFooter>
   </div>
 </template>
 
 
 <script>
 import Navbar from "./components/navbar"
+import HFooter from 'vue-hacktiv-footer'
+
 export default {
   components: {
-    Navbar
+    Navbar,
+     HFooter
   },
   created(){
     if(localStorage.access_token){
@@ -29,7 +33,7 @@ export default {
 
 <style>
 html,body {
-  background-image: url(https://img.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg?size=626&ext=jpg);
+  background-image: url(https://www.customwallpaper.net.au/wp-content/uploads/2017/07/White-Herring-Bricks.jpg);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

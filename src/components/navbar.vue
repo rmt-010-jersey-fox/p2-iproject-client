@@ -1,16 +1,15 @@
 <template>
   <nav
     id="navbar"
-    class="navbar navbar-expand-lg navbar-light bg-primary"
-   
+    class="navbar navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(gray,white)"
   >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" v-on:click.prevent="changePage('/products')">
+      <a class="navbar-brand" href="#" v-on:click.prevent="changePage('/')">
         <img
-          src="https://seeklogo.com/images/M/manga-logo-26D5521A34-seeklogo.com.png"
+          src="http://www.t-bar.gr/showroom/wp-content/uploads/2014/04/000743-716x716.png"
           alt=""
-          width="70"
-          height="40"
+          width="45"
+          height="45"
         />
       </a>
       <button
@@ -43,7 +42,7 @@
           >
           <a
             v-on:click.prevent="changePage('/search')"
-            class="nav-link active"
+            class="nav-link"
             aria-current="page"
             href="#"
             >search</a
@@ -81,4 +80,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

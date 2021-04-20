@@ -4,8 +4,8 @@
       <div class="container"></div>
     </nav>
     <section id="header" class="jumbotron text-center">
-      <h1 class="display-3" style="font-family: Montserrat; font-size: 150px; margin-bottom: 20px">MangAPP</h1>
-      <p class="lead">
+      <h1 class="display-3" style="font-family:'Bungee Inline', cursive; font-size: 150px; margin-bottom: 30px">MangAPP</h1>
+      <p class="lead" style="font-family:'Bungee Inline', cursive;">
        here are the most popular manga for you!
       </p>
       <a href="" class="btn btn-primary">EN</a>
@@ -27,7 +27,7 @@
                   >Read More</a
                 >
                 <a href="" class="btn btn-outline-danger btn-sm"
-                   @click.prevent="bookmarkManga"><i class="far fa-heart"></i
+                   @click.prevent="addBookmark(manga.MangaTitle)"><i class="far fa-heart"></i
                 ></a>
               </div>
             </div>
@@ -65,8 +65,11 @@ export default {
       this.$store.commit("getMangaId", mangaId)
       this.$router.push("/mangadetail");
     },
-    bookmarkManga(){
-      this.$router.push("/bookmark")
+    addBookmark(mangaTitle){
+      let payload = {
+        mangaTitle
+      }
+      this.$store.dispatch("addBookmark", payload)
     }
   },
 };

@@ -13,7 +13,9 @@ export default new Vuex.Store({
     mangaList: [],
     mangaId: "", //MANGA TITLE
     mangaDetail: {},
-    chapterLink: ""
+    chapterLink: "",
+    bookmarks: [],
+    page: [],
   },
   mutations: {
     increment(state) {
@@ -32,9 +34,15 @@ export default new Vuex.Store({
     getMangaDetail(state, payload) {
       state.mangaDetail = payload;
     },
-    readManga(state,payload){
-     state.chapterLink = payload
-    }
+    readManga(state, payload) {
+      state.chapterLink = payload;
+    },
+    getBookmarks(state, payload) {
+      state.bookmarks = payload;
+    },
+    getPages(state, payload) {
+      state.page = payload;
+    },
   },
   actions: {
     userLogin(context, payload) {
@@ -136,13 +144,105 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    created() {
-        if (localStorage.access_token) {
-          this.state.isLogin = true
-          router.push("/");
-        } else {
-          router.push("/login");
+    addBookmark(context, payload) {
+      if (!localStorage.access_token) {
+        router.push("/login");
+      }
+      axios({
+        method: "post",
+        url: "/bookmarks",
+        data: {
+          title: payload.mangaTitle,
+        },
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(() => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "successfully added manga to your bookmarks",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    },
+    fetchBookmarks(context) {
+      console.log("masuk");
+      axios({
+        method: "get",
+        url: "/bookmarks",
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then((response) => {
+          context.commit("getBookmarks", response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    deleteBookmarks(context, payload) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios({
+            method: "delete",
+            url: `/bookmarks/${payload.id}`,
+            headers: { access_token: localStorage.getItem("access_token") },
+          })
+            .then(() => {
+              Swal.fire(
+                "Deleted!",
+                "Your product has been deleted from the cart.",
+                "success"
+              );
+              // router.push("/products");
+              this.dispatch("fetchBookmarks");
+            })
+            .catch((err) => {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Not Authorized!",
+                footer: "oh no!",
+              });
+              console.log(err);
+            });
         }
-      },
+      });
+    },
+    readManga(context) {
+      let mangaTitle = this.state.mangaId;
+      let mangaChapter = this.state.chapterLink;
+      axios({
+        method: "get",
+        baseURL: `https://go-mangamee.herokuapp.com/page?lang=EN&chapter=${mangaChapter}&mangaTitle=${mangaTitle}`,
+      })
+        .then((response) => {
+          console.log("masuyk response");
+          context.commit("getPages", response.data.Image);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    created() {
+      if (localStorage.access_token) {
+        this.state.isLogin = true;
+        router.push("/");
+      } else {
+        router.push("/login");
+      }
+    },
   },
 });
