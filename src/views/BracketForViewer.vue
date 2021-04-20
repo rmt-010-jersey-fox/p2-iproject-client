@@ -1,14 +1,6 @@
 <template>
 <div>
-  <div v-if="tournament === 'notournament'">
-    <h1>Oh Noes You dont have any ongoing tournamnet right now <br> Please Make One with a simple click below</h1>
-    <button @click.prevent="changepage('TournamentAdd')" class="buttonaddtour btn btn-secondary">MAKE TOURNAMENT</button>
-  </div>
-  <div v-else-if="tournament !== 'notournament' && team.length === 0">
-    <h1>Oh Noes Your Tournament dont have enough team to run a Bracket <br> Please Add One with a simple click below</h1>
-    <button @click.prevent="changepage('AddTeam')" class="buttonaddtour btn btn-secondary">ADD TEAM</button>
-  </div>
-  <div v-else class="tournament-container container">
+  <div class="tournament-container container">
     <h1>Bracket for Game {{tournament.name}}</h1>
     <div class="tournament-headers">
       <h3>Quarter-Finals</h3>
@@ -123,7 +115,7 @@
 <script>
 import TwitterBox from '../components/Twitter'
 export default {
-  name: "Tournament",
+  name: "BracketForViewer",
   components: {
     TwitterBox
   },
@@ -197,14 +189,14 @@ export default {
       let Tournaments = this.$store.state.Tournament
       let Found = 'notournament'
       Tournaments.forEach(el => {
-        if(el.UserId == localStorage.userid) {
+        if(el.id == localStorage.TournamentId) {
           Found = {
             name: el.name,
             id: el.id
           }
         }
       })
-      localStorage.setItem('TournamentId', Found.id)
+      // localStorage.setItem('TournamentId', Found.id) /// INI NANTI DIGANTI SAMA localstorage('tournamentIdforViewer', ) /// nanti pake router params id buat viewernya
       this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: Found.id })
       return Found
     }

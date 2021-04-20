@@ -23,7 +23,7 @@
           <label for="inputPassword">Description</label>
           <textarea type="text" class="form-control" v-model="description" placeholder="Tournament's description"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button @click.prevent="AddTournament" type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
 </template>
@@ -35,6 +35,16 @@ export default {
       name: '',
       selected: '',
       description: ''
+    }
+  },
+  methods: {
+    AddTournament () {
+      let payload = {
+        name: this.name,
+        selected: this.selected,
+        description: this.description
+      }
+      this.$store.dispatch('AddTournament', payload)
     }
   }
 }

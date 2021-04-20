@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 80%">
+  <div style="width: 50%">
     <div class="card bg-light">
       <div class="card-body">
         <h6 class="card-title text-uppercase text-truncate py-2">
