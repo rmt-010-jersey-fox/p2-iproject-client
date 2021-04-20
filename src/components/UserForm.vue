@@ -1,13 +1,19 @@
 <template>
-  <form>
-    <label for="username-reg">Username:</label><br>
-    <input type="text" id="username-reg" required><br><br>
+  <form @submit.prevent="submitForm()">
+    <div>
+      <label for="username">Username:</label><br>
+      <input v-model="username" type="text" id="username" pattern="^[a-zA-Z0-9]+$" required title="alphanumeric characters only"><br><br>
+    </div>
 
-    <label for="email-reg">Email:</label><br>
-    <input type="email" id="email-reg" placeholder="example@mail.com" required><br><br>
+    <div v-if="formType === 'register'">
+      <label for="email">Email:</label><br>
+      <input v-model="email" type="email" id="email" placeholder="example@mail.com" required><br><br>
+    </div>
 
-    <label for="password-reg">Password:</label><br>
-    <input type="password" id="password-reg" required><br><br><br>
+    <div>
+      <label for="password">Password:</label><br>
+      <input v-model="password" type="password" id="password" required><br><br><br>
+    </div>
 
     <input type="submit" value="Submit">
   </form>
@@ -15,7 +21,23 @@
 
 <script>
 export default {
-  name: 'UserForm'
+  name: 'UserForm',
+
+  data () {
+    return {
+      username: '',
+      email: '',
+      password: ''
+    }
+  },
+
+  props: ['formType'],
+
+  methods: {
+    submitForm () {
+      this.$emit('submitForm', { username: this.username, email: this.email, password: this.password })
+    }
+  }
 }
 </script>
 

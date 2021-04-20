@@ -1,7 +1,10 @@
 <template>
   <div id="register-page" class="page form-page">
     <h2>Register</h2>
-    <UserForm />
+      <UserForm
+        @submitForm="register"
+        :formType="'register'"
+      />
     <br>
     <p>Already have an account? <router-link :to="{ name: 'Login'}">Login with your account now!</router-link></p>
   </div>
@@ -9,10 +12,18 @@
 
 <script>
 import UserForm from '../components/UserForm'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Register',
-  components: { UserForm }
+
+  components: { UserForm },
+
+  methods: {
+    ...mapActions([
+      'register'
+    ])
+  }
 }
 </script>
 

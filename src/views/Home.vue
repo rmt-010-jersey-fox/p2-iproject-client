@@ -10,13 +10,12 @@
         <th>Name</th>
         <th>Total Cards</th>
       </tr>
-      <tr>
-        <td><router-link :to="{ name: 'DeckDetail', params: { id: 1 }}">Deck 1</router-link></td>
-        <td>40</td>
-      </tr>
-      <tr>
-        <td><router-link :to="{ name: 'DeckDetail', params: { id: 2 }}">Deck 2</router-link></td>
-        <td>45</td>
+      <tr
+        v-for="deck in decks"
+        :key="deck.id"
+      >
+        <td><router-link :to="{ name: 'DeckDetail', params: { id: deck.id }}">{{ deck.name }}</router-link></td>
+        <td>{{ deck.Cards.length }}</td>
       </tr>
     </table>
   </div>
@@ -25,6 +24,16 @@
 <script>
 
 export default {
-  name: 'Home'
+  name: 'Home',
+
+  created () {
+    this.$store.dispatch('getUserDecks')
+  },
+
+  computed: {
+    decks () {
+      return this.$store.state.decks
+    }
+  }
 }
 </script>

@@ -1,29 +1,29 @@
 <template>
   <div id="profile-page" class="page form-page">
 
-    <h2>lilynano Profile</h2>
+    <h2>{{ profile.username }} Profile</h2>
     <hr>
 
     <table id="profile-table">
       <tr>
         <td>Level:</td>
-        <td>1</td>
+        <td>{{ profile.level }}</td>
       </tr>
       <tr>
         <td>EXP:</td>
-        <td>0</td>
+        <td>{{ profile.exp }}</td>
       </tr>
       <tr>
         <td>Next Level:</td>
-        <td>100</td>
+        <td>{{ profile.nextLevel }}</td>
       </tr>
       <tr>
-        <td>Finishing a Deck:</td>
-        <td>0</td>
+        <td>Cards Cleared:</td>
+        <td>{{ profile.cardsCleared }}</td>
       </tr>
       <tr>
-        <td>Card Mastered:</td>
-        <td>0</td>
+        <td>Description:</td>
+        <td>{{ profile.desc }}</td>
       </tr>
     </table>
 
@@ -33,7 +33,17 @@
 
 <script>
 export default {
-  name: 'User'
+  name: 'User',
+
+  computed: {
+    profile () {
+      return this.$store.state.profile
+    }
+  },
+
+  created () {
+    this.$store.dispatch('getUserProfile', { id: this.$route.params.id })
+  }
 }
 </script>
 
