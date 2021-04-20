@@ -13,17 +13,24 @@
     </div>
     <div class="card text-center ">
       <button @click.prevent="deleteWishlist(wishlist.isbn)" class="zoom btn btn-danger">Delete From Wish List</button>
+      <!-- <button @click.prevent="speak">speak </button> -->
     </div>
   </div>
 </template>
 
 <script>
+// import responsiveVoice from 'responsiveVoice';
 export default {
-  name : 'WishlistCard',
-  props : ['wishlist'],
-  methods : {
+  name: 'WishlistCard',
+  props: ['wishlist'],
+  methods: {
     deleteWishlist(isbn) {
       this.$store.dispatch('deleteWishlist', isbn)
+    },
+    speak() {
+      // let msg = new SpeechSynthesisUtterance()
+      // msg.text = 'Hello World'
+      // window.speechSynthesis.speak(msg)
     }
   }
 }

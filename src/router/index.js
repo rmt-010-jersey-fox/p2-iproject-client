@@ -58,6 +58,9 @@ router.beforeEach((to, from, next) => {
   if (!localStorage.getItem('token') && (to.name !== 'Login' && to.name !== 'Register')){
     next({name : 'Login'})
   }
+  else if (localStorage.getItem('token') && (to.name === 'Login')) {
+    next({name : 'Home'})
+  }
   else{
     next()
   }
