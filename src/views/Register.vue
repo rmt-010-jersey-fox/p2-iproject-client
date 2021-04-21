@@ -3,7 +3,7 @@
   <div class="row no-gutter">
     
     <div class="col-md-8 col-lg-6">
-      <div class="login d-flex align-items-center py-5">
+      <div class="login d-flex align-items-center">
         <div class="container">
           <h1>Turnagen - Tournament Generator</h1>
           <div class="row">
@@ -11,12 +11,12 @@
               <h3 class="login-heading mb-4">Register Page </h3>
               <form>
                 <div class="form-label-group">
-                  <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input v-model="email" type="email" id="inputEmail" style="text-align:center" class="form-control" placeholder="Email address" required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input v-model="password" type="password" id="inputPassword" style="text-align:center" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
                 <button @click.prevent="register" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign Up</button>
@@ -73,7 +73,7 @@ export default {
 
 .login,
 .image {
-  min-height: 100vh;
+  min-height: 88vh;
   background-color: rgba(19, 83, 75, 0.39);
   color: white;
   margin: 0%;

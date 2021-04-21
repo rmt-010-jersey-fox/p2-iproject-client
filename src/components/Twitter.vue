@@ -8,14 +8,13 @@
         <div v-for="(twit, i) in twitt" :key="i" class="items border bg-light border-dark" style="border-radius: 25px; margin-bottom: 1em">
           <!-- CARD HASIL LOOPING TERGANTUNG CATEGORY -->
           <div>
-            <div class="card-body p-2">
-             {{Math.round(Math.random()*1000)}}. {{twit.text}}
+            <div class="card-body p-2" style="text-align: left">
+             <img width="30px" :src="avalink(twit.id)" >. {{twit.text}}
             </div>
           </div>
           <br />
         </div>
       </div>
-      
     </div>
   </div>
 </template>
@@ -27,7 +26,13 @@ export default {
   methods: {
     reloadnewsandtweet() {
       this.$store.dispatch('getTwitterAndNews', { id: this.$route.params.id })
+    },
+    avalink(number) {
+      return `https://avatars.dicebear.com/api/human/${number}.svg`
     }
+  },
+  computed: {
+    
   }
 }
 </script>

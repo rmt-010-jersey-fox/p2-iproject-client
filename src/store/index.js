@@ -2,6 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from '../api/axios'
 import router from '../router'
+import Swal from 'sweetalert2'
+
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
 
 const defaultState = () => {
   return {
@@ -66,7 +75,21 @@ const store = new Vuex.Store({
         password: payload.password
       })
         .then(() => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Successfully Register',
+            showConfirmButton: false,
+            timer: 1500
+          })
           router.push({ name: 'Login' })
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${err.response.data.message}`,
+          })
         })
     },
 
@@ -80,12 +103,22 @@ const store = new Vuex.Store({
           localStorage.setItem('emailogin', payload.email)
           localStorage.setItem('userid', response.data.id)
           context.commit('GET_EMAIL_LOGIN', { email: payload.email, userid: response.data.id })
-          this.dispatch('FetchTournament')
           this.dispatch('FetchTeam')
           router.push({ name: 'Home' })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Successfully Login',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
         .catch((err) => {
-          console.log(err.response)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${err.response.data.message}`,
+          })
         })
     },
     
@@ -108,10 +141,21 @@ const store = new Vuex.Store({
           this.dispatch('FetchTournament')
           context.commit('FETCH_TOURNAMENT_ID', { TournamentId: localStorage.TournamentId})
           localStorage.setItem('TournamentId', response.data.id)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Tournament has been Registered',
+            showConfirmButton: false,
+            timer: 1500
+          })
           router.push({ name: 'Tournament' })
         })
         .catch((err) => {
-          console.log(err.message)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${err.response.data.message}`,
+          })
         })
     },
 
@@ -130,6 +174,8 @@ const store = new Vuex.Store({
         headers: { access_token: localStorage.access_token }
       })
         .then((response) => {
+          localStorage.setItem('TournamentId', response.data[0].TournamentId)
+          context.commit('FETCH_TOURNAMENT_ID', { TournamentId: response.data[0].TournamentId })
           context.commit('FETCH_TEAM', { team: response.data })
         })
         .catch((err) => {
@@ -143,9 +189,20 @@ const store = new Vuex.Store({
       })
       .then(() => {
         this.dispatch('FetchTeam')
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Team has been Added',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
       .catch((err) => {
-        console.log(err.response)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data.message}`,
+        })
       })
     },
 
@@ -176,9 +233,20 @@ const store = new Vuex.Store({
       .then(() => {
         this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
         router.push({ name: 'Tournament' })
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Bracket has been made',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
       .catch((err) => {
-        console.log(err.response)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data.message}`,
+        })
       })
     },
 
@@ -188,9 +256,20 @@ const store = new Vuex.Store({
       })
       .then(() => {
         this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'This Team has advanced to next bracket',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
       .catch((err) => {
-        console.log(err.response)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data.message}`,
+        })
       })
     },
 
@@ -202,19 +281,59 @@ const store = new Vuex.Store({
         this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
       })
       .catch((err) => {
-        console.log(err.response)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data.message}`,
+        })
       })
     },
 
     finishTournament (context, payload) {
-      axios.delete(`tournament/${payload.id}`, {
-        headers: { access_token: localStorage.access_token }
-      })
-      .then(() => {
-        this.dispatch('FetchTournament')
-      })
-      .catch((err) => {
-        console.log(err.response)
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`tournament/${payload.id}`, {
+            headers: { access_token: localStorage.access_token }
+          })
+          .then(() => {
+            this.dispatch('FetchTournament')
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'This Tournament has Finished',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          })
+          .catch((err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${err.response.data.message}`,
+            })
+          })
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your Tournament is safe :)',
+            'error'
+          )
+        }
       })
     },
 

@@ -8,12 +8,14 @@
         <table class="table table-striped table-hover">
           <thead class="table-dark">
             <tr>
+              <th class="col-1" scope="col-3">No</th>
               <th class="col-3" scope="col-3">Name</th>
-              <th class="col-6" scope="col-6">Description</th>
+              <th class="col-5" scope="col-6">Description</th>
             </tr>
           </thead>
           <tbody class="bg-white">
-            <tr v-for="team in teams" :key="team.id">
+            <tr v-for="(team, i) in teams" :key="team.id">
+              <td>{{i+1}}</td>
               <td>{{team.name}}</td>
               <td>{{team.description}}</td>
             </tr>
@@ -54,7 +56,6 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('FetchTeam')
   }
 }
 </script>

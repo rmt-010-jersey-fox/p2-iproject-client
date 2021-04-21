@@ -1,9 +1,9 @@
 <template>
 <div class="container-fluid">
-  <div class="row no-gutter">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://i.redd.it/be2ednhduemy.jpg');"></div>
-    <div class="col-md-8 col-lg-6">
-      <div class="login d-flex align-items-center py-5">
+  <div class="row no-gutter" style="height: 88vh">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://i.redd.it/be2ednhduemy.jpg'); height: 88vh"></div>
+    <div class="col-md-8 col-lg-6" style="height: 88vh">
+      <div class="login d-flex align-items-center">
         <div class="container">
           <h1>Turnagen - Tournament Generator</h1>
           <div class="row">
@@ -11,12 +11,12 @@
               <h3 class="login-heading mb-4">Login Page </h3>
               <form>
                 <div class="form-label-group">
-                  <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input v-model="email" type="email" id="inputEmail" class="form-control" style="text-align:center" placeholder="Email address" required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input v-model="password" type="password" id="inputPassword" class="form-control" style="text-align:center" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
                 <button @click.prevent="login()" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
@@ -77,10 +77,11 @@ export default {
 
 .login,
 .image {
-  min-height: 100vh;
+  min-height: 88vh;
   background-color: rgba(19, 83, 75, 0.39);
   color: white;
   margin: 0%;
+  padding-bottom:0%; 
 }
 
 .bg-image {

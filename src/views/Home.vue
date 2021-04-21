@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div style="padding-right:1em">
     <h1>Welcome to Tournament Generator</h1>
     <h2>The place you can easly make one</h2>
     <h3>Click one card below to see ongoing tournament now!!</h3>
     <div class="row">
       <div class="card bg-secondary" style="width: 18rem; margin-left:1em;" v-for="Tournament in Tournaments" :key="Tournament.id">
-        <img width="100%" height="300px" style="padding-top:1em; border-radius:25px" :src="getimg(Tournament.game)" class="card-img-top" alt="">
+        <img width="100%" height="260rem" style="padding-top:1em; border-radius:10px" :src="getimg(Tournament.game)" class="card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">{{ Tournament.name }}</h5>
           <p class="card-text">{{ Tournament.description }}</p>
         </div>
-          <a href="#" @click.prevent="changepage(Tournament.id)" style="margin: 1em" class="btn btn-primary">View Tournament</a>
+          <a href="#" @click.prevent="changepage(Tournament.id)" style="margin: 1em" class="btn btn-dark">View Tournament</a>
       </div>
     </div>
   </div>
@@ -38,6 +38,14 @@ export default {
     },
     changepage(id) {
       this.$router.push(`/ongoing/${id}`)
+    }
+  },
+  beforeMount() {
+    this.$store.dispatch('FetchTournament')
+    if(localStorage.TournamentId !== undefined){
+      this.$store.dispatch('FetchTeam')
+      this.$store.dispatch('FetchBracket', { TournamentId: this.$store.state.tournamentid })
+      this.$store.dispatch('FetchBracket', { TournamentId: localStorage.TournamentId })
     }
   }
 }

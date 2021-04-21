@@ -1,11 +1,9 @@
 <template>
-  <body>
-    <div id="app">
-      <Navbar/>
-      <router-view style="height: 88vh;"/>
-    </div>
+  <div id="app">
+    <Navbar/>
+      <router-view style="height: 86vh;"/>
     <HFooter></HFooter>
-  </body>
+  </div>
 </template>
 
 <script>
@@ -18,13 +16,13 @@ export default {
     HFooter
   },
   created () {
+    this.$store.dispatch('FetchTournament')
     if (localStorage.access_token) {
       this.$store.commit('GET_EMAIL_LOGIN', { email: localStorage.emailogin, userid: +localStorage.userid })
     }
-    this.$store.dispatch('FetchTournament')
     if (localStorage.TournamentId) {
       this.$store.dispatch('FetchTeam')
-      this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: localStorage.TournamentId})
+      // this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: localStorage.TournamentId})
       this.$store.dispatch('FetchBracket', { TournamentId: localStorage.TournamentId })
     }
   }
@@ -33,6 +31,14 @@ export default {
 <style>
 html, body {
   background-image: url('./assets/bg.jpg')
+}
+
+h2 {
+  color: whitesmoke
+}
+
+.row {
+  margin: 0
 }
 
 #app {
