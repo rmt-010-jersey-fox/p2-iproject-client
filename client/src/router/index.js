@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Saldo from '../views/Saldo.vue'
 import Currency from '../views/Currency.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: NotFound
   },
   {
     path: '/login',
@@ -51,7 +57,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if ((to.name === 'Home' || to.name === 'Cart') && !localStorage.access_token) {
+  if ((to.name === 'Home' || to.name === 'Saldo' || to.name === 'Currency' || to.name === 'About') && !localStorage.access_token) {
     next({ name: 'Login' })
   } else {
     next()
