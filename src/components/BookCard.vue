@@ -1,6 +1,6 @@
 <template>
   <div class="col-3 mb-4">
-    <div class="btn zoom card overflow-auto" style="height:70vh" @click.prevent="$router.push({name:'BookDetail', params:{isbn:book.isbn}})">
+    <div class="btn zoomBook card overflow-auto" style="height:70vh" @click.prevent="$router.push({name:'BookDetail', params:{isbn:book.isbn}})">
     <img :src="book.bookImage" class="card-img-top" alt="...">
     <div class="card-body ">
         <h5 class="card-title">{{book.title}}</h5>
@@ -12,7 +12,7 @@
     </div>
     </div>
     <div class="card text-center ">
-    <button @click.prevent="addWishLists(book.isbn)" class="zoom btn btn-primary">Add To Wish List</button>
+    <button @click.prevent="addWishLists(book.isbn)" class="zoomBook btn btn-primary">Add To Wish List</button>
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style>
-.zoom:hover {
+.zoomBook:hover {
   transform: scale(1.02);
 }
 </style>

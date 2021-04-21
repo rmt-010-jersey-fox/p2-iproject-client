@@ -1,6 +1,6 @@
 <template>
   <div class="col-3 mb-4">
-    <div class="btn zoom card overflow-auto" style="height:70vh" @click.prevent="$router.push({name:'BookDetail', params:{isbn:wishlist.isbn}})">
+    <div class="btn zoomWish card overflow-auto" style="height:70vh" @click.prevent="$router.push({name:'BookDetail', params:{isbn:wishlist.isbn}})">
       <img :src="wishlist.bookImage" class="card-img-top" alt="...">
       <div class="card-body ">
         <h5 class="card-title">{{wishlist.title}}</h5>
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="card text-center ">
-      <button @click.prevent="deleteWishlist(wishlist.isbn)" class="zoom btn btn-danger">Delete From Wish List</button>
+      <button @click.prevent="deleteWishlist(wishlist.isbn)" class="zoomWish btn btn-danger">Delete From Wish List</button>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style>
-.zoom:hover {
-  transform: scale(1.02);
+.zoomWish:hover {
+  transform: scale(1.01);
 }
 </style>

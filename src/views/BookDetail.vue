@@ -19,7 +19,7 @@
                 <!-- ICON PLAY -->
                 <p class="h2 mb-2"> 
                   <b-icon 
-                  class="me-2 zoom"
+                  class="me-2 zoomPlay"
                   icon="play-circle-fill"
                   variant="success"
                   style="cursor: pointer"
@@ -27,7 +27,7 @@
                   </b-icon>
                   <b-icon 
                   icon="stop-fill"
-                  class="zoom"
+                  class="zoomPlay"
                   variant="danger" 
                   style="cursor: pointer"
                   @click.prevent="stopSpeak()">
@@ -93,7 +93,7 @@
                   <b-icon 
                   icon="play-circle-fill"
                   variant="primary"
-                  class="zoom"
+                  class="zoomPlay"
                   style="cursor: pointer"
                   @click.prevent="speakComments(comments)">
                   </b-icon>
@@ -101,7 +101,7 @@
                 <span class="h3 me-2"> 
                   <b-icon 
                   icon="stop-fill"
-                  class="zoom"
+                  class="zoomPlay"
                   variant="danger" 
                   style="cursor: pointer"
                   @click.prevent="stopSpeak()">
@@ -236,7 +236,7 @@ export default {
 </script>
 
 <style>
-.zoom:hover {
+.zoomPlay:hover {
   transform: scale(1.4);
 }
 </style>

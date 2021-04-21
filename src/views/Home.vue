@@ -101,6 +101,6 @@ export default {
 
 <style>
 .zoom:hover {
-  transform: scale(1.15);
+  transform: scale(1.02);
 }
 </style>
