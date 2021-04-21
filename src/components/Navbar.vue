@@ -29,7 +29,7 @@
                 <a
                   class="nav-link dropdown-toggle primer-color"
                   style="color: #3e9ca5"
-                  href="#"
+                  href=""
                   id="navbarDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -39,19 +39,19 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item primer-color" href="#"
+                    <a class="dropdown-item primer-color" href="#quran"
                       >Baca Al-Quran</a
                     >
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link primer-color" style="color: #3e9ca5" href="#"
+                <a class="nav-link primer-color" style="color: #3e9ca5" href="#hadist"
                   >Hadist</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link primer-color" style="color: #3e9ca5" href="#"
+                <a class="nav-link primer-color" style="color: #3e9ca5" href="#jadwal-solat"
                   >Jadwal Solat</a
                 >
               </li>

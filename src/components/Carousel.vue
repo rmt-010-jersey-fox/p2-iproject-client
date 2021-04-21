@@ -45,7 +45,7 @@
                 mereka yang bertakwa. (Q.S A-Baqarah: 2)
               </p>
               <p>
-                <a class="btn btn-primer" href="#">Baca Quran</a>
+                <a class="btn btn-primer" href="#quran">Baca Quran</a>
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@
                 yang mengajarkanmu." (HR Tabrani)
               </p>
               <p>
-                <a class="btn btn-primer" href="#">Baca Hadist</a>
+                <a class="btn btn-primer" href="#hadist">Baca Hadist</a>
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@
                 (Q.S A-Baqarah: 152)
               </p>
               <p>
-                <a class="btn btn-primer" href="#">Baca Quran</a>
+                <a class="btn btn-primer" href="#quran">Baca Quran</a>
               </p>
             </div>
           </div>

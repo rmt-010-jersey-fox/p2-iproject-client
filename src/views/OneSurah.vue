@@ -8,6 +8,9 @@
       </div>
     <!-- Card Surah -->
     <div class="col">
+      <div class="text-center mb-2">
+        <button class="btn btn-danger" @click.prevent='toHomePage'>Back</button>
+      </div>
       <!-- Tabel Ayat -->
       <table class="table table-light table-striped table-hover">
         <thead>
@@ -41,6 +44,11 @@ export default {
   computed: {
     ayatSurahs () {
       return this.$store.state.ayatSurahs
+    }
+  },
+  methods: {
+    toHomePage () {
+      this.$router.push('/').catch(() => {})
     }
   }
 }

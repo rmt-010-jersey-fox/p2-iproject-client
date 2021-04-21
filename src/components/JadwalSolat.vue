@@ -1,6 +1,6 @@
 <template>
       <!-- Form Jadwal Solat -->
-    <div class="container">
+    <div class="container" id="jadwal-solat">
       <div class="row">
         <div class="col border-radius shadow" style="background-color: #EBF9F8">
           <h3 class="text-center mt-3" style="font-weight: bold; color: #3e9ca5">Jadwal Solat</h3>

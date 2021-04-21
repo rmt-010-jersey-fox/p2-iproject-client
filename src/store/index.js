@@ -9,8 +9,7 @@ export default new Vuex.Store({
   state: {
     ayatSurahs: [],
     hadists: [],
-    jadwalSolat: {},
-    jadwalSolatUp: {}
+    jadwalSolat: {}
   },
   mutations: {
     FETCH_AYAT (state, data) {
@@ -21,9 +20,6 @@ export default new Vuex.Store({
     },
     FETCH_JADWAL_SOLAT (state, data) {
       state.jadwalSolat = data
-    },
-    FETCH_JADWAL_SOLAT_UP (state, data) {
-      state.jadwalSolatUp = data
     }
   },
   actions: {

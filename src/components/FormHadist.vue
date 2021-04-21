@@ -1,6 +1,6 @@
 <template>
     <!-- Form Hadist Quran -->
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5" id="hadist">
       <div class="row shadow">
         <div class="col-6">
           <img class="border-radius" src="../assets/hadist.jpg" alt="" style="height: 400px;">
