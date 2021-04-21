@@ -4,8 +4,11 @@
     <!--? Content -->
     <section>
       <div class="container-fluid mt-4">
-        <div class="col d-flex flex-row flex-wrap justify-content-center" style="height: 15rem">
-          <GameCard />
+        <div class="col d-flex flex-row flex-wrap justify-content-center" >
+          <GameCard
+            v-for="game in games.data"
+            :key="game.id"
+            :game="game"/>
           <!-- Card -->
           <!-- <div class="card bg-dark text-white game-card">
             <img src="../assets/remnant_from_the_ashes_game-wallpaper-1920x1080.jpg" class="card-img" alt="..."> -->
@@ -19,6 +22,7 @@
             </div>
           </div> -->
         </div>
+        <!-- <pre>{{ games.data[0].cover.url. }}</pre> -->
       </div>
     </section>
   </div>
@@ -31,20 +35,30 @@ import GameCard from '../components/GameCard'
 
 export default {
   name: 'Home',
+  beforeCreate () {
+    console.log('fectch before home')
+    this.$store.dispatch('fecthGames')
+  },
   components: {
     CarouselGame,
     GameCard
+  },
+  computed: {
+    games () {
+      return this.$store.state.games
+    }
   }
 }
 </script>
 
 <style scoped>
   .game-card {
-    width: calc(13% - 20px);
+    width: calc(18% - 20px);
     display: inline-block;
     margin: 0 10px 20px;
     position: relative;
-    border-radius: 8px;
+    border-radius: 20px;
+    border-color: transparent;
     vertical-align: top;
   }
 </style>
