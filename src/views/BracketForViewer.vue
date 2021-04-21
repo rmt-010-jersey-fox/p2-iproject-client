@@ -1,7 +1,7 @@
 <template>
-<div>
+<div style="overflow:auto">
   <div class="tournament-container container">
-    <h1>Bracket for Game {{tournament.name}}</h1>
+    <br><h1>Bracket for Tournament {{tournament.name}}</h1><br>
     <div class="tournament-headers">
       <h3>Quarter-Finals</h3>
       <h3>Semi-Finals</h3>
@@ -13,90 +13,62 @@
       <ul class="bracket bracket-1">
         <div class="1">
           <li class="team-item"> {{ bracket[0].score }} | {{ bracket[0].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[1].score }} | {{ bracket[1].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[2].score }} | {{ bracket[2].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[3].score }} | {{ bracket[3].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[4].score }} | {{ bracket[4].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[5].score }} | {{ bracket[5].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[6].score }} | {{ bracket[6].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[7].score }} | {{ bracket[7].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
       </ul>  
       <ul class="bracket bracket-2">
         <div class="1">
           <li class="team-item"> {{ bracket9.score }} | {{ bracket9.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket10.score }} | {{ bracket10.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket11.score }} | {{ bracket11.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket12.score }} | {{ bracket12.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
       </ul>  
       <ul class="bracket bracket-3">
         <div class="1">
           <li class="team-item"> {{ bracket13.score }} | {{ bracket13.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket14.score }} | {{ bracket14.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
           </li>
         </div>
       </ul>  
@@ -105,7 +77,7 @@
       </ul>  
     </div>
   </div>
-  <div v-if="team.length !== 0" class="container row justify-content-evenly" style="margin:auto">
+  <div class="container row justify-content-evenly" style="margin:auto">
     <TwitterBox/>
     <TwitterBox/>
   </div>
@@ -121,94 +93,84 @@ export default {
   },
   computed: {
     bracket () {
-      let bracket = this.$store.state.bracket
-      return bracket
+      return this.$store.state.bracketforviewers
     },
     bracket9 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 9 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 9 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' }, score: 0 }
       }
       return found
     },
     bracket10 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 10 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 10 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' }, score: 0 }
       }
       return found
     },
     bracket11 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 11 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 11 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' }, score: 0 }
       }
       return found
     },
     bracket12 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 12 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 12 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' }, score: 0 }
       }
       return found
     },
     bracket13 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 13 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 13 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' }, score: 0 }
       }
       return found
     },
     bracket14 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 14 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 14 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' }, score: 0 }
       }
       return found
     },
     bracket15 () {
       let found
-      this.$store.state.bracket.forEach(el => { if (el.position == 15 && el.Team !== null) { found = el }})
+      this.bracket.forEach(el => { if (el.position == 15 && el.Team !== null) { found = el }})
       if (!found) {
-        found = { Team: { name: 'Nama Tim' }, score: 0 }
+        found = { Team: { name: 'Not Advanced Yet' } }
       }
       return found
-    },
-
-    team () {
-      return this.$store.state.team
     },
 
     tournament () {
       let Tournaments = this.$store.state.Tournament
       let Found = 'notournament'
       Tournaments.forEach(el => {
-        if(el.id == localStorage.TournamentId) {
+        if(el.id == this.$route.params.id) {
           Found = {
             name: el.name,
+            game: el.game,
             id: el.id
           }
         }
-      })
-      // localStorage.setItem('TournamentId', Found.id) /// INI NANTI DIGANTI SAMA localstorage('tournamentIdforViewer', ) /// nanti pake router params id buat viewernya
-      this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: Found.id })
+      }) 
       return Found
     }
   },
   methods: {
-    changepage(name) {
-      console.log('name')
-      this.$router.push({name})
-    },
-    fetchTournament () {
-       
-    }
+  },
+  created () {
+    this.$store.dispatch('FetchBracketForViewers', { TournamentId: this.$route.params.id })
   }
 };
 </script>

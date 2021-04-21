@@ -8,7 +8,7 @@
         <router-link to="/register">Register</router-link> |
       </div> -->
       <Navbar/>
-      <router-view style="height: 89.5vh;"/>
+      <router-view style="height: 88vh;"/>
     </div>
     <HFooter></HFooter>
   </body>
@@ -31,7 +31,7 @@ export default {
     this.$store.dispatch('FetchTournament')
     if (localStorage.TournamentId) {
       this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: localStorage.TournamentId})
-      this.$store.dispatch('FetchBracket')
+      this.$store.dispatch('FetchBracket', { TournamentId: localStorage.TournamentId })
     }
   }
 }

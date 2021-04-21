@@ -44,11 +44,16 @@ const routes = [
     component: () => import('../views/Tournament.vue')
   },
   {
+    path: '/ongoing/:id',
+    name: 'BracketForViewer',
+    component: () => import('../views/BracketForViewer.vue')
+  },
+  {
     path: '/*',
     name: '404',
     component: () => import('../views/404.vue')
   }
-
+  
 ]
 
 const router = new VueRouter({

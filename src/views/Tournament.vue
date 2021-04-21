@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="overflow:auto">
   <div v-if="tournament === 'notournament'">
     <h1>Oh Noes You dont have any ongoing tournamnet right now <br> Please Make One with a simple click below</h1>
     <button @click.prevent="changepage('TournamentAdd')" class="buttonaddtour btn btn-secondary">MAKE TOURNAMENT</button>
@@ -17,94 +17,122 @@
       <h3>Winner</h3>
     </div>
 
-    <div class="tournament-brackets">
+    <div class="tournament-brackets" >
       <ul class="bracket bracket-1">
         <div class="1">
           <li class="team-item"> {{ bracket[0].score }} | {{ bracket[0].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket9.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[1].score }} | {{ bracket[1].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket9.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[2].score }} | {{ bracket[2].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket10.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[3].score }} | {{ bracket[3].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket10.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[4].score }} | {{ bracket[4].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket11.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[5].score }} | {{ bracket[5].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket11.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[6].score }} | {{ bracket[6].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket12.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket[7].score }} | {{ bracket[7].Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket12.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
       </ul>  
       <ul class="bracket bracket-2">
         <div class="1">
           <li class="team-item"> {{ bracket9.score }} | {{ bracket9.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket13.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket10.score }} | {{ bracket10.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket13.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket11.score }} | {{ bracket11.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket14.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket12.score }} | {{ bracket12.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket14.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
       </ul>  
       <ul class="bracket bracket-3">
         <div class="1">
           <li class="team-item"> {{ bracket13.score }} | {{ bracket13.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket15.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
         <div class="1">
           <li class="team-item"> {{ bracket14.score }} | {{ bracket14.Team.name }}
-            <button>+Score</button>
-            <button>Advanced</button>
+            <div v-if="bracket15.Team.name === 'Nama Tim'">
+              <button v-if="bracket[0].score !== 3" class="btn btn-secondary">+Score</button>
+              <button class="btn btn-success">Advanced</button>
+            </div>
           </li>
         </div>
       </ul>  

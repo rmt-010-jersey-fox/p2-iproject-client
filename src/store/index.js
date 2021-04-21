@@ -13,6 +13,7 @@ const store = new Vuex.Store({
     Tournament: [],
     bracket: [],
     team: [],
+    bracketforviewers: []
   },
   mutations: {
     increment (state) {
@@ -33,6 +34,9 @@ const store = new Vuex.Store({
     },
     FETCH_BRACKET (state, payload) {
       state.bracket = payload.bracket
+    },
+    FETCH_BRACKET_VIEWERS (state, payload) {
+      state.bracketforviewers = payload.bracket
     }
   },
   actions: {
@@ -116,10 +120,20 @@ const store = new Vuex.Store({
       })
     },
 
-    FetchBracket (context) {
-      axios.get(`tournament/${this.state.tournamentid}`)
+    FetchBracket (context, payload) {
+      axios.get(`tournament/${payload.TournamentId}`)
         .then((response) => {
           context.commit('FETCH_BRACKET', { bracket: response.data })
+        })
+        .catch((err) => {
+          console.log(err.response)
+        })
+    },
+
+    FetchBracketForViewers (context, payload) {
+      axios.get(`tournament/${payload.TournamentId}`)
+        .then((response) => {
+          context.commit('FETCH_BRACKET_VIEWERS', { bracket: response.data })
         })
         .catch((err) => {
           console.log(err.response)
@@ -132,7 +146,7 @@ const store = new Vuex.Store({
       })
       .then((response) => {
         console.log(response)
-        this.dispatch('FetchBracket')
+        this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
         router.push({ name: 'Tournament' })
       })
       .catch((err) => {
