@@ -53,6 +53,9 @@ export default {
       this.$store.dispatch('fetchMealsByCategory', category)
       this.$store.commit('currentMealCategory', category)
       this.$router.push({ name: 'MealsCategory' })
+    },
+    logout () {
+
     }
   }
 }

@@ -20,12 +20,18 @@
           </div>
         </div>
       </div>
+      <h3 @click="toRegister" style="color:red ;" class="text-center mb-5"> Register to get a recipe sent to your email everyday!!</h3>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 export default {
-  name: 'Home'
+  name: 'Home',
+  methods: {
+    toRegister () {
+      this.$router.push({ name: 'Register' })
+    }
+  }
 }
 </script>
