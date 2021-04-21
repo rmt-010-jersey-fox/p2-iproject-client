@@ -5,11 +5,11 @@
     <div class="column">
       <div class="box">
         <div class="columns">
-          <div class="column is-8">
-            <p class="title is-4 pb-1">{{anime}}</p>
+          <div class="column is-12">
+            <p class="title is-4 pb-1">{{list.anime}}</p>
             <ol class="subtitle" style="list-style-type: none" >
-              <li class="is-size-6"><b>Character :</b> <b>{{character}}</b></li>
-              <li class="is-size-6"><b>Quotes :</b> <b>{{quote}}</b></li>
+              <li class="is-size-6"><b>Character :</b> <b>"{{list.character}}"</b></li>
+              <li class="is-size-6"><b>Quotes :</b> <b>"{{list.quote}}"</b></li>
             </ol>
           </div>
         </div>
@@ -20,12 +20,13 @@
 
 <script>
 export default {
- name: 'QuotesAnime',
+  name: 'QuotesAnime',
   data () {
     return {
       image: `${this.list.image_url}`.replace(/'/g, '')
     }
   },
+  props: ['list']
 }
 </script>
 

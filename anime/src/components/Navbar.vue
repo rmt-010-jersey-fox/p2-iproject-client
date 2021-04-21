@@ -1,12 +1,9 @@
 <template>
-  <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation" style="background: linear-gradient(
-    90deg,
-    rgb(176, 118, 243) 0%,
-    rgb(218, 126, 241) 35%
-  )">
+  <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <div class="navbar-item">
-          <router-link class="navbar-item title is-4 has-text-dark" to="/">Anime News</router-link>
+        <div class="navbar-item pr-0">
+          <router-link class="navbar-item title is-4 has-text-dark" to="/">Anime News
+          </router-link>
         </div>
 
         <a role="button" @click.prevent= "active" :class= "class1" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -27,6 +24,11 @@
           <router-link class="button is-large is-light" v-if="isLogin" to="/quotes">
               <span>
                     <i class="fas fa-paw"></i>
+                </span>
+          </router-link>
+          <router-link class="button is-large is-light" v-if="isLogin" to="/manga">
+              <span>
+                    <i class="fab fa-mandalorian"></i>
                 </span>
           </router-link>
           </div>
@@ -76,7 +78,7 @@ export default {
         if (result.isConfirmed) {
           this.$swal.fire(
             'logging out',
-            'Thank you admin, have a nice day',
+            'Thank you bro, have a nice day',
             'success'
           )
           this.$store.commit('CHANGE_IS_LOGIN', false)

@@ -1,15 +1,15 @@
 <template>
-  <div class="quotes">
+  <div class="manga">
     <div class="container" style="min-height: 100vh">
       <div style="height: 4.5rem" />
       <h3
         class="title is-3 pt-5 pl-5 has-text-white"
         style="text-align: center"
       >
-        Quotes Anime
+        Manga
       </h3>
       <div class="pl-5">
-        <quotes v-for="quote in quotes" :key="quote.id" :list="quote" />
+        <MangaCard v-for="manga in mangas" :key="manga.id" :manga="manga" />
       </div>
     </div>
   </div>
@@ -17,19 +17,19 @@
 
 <script>
 import { mapState } from 'vuex'
-import quotes from '../components/quotesCard'
+import MangaCard from '../components/mangaCard.vue'
 
 export default {
-  name: 'Quotes',
+  name: 'Manga',
   created () {
-    this.$store.dispatch('quotesAnime')
+    this.$store.dispatch('mangaAnime')
   },
   components: {
-    quotes
+    MangaCard
   },
   computed: {
     ...mapState({
-      quotes: 'quotes'
+      mangas: 'mangas'
     })
   }
 }

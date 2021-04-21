@@ -32,7 +32,7 @@
             <div class="field">
               <label class="label">score</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Input score Anime" v-model= "score">
+                <input class="input" type="number" placeholder="Input score Anime" v-model= "score">
               </div>
             </div>
             <div class="field is-grouped">
