@@ -6,11 +6,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loggedIn: false
+    loggedIn: false,
+    matches: []
   },
   mutations: {
     setLogin (state, boolean) {
       state.loggedIn = boolean
+    },
+    setMatches (state, payload) {
+      state.matches = payload
     }
   },
   actions: {
@@ -26,6 +30,29 @@ export default new Vuex.Store({
     },
     confirmLogin (context, boolean) {
       context.commit('setLogin', boolean)
+    },
+    register (context, payload) {
+      const { email, password } = payload
+      return axios({
+        method: 'POST',
+        url: '/register',
+        data: {
+          email, password
+        }
+      })
+    },
+    getMatches (context) {
+      axios({
+        method: 'GET',
+        url: '/schedules/33'
+      })
+        .then(res => {
+          console.log(res.data.matches)
+          context.commit('setMatches', res.data.matches)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   modules: {
