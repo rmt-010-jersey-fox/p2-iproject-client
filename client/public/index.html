@@ -10,6 +10,11 @@
       rel="stylesheet" 
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
       crossorigin="anonymous">
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
+      crossorigin="anonymous" />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -18,6 +23,47 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <style>
+      #user-menu {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      #trending-games {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #menu {
+        padding-top: 2%;
+      }
+
+      .img
+      {
+        width: 50%;
+        margin: auto;
+      }
+
+      /* .game-card {
+        width: calc(20% - 20px);
+        display: inline-block;
+        margin: 0 10px 20px;
+        position: relative;
+        border-radius: 8px;
+        vertical-align: top;
+      } */
+
+      .fas {
+        color: rgb(255, 255, 255);
+        font-size: 2em;
+      }
+
+      .icon {
+        color: rgb(14, 14, 14);
+        font-size: 1em;
+
+      }
+    </style>
     <script 
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" 
       integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" 

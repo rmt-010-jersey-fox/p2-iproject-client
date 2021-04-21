@@ -5,10 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLogin: false
   },
   mutations: {
+    setLogin (state, value) {
+      state.isLogin = value
+    }
   },
   actions: {
+    fecthGames () {
+
+    }
   },
   modules: {
   }
