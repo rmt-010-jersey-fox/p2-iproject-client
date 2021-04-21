@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    body {
+      background-color: rgb(247, 189, 142) !important;
+    }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +23,8 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li id="menu-login" class="nav-item">
-                    <a @click.prevent="changePage('login')" href="#" class="btn nav-link active" >Log In</a>
-                  </li>
                   <li id="menu-regist" class="nav-item">
-                    <a @click.prevent="changePage('register')" href="#" class="btn nav-link active" >Register</a>
-                  </li>
-                  <li id="menu-regist" class="nav-item">
-                    <a @click.prevent="changePage('home')" href="#" class="btn nav-link active" >Home</a>
+                    <a @click.prevent="changePage('home')" href="#" class="btn nav-link active" >Dashboard</a>
                   </li>
                   <li id="menu-regist" class="nav-item">
                     <a @click.prevent="changePage('saldo')" href="#" class="btn nav-link active" >Saldo</a>
@@ -42,9 +41,11 @@
         </nav>
         <!-- END NAVBAR -->
         <!-- LOGIN -->
-        <form v-if="page === 'login'" id="login">
-            <h2 class="text-light" style="text-align: center; margin-top: 14vh">Login</h2>
-              <div class="card justify-content mx-auto mt-5 p-3" style="width: 50vh">
+        <div class="container">
+          <h1 class="text-dark text-center" style="margin-top: 14vh">Welcome to Bank Sampah</h1>
+          <form v-if="page === 'login'" id="login">
+            <div class="card justify-content mx-auto mt-5 p-3" style="width: 50vh">
+              <h2 class="text-dark" style="text-align: center;">Login</h2>
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="InputEmail" placeholder="example@mail.com" aria-describedby="emailHelp">
                     <label for="InputEmail" class="">Email address</label>
@@ -54,35 +55,36 @@
                     <input type="password" class="form-control" placeholder="password" id="InputPassword">
                     <label for="InputPassword" class="">Password</label>
                   </div>
-                  <button type="submit" class="btn btn-primary">Login</button>
-                  <div class="g-signin2 m-auto mt-3" data-onsuccess="onSignIn"></div>
+                  <button type="submit" class="btn my-2 btn-primary">Login</button>
+                  <p>Don't have an account yet? <a href="#">Register</a></p>
               </div>
-          </form>
+            </form>
+        </div>
           <!-- END LOGIN -->
           <!-- register -->
-          <form v-else-if="page === 'register'" id="register">
-            <h2 class="text-light" style="text-align: center; margin-top: 14vh">Register</h2>
+          <div class="container">
+            <h1 class="text-dark text-center" style="margin-top: 14vh">Welcome to Bank Sampah</h1>
+            <form v-else-if="page === 'register'" id="register">
               <div class="card justify-content mx-auto mt-5 p-3" style="width: 50vh">
-                  <div class="mb-3">
-                    <label for="InputRegist" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="InputRegist" placeholder="example@mail.com" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="John">
-                  </div>
-                  <div class="mb-3">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Wick">
-                  </div>
-                  <div class="mb-3 form-floating">
-                    <input type="password" class="form-control" placeholder="password" id="RegistPassword">
-                    <label for="RegistPassword" class="form-label">Password</label>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Register</button>
-              </div>
-          </form>
+                <h2 class="text-dark" style="text-align: center;">Register</h2>
+                    <div class="mb-3">
+                      <label for="InputRegist" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="InputRegist" placeholder="example@mail.com" aria-describedby="emailHelp">
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="name" placeholder="John Wick">
+                    </div>
+                    <div class="mb-3 form-floating">
+                      <input type="password" class="form-control" placeholder="password" id="RegistPassword">
+                      <label for="RegistPassword" class="form-label">Password</label>
+                    </div>
+                    <button type="submit" class="btn my-2 btn-primary">Register</button>
+                    <p>Already have an account ? <a href="#">Login</a></p>
+                </div>
+            </form>
+          </div>
           <!-- END register -->
           <!-- home -->
         <div v-else-if="page === 'home'" style="margin-top: 9vh">
