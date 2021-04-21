@@ -16,6 +16,8 @@ export default new Vuex.Store({
     chapterLink: "",
     bookmarks: [],
     page: [],
+    searchResult: [],
+    topRated: []
   },
   mutations: {
     increment(state) {
@@ -43,6 +45,12 @@ export default new Vuex.Store({
     getPages(state, payload) {
       state.page = payload;
     },
+    getSearchResult(state,payload){
+      state.searchResult = payload
+    },
+    getTopRated(state,payload){
+      state.topRated = payload
+    }
   },
   actions: {
     userLogin(context, payload) {
@@ -148,11 +156,13 @@ export default new Vuex.Store({
       if (!localStorage.access_token) {
         router.push("/login");
       }
+      console.log(payload)
       axios({
         method: "post",
         url: "/bookmarks",
         data: {
           title: payload.mangaTitle,
+          mangaLink: payload.mangaLink
         },
         headers: { access_token: localStorage.getItem("access_token") },
       })
@@ -202,7 +212,7 @@ export default new Vuex.Store({
             .then(() => {
               Swal.fire(
                 "Deleted!",
-                "Your product has been deleted from the cart.",
+                "Your manga has been deleted from your bookmarks.",
                 "success"
               );
               // router.push("/products");
@@ -234,6 +244,36 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
+    },
+    searchManga(context, payload){
+      axios({
+        method: "get",
+        baseURL: `https://go-mangamee.herokuapp.com/search?mangaTitle=${payload.mangaTitle}&lang=EN`,
+      })
+      .then((response) => {
+        console.log(response.data)
+        context.commit("getSearchResult", response.data);
+        console.log(this.state.searchResult)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    },
+    topRated(context){
+      console.log('jalan')
+      axios({
+        method: "get",
+        baseURL: "https://api.jikan.moe/v3/top/manga"
+      })
+      .then((response) => {
+        console.log(response.data.top)
+        context.commit("getTopRated", response.data.top);
+        // console.log(this.state.searchResult)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     },
 
     created() {
