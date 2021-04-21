@@ -1,4 +1,24 @@
 # p2-iproject-client
-Individual Project client site
 
-Wireframe: https://balsamiq.cloud/sw78lh3/plrgsw1/r0BD5?f=N4IgUiBcCMA0IDkoAZ4GEXwDJTiAQrvALJEgBaZA0lANoC6AvkA%3D
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

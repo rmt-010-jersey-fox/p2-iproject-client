@@ -1,0 +1,156 @@
+.navbar {
+  height: 150px;
+  display: flex;
+  justify-content: space-evenly;
+  background-image: radial-gradient(rgb(248, 157, 147), salmon);
+}
+
+.navbar-item {
+  flex: 1;
+  margin: 20px 10px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.navbar-link {
+  text-decoration: none !important;
+  color: whitesmoke;
+  transition: 200ms;
+}
+
+.navbar-link:hover {
+  color: greenyellow;
+  transition: 200ms;
+}
+
+.login-pg {
+  display: flex;
+}
+
+.register-pg {
+  display: flex;
+} 
+
+.custom-login-left {
+  flex: 1;
+}
+
+.custom-login-right {
+  flex: 2;
+}
+
+.flex-login {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-register {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-pg {
+  display: flex;
+}
+
+.home-left {
+  flex: 4;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-right {
+  flex: 2;
+  background-color: brown;
+}
+
+.profile-left {
+  flex: 4;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-right {
+  flex: 1;
+  background-color: grey;
+}
+
+.matches-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.match-card {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  padding: 10px;
+  margin: 20px 10px;
+  border-radius: 10px;
+  width: 70%;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.date {
+
+}
+
+.score-board {
+  border-style: solid;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.score {
+  padding: 10px, 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.team {
+  margin: 0.5rem 0;
+}
+
+.squad-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.squad-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.goalkeeper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.defender {
+  display: flex;
+  justify-content: space-around;
+}
+
+.midfielder {
+  display: flex;
+  justify-content: space-around;
+}
+
+.attacker {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-player {
+  width: 250px;
+  height: 200px;
+}
