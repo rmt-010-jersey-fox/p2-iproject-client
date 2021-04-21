@@ -25,6 +25,15 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
       </div>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <router-link to="/login" class="btn btn-danger" aria-current="page" href="#" v-if="!isLogin">Login</router-link>
+            <a @click="logout" class="btn btn-danger" aria-current="page" href="#" v-else-if="isLogin">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>
@@ -33,6 +42,11 @@
 export default {
   name: 'NavbarDrink',
   props: ['drinksCategories'],
+  computed: {
+    isLogin () {
+      return this.$store.state.isLogin
+    }
+  },
   methods: {
     goToDrinkCategoryPage (category) {
       console.log(category + 'di methods drink navbar')

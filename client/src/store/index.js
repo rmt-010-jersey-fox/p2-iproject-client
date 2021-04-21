@@ -4,6 +4,7 @@ import axios from '../api/axios'
 
 export default createStore({
   state: {
+    isLogin: false,
     randomMeal: {},
     randomDrink: {},
     mealsCategories: [],
@@ -57,6 +58,9 @@ export default createStore({
     searchDrink (state, drink) {
       console.log('mutation drink')
       state.searchedDrink = drink
+    },
+    login (state, status) {
+      state.isLogin = status
     }
   },
   actions: {
@@ -150,6 +154,31 @@ export default createStore({
         .then(drink => {
           console.log('actions ok')
           context.commit('searchDrink', drink.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    register (context, user) {
+      console.log('masuk actions')
+      console.log(user)
+      axios.post('/register', user)
+        .then(user => {
+          console.log(user)
+          context.commit('register', user)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    login (context, user) {
+      console.log('login actions')
+      console.log(user)
+      axios.post('/login', user)
+        .then(user => {
+          console.log(user)
+          localStorage.setItem('token', user.data.token)
+          context.commit('login', true)
         })
         .catch(err => {
           console.log(err)
