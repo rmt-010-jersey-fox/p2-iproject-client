@@ -44,11 +44,16 @@ const routes = [
     component: () => import('../views/Tournament.vue')
   },
   {
+    path: '/ongoing/:id',
+    name: 'BracketForViewer',
+    component: () => import('../views/BracketForViewer.vue')
+  },
+  {
     path: '/*',
     name: '404',
     component: () => import('../views/404.vue')
   }
-
+  
 ]
 
 const router = new VueRouter({
@@ -56,5 +61,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'Tournament' && !localStorage.access_token) next({ name: 'Login' })
+  else if (to.name === 'Team' && !localStorage.access_token) next({ name: 'Login' })
+  else if (to.name === 'Login' && localStorage.access_token) next({ name: 'Home' })
+  else if (to.name === 'Register' && localStorage.access_token) next({ name: 'Home' })
+  else next()
+})
+
 
 export default router

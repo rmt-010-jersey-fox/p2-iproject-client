@@ -28,7 +28,11 @@ export default {
   },
   methods: {
     AddTeam() {
-
+      let input = {
+        name: this.name,
+        description: this.description
+      }
+      this.$store.dispatch('AddTeam', input)
     }
   }
 }

@@ -5,22 +5,23 @@
     <div class="col-md-8 col-lg-6">
       <div class="login d-flex align-items-center py-5">
         <div class="container">
+          <h1>Turnagen - Tournament Generator</h1>
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Register Page </h3>
               <form>
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign Up</button>
+                <button @click.prevent="register" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign Up</button>
                 <div class="text-center">
-                  <a class="small" style="color: white" href="#">Already have an Account?</a></div>
+                  <a class="small" @click.prevent="changepage('Login')" style="color: white" href="#">Already have an Account?</a></div>
               </form>
             </div>
           </div>
@@ -40,11 +41,25 @@ export default {
       email: '',
       password: '',
     }
+  },
+  methods: {
+    changepage(name) {
+      this.$router.push({ name })
+    },
+    register() {
+      let input = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('register', input)
+      this.email = ''
+      this.password = ''
+    }
   }
 }
 </script>
 
-<style scoped>
+<style>
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;
