@@ -21,37 +21,44 @@
           v-model="password"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Sign In</button>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SignInForm',
-  data () {
+  name: "SignInForm",
+  data() {
     return {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: ""
+    };
   },
   methods: {
-    async login () {
+    async login() {
       try {
-        const data = await this.$store.dispatch('login', {
+        const data = await this.$store.dispatch("login", {
           email: this.email,
           password: this.password
-        })
-        console.log(data)
-        this.$router.push({
-          path: `/dashboard/profile/${localStorage.username}`
-        })
+        });
+        console.log(data);
+        this.$router
+          .push({
+            path: `/dashboard/profile/${localStorage.username}`
+          })
+          .catch(() => {});
+        const payload = {
+          sender: localStorage.username,
+          avatarUrl: localStorage.avatarUrl
+        };
+        this.$socket.emit("loginUser", payload);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   }
-}
+};
 </script>
 
 <style></style>

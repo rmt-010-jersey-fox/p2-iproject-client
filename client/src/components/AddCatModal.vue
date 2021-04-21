@@ -2,7 +2,7 @@
   <form>
     <div class="form-group">
       <label for="exampleInputEmail1">Cat Name</label>
-      <input class="form-control" v-model="description" />
+      <input class="form-control" v-model="name" />
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Cat avatar</label>
@@ -23,39 +23,39 @@
 
 <script>
 export default {
-  name: "AddCatModal",
-  data() {
+  name: 'AddCatModal',
+  data () {
     return {
-      description: "",
-      avatarUrl: "",
-      imageUrl: ""
-    };
+      name: '',
+      avatarUrl: '',
+      imageUrl: ''
+    }
   },
   methods: {
-    async fetchCatImage() {
+    async fetchCatImage () {
       try {
-        const { data } = await this.$store.dispatch("fetchCatImage");
-        this.imageUrl = data.image_url;
-        console.log(data);
+        const { data } = await this.$store.dispatch('fetchCatImage')
+        this.imageUrl = data.image_url
+        console.log(data)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     },
-    async addCat() {
+    async addCat () {
       try {
-        const { data } = await this.$store.dispatch("addCat", {
-          description: this.description,
+        const { data } = await this.$store.dispatch('addCat', {
+          name: this.name,
           avatarUrl: this.avatarUrl,
           imageUrl: this.imageUrl
-        });
-        this.$emit("closeModal", "add-modal");
-        console.log(data);
+        })
+        this.$emit('closeModal', 'add-modal')
+        console.log(data)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   }
-};
+}
 </script>
 
 <style></style>

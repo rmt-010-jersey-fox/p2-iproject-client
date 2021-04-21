@@ -20,32 +20,32 @@
       />
     </div>
     <div class="card-body p-1">
-      <p class="card-text" style="font-size:12px">{{ cat.description }}</p>
+      <p class="card-text" style="font-size:12px">{{ cat.name }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "CatCard",
-  data() {
+  name: 'CatCard',
+  data () {
     return {
       hover: false
-    };
+    }
   },
-  props: ["cat"],
+  props: ['cat'],
   methods: {
-    async deleteCat() {
+    async deleteCat () {
       try {
-        let { data } = this.$store.dispatch("deleteCat", { id: this.cat.id });
-        const username = this.$route.params.username;
-        this.$store.dispatch("fetchUser", { username });
+        await this.$store.dispatch('deleteCat', { id: this.cat.id })
+        const username = this.$route.params.username
+        this.$store.dispatch('fetchUser', { username })
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   }
-};
+}
 </script>
 
 <style>

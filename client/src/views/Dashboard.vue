@@ -40,38 +40,28 @@
         </div>
         <!-- category -->
         <div class="p-2">
-          <button
-            class="btn btn-outline-success m-0 rounded border-0 rounded-pill"
+          <select
+            v-model="optionActive"
+            class="form-control btn-outline-success border-0 "
           >
-            Active User
-          </button>
+            <option>Active User</option>
+            <option>Available Room</option>
+          </select>
         </div>
         <!-- list of messages -->
-        <div class="border-bottom" style="width: 18rem">
-          <div class="p-3">
-            <div class="row" style="height: 5vh">
-              <div class="col-3 p-0 h-100">
-                <div
-                  class="d-flex justify-content-start align-items-center h-100"
-                >
-                  <img
-                    src="https://i.imgur.com/AD3MbBi.jpeg"
-                    alt=""
-                    class="avatar"
-                  />
-                </div>
-              </div>
-              <div class="col-7 p-0 d-flex align-items-center">
-                <div>
-                  <p class="text m-0">@yoru</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div v-if="optionActive === 'Active User'">
+          <ActiveUser
+            v-for="user in activeUser"
+            :key="user.sender"
+            :user="user"
+          />
+        </div>
+        <div v-else>
+          <RoomCard v-for="room in rooms" :key="room.id" :room="room" />
         </div>
       </div>
       <div
-        class="col-9 h-100 p-0 sidebar-right d-flex justify-content-center align-items-center"
+        class="backgroundImage col-9 h-100 p-0 sidebar-right d-flex justify-content-center align-items-center"
       >
         <!-- chat section -->
         <!-- card profile -->
@@ -80,7 +70,7 @@
       </div>
     </div>
     <div class="live-chat">
-      <button @click.prevent="liveChat" class="btn btn-primary rounded-pill">
+      <button @click.prevent="liveChat" class="btn rounded-pill orn">
         Live Chat
       </button>
     </div>
@@ -88,18 +78,22 @@
 </template>
 
 <script>
-// import ProfileCard from "../components/ProfileCard";
-// import Chat from "../components/Chat";
-
+import ActiveUser from "../components/ActiveUser";
+import RoomCard from "../components/RoomCard";
+import { mapState } from "vuex";
 export default {
   name: "Dashboard",
   data() {
     return {
       image: localStorage.avatarUrl,
-      username: localStorage.username
+      username: localStorage.username,
+      optionActive: "Active User"
     };
   },
-  components: {},
+  components: { ActiveUser, RoomCard },
+  computed: {
+    ...mapState(["activeUser", "rooms"])
+  },
   methods: {
     async fetchCatImage() {
       try {
@@ -112,17 +106,35 @@ export default {
     },
     signOut() {
       localStorage.clear();
-      this.$router.push({ name: "LandingPage" });
+      this.$router.push({ name: "LandingPage" }).catch(() => {});
     },
     profilePage(username) {
-      this.$router.push(`/dashboard/profile/${username}`);
+      this.$router.push(`/dashboard/profile/${username}`).catch(() => {});
+      this.$store.dispatch("fetchUser", { username });
     },
     liveChat() {
-      this.$router.push("/dashboard/live-chat");
+      this.$router.push("/dashboard/chat/live-chat").catch(() => {});
+    },
+    async getRooms() {
+      try {
+        const data = await this.$store.dispatch("getRooms");
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
+  sockets: {
+    activeUser(data) {
+      this.$store.commit("activeUser", data);
+    },
+    getActiveUser(data) {
+      this.$store.commit("activeUser", data);
     }
   },
   created() {
-    // this.fetchCatImage();
+    this.$socket.emit("checkActiveUser");
+    this.getRooms();
   }
 };
 </script>
@@ -160,6 +172,15 @@ export default {
 .live-chat {
   position: absolute;
   right: 5%;
-  bottom: 5%;
+  bottom: 3%;
+}
+.backgroundImage {
+  background: url("../assets/cat-doodle.webp");
+  background-color: rgb(56 45 29 / 80%);
+  background-blend-mode: darken;
+}
+.orn {
+  color: black;
+  background-color: #f48319;
 }
 </style>

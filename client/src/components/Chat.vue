@@ -1,7 +1,7 @@
 <template>
   <div style="width:100%">
     <div class="page-content page-container" id="page-content">
-      <div class="padding">
+      <div class="">
         <div
           class="row container d-flex justify-content-center align-items-center m-0"
         >
@@ -9,96 +9,21 @@
             <div class="card card-bordered">
               <div class="card-header">
                 <h4 class="card-title"><strong>Chat</strong></h4>
-                <a class="btn btn-xs btn-secondary" href="#" data-abc="true"
-                  >Let's Chat App</a
-                >
+                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">{{
+                  room
+                }}</a>
               </div>
               <div
                 class="ps-container ps-theme-default ps-active-y"
                 id="chat-content"
                 style="overflow-y: scroll !important; height:400px !important;"
               >
-                <div class="media media-chat">
-                  <img
-                    class="avatar"
-                    src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                    alt="..."
-                  />
-                  <div class="media-body">
-                    <p>Hi</p>
-                    <p>How are you ...???</p>
-                    <p>
-                      What are you doing tomorrow?<br />
-                      Can we come up a bar?
-                    </p>
-                    <p class="meta"><time datetime="2018">23:58</time></p>
-                  </div>
-                </div>
-                <div class="media media-meta-day">Today</div>
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Hiii, I'm good.</p>
-                    <p>How are you doing?</p>
-                    <p>
-                      Long time no see! Tomorrow office. will be free on sunday.
-                    </p>
-                    <p class="meta"><time datetime="2018">00:06</time></p>
-                  </div>
-                </div>
-                <div class="media media-chat">
-                  <img
-                    class="avatar"
-                    src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                    alt="..."
-                  />
-                  <div class="media-body">
-                    <p>Okay</p>
-                    <p>We will go on sunday?</p>
-                    <p class="meta"><time datetime="2018">00:07</time></p>
-                  </div>
-                </div>
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>That's awesome!</p>
-                    <p>I will meet you Sandon Square sharp at 10 AM</p>
-                    <p>Is that okay?</p>
-                    <p class="meta"><time datetime="2018">00:09</time></p>
-                  </div>
-                </div>
-                <div class="media media-chat">
-                  <img
-                    class="avatar"
-                    src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                    alt="..."
-                  />
-                  <div class="media-body">
-                    <p>Okay i will meet you on Sandon Square</p>
-                    <p class="meta"><time datetime="2018">00:10</time></p>
-                  </div>
-                </div>
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Do you have pictures of Matley Marriage?</p>
-                    <p class="meta"><time datetime="2018">00:10</time></p>
-                  </div>
-                </div>
-                <div class="media media-chat">
-                  <img
-                    class="avatar"
-                    src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                    alt="..."
-                  />
-                  <div class="media-body">
-                    <p>Sorry I don't have. i changed my phone.</p>
-                    <p class="meta"><time datetime="2018">00:12</time></p>
-                  </div>
-                </div>
-                <div class="media media-chat media-chat-reverse">
-                  <div class="media-body">
-                    <p>Okay then see you on sunday!!</p>
-                    <p class="meta"><time datetime="2018">00:12</time></p>
-                  </div>
-                </div>
+                <ChatMessage
+                  v-for="(msg, index) in filteredChat"
+                  :key="index"
+                  :message="msg"
+                />
+
                 <div
                   class="ps-scrollbar-x-rail"
                   style="left: 0px; bottom: 0px;"
@@ -121,15 +46,13 @@
                 </div>
               </div>
               <div class="publisher bt-1 border-light">
-                <img
-                  class="avatar avatar-xs"
-                  src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                  alt="..."
-                />
+                <img class="avatar avatar-xs" :src="avatarUrl" alt="..." />
                 <input
                   class="publisher-input"
                   type="text"
                   placeholder="Write something"
+                  v-model="content"
+                  @keyup.enter="pushChat"
                 />
                 <span class="publisher-btn file-group">
                   <i class="fa fa-paperclip file-browser"></i>
@@ -151,9 +74,51 @@
 </template>
 
 <script>
+import ChatMessage from "./ChatMessage";
+import { mapState } from "vuex";
 export default {
-  name: 'Chat'
-}
+  name: "Chat",
+  components: {
+    ChatMessage
+  },
+  computed: {
+    ...mapState(["wsChat"]),
+    filteredChat() {
+      const temp = this.wsChat.filter(
+        el => el.room === this.$route.params.room
+      );
+      return temp;
+    },
+    room() {
+      return this.$route.params.room;
+    }
+  },
+  data() {
+    return {
+      avatarUrl: localStorage.avatarUrl,
+      sender: localStorage.username,
+      content: ""
+    };
+  },
+  methods: {
+    pushChat() {
+      const payload = {
+        room: this.room,
+        sender: this.sender,
+        avatarUrl: this.avatarUrl,
+        content: this.content
+      };
+      this.$store.commit("pushChat", payload);
+      this.$socket.emit("sendLiveChat", payload);
+      this.content = "";
+    }
+  },
+  sockets: {
+    broadcastLiveChat(data) {
+      this.$store.commit("pushChat", data);
+    }
+  }
+};
 </script>
 
 <style scoped>

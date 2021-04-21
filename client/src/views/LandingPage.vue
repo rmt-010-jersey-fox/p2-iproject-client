@@ -32,14 +32,14 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   components: {},
   methods: {
-    SignInPage () {
-      this.$router.push({ name: 'SignIn' })
+    SignInPage() {
+      this.$router.push({ name: "SignIn" }).catch(() => {});
     }
   }
-}
+};
 </script>
 <style>
 .home {

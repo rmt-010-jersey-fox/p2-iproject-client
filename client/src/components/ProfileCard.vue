@@ -18,11 +18,10 @@
                 class="col-6 p-0 pt-1 d-flex flex-column justify-content-center"
               >
                 <h4>@{{ userProfile.username }}</h4>
-                <div>
+                <div v-if="isOwner">
                   <button
-                    v-if="isOwner"
                     @click="$bvModal.show('add-modal')"
-                    class="btn btn-outline-secondary"
+                    class="btn p-1 m-1 btn-outline-secondary"
                   >
                     Add New Cat
                   </button>
@@ -76,7 +75,7 @@ export default {
     },
     ...mapState(["userProfile", "cats"]),
     getCatPhoto() {
-      let photos = [];
+      const photos = [];
       this.cats.forEach(el => {
         photos.push(...el.Photos);
       });

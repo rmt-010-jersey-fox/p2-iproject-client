@@ -30,7 +30,7 @@
                 <p>
                   Dont have an account?
                   <a @click.prevent="stateSign = !stateSign" href=""
-                    >sign up.</a
+                    >Sign up.</a
                   >
                 </p>
               </div>
@@ -39,7 +39,7 @@
                 <p>
                   Already have account?
                   <a @click.prevent="stateSign = !stateSign" href=""
-                    >sign in.</a
+                    >Sign in.</a
                   >
                 </p>
               </div>
@@ -52,41 +52,41 @@
 </template>
 
 <script>
-import SignInForm from '../components/SignInForm'
-import SignUpForm from '../components/SignUpForm'
+import SignInForm from "../components/SignInForm";
+import SignUpForm from "../components/SignUpForm";
 export default {
-  name: 'SignIn',
-  data () {
+  name: "SignIn",
+  data() {
     return {
-      stateSign: true,
+      stateSign: false,
       quote: {
-        content: '',
-        author: ''
+        content: "",
+        author: ""
       }
-    }
+    };
   },
   components: {
     SignInForm,
     SignUpForm
   },
   methods: {
-    landingPage () {
-      this.$router.replace('/')
+    landingPage() {
+      this.$router.replace("/").catch(() => {});
     },
-    async fetchQuote () {
+    async fetchQuote() {
       try {
-        const { data } = await this.$store.dispatch('fetchQuote')
-        console.log(data)
-        this.quote = data
+        const { data } = await this.$store.dispatch("fetchQuote");
+        console.log(data);
+        this.quote = data;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   },
-  created () {
-    this.fetchQuote()
+  created() {
+    this.fetchQuote();
   }
-}
+};
 </script>
 
 <style scoped>
