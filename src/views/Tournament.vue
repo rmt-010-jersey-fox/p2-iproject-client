@@ -229,7 +229,6 @@ export default {
           }
         }
       })
-      localStorage.setItem('TournamentId', Found.id)
       this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: Found.id })
       return Found
     }
@@ -247,7 +246,8 @@ export default {
     finishTournament(id) {
       this.$store.dispatch('finishTournament', { id })
     }
-  }
+  },
+
 };
 </script>
 

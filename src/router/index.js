@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Team from '../views/Team.vue'
-import AddTeam from '../components/AddTeam'
 
 Vue.use(VueRouter)
 
@@ -10,16 +8,15 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('../views/Home.vue')
-  },
-  {
+  },{
     path: '/Team',
     name: 'Team',
-    component: Team,
+    component: () => import('../views/Team.vue'),
     children: [
       {
         path: 'addteam',
         name: 'AddTeam',
-        component: AddTeam
+        component: () => import('../components/AddTeam.vue'),
       }
     ]
   },
