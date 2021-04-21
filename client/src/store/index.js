@@ -4,8 +4,18 @@ import axios from "../api/axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    userProfile: {},
+    cats: []
+  },
+  mutations: {
+    updateUserProfile(state, payload) {
+      state.userProfile = payload;
+    },
+    updateUserCats(state, payload) {
+      state.cats = payload;
+    }
+  },
   actions: {
     register(context, payload) {
       const { username, email, password } = payload;
@@ -13,7 +23,9 @@ export default new Vuex.Store({
     },
     async login(context, payload) {
       const { email, password } = payload;
-      let { data } = await axios.post("/login", { email, password });
+      const { data } = await axios.post("/login", { email, password });
+      localStorage.avatarUrl = data.avatarUrl;
+      localStorage.username = data.username;
       localStorage.access_token = data.access_token;
       return data;
     },
@@ -23,6 +35,38 @@ export default new Vuex.Store({
     },
     fetchCatImage() {
       return axios.get("/cat-api");
+    },
+    async fetchUser(context, payload) {
+      try {
+        let access_token = localStorage.access_token;
+        console.log(access_token, payload.username);
+        let { data } = await axios.get(`/users/${payload.username}`, {
+          headers: { access_token: access_token }
+        });
+        context.commit("updateUserProfile", data.user);
+        context.commit("updateUserCats", data.user.Cats);
+      } catch (error) {
+        context.commit("updateUserProfile", {});
+        context.commit("updateUserCats", []);
+        console.log(error);
+      }
+    },
+    addCat(context, payload) {
+      let access_token = localStorage.access_token;
+      return axios.post(
+        "/cats",
+        {
+          avatarUrl: payload.avatarUrl,
+          description: payload.description,
+          imageUrl: payload.imageUrl
+        },
+        { headers: { access_token: access_token } }
+      );
+    },
+    deleteCat(context, payload) {
+      return axios.delete(`/cats/${payload.id}`, {
+        headers: { access_token: localStorage.access_token }
+      });
     }
   },
   modules: {}

@@ -28,28 +28,30 @@
 
 <script>
 export default {
-  name: "SignInForm",
-  data() {
+  name: 'SignInForm',
+  data () {
     return {
-      email: "",
-      password: ""
-    };
+      email: '',
+      password: ''
+    }
   },
   methods: {
-    async login() {
+    async login () {
       try {
-        let data = await this.$store.dispatch("login", {
+        const data = await this.$store.dispatch('login', {
           email: this.email,
           password: this.password
-        });
-        console.log(data);
-        this.$router.push({ name: "Dashboard" });
+        })
+        console.log(data)
+        this.$router.push({
+          path: `/dashboard/profile/${localStorage.username}`
+        })
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   }
-};
+}
 </script>
 
 <style></style>

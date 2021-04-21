@@ -52,41 +52,41 @@
 </template>
 
 <script>
-import SignInForm from "../components/SignInForm";
-import SignUpForm from "../components/SignUpForm";
+import SignInForm from '../components/SignInForm'
+import SignUpForm from '../components/SignUpForm'
 export default {
-  name: "SignIn",
-  data() {
+  name: 'SignIn',
+  data () {
     return {
-      stateSign: false,
+      stateSign: true,
       quote: {
-        content: "",
-        author: ""
+        content: '',
+        author: ''
       }
-    };
+    }
   },
   components: {
     SignInForm,
     SignUpForm
   },
   methods: {
-    landingPage() {
-      this.$router.replace("/");
+    landingPage () {
+      this.$router.replace('/')
     },
-    async fetchQuote() {
+    async fetchQuote () {
       try {
-        let { data } = await this.$store.dispatch("fetchQuote");
-        console.log(data);
-        this.quote = data;
+        const { data } = await this.$store.dispatch('fetchQuote')
+        console.log(data)
+        this.quote = data
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     }
   },
-  created() {
-    this.fetchQuote();
+  created () {
+    this.fetchQuote()
   }
-};
+}
 </script>
 
 <style scoped>

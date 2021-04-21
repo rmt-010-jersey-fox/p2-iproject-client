@@ -19,16 +19,16 @@
 
 <script>
 export default {
-  name: "RoomCard",
-  data() {
+  name: 'RoomCard',
+  data () {
     return {
-      image: "",
-      username: "",
-      roomId: ""
-    };
+      image: '',
+      username: '',
+      roomId: ''
+    }
   },
   computed: {}
-};
+}
 </script>
 
 <style>

@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import LandingPage from "../views/LandingPage.vue";
-
+import ProfileCard from "../components/ProfileCard";
+import Chat from "../components/Chat";
 Vue.use(VueRouter);
 
 const routes = [
@@ -26,7 +27,19 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Dashboard.vue")
+      import(/* webpackChunkName: "about" */ "../views/Dashboard.vue"),
+    children: [
+      {
+        // UserProfile will be rendered inside User's <router-view>
+        // when /user/:id/profile is matched
+        path: "profile/:username",
+        component: ProfileCard
+      },
+      {
+        path: "live-chat",
+        component: Chat
+      }
+    ]
   }
 ];
 

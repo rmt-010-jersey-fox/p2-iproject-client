@@ -32,28 +32,28 @@
 
 <script>
 export default {
-  name: "SignUpForm",
-  data() {
+  name: 'SignUpForm',
+  data () {
     return {
-      email: "",
-      password: "",
-      username: ""
-    };
+      email: '',
+      password: '',
+      username: ''
+    }
   },
   methods: {
-    async register() {
-      console.log(this.email, this.password, this.username);
+    async register () {
+      console.log(this.email, this.password, this.username)
       try {
-        let data = await this.$store.dispatch("register", {
+        const data = await this.$store.dispatch('register', {
           email: this.email,
           password: this.password,
           username: this.username
-        });
-        console.log();
+        })
+        console.log(data)
       } catch (error) {}
     }
   }
-};
+}
 </script>
 
 <style></style>
