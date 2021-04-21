@@ -19,7 +19,7 @@
       <tbody id="td">
         <tr v-for="el in bookmarks" :key="el.id">
           <th scope="row">{{ el.id }}</th>
-          <td>{{ el.title }}</td>
+          <td><a href="#" @click.prevent="mangaDetail(el.mangaLink)">{{ el.title }}</a></td>
           <td>{{ el.lang }}</td>
           <td>
             <button
@@ -53,7 +53,11 @@ export default {
               id
           }
           this.$store.dispatch("deleteBookmarks", payload)
-      }
+      },
+      mangaDetail(mangaId) {
+      this.$store.commit("getMangaId", mangaId)
+      this.$router.push("/mangadetail");
+    },
   }
 };
 </script>

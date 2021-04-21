@@ -1,15 +1,21 @@
 <template>
   <div>
-      <!-- <h1>{{page}}</h1> -->
-    <div v-for="(Image,i) in page" :key="i">
-      <img :src="Image.Image" alt="" class="card-img-top" style="width: 50%"/>
+
+    <div v-for="(Image, i) in page" :key="i">
+      <img :src="Image.Image" alt="" class="card-img-top" style="width: 50%;" />
     </div>
+    
   </div>
 </template>
 
 <script>
 export default {
   name: "read",
+  data(){
+    return {
+      ChapterLink: ""
+    }
+  },
   created() {
     this.$store.dispatch("readManga");
   },
@@ -17,7 +23,11 @@ export default {
     page() {
       return this.$store.state.page;
     },
+    mangaDetail(){
+      return this.$store.state.mangaDetail;
+    }
   },
+  
 };
 </script>
 

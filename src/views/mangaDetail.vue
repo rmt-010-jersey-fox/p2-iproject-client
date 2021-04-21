@@ -3,7 +3,7 @@
     <div class="card" style="width: 18rem; margin-left: 10px; col">
       <img :src="mangaDetail.MangaCover" class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title">Descriptions<hr></h5>
+        <h5 class="card-title">Manga Descriptions<hr></h5>
         <p class="card-text" style=" text-align: justify;">
           {{ mangaDetail.Summary }}
         </p>
@@ -15,7 +15,7 @@
           <thead>
             <tr>
               <th scope="col">Chapter Number</th>
-            </tr>
+            </tr> 
           </thead>
           <tbody>
             <tr v-for="ch in mangaDetail.Chapter" :key="ch.ChapterName">
@@ -31,7 +31,6 @@
 <script>
 export default {
   created() {
-    console.log("m,asuk");
     this.$store.dispatch("fetchMangaDetail");
   },
   computed: {
@@ -42,12 +41,9 @@ export default {
     methods: {
       readManga(chapterLink){
         
-        // let payload = {
-        //   chapterLink
-        // }
          this.$router.push('/read')
         this.$store.commit("readManga", chapterLink)
-        // this.$store.dispatch('readManga',payload)
+    
       }
     }
 };

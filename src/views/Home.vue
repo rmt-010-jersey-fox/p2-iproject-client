@@ -8,8 +8,6 @@
       <p class="lead" style="font-family:'Bungee Inline', cursive;">
        here are the most popular manga for you!
       </p>
-      <a href="" class="btn btn-primary">EN</a>
-      <a href="" class="btn btn-secondary">ID</a>
     </section>
 
     <section id="gallery" style="margin-top: 20px">
@@ -27,7 +25,7 @@
                   >Read More</a
                 >
                 <a href="" class="btn btn-outline-danger btn-sm"
-                   @click.prevent="addBookmark(manga.MangaTitle)"><i class="far fa-heart"></i
+                   @click.prevent="addBookmark(manga.MangaTitle, manga.MangaLink)"><i class="far fa-heart"></i
                 ></a>
               </div>
             </div>
@@ -39,10 +37,7 @@
 </template>
 
 <style scoped>
-/* #header {
-  background: url(http://amli-lptk.org/amli/wp-content/uploads/2017/09/KO-background-header.jpg)
-    center center / cover no-repeat;
-} */
+
 </style>
 
 <script>
@@ -65,9 +60,10 @@ export default {
       this.$store.commit("getMangaId", mangaId)
       this.$router.push("/mangadetail");
     },
-    addBookmark(mangaTitle){
+    addBookmark(mangaTitle, mangaLink){
       let payload = {
-        mangaTitle
+        mangaTitle,
+        mangaLink
       }
       this.$store.dispatch("addBookmark", payload)
     }

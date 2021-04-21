@@ -1,7 +1,8 @@
 <template>
   <nav
     id="navbar"
-    class="navbar navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(gray,white)"
+    class="navbar navbar-expand-lg navbar-light bg-light"
+    style="background-image: linear-gradient(gray,white)"
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="#" v-on:click.prevent="changePage('/')">
@@ -25,11 +26,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav" style="font-family: Montserrat">
-          <a class="nav-link" href="#" v-on:click.prevent="changePage('/Login') "
-             v-if="getAccessToken === false">Login</a
+          <a
+            class="nav-link"
+            href="#"
+            v-on:click.prevent="changePage('/Login')"
+            v-if="getAccessToken === false"
+            >Login</a
           >
-          <a class="nav-link" href="#" v-on:click.prevent="changePage('/register')"
-             v-if="getAccessToken === false">Register</a
+          <a
+            class="nav-link"
+            href="#"
+            v-on:click.prevent="changePage('/register')"
+            v-if="getAccessToken === false"
+            >Register</a
           >
           <a class="nav-link" href="#" v-on:click.prevent="changePage('/')"
             >Home</a
@@ -38,21 +47,33 @@
             class="nav-link"
             href="#"
             v-on:click.prevent="changePage('/bookmarks')"
-             v-if="getAccessToken === true">Bookmarks</a
+            v-if="getAccessToken === true"
+            >Bookmarks</a
           >
           <a
             v-on:click.prevent="changePage('/search')"
             class="nav-link"
             aria-current="page"
             href="#"
-            >search</a
+            >Search</a
           >
-            <a class="nav-link" @click.prevent="userLogout" href="#" v-if="getAccessToken === true">logout</a>
+          <a
+            v-on:click.prevent="topRated()"
+            class="nav-link"
+            aria-current="page"
+            href="#"
+            >Top Rated Manga</a
+          >
+          <a
+            class="nav-link"
+            @click.prevent="userLogout"
+            href="#"
+            v-if="getAccessToken === true"
+            >Logout</a
+          >
         </div>
         <div class="navbar-nav">
-          <div>
-           
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
@@ -70,15 +91,17 @@ export default {
     userLogout() {
       this.$store.dispatch("userLogout");
     },
+    topRated() {
+      this.$store.dispatch("topRated");
+      this.$router.push("/toprated");
+    },
   },
   computed: {
     getAccessToken() {
-      return this.$store.state.isLogin
+      return this.$store.state.isLogin;
     },
   },
-
 };
 </script>
 
-<style>
-</style>
+<style></style>
