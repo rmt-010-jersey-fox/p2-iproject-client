@@ -4,7 +4,7 @@ import router from "../router";
 import { ToastProgrammatic as Toast } from "buefy";
 import Swal from "sweetalert2";
 Vue.use(Vuex);
-const server = "http://localhost:3000/";
+const server = "https://rsh-8.herokuapp.com/";
 export default new Vuex.Store({
   state: {
     getPoli: [],
