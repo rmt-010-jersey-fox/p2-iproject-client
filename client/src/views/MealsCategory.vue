@@ -1,8 +1,9 @@
 <template>
   <div>
-    <NavbarMeal />
+    <NavbarMeal
+    :mealsCategories="mealsCategories"
+    />
     <!-- Recipes Cards -->
-
     <div class="container" style="color: bisque;">
       <h1>{{category}}</h1>
       <div class="row">
@@ -29,9 +30,15 @@ export default {
     },
     category () {
       return this.$store.state.currentMealCategory
+    },
+    mealsCategories () {
+      console.log('---------------')
+      console.log(this.$store.state.mealsCategories)
+      return this.$store.state.mealsCategories
     }
   }
 }
+
 </script>
 
 <style>

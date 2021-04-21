@@ -9,7 +9,9 @@ export default createStore({
     mealsCategories: [],
     drinksCategories: [],
     mealsByCategory: [],
-    currentMealCategory: ''
+    currentMealCategory: '',
+    drinksByCategory: [],
+    currentDrinkCategory: ''
   },
   mutations: {
     getRandomRecipes (state, meal) {
@@ -30,12 +32,21 @@ export default createStore({
       state.drinksCategories = categories
     },
     fetchMealsByCategory (state, meals) {
-      console.log('fetchMealsByCategory, mutations 2')
-      console.log(meals)
+      // console.log('fetchMealsByCategory, mutations 2')
+      // console.log(meals)
       state.mealsByCategory = meals
     },
-    currentCategory (state, category) {
+    currentMealCategory (state, category) {
       state.currentMealCategory = category
+    },
+    fetchDrinksByCategory (state, drinks) {
+      console.log('fetchDrinksByCategory, mutations 2')
+      console.log(drinks)
+      state.drinksByCategory = drinks
+    },
+    currentDrinkCategory (state, category) {
+      console.log('current category drink >>>', category)
+      state.currentDrinkCategory = category
     }
   },
   actions: {
@@ -87,18 +98,32 @@ export default createStore({
         })
     },
     fetchMealsByCategory (context, category) {
-      console.log('fetchMealsByCategory, actions 1')
-      console.log(category)
+      // console.log('fetchMealsByCategory, actions 1')
+      // console.log(category)
       axios.get('/meals/categories/' + category)
         .then(meals => {
-          console.log('fetchMealsByCategory, actions 2')
-          console.log(meals.data)
+          // console.log('fetchMealsByCategory, actions 2')
+          // console.log(meals.data)
           context.commit('fetchMealsByCategory', meals.data)
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    fetchDrinksByCategory (context, category) {
+      console.log('fetchDrinksByCategory, actions 1')
+      console.log(category)
+      axios.get('/drinks/categories/' + category)
+        .then(drinks => {
+          console.log('fetchDrinksByCategory, actions 2')
+          console.log(drinks.data.drinks)
+          context.commit('fetchDrinksByCategory', drinks.data.drinks)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
+
   },
   modules: {
   }

@@ -1,6 +1,6 @@
 <template>
         <!-- Food Navbar -->
-    <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand" href="#">Home</router-link>
         <router-link to="/meals" class="navbar-brand" href="#">Meals</router-link>
@@ -16,13 +16,13 @@
           :category="category"
           >
             <li class="nav-item">
-              <a @click.prevent="goToCategoryPage(category.strCategory)" class="nav-link active" aria-current="page" href="#">{{category.strCategory}}</a>
+              <a @click.prevent="goToMealCategoryPage(category.strCategory)" class="nav-link active" aria-current="page" href="#">{{category.strCategory}}</a>
             </li>
          </ul>
-          <form class="d-flex">
+          <!-- <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          </form> -->
         </div>
       </div>
     </nav>
@@ -33,10 +33,10 @@ export default {
   name: 'NavbarMeal',
   props: ['mealsCategories'],
   methods: {
-    goToCategoryPage (category) {
+    goToMealCategoryPage (category) {
       console.log(category + ' di methods navbar')
       this.$store.dispatch('fetchMealsByCategory', category)
-      this.$store.commit('currentCategory', category)
+      this.$store.commit('currentMealCategory', category)
       this.$router.push({ name: 'MealsCategory' })
     }
   }

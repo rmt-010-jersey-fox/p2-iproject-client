@@ -18,22 +18,22 @@ export default {
   components: { NavbarDrink, DrinkRecipes },
   computed: {
     randomDrink () {
-      console.log('balik ke drinks')
-      console.log(this.$store.state.randomDrink)
+      // console.log('balik ke drinks')
+      // console.log(this.$store.state.randomDrink)
       return this.$store.state.randomDrink
     },
     drinksCategories () {
-      console.log('>>>>', this.$store.state.drinksCategories)
+      // console.log('>>>>', this.$store.state.drinksCategories)
       return this.$store.state.drinksCategories
     }
   },
   methods: {
     getRandomDrink () {
-      console.log('method random drink')
+      // console.log('method random drink')
       this.$store.dispatch('getRandomDrink')
     },
     getDrinksCategories () {
-      console.log('getDrinksCategories methods')
+      // console.log('getDrinksCategories methods')
       this.$store.dispatch('getDrinksCategories')
     }
   },
