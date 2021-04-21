@@ -14,7 +14,14 @@ export default new Vuex.Store({
     email: "",
     access_token: "",
     sidebarOpen: false,
-    news: {},
+    news: {
+      general: {
+        all: [],
+        thisDay: [],
+        thisWeek: [],
+        thisMonth: [],
+      },
+    },
   },
   mutations: {
     SET_NEWS_ALL(state, payload) {
@@ -47,6 +54,7 @@ export default new Vuex.Store({
       const data = {
         category: payload.category,
       };
+      console.log(data);
       const access_token = localStorage.access_token;
       fetch(`${SERVER_URL}/search`, {
         method: "POST",
@@ -63,6 +71,7 @@ export default new Vuex.Store({
             category: payload.category,
             news: filteredData,
           };
+          console.log(mutationsPayload);
           context.commit("SET_NEWS_ALL", mutationsPayload);
         });
     },

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import NewsCategory from "../views/NewsCategory.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,12 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+
+  {
+    path: "/home/:category",
+    name: "General",
+    component: NewsCategory,
   },
   {
     path: "/signin",
@@ -30,7 +37,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === "Signin" && localStorage.access_token) {
-    next({ path: "/" });
+    next({ path: "/home" });
+  } else if (to.name === "Signup" && localStorage.access_token) {
+    next({ path: "/home" });
   } else {
     next();
   }

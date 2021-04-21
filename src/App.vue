@@ -3,6 +3,8 @@
     <div id="nav">
       <Navbar> </Navbar>
     </div>
+
+    <Sidebar v-if="isLogin"> </Sidebar>
     <router-view />
     <HFooter> </HFooter>
   </div>
@@ -10,8 +12,14 @@
 <script>
 import Navbar from "./components/Navbar.vue";
 import HFooter from "vue-hacktiv-footer";
+import Sidebar from "@/components/Sidebar";
 export default {
-  components: { Navbar, HFooter },
+  components: { Navbar, HFooter, Sidebar },
+  methods: {
+    isLogin() {
+      return this.$store.state.isLogin;
+    },
+  },
   created() {
     if (localStorage.access_token) {
       const payload = {
@@ -25,13 +33,6 @@ export default {
 };
 </script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 #nav a.router-link-exact-active {
   color: #42b983;
 }
