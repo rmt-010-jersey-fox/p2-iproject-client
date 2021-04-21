@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from '../API/axios'
 import Swal from '../API/sweetalert'
 import router from '../router/index'
+// import basicSwal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -291,12 +292,14 @@ export default new Vuex.Store({
         showCancelButton: true,
         showCloseButton: false,
         title: 'Are you sure?',
-        text: 'This will permanently deleted all the cards in this deck too',
-        icon: 'warning',
+        text: 'This will permanently delete all the cards in this deck too!',
         confirmButtonText: 'Yes, delete it!',
         confirmButtonColor: 'firebrick',
         cancelButtonText: 'On second thought...',
         cancelButtonColor: 'forestgreen',
+        imageUrl: 'https://i.imgur.com/nRpzjrC.png',
+        imageHeight: 170,
+        imageAlt: 'Pepe monkas',
         timer: undefined
       })
         .then((result) => {
@@ -442,7 +445,29 @@ export default new Vuex.Store({
         }
       })
         .then(response => {
+          if (response.data.level > context.state.profile.level) {
+            const randomMsg = [
+              "Being smart doesn't hurt. And a little luck now and then is nice. But the key is patience and hard work. And when it pays off, it's SWEET",
+              "It isn't over yet. You can still get smarter, or cleverer, or more experienced, or meaner -- it's up to you from now on",
+              "It's the most amazing thing. Yesterday it was hard, and today it is easy. Just a good night's sleep, and yesterday's mysteries are today's masteries.",
+              "You realize that you are catching on to the secret of success. It's just a matter of concentration and persistence",
+              "Don't trying and thinking too hard. Just be yourself. Do the little things, and the big things take care of themselves"
+            ]
 
+            Swal.fire({
+              title: 'Aw yeaaa, you just leveled up!',
+              text: randomMsg[Math.floor((Math.random() * 5))],
+              imageUrl: 'https://i.imgur.com/nyZN5N8.png',
+              showConfirmButton: true,
+              showCloseButton: false,
+              imageHeight: 180,
+              toast: false,
+              position: 'center',
+              timer: undefined
+            })
+
+            context.dispatch('getUserProfile', { id: context.state.loggedUser.id })
+          }
         })
         .catch(err => {
           let msg = err.response.data.error
@@ -470,12 +495,14 @@ export default new Vuex.Store({
         showCancelButton: true,
         showCloseButton: false,
         title: 'Are you sure?',
-        text: 'This will permanently deleted the card',
-        icon: 'warning',
+        text: 'This will permanently delete the card!',
         confirmButtonText: 'Yes, delete it!',
         confirmButtonColor: 'firebrick',
         cancelButtonText: 'On second thought...',
         cancelButtonColor: 'forestgreen',
+        imageUrl: 'https://i.imgur.com/nRpzjrC.png',
+        imageHeight: 170,
+        imageAlt: 'Pepe monkas',
         timer: undefined
       })
         .then((result) => {
@@ -507,6 +534,10 @@ export default new Vuex.Store({
               })
           }
         })
+    },
+
+    testSwal (context, payload) {
+
     }
   }
 })

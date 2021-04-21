@@ -8,6 +8,10 @@
       <span id="card-back" v-if="isAnswered">{{ card.back }}</span>
     </div>
 
+    <div id="no-card-left-msg" v-if="!card">
+      <span>You are done with this deck for today!</span>
+    </div>
+
     <div id="show-after-answer">
       <button @click="showAnswer" v-if="!isAnswered && card && card.front" class="standalone-button btn btn-primary">Show Answer</button> <br>
       <button v-if="isAnswered" @click="updateMastery(0, 'again')" class="button-trio btn btn-danger">Again</button>
@@ -18,12 +22,15 @@
 </template>
 
 <script>
+import Swal from '../API/sweetalert'
+
 export default {
   name: 'StudyDeck',
 
   created () {
     this.$store.commit('setAnswered', { isAnswered: false })
     this.$store.dispatch('getDeck', { DeckId: this.$route.params.id })
+    this.$store.dispatch('getUserProfile', { id: this.loggedUser.id })
   },
 
   computed: {
@@ -41,6 +48,10 @@ export default {
 
     card () {
       return this.$store.state.card
+    },
+
+    loggedUser () {
+      return this.$store.state.loggedUser
     }
   },
 
@@ -62,6 +73,18 @@ export default {
             this.$store.commit('sendCardToBack')
           } else {
             this.$store.commit('removeClearedCard')
+            if (!this.dueCards.length) {
+              Swal.fire({
+                title: 'Congrats, you just finished this deck for now!',
+                imageUrl: 'https://i.imgur.com/xRqaHSZ.png',
+                imageHeight: 180,
+                showConfirmButton: true,
+                showCloseButton: false,
+                toast: false,
+                position: 'center',
+                timer: undefined
+              })
+            }
           }
         })
     }
@@ -72,6 +95,11 @@ export default {
 <style scoped>
 #study-deck-page {
   position:relative
+}
+
+#no-card-left-msg {
+  font-size: 1.8em;
+  font-weight: bold
 }
 
 #card-remaining {

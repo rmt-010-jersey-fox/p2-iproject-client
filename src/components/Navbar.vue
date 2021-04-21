@@ -1,13 +1,13 @@
 <template>
 <header>
   <div>
-    <h1>Flashero</h1>
+    <h1 @click="toHome()">Flashero</h1>
   </div>
 
   <nav>
     <ul>
       <!-- <router-link :to="{ name: 'Home'}"><li>About</li></router-link> -->
-      <router-link v-if="loginStatus" :to="{ name: 'Home'}"><li>Home</li></router-link>
+      <router-link v-if="loginStatus" :to="{ name: 'CardAdd'}"><li>Add</li></router-link>
       <router-link v-if="loginStatus" :to="{ name: 'User', params: { id: loggedUser.id }}"><li>{{ loggedUser.username }}</li></router-link>
       <li v-if="loginStatus" @click="logout">Logout</li>
     </ul>
@@ -34,12 +34,20 @@ export default {
   methods: {
     ...mapActions([
       'logout'
-    ])
+    ]),
+
+    toHome () {
+      this.$router.push({ name: 'Home' })
+    }
   }
 }
 </script>
 
 <style scoped>
+  h1:hover {
+    cursor: pointer
+  }
+
   li:hover {
     cursor: pointer;
   }

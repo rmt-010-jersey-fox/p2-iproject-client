@@ -3,7 +3,6 @@
     <h2>My Decks Collection</h2>
     <ul>
       <a href="#" data-bs-toggle="modal" data-bs-target="#deckformmodal"><li>Create a New Deck</li></a>
-      <router-link :to="{ name: 'CardAdd'}"><li>Add a New Card</li></router-link>
     </ul>
     <table id="collection-table">
       <tr>
