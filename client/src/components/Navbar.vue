@@ -2,7 +2,7 @@
   <nav class="navbar navbar-dark bg-dark" style="height: 6rem;">
     <div class="container-fluid">
       <div class="col-4">
-        <a class="navbar-brand">gammingDB</a>
+        <router-link class="navbar-brand" to="/" >gammingDB</router-link>
       </div>
       <div class="col-4">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
