@@ -2,6 +2,7 @@
   <section class="home-pg">
     <div class="home-left">
       <h1>Home-1</h1>
+      <div style="width: 300px; height: 200px" v-html="highlights[1].link"></div>
       <div class="matches-container">
         <h1>GAMEWEEK 33</h1>
         <!-- Match-card -->
@@ -59,7 +60,15 @@ export default {
   },
   computed: {
     matches () {
-      return this.$store.state.matches
+      let i = 1
+      const allMatches = this.$store.state.matches
+      allMatches.forEach(e => {
+        e.id = i++
+      })
+      return allMatches
+    },
+    highlights () {
+      return this.$store.state.highlights
     }
   }
 }

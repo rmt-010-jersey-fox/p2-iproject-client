@@ -12,6 +12,11 @@ const routes = [
     component: Landing
   },
   {
+    path: '/myTeam',
+    name: 'MyTeam',
+    component: () => import('../components/UserTeam.vue')
+  },
+  {
     path: '/',
     name: 'Home',
     component: Home

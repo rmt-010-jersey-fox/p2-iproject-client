@@ -1,10 +1,10 @@
 <template>
   <section class="navbar">
     <div class="navbar-item">
-      <a class="navbar-link" href="#">My FPL Team Checker</a>
+      <router-link to="/"><p class="navbar-link">My FPL Team Checker</p></router-link>
     </div>
     <div v-if="loggedIn" class="navbar-item">
-      <a class="navbar-link" href="#">My FPL Team</a>
+      <router-link to="/myTeam"><p class="navbar-link">My FPL Team</p></router-link>
     </div>
     <div v-if="loggedIn" class="navbar-item">
       <a class="navbar-link" href="#">Highlights</a>

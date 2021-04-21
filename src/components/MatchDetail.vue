@@ -1,0 +1,44 @@
+<template>
+  <div class="player-list container mt-5">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Club</th>
+          <th scope="col">Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>N'Golo Kanté</td>
+          <td>Chelsea FC</td>
+          <td>Midfielder</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Timo Werner</td>
+          <td>Chelsea FC</td>
+          <td>Attacker</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Declan Rice</td>
+          <td>West Ham United</td>
+          <td>Midfielder</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
