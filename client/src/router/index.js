@@ -49,4 +49,21 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  /* must call `next` */
+  if (localStorage.access_token) {
+    if (to.name === 'SignIn' || to.name === 'LandingPage') {
+      next('/dashboard')
+    } else {
+      next()
+    }
+  } else {
+    if (to.name === 'LandingPage' || to.name === 'SignIn') {
+      next()
+    } else {
+      next('/SignIn')
+    }
+  }
+})
+
 export default router

@@ -24,21 +24,25 @@
                 X
               </button>
             </div>
-            <div class="card-body m-4 p-0 font-monospace">
+            <div class="card-body m-3 p-0 font-monospace">
               <div v-if="stateSign">
-                <SignInForm></SignInForm><br />
-                <p>
+                <SignInForm></SignInForm>
+                <p class="m-1">
                   Dont have an account?
-                  <a @click.prevent="stateSign = !stateSign" href=""
+                  <a
+                    @click.prevent="stateSign = !stateSign"
+                    class="text-primary"
                     >Sign up.</a
                   >
                 </p>
               </div>
               <div v-else>
-                <SignUpForm></SignUpForm><br />
-                <p>
+                <SignUpForm></SignUpForm>
+                <p class="m-1">
                   Already have account?
-                  <a @click.prevent="stateSign = !stateSign" href=""
+                  <a
+                    @click.prevent="stateSign = !stateSign"
+                    class="text-primary"
                     >Sign in.</a
                   >
                 </p>
@@ -52,41 +56,47 @@
 </template>
 
 <script>
-import SignInForm from "../components/SignInForm";
-import SignUpForm from "../components/SignUpForm";
+import SignInForm from '../components/SignInForm'
+import SignUpForm from '../components/SignUpForm'
 export default {
-  name: "SignIn",
-  data() {
+  name: 'SignIn',
+  data () {
     return {
-      stateSign: false,
+      stateSign: true,
       quote: {
-        content: "",
-        author: ""
+        content: '',
+        author: ''
       }
-    };
+    }
   },
   components: {
     SignInForm,
     SignUpForm
   },
   methods: {
-    landingPage() {
-      this.$router.replace("/").catch(() => {});
+    landingPage () {
+      this.$router.replace('/').catch(() => {})
     },
-    async fetchQuote() {
+    async fetchQuote () {
       try {
-        const { data } = await this.$store.dispatch("fetchQuote");
-        console.log(data);
-        this.quote = data;
+        const { data } = await this.$store.dispatch('fetchQuote')
+        console.log(data)
+        this.quote = data
       } catch (error) {
-        console.log(error);
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
+        console.log(error)
       }
     }
   },
-  created() {
-    this.fetchQuote();
+  created () {
+    this.fetchQuote()
   }
-};
+}
 </script>
 
 <style scoped>

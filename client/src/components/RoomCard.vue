@@ -46,11 +46,6 @@ export default {
       this.$store.dispatch("fetchUser", { username: this.room.User.username });
     },
     joinRoom() {
-      let payload = {
-        room: this.room.User.username,
-        sender: localStorage.username,
-        avatarUrl: localStorage.avatarUrl
-      };
       this.$socket.emit("join-room", this.room.User.username);
       this.$router
         .push(`/dashboard/chat/${this.room.User.username}`)

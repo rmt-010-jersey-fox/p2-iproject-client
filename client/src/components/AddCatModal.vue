@@ -38,6 +38,12 @@ export default {
         this.imageUrl = data.image_url
         console.log(data)
       } catch (error) {
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
         console.log(error)
       }
     },
@@ -51,6 +57,12 @@ export default {
         this.$emit('closeModal', 'add-modal')
         console.log(data)
       } catch (error) {
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
         console.log(error)
       }
     }

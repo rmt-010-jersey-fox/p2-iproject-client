@@ -9,7 +9,7 @@
             <div class="card card-bordered">
               <div class="card-header">
                 <h4 class="card-title"><strong>Chat</strong></h4>
-                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">{{
+                <a class="btn btn-xs btn-secondary" data-abc="true">{{
                   room
                 }}</a>
               </div>
@@ -58,10 +58,10 @@
                   <i class="fa fa-paperclip file-browser"></i>
                   <input type="file" />
                 </span>
-                <a class="publisher-btn" href="#" data-abc="true"
+                <a class="publisher-btn" data-abc="true"
                   ><i class="fa fa-smile"></i
                 ></a>
-                <a class="publisher-btn text-info" href="#" data-abc="true"
+                <a class="publisher-btn text-info" data-abc="true"
                   ><i class="fa fa-paper-plane"></i
                 ></a>
               </div>
@@ -74,51 +74,51 @@
 </template>
 
 <script>
-import ChatMessage from "./ChatMessage";
-import { mapState } from "vuex";
+import ChatMessage from './ChatMessage'
+import { mapState } from 'vuex'
 export default {
-  name: "Chat",
+  name: 'Chat',
   components: {
     ChatMessage
   },
   computed: {
-    ...mapState(["wsChat"]),
-    filteredChat() {
+    ...mapState(['wsChat']),
+    filteredChat () {
       const temp = this.wsChat.filter(
         el => el.room === this.$route.params.room
-      );
-      return temp;
+      )
+      return temp
     },
-    room() {
-      return this.$route.params.room;
+    room () {
+      return this.$route.params.room
     }
   },
-  data() {
+  data () {
     return {
       avatarUrl: localStorage.avatarUrl,
       sender: localStorage.username,
-      content: ""
-    };
+      content: ''
+    }
   },
   methods: {
-    pushChat() {
+    pushChat () {
       const payload = {
         room: this.room,
         sender: this.sender,
         avatarUrl: this.avatarUrl,
         content: this.content
-      };
-      this.$store.commit("pushChat", payload);
-      this.$socket.emit("sendLiveChat", payload);
-      this.content = "";
+      }
+      this.$store.commit('pushChat', payload)
+      this.$socket.emit('sendLiveChat', payload)
+      this.content = ''
     }
   },
   sockets: {
-    broadcastLiveChat(data) {
-      this.$store.commit("pushChat", data);
+    broadcastLiveChat (data) {
+      this.$store.commit('pushChat', data)
     }
   }
-};
+}
 </script>
 
 <style scoped>

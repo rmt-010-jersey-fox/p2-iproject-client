@@ -41,6 +41,12 @@ export default {
         const username = this.$route.params.username
         this.$store.dispatch('fetchUser', { username })
       } catch (error) {
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
         console.log(error)
       }
     }

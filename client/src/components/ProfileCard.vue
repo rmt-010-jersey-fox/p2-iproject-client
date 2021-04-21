@@ -55,14 +55,14 @@
 </template>
 
 <script>
-import CatCard from "../components/CatCard";
-import PhotoCard from "../components/PhotoCard";
-import AddCatModal from "../components/AddCatModal";
-import { mapState } from "vuex";
+import CatCard from '../components/CatCard'
+import PhotoCard from '../components/PhotoCard'
+import AddCatModal from '../components/AddCatModal'
+import { mapState } from 'vuex'
 export default {
-  name: "ProfileCard",
-  data() {
-    return {};
+  name: 'ProfileCard',
+  data () {
+    return {}
   },
   components: {
     CatCard,
@@ -70,32 +70,32 @@ export default {
     AddCatModal
   },
   computed: {
-    isOwner() {
-      return this.$route.params.username === localStorage.username;
+    isOwner () {
+      return this.$route.params.username === localStorage.username
     },
-    ...mapState(["userProfile", "cats"]),
-    getCatPhoto() {
-      const photos = [];
+    ...mapState(['userProfile', 'cats']),
+    getCatPhoto () {
+      const photos = []
       this.cats.forEach(el => {
-        photos.push(...el.Photos);
-      });
-      return photos;
+        photos.push(...el.Photos)
+      })
+      return photos
     }
   },
   methods: {
-    fetchUser() {
-      const username = this.$route.params.username;
-      this.$store.dispatch("fetchUser", { username });
+    fetchUser () {
+      const username = this.$route.params.username
+      this.$store.dispatch('fetchUser', { username })
     },
-    closeModal(modal) {
-      this.$bvModal.hide(modal);
-      this.fetchUser();
+    closeModal (modal) {
+      this.$bvModal.hide(modal)
+      this.fetchUser()
     }
   },
-  created() {
-    this.fetchUser();
+  created () {
+    this.fetchUser()
   }
-};
+}
 </script>
 
 <style></style>

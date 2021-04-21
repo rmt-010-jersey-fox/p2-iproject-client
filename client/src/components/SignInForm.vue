@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="card-title text-center">Login</h4>
+    <h4 class="card-title text-center mb-1">Sign In</h4>
     <form @submit.prevent="login">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -21,7 +21,9 @@
           v-model="password"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Sign In</button>
+      <button type="submit" class="btn btn-outline-dark orn">
+        Sign In
+      </button>
     </form>
   </div>
 </template>
@@ -54,7 +56,16 @@ export default {
         };
         this.$socket.emit("loginUser", payload);
       } catch (error) {
+        const msg = error.response.data.message;
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text: msg
+        });
         console.log(error);
+      } finally {
+        this.email = "";
+        this.password = "";
       }
     }
   }

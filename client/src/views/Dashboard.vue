@@ -42,7 +42,7 @@
         <div class="p-2">
           <select
             v-model="optionActive"
-            class="form-control btn-outline-success border-0 "
+            class="form-control btn-outline-success px-0 border-0 "
           >
             <option>Active User</option>
             <option>Available Room</option>
@@ -78,65 +78,77 @@
 </template>
 
 <script>
-import ActiveUser from "../components/ActiveUser";
-import RoomCard from "../components/RoomCard";
-import { mapState } from "vuex";
+import ActiveUser from '../components/ActiveUser'
+import RoomCard from '../components/RoomCard'
+import { mapState } from 'vuex'
 export default {
-  name: "Dashboard",
-  data() {
+  name: 'Dashboard',
+  data () {
     return {
       image: localStorage.avatarUrl,
       username: localStorage.username,
-      optionActive: "Active User"
-    };
+      optionActive: 'Active User'
+    }
   },
   components: { ActiveUser, RoomCard },
   computed: {
-    ...mapState(["activeUser", "rooms"])
+    ...mapState(['activeUser', 'rooms'])
   },
   methods: {
-    async fetchCatImage() {
+    async fetchCatImage () {
       try {
-        const { data } = await this.$store.dispatch("fetchCatImage");
-        this.image = data.image_url;
-        console.log(data);
+        const { data } = await this.$store.dispatch('fetchCatImage')
+        this.image = data.image_url
+        console.log(data)
       } catch (error) {
-        console.log(error);
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
+        console.log(error)
       }
     },
-    signOut() {
-      localStorage.clear();
-      this.$router.push({ name: "LandingPage" }).catch(() => {});
+    signOut () {
+      localStorage.clear()
+      this.$router.push({ name: 'LandingPage' }).catch(() => {})
     },
-    profilePage(username) {
-      this.$router.push(`/dashboard/profile/${username}`).catch(() => {});
-      this.$store.dispatch("fetchUser", { username });
+    profilePage (username) {
+      this.$router.push(`/dashboard/profile/${username}`).catch(() => {})
+      this.$store.dispatch('fetchUser', { username })
     },
-    liveChat() {
-      this.$router.push("/dashboard/chat/live-chat").catch(() => {});
+    liveChat () {
+      this.$router.push('/dashboard/chat/live-chat').catch(() => {})
     },
-    async getRooms() {
+    async getRooms () {
       try {
-        const data = await this.$store.dispatch("getRooms");
-        console.log(data);
+        const data = await this.$store.dispatch('getRooms')
+        console.log(data)
       } catch (error) {
-        console.log(error);
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
+        console.log(error)
       }
     }
   },
   sockets: {
-    activeUser(data) {
-      this.$store.commit("activeUser", data);
+    activeUser (data) {
+      this.$store.commit('activeUser', data)
     },
-    getActiveUser(data) {
-      this.$store.commit("activeUser", data);
+    getActiveUser (data) {
+      this.$store.commit('activeUser', data)
     }
   },
-  created() {
-    this.$socket.emit("checkActiveUser");
-    this.getRooms();
+  created () {
+    this.$socket.emit('checkActiveUser')
+    this.getRooms()
   }
-};
+}
 </script>
 
 <style>

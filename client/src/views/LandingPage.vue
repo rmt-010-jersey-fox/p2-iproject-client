@@ -18,8 +18,8 @@
             </h1>
             <button
               @click="SignInPage"
-              class="btn btn-outline-light text-white border-0 fs-6 font-monospace p-2 m-2"
-              style="border-radius: 30px; background-color: #d00000"
+              class="btn btn-outline-white text-white fs-6 font-monospace py-2 px-4 m-2"
+              style="border-radius: 30px; background-color: #d00000;"
             >
               Sign In
             </button>
@@ -32,14 +32,14 @@
 
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
   components: {},
   methods: {
-    SignInPage() {
-      this.$router.push({ name: "SignIn" }).catch(() => {});
+    SignInPage () {
+      this.$router.push({ name: 'SignIn' }).catch(() => {})
     }
   }
-};
+}
 </script>
 <style>
 .home {

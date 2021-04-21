@@ -25,22 +25,22 @@
 
 <script>
 export default {
-  name: "ChatMessage",
-  props: ["message"],
+  name: 'ChatMessage',
+  props: ['message'],
   computed: {
-    isUser() {
-      return this.message.sender === localStorage.username;
+    isUser () {
+      return this.message.sender === localStorage.username
     }
   },
   methods: {
-    userPage() {
+    userPage () {
       this.$router
         .push(`/dashboard/profile/${this.message.sender}`)
-        .catch(() => {});
-      this.$store.dispatch("fetchUser", { username: this.message.sender });
+        .catch(() => {})
+      this.$store.dispatch('fetchUser', { username: this.message.sender })
     }
   }
-};
+}
 </script>
 
 <style scoped>

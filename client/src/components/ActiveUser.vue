@@ -24,17 +24,17 @@
 
 <script>
 export default {
-  name: "ActiveUser",
-  props: ["user"],
+  name: 'ActiveUser',
+  props: ['user'],
   methods: {
-    profilePage() {
+    profilePage () {
       this.$router
         .push(`/dashboard/profile/${this.user.sender}`)
-        .catch(() => {});
-      this.$store.dispatch("fetchUser", { username: this.user.sender });
+        .catch(() => {})
+      this.$store.dispatch('fetchUser', { username: this.user.sender })
     }
   }
-};
+}
 </script>
 
 <style></style>
