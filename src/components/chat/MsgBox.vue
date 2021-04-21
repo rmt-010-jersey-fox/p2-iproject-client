@@ -33,6 +33,7 @@ export default {
       const input = { UserId, inputMsg }
       this.$store.commit('PUSH_MSG', input)
       this.inputMsg = ''
+      this.$socket.emit('emit_method')
     }
   },
   computed: {
