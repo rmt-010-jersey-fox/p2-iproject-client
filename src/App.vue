@@ -8,6 +8,7 @@
 <script>
 import Navbar from '../src/components/Navbar'
 import HFooter from 'vue-hacktiv-footer'
+
 export default {
   name: 'App',
   components: {

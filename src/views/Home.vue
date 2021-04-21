@@ -62,6 +62,7 @@ export default {
     searchMovie () {
       const search = this.search
       this.$store.dispatch('searchMovie', { search })
+      this.search = ''
     }
   },
   computed: {
