@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router'
 import axios from '../api/axios'
+import Swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -50,9 +51,21 @@ const store = new Vuex.Store({
           localStorage.setItem('name', res.data.name)
           context.commit('SETLOGIN', { status: true })
           context.commit('SETNAME', { name: res.data.name })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Logged In',
+            showConfirmButton: false,
+            timer: 1500
+          })
           router.push({ name: 'Home' })
         })
         .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Invalid email/password!'
+          })
           console.log(err)
         })
     },
@@ -68,6 +81,13 @@ const store = new Vuex.Store({
         }
       })
         .then(res => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Registered',
+            showConfirmButton: false,
+            timer: 1500
+          })
           router.push({ name: 'Login' })
         })
         .catch(err => {

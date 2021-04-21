@@ -24,24 +24,26 @@
             <button type="button" @click="deposit" class="btn btn-success">Deposit</button>
         </div>
         <h3 class="col-12">Deposited History</h3>
-        <table class="table col-12 my-3 table-dark table-striped">
-            <thead>
-                <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Condition</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Saldo</th>
-                <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <Deposited
-                v-for="waste in UserWastes"
-                :key="waste.id"
-                :waste="waste"
-                />
-            </tbody>
-        </table>
+        <div style="max-height: 70vh; overflow-y: scroll">
+          <table class="table col-12 my-3 table-dark table-striped">
+              <thead>
+                  <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Condition</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Saldo</th>
+                  <th scope="col">Date</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <Deposited
+                  v-for="waste in UserWastes"
+                  :key="waste.id"
+                  :waste="waste"
+                  />
+              </tbody>
+          </table>
+        </div>
       </div>
   </div>
 </template>
