@@ -30,7 +30,6 @@ export default new Vuex.Store({
       state.mangaList = payload;
     },
     getMangaId(state, payload) {
-      // console.log('masuk ga sih')
       state.mangaId = payload;
     },
     getMangaDetail(state, payload) {
@@ -63,7 +62,6 @@ export default new Vuex.Store({
         },
       })
         .then((response) => {
-          // console.log(response)
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -73,7 +71,7 @@ export default new Vuex.Store({
           });
           localStorage.setItem("access_token", response.data.access_token);
           context.commit("setLogin", true);
-          router.push("/"); //karena import gausah this
+          router.push("/"); 
         })
         .catch((err) => {
           Swal.fire({
@@ -86,7 +84,6 @@ export default new Vuex.Store({
         });
     },
     userLogout() {
-      console.log("masuk");
       localStorage.clear();
       this.state.isLogin = false;
       router.push("/login");
@@ -130,7 +127,7 @@ export default new Vuex.Store({
     fetchManga(context) {
       axios({
         method: "get",
-        baseURL: "https://go-mangamee.herokuapp.com/browse",
+        baseURL: "https://go-mangamee.herokuapp.com/browse", //PENGGUNAAN API MANGAMEE
       })
         .then((response) => {
           context.commit("getManga", response.data);
@@ -156,7 +153,6 @@ export default new Vuex.Store({
       if (!localStorage.access_token) {
         router.push("/login");
       }
-      console.log(payload)
       axios({
         method: "post",
         url: "/bookmarks",
@@ -180,7 +176,6 @@ export default new Vuex.Store({
         });
     },
     fetchBookmarks(context) {
-      console.log("masuk");
       axios({
         method: "get",
         url: "/bookmarks",
@@ -238,7 +233,6 @@ export default new Vuex.Store({
         baseURL: `https://go-mangamee.herokuapp.com/page?lang=EN&chapter=${mangaChapter}&mangaTitle=${mangaTitle}`,
       })
         .then((response) => {
-          console.log("masuyk response");
           context.commit("getPages", response.data.Image);
         })
         .catch((err) => {
@@ -251,24 +245,19 @@ export default new Vuex.Store({
         baseURL: `https://go-mangamee.herokuapp.com/search?mangaTitle=${payload.mangaTitle}&lang=EN`,
       })
       .then((response) => {
-        console.log(response.data)
         context.commit("getSearchResult", response.data);
-        console.log(this.state.searchResult)
       })
       .catch((err) => {
         console.log(err);
       });
     },
     topRated(context){
-      console.log('jalan')
       axios({
         method: "get",
-        baseURL: "https://api.jikan.moe/v3/top/manga"
+        baseURL: "https://api.jikan.moe/v3/top/manga" //PENGGUNAAN API JIKAN
       })
       .then((response) => {
-        console.log(response.data.top)
         context.commit("getTopRated", response.data.top);
-        // console.log(this.state.searchResult)
       })
       .catch((err) => {
         console.log(err);

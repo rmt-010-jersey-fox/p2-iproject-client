@@ -1,6 +1,6 @@
 <template>
   <div>
- 
+
     <div v-for="(Image, i) in page" :key="i">
       <img :src="Image.Image" alt="" class="card-img-top" style="width: 50%;" />
     </div>
