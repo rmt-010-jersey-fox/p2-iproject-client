@@ -159,6 +159,7 @@ export default {
         comment: this.komentar
       }
       this.$store.dispatch('addComment', payload)
+      this.komentar = ''
     },
     deleteWishlist(isbn) {
       this.$store.dispatch('deleteWishlist', isbn)

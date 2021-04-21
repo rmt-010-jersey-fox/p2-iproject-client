@@ -47,7 +47,7 @@ export default {
   components : {BookCard},
   created () {
     this.$store.dispatch('fetchBooks', this.$route.params.category)
-    console.log(this.$store.state.books)
+    // console.log(this.$store.state.books)
   }
 }
 </script>

@@ -126,10 +126,10 @@ export default new Vuex.Store({
         })
     },
     fetchOneBook(context, payload) {
-      console.log(payload);
+      // console.log(payload);
       axios({
         method: 'GET',
-        url: `/book/${payload}`,
+        url: `/bookDetails/${payload}`,
         headers: {
           token: localStorage.getItem('token')
         }
@@ -165,7 +165,7 @@ export default new Vuex.Store({
     fetchComments(context, payload) {
       axios({
         method: 'GET',
-        url: `/favouriteBooks/comment/${payload}`,
+        url: `/favouriteBooks/comments/${payload}`,
         headers: {
           token: localStorage.getItem('token')
         }
@@ -180,7 +180,7 @@ export default new Vuex.Store({
     fetchWishLikeAmount(context, payload) {
       axios({
         method: 'GET',
-        url: `/favouriteBooks/wishLikeAmount/${payload}`,
+        url: `/favouriteBooks/likes/${payload}`,
         headers: {
           token: localStorage.getItem('token')
         }
@@ -217,7 +217,7 @@ export default new Vuex.Store({
     addLike(context, payload) {
       axios({
         method: 'POST',
-        url: `favouriteBooks/like`,
+        url: `favouriteBooks/likes`,
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -237,8 +237,8 @@ export default new Vuex.Store({
     },
     dislike(context, payload) {
       axios({
-        method: 'POST',
-        url: `favouriteBooks/dislike`,
+        method: 'PATCH',
+        url: `favouriteBooks/likes`,
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -259,7 +259,7 @@ export default new Vuex.Store({
     addComment(context, payload) {
       axios({
         method: 'POST',
-        url: '/favouriteBooks/comment/',
+        url: '/favouriteBooks/comments/',
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -279,8 +279,8 @@ export default new Vuex.Store({
     },
     editComment(context, payload) {
       axios({
-        method: 'POST',
-        url: `/favouriteBooks/editComment/`,
+        method: 'PATCH',
+        url: `/favouriteBooks/comments/`,
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -301,7 +301,7 @@ export default new Vuex.Store({
     deleteComment(context, payload) {
       axios({
         method: 'DELETE',
-        url: `/favouriteBooks/deleteComment/${payload}`,
+        url: `/favouriteBooks/comments/${payload}`,
         data: payload,
         headers: {
           token: localStorage.getItem('token')
