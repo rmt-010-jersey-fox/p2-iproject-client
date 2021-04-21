@@ -7,11 +7,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    ayatSurahs: []
+    ayatSurahs: [],
+    hadists: []
   },
   mutations: {
     FETCH_AYAT (state, data) {
       state.ayatSurahs = data
+    },
+    FETCH_HADIST (state, data) {
+      state.hadists = data
     }
   },
   actions: {
@@ -55,6 +59,26 @@ export default new Vuex.Store({
           }
           // context.dispatch('fetchSurah')
           router.push('/surah').catch(() => {})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    getHadist (context, payload) {
+      console.log(payload)
+      axios.post('/hadist', payload, {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          console.log(data, 'Di Store')
+          const arr = []
+          arr.push(data)
+          context.commit('FETCH_HADIST', arr)
+
+          router.push('/hadist').catch(() => {})
         })
         .catch(err => {
           console.log(err)
