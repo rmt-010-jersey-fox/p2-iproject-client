@@ -7,6 +7,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <img class="mb-3" :src="currentImage.imgUrl" alt="" style="width: 50%;">
                 <p class="h3 text-muted mb-3">{{currentImage.description}}</p>
+                <p class="h4 text-muted mb-3">By {{currentImage.User.username}}</p>
                 <div>
                     <button @click="handleFavourite(currentImage.id)" class="btn btn-success mb-3 mr-3">ADD TO FAVORITES</button>
                     <button @click="handleEdit(currentImage.id)" class="btn btn-info mb-3 mr-3">EDIT IMAGE</button>
