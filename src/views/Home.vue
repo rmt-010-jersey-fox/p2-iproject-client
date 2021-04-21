@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <CardRandom 
+    />
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import CardRandom from '../components/CardRandom'
 export default {
   name: 'Home',
+  // props: ['random'],
   components: {
-    HelloWorld
+    CardRandom
+  },
+  methods: {
+    random () {
+      // ! ini nih
+      this.$store.dispatch('fetchRandom')
+    }
+  },
+  mounted () {
+    this.random()
+  },
+  computed: {
+    randomRecipe () {
+      console.log(this.$store.state.random, `<<< ini data card random`);
+    }
   }
 }
 </script>

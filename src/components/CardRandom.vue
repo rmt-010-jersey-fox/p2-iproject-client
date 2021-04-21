@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-</head>
-
-<body>
-<!-- navbar -->
-<!-- card -->
-<div class="container">
+<template>
+  <div class="container">
+    <!-- <h1>Random Diet Recipe</h1> -->
+    <h1 class="animate__animated animate__bounce">Random Diet Recipe</h1>
   <div class="row">
     <div class="col-sm">
       One of three columns
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
+            <img src="" class="card-img" alt="">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -34,7 +24,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
+            <img src="" class="card-img" alt="">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -50,7 +40,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
+            <img src="" class="card-img" alt="">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -63,7 +53,18 @@
     </div>
   </div>
 </div>
+</template>
 
-</body>
+<script>
+export default {
+  name: 'CardRandom',
+  methods: {
+  }
+}
+</script>
 
-</html>
+<style>
+  h1 {
+    font-family: 'Dela Gothic One', cursive;
+  }
+</style>
