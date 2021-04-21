@@ -17,7 +17,6 @@ export default new Vuex.Store({
       state.isLogin = payload
     },
     FETCH_ANIME (state, payload) {
-      console.log(payload)
       state.listAnime = payload
     },
     GET_ANIME (state, payload) {
@@ -42,7 +41,6 @@ export default new Vuex.Store({
       state.quotes = payload
     },
     MANGA (state, payload) {
-      console.log(payload)
       state.mangas = payload
     }
   },
@@ -85,7 +83,6 @@ export default new Vuex.Store({
       })
     },
     fetchAnime (context) {
-      console.log('di fetch anime')
       axios({
         url: '/anime',
         method: 'get',
@@ -94,7 +91,6 @@ export default new Vuex.Store({
         }
       })
         .then(res => {
-          console.log(res)
           context.commit('FETCH_ANIME', res.data)
         })
         .catch(err => {
@@ -163,7 +159,12 @@ export default new Vuex.Store({
           context.commit('QUOTES_ANIME', res.data)
         })
         .catch(err => {
-          console.log(err)
+          this.$swal.fire({
+            icon: 'error',
+            title: `${err.response.status} ${err.response.statusText}`,
+            text: `${err.response.message}`,
+            timer: 5000
+          })
         })
     },
     mangaAnime (context) {
@@ -178,7 +179,12 @@ export default new Vuex.Store({
           context.commit('MANGA', res.data)
         })
         .catch(err => {
-          console.log(err)
+          this.$swal.fire({
+            icon: 'error',
+            title: `${err.response.status} ${err.response.statusText}`,
+            text: `${err.response.message}`,
+            timer: 5000
+          })
         })
     }
   },
