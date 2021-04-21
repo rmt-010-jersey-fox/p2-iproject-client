@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/74371f7331.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- You MUST include jQuery before Fomantic -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+    <title>RS. H-8</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container">
+        <!-- FIRST OPEN PAGE -->
+        <!-- NAVBAR -->
+        <section>
+          <nav
+            class="navbar is-fixed-top has-shadow"
+            role="navigation"
+            aria-label="main navigation"
+          >
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                  <img
+                    src="https://bulma.io/images/bulma-logo.png"
+                    width="112"
+                    height="28"
+                  />
+                </a>
+
+                <a
+                  role="button"
+                  class="navbar-burger"
+                  aria-label="menu"
+                  aria-expanded="false"
+                  data-target="navbarBasicExample"
+                >
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                  <a class="navbar-item"> Home </a>
+                  <a class="navbar-item"> Jadwal Dokter </a>
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link"> More </a>
+
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item"> Profil </a>
+                      <a class="navbar-item"> Jobs </a>
+                      <a class="navbar-item"> Hubungi Kami </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+                      <a class="button is-primary" id="register">
+                        <strong>Sign up</strong>
+                      </a>
+                      <a class="button is-light" id="login"> Sign in </a>
+                      <a class="button is-danger"> Logout </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </section>
+        <!-- INTRO PAGE -->
+        <section>
+          <div class="container">
+            <img src="./assets/download.jpeg" alt="" />
+            <div class="box">
+              <div class="content has-text-centered">
+                Ini nanti diisi artikel, dikanan gambar perawat numpukin
+                gambarnya
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- END FIRST OPEN PAGE -->
+        <!-- LOGIN FORM -->
+        <section>
+          <div class="ui mini basic modal" id="login-form">
+            <div class="container">
+              <div class="level">
+                <div class="level-item has-text-centered">
+                  <p class="title" style="color: white">Form Login</p>
+                </div>
+              </div>
+              <form>
+                <div class="field">
+                  <label class="label" style="color: white">Email</label>
+                  <div class="control has-icons-left">
+                    <input
+                      class="input"
+                      type="email"
+                      placeholder="expample@mail.com"
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label" style="color: white">Password</label>
+                  <div class="control has-icons-left">
+                    <input
+                      class="input"
+                      type="password"
+                      placeholder="********"
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link" id="submit-login">
+                      Submit
+                    </button>
+                  </div>
+                  <div class="control">
+                    <button class="button is-link is-light" id="cancel-login">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <!-- END LOGIN FORM -->
+        <!-- REGISTER FORM -->
+        <section>
+          <div class="ui small basic modal" id="register-form">
+            <div class="container">
+              <div class="level">
+                <div class="level-item has-text-centered">
+                  <p class="title" style="color: white">Form Register</p>
+                </div>
+              </div>
+              <form>
+                <!-- NAMA DEPAN, BELAKANG, TTL -->
+                <div class="field is-horizontal">
+                  <div class="field-body">
+                    <div class="field">
+                      <label class="label" style="color: white"
+                        >Nama Depan</label
+                      >
+                      <div class="control">
+                        <div class="control has-icons-left has-icons-right">
+                          <input
+                            class="input"
+                            type="text"
+                            placeholder="e.g John"
+                          />
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" style="color: white"
+                        >Nama Belakang</label
+                      >
+                      <div class="control">
+                        <div class="control has-icons-left has-icons-right">
+                          <input
+                            class="input"
+                            type="text"
+                            placeholder="e.g Doe"
+                          />
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" style="color: white"
+                        >Tanggal Lahir</label
+                      >
+                      <div class="control">
+                        <div class="control has-icons-left has-icons-right">
+                          <input class="input" type="date" />
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ALAMAT KTP TELPON GENDER-->
+                <div class="field is-horizontal">
+                  <div class="field-body">
+                    <div class="field">
+                      <label class="label" style="color: white">Alamat</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <input
+                          class="input"
+                          type="text"
+                          placeholder="e.g Jl. Ahmad Yani"
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-house-user"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" style="color: white">No. KTP</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <input
+                          class="input"
+                          type="text"
+                          placeholder="e.g 123456789"
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-address-card"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" style="color: white"
+                        >No. Telpon</label
+                      >
+                      <div class="control has-icons-left has-icons-right">
+                        <input
+                          class="input"
+                          type="text"
+                          placeholder="e.g 123456789"
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-phone"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" style="color: white">Gender</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <div class="select">
+                          <select>
+                            <option disabled selected value="">
+                              Jenis Kelamin
+                            </option>
+                            <option>Pria</option>
+                            <option>Wanita</option>
+                          </select>
+                        </div>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-venus-mars"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- EMAIL PASSWORD -->
+                <div class="field is-horizontal">
+                  <div class="field-body">
+                    <div class="field">
+                      <label class="label" style="color: white">Email</label>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          type="email"
+                          placeholder="example@mail.com"
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" style="color: white">Password</label>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          type="password"
+                          placeholder="**********"
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-lock"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link">Daftar</button>
+                  </div>
+                  <div class="control">
+                    <button class="button is-link is-light">Batal</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <!-- END REGISTER FORM -->
+        <!-- HOME PAGE -->
+
+        <!-- END HOME PAGE -->
+
+        <!-- PATIENT REGISTER PAGE -->
+
+        <!-- END PATIENT REGISTER PAGE -->
+
+        <!-- HISTORY PAGE -->
+        <section>
+          <div class="container" style="margin-top: 100px">
+            <div class="level">
+              <div class="level-item has-text-centered">
+                <p class="title" style="margin-bottom: 30px">Rekam Medis</p>
+              </div>
+            </div>
+            <table class="ui single line table">
+              <thead>
+                <tr>
+                  <th>Tanggal Berobat</th>
+                  <th>Poli</th>
+                  <th>Nama Dokter</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>September 14, 2013</td>
+                  <td>Anak</td>
+                  <td>Dr. Ente Bahlul</td>
+                  <td>Sudah berobat</td>
+                  <td>
+                    <div class="ui breadcrumb">
+                      <a class="section">Edit</a>
+                      <span class="divider">/</span>
+                      <a class="section">Hapus</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- END HSITORY PAGE -->
+
+        <!-- REGISTRATION PATIENT PAGE -->
+        <section>
+          <div class="container"></div>
+        </section>
+        <!-- END REGISTRATION PATIENT PAGE -->
+      </div>
+      <!-- FOOTER -->
+      <footer class="hero is-info">
+        <div class="content has-text-centered my-6">
+          <p>©️ <strong>2021 RS. H-8</strong></p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+      $("#login").click((event) => {
+        $("#login-form").modal("show");
+      });
+      $("#submit-login").click((event) => {
+        $("#login-form").modal("hide");
+      });
+      $("#cancel-login").click((event) => {
+        $("#login-form").modal("hide");
+      });
+
+      $("#register").click((event) => {
+        $("#register-form").modal("show");
+      });
+    </script>
+  </body>
+</html>
