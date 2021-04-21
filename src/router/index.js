@@ -9,6 +9,7 @@ import DeckCardlist from '../views/DeckCardlist.vue'
 import CardAdd from '../views/CardAdd.vue'
 import CardEdit from '../views/CardEdit.vue'
 import StudyDeck from '../views/StudyDeck.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes = [
     path: '/cards/:id',
     name: 'CardEdit',
     component: CardEdit
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 

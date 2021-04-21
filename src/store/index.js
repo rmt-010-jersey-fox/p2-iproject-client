@@ -172,6 +172,8 @@ export default new Vuex.Store({
             title: err.response.data.error,
             background: 'mistyrose'
           })
+
+          if (err.response.data.error.includes('not found')) router.push({ name: 'NotFound' })
         })
     },
 
@@ -252,6 +254,8 @@ export default new Vuex.Store({
             title: err.response.data.error,
             background: 'mistyrose'
           })
+
+          if (err.response.data.error.includes('not found')) router.push({ name: 'NotFound' })
         })
     },
 
@@ -391,6 +395,7 @@ export default new Vuex.Store({
             title: err.response.data.error,
             background: 'mistyrose'
           })
+          if (err.response.data.error.includes('not found')) router.push({ name: 'NotFound' })
         })
     },
 
@@ -466,6 +471,7 @@ export default new Vuex.Store({
             title: msg,
             background: 'mistyrose'
           })
+          if (err.response.data.error.includes('not found')) router.push({ name: 'NotFound' })
         })
     },
 
