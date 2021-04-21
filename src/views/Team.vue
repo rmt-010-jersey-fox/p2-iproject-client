@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div v-if="tournamentid !== ''" class="home">
     <h2 style="padding-top: 2em"> Team List </h2>
     <div class="row">
       <div class="container col-7 table-wrapper-scroll-y my-custom-scrollbar">
@@ -48,6 +48,9 @@ export default {
   computed: {
     teams () {
       return this.$store.state.team
+    },
+    tournamentid () {
+      return this.$store.state.tournamentid
     }
   },
   created() {

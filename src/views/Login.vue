@@ -1,10 +1,11 @@
 <template>
 <div class="container-fluid">
   <div class="row no-gutter">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://i.redd.it/be2ednhduemy.jpg');"></div>
     <div class="col-md-8 col-lg-6">
       <div class="login d-flex align-items-center py-5">
         <div class="container">
+          <h1>Turnagen - Tournament Generator</h1>
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Login Page </h3>
@@ -83,7 +84,6 @@ export default {
 }
 
 .bg-image {
-  background-image: url('https://i.redd.it/be2ednhduemy.jpg');
   background-size: cover;
   background-position: center;
 }

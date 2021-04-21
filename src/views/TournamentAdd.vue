@@ -12,10 +12,9 @@
             <select class="form-select" v-model="selected">
               <option selected disabled>Open this select menu</option>
               <option value="R6">Rainbow 6 Siege</option>
-              <option value="LOL">League of Legend</option>
+              <option value="PUBG">Player Unknown BattleGround</option>
               <option value="DOTA2">Dota 2</option>
-              <option value="ML">Mobile Legend</option>
-              <option value="others">Others</option>
+              <option value="APEX">Apex Legend</option>
             </select>
         </div>
       </div>
@@ -34,7 +33,7 @@ export default {
     return {
       name: '',
       selected: '',
-      description: ''
+      description: '',
     }
   },
   methods: {

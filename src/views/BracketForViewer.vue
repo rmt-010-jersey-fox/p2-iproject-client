@@ -1,6 +1,6 @@
 <template>
 <div style="overflow:auto">
-  <div class="tournament-container container">
+  <div v-if="bracket.length !== 0" class="tournament-container container">
     <br><h1>Bracket for Tournament {{tournament.name}}</h1><br>
     <div class="tournament-headers">
       <h3>Quarter-Finals</h3>
@@ -77,19 +77,26 @@
       </ul>  
     </div>
   </div>
-  <div class="container row justify-content-evenly" style="margin:auto">
-    <TwitterBox/>
-    <TwitterBox/>
+  <div v-if="bracket.length !== 0" class="container row justify-content-evenly" style="margin:auto">
+    <TwitterBox
+      :twitt="newsandtweet.data.twitter.data"
+    />
+    <NewsBox
+      :news="newsandtweet.data.steamnews.appnews.newsitems"
+    />
+    <button @click.prevent="reloadnewsandtweet()" type="button" class="btn btn-primary">Reload Tweet and News</button>
   </div>
 </div>
 </template>
 
 <script>
 import TwitterBox from '../components/Twitter'
+import NewsBox from '../components/NewsBox'
 export default {
   name: "BracketForViewer",
   components: {
-    TwitterBox
+    TwitterBox,
+    NewsBox
   },
   computed: {
     bracket () {
@@ -165,12 +172,20 @@ export default {
         }
       }) 
       return Found
+    },
+
+    newsandtweet () {
+      return this.$store.state.NewsAndTwitt
     }
   },
   methods: {
+    reloadnewsandtweet() {
+      this.$store.dispatch('getTwitterAndNews', { id: this.$route.params.id })
+    }
   },
   created () {
     this.$store.dispatch('FetchBracketForViewers', { TournamentId: this.$route.params.id })
+    this.$store.dispatch('getTwitterAndNews', { id: this.$route.params.id })
   }
 };
 </script>

@@ -16,8 +16,7 @@
         </li>
       </ul>
       <span class="navbar-text" v-if="emailogin !== ''">
-        {{emailogin}}
-        <a href="#" @click.prevent="logout">Logout</a>
+        <a href="#" @click.prevent="logout"><h6>{{emailogin}}</h6><h6>Logout</h6></a>
       </span>
     </div>
   </div>
@@ -30,6 +29,20 @@ export default {
   methods: {
     changepage(name) {
       if(this.$route.name !== name) {
+        this.$store.dispatch('FetchTournament')
+        this.$store.dispatch('FetchTeam')
+        let Tournaments = this.$store.state.Tournament
+        let Found = 'notournament'
+        Tournaments.forEach(el => {
+          if(el.UserId == localStorage.userid) {
+            Found = {
+              name: el.name,
+              id: el.id
+            }
+          }
+        })
+        localStorage.setItem('TournamentId', Found.id)
+        this.$store.dispatch('FetchBracket', { TournamentId: Found.id })
         this.$router.push({ name })
       }
     },
@@ -46,5 +59,10 @@ export default {
 </script>
 
 <style scoped>
-
+h6 {
+  color: whitesmoke
+}
+.nav-item {
+  padding-left: 1em;
+}
 </style>

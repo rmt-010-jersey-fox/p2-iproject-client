@@ -3,6 +3,19 @@ import Vuex from 'vuex'
 import axios from '../api/axios'
 import router from '../router'
 
+const defaultState = () => {
+  return {
+    emaillogin: '',
+    userid: '',
+    tournamentid: '',
+    Tournament: [],
+    bracket: [],
+    team: [],
+    bracketforviewers: [],
+    NewsAndTwitt : {}
+  }
+}
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -13,11 +26,15 @@ const store = new Vuex.Store({
     Tournament: [],
     bracket: [],
     team: [],
-    bracketforviewers: []
+    bracketforviewers: [],
+    NewsAndTwitt : {}
   },
   mutations: {
     increment (state) {
       state.count++
+    },
+    RESET_STATE (state) {
+      Object.assign(state, defaultState())
     },
     GET_EMAIL_LOGIN (state, payload) {
       state.emaillogin = payload.email
@@ -37,6 +54,9 @@ const store = new Vuex.Store({
     },
     FETCH_BRACKET_VIEWERS (state, payload) {
       state.bracketforviewers = payload.bracket
+    },
+    FETCH_NEWS_TWEET (state, payload) {
+      state.NewsAndTwitt = payload.NewsAndTwitt
     }
   },
   actions: {
@@ -60,6 +80,8 @@ const store = new Vuex.Store({
           localStorage.setItem('emailogin', payload.email)
           localStorage.setItem('userid', response.data.id)
           context.commit('GET_EMAIL_LOGIN', { email: payload.email, userid: response.data.id })
+          this.dispatch('FetchTournament')
+          this.dispatch('FetchTeam')
           router.push({ name: 'Home' })
         })
         .catch((err) => {
@@ -69,16 +91,23 @@ const store = new Vuex.Store({
     
     logout(context) {
       localStorage.clear()
-      context.commit('GET_EMAIL_LOGIN', { email: '' })
+      context.commit('RESET_STATE')
       router.push({ name: 'Login' })
     },
 
     AddTournament (context, payload) {
-      axios.post('tournament', payload, {
+      let input = {
+        name: payload.name,
+        description: payload.description,
+        game: payload.selected
+      }
+      axios.post('tournament', input, {
         headers: { access_token: localStorage.access_token }
       })
-        .then(() => {
+        .then((response) => {
           this.dispatch('FetchTournament')
+          context.commit('FETCH_TOURNAMENT_ID', { TournamentId: localStorage.TournamentId})
+          localStorage.setItem('TournamentId', response.data.id)
           router.push({ name: 'Tournament' })
         })
         .catch((err) => {
@@ -144,10 +173,55 @@ const store = new Vuex.Store({
       axios.post('bracket', payload, {
         headers: { access_token: localStorage.access_token }
       })
-      .then((response) => {
-        console.log(response)
+      .then(() => {
         this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
         router.push({ name: 'Tournament' })
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+    },
+
+    advancedteam(context, payload) {
+      axios.post(`bracket/${payload.id}`, {}, {
+        headers: { access_token: localStorage.access_token }
+      })
+      .then(() => {
+        this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+    },
+
+    addScore (context, payload) {
+      axios.patch(`bracket/${payload.id}`, {}, {
+        headers: { access_token: localStorage.access_token }
+      })
+      .then(() => {
+        this.dispatch('FetchBracket', { TournamentId: this.state.tournamentid })
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+    },
+
+    finishTournament (context, payload) {
+      axios.delete(`tournament/${payload.id}`, {
+        headers: { access_token: localStorage.access_token }
+      })
+      .then(() => {
+        this.dispatch('FetchTournament')
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+    },
+
+    getTwitterAndNews (context, payload) {
+      axios.get(`twitter/${payload.id}`)
+      .then((response) => {
+        context.commit('FETCH_NEWS_TWEET', { NewsAndTwitt: response.data })
       })
       .catch((err) => {
         console.log(err.response)

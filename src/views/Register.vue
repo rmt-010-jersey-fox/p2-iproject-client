@@ -5,6 +5,7 @@
     <div class="col-md-8 col-lg-6">
       <div class="login d-flex align-items-center py-5">
         <div class="container">
+          <h1>Turnagen - Tournament Generator</h1>
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Register Page </h3>

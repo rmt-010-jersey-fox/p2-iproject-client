@@ -1,12 +1,6 @@
 <template>
   <body>
     <div id="app">
-      <!-- <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link> |
-        <router-link to="/login">Login</router-link> |
-        <router-link to="/register">Register</router-link> |
-      </div> -->
       <Navbar/>
       <router-view style="height: 88vh;"/>
     </div>
@@ -27,9 +21,9 @@ export default {
     if (localStorage.access_token) {
       this.$store.commit('GET_EMAIL_LOGIN', { email: localStorage.emailogin, userid: +localStorage.userid })
     }
-    this.$store.dispatch('FetchTeam')
     this.$store.dispatch('FetchTournament')
     if (localStorage.TournamentId) {
+      this.$store.dispatch('FetchTeam')
       this.$store.commit('FETCH_TOURNAMENT_ID', { TournamentId: localStorage.TournamentId})
       this.$store.dispatch('FetchBracket', { TournamentId: localStorage.TournamentId })
     }
