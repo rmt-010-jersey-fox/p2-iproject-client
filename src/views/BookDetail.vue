@@ -16,7 +16,24 @@
               </div>
               <!-- data detail buku -->
               <div class="col-5">
-                <br>
+                <!-- ICON PLAY -->
+                <p class="h1 mb-2"> 
+                  <b-icon 
+                  class="me-2"
+                  icon="play-circle-fill" 
+                  animation="fade" 
+                  variant="success" 
+                  style="cursor: pointer"
+                  @click.prevent="speak(book.title, book.description)">
+                  </b-icon>
+                  <b-icon 
+                  icon="stop-fill" 
+                  variant="danger" 
+                  style="cursor: pointer"
+                  @click.prevent="stopSpeak()">
+                  </b-icon>
+                </p>
+                <!-- AKHIR ICON PLAY -->
                 <h5 class="card-title">{{book.title}}</h5>
                 <p class="card-text">{{book.description}}</p>
                 <span class="card-text"><strong>Author: </strong>{{book.author}}</span><br>
@@ -67,12 +84,31 @@
             </div>
           </div>
         </div>
-        <button @click.prevent="speak(book.description)">tes suara</button>
       </div>
       <!-- kolom komentar -->
       <div class="col-6">
         <div class="card overflow-auto text-white text-center bg-secondary mb-3" style="max-height:80vh">
-          <div class="card-header fs-5">Apa Kata Orang-Orang?</div>
+          <div class="card-header fs-5"><!-- ICON PLAY -->
+                <span class="h3 me-2"> 
+                  <b-icon 
+                  icon="play-circle-fill" 
+                  animation="fade" 
+                  variant="primary" 
+                  style="cursor: pointer"
+                  @click.prevent="speakComments(comments)">
+                  </b-icon>
+                </span>
+                <span class="h3 me-2"> 
+                  <b-icon 
+                  icon="stop-fill" 
+                  variant="danger" 
+                  style="cursor: pointer"
+                  @click.prevent="stopSpeak()">
+                  </b-icon>
+                </span>
+                <!-- AKHIR ICON PLAY -->
+                Apa Kata Orang-Orang? <span class="text-secondary">etasdfdf</span>
+          </div>
           <div class="card-body">
             <!-- LOOPING DISINI -->
             <CommentCard
@@ -89,7 +125,7 @@
 </template>
 
 <script>
-
+import { BIcon, BIconArrowUp, BIconArrowDown } from 'bootstrap-vue'
 import CommentCard from '../components/CommentCard'
 export default {
   data() {
@@ -97,7 +133,7 @@ export default {
       komentar: ''
     }
   },
-  components: { CommentCard},
+  components: { CommentCard, BIcon },
   methods: {
     addWishLists(isbn) {
       let payload = {
@@ -127,10 +163,36 @@ export default {
     deleteWishlist(isbn) {
       this.$store.dispatch('deleteWishlist', isbn)
     },
-    speak(text) {
-      var msg = new SpeechSynthesisUtterance()
-      msg.text = text
+    speak(text1, text2) {
+      let msg = new SpeechSynthesisUtterance()
+      msg.text = text1
+      msg.rate = 0.8
       window.speechSynthesis.speak(msg)
+      msg.text = text2
+      setTimeout(function() {
+        window.speechSynthesis.speak(msg)
+      }, 1000)
+    },
+    stopSpeak () {
+      window.speechSynthesis.cancel();
+    },
+    speakComments(array) {
+      let msg = new SpeechSynthesisUtterance()
+      msg.rate = 0.8
+      msg.lang = 'id'
+      let list = []
+      for (let i = 0; i < array.length; i++) {
+        list.push(`kata ${array[i].username} . ${array[i].comment}`)
+      }
+      if (list.length) {
+        msg.text = list[0]
+        window.speechSynthesis.speak(msg)
+        msg.addEventListener('end', ()=> {
+          window.setTimeout(() => {
+            this.speakComments(array.slice(1))
+          }, 500)
+        })
+      }
     }
   },
   computed: {
