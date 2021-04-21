@@ -1,11 +1,12 @@
 <template>
-  <div class="home">
+  <div class="section">
     <CarouselGame />
     <!--? Content -->
     <section>
       <div class="container-fluid mt-4">
         <div class="col d-flex flex-row flex-wrap justify-content-center" >
           <GameCard
+            class="zoom"
             v-for="game in games.data"
             :key="game.id"
             :game="game"/>
@@ -22,7 +23,6 @@
             </div>
           </div> -->
         </div>
-        <!-- <pre>{{ games.data[0].cover.url. }}</pre> -->
       </div>
     </section>
   </div>
@@ -36,7 +36,6 @@ import GameCard from '../components/GameCard'
 export default {
   name: 'Home',
   beforeCreate () {
-    console.log('fectch before home')
     this.$store.dispatch('fecthGames')
   },
   components: {
@@ -53,12 +52,24 @@ export default {
 
 <style scoped>
   .game-card {
-    width: calc(18% - 20px);
+    width: calc(15% - 20px);
     display: inline-block;
     margin: 0 10px 20px;
     position: relative;
     border-radius: 20px;
     border-color: transparent;
     vertical-align: top;
+  }
+
+  .card-img {
+    max-height: 13.2em;
+  }
+
+  .zoom {
+    transition: transform .2s; /* Animation */
+  }
+
+  .zoom:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 </style>

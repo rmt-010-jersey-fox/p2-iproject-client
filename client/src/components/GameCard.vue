@@ -1,32 +1,55 @@
 <template>
-  <div class="card bg-dark text-white game-card">
-    <div v-if="game.cover">
-      <img :src="game.cover.url.replace('t_thumb', 't_cover_big')" class="card-img" :alt="game.id">
-    </div>
-    <div v-else>
-      <img src="../assets/NO_picture.jpg" class="card-img" alt="defaultImage">
-    </div>
-    <!-- <div class="card-img-overlay">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text">Last updated 3 mins ago</p>
-    </div> -->
-    <div>
-      <h6 style="text-align: center;">{{ game.name }}</h6>
+  <div
+    class="card bg-dark text-white game-card"
+    data-bs-toggle="tooltip"
+    :title="game.name">
+      <img v-if="game.cover"
+        class="card-img auto-crop" :alt="game.id"
+        :src="game.cover.url.replace('t_thumb', 't_cover_big')">
+      <img
+        class="card-img auto-crop" alt="defaultImage"
+        v-else src="../assets/NO_picture.jpg">
+    <div class="card-img-overlay">
+      <i class="fas fa-heart wishlist"
+        style="font-size: 30px;"
+        @click="wishlist(game.id)">
+      </i>
     </div>
   </div>
-<!-- replace('t_thumb', 't_cover_big') -->
 </template>
 
 <script>
 export default {
   name: 'GameCard',
-  props: ['game']
+  props: ['game'],
+  methods: {
+    wishlist (id) {
+      console.log('klick', id)
+    }
+  }
 }
 </script>
 
 <style scoped>
   .card {
     border: 0px solid rgba(0,0,0,.125);
+  }
+  .auto-crop {
+    height: 250px;
+    object-position: center;
+    object-fit:fill;
+    border-radius: 15px;
+  }
+  .wishlist {
+    position: absolute;
+    z-index: 10;
+    top: -8px;
+    right: -5px;
+    height: 25px;
+    width: 25px;
+  }
+  .wishlist:hover {
+    /* colo: #3e8e41; */
+    color: rgb(255, 5, 5);
   }
 </style>

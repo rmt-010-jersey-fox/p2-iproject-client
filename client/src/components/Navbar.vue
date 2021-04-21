@@ -10,7 +10,7 @@
       <div class="col-4">
         <div class="container">
           <div class="item">
-            <button class="btn btn-outline-light item">SignIn</button>
+            <button class="btn btn-outline-light item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">SignIn</button>
           </div>
           <!-- User Icon -->
           <div class="item pt-1 dropstart">
@@ -32,6 +32,41 @@
         </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #8C0000;">
+            <h5 class="modal-title" id="staticBackdropLabel" style="color: white;">Signin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-5">
+                <div class="row sign">or connect with</div>
+                <div class="col d-flex justify-content-center mt-3"><button type="button" class="btn btn-success">GOOGLE</button></div>
+                <div class="row sign mt-2">or signup manually here</div>
+              </div>
+              <div class="col-7">
+                <form>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Email">
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Password">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer" style="background-color: #8C0000;">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </nav>
 </template>
 
@@ -50,6 +85,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .sign {
+    justify-content: center;
+    font-size: smaller;
+  }
 </style>

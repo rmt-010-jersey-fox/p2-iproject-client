@@ -3,17 +3,20 @@
     <Navbar />
     <CategoryBar />
     <router-view/>
+    <HFooter />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
 import CategoryBar from './components/CategoryBar'
+import HFooter from 'vue-hacktiv-footer'
 
 export default {
   components: {
     Navbar,
-    CategoryBar
+    CategoryBar,
+    HFooter
   }
 }
 </script>
