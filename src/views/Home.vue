@@ -69,8 +69,8 @@ export default {
     ...mapState(['movies'])
   },
   created () {
-    const search = 'movie'
-    this.$store.dispatch('searchMovie', { search })
+    // const search = 'movie'
+    // this.$store.dispatch('searchMovie', { search })
   }
 }
 </script>

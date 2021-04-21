@@ -1,15 +1,16 @@
 <template>
 
-<div class="card text-white bg-dark m-1 col">
-    <div class="card-body p-0">
-      <div><img style="width:20px" :src="`https://avatars.dicebear.com/api/bottts/${m.id}.svg`" alt="">
+<div class="row card m-1">
+  <div class="card-body p-0">
+    <div>
+        <img style="width:20px" :src="`https://avatars.dicebear.com/api/bottts/${m.UserId}.svg`" alt="">
     </div>
-      <div class="receivedMsg">
-        <div>
-          <p>{{m.inputMsg}}</p>
-        </div>
+    <div class="receivedMsg">
+      <div>
+        <p class="mb-0">{{m.inputMsg}}</p>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

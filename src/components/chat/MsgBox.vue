@@ -1,9 +1,11 @@
 <template>
-  <div id="msgBox" class="mesgs container row">
+  <div id="msgBox" class="container d-flex flex-column ms-1 mt-5">
+    <h5>Live Chat!</h5>
+    <p v-if="!msg.length">** No Chats Available **</p>
     <div class="msg_history">
       <InMsg v-for="m in msg" :key="m.id" :m="m"/>
     </div>
-    <div class="type_msg align-self-end">
+    <div class="mt-3">
       <div class="write_msg">
         <input type="text" class="p-1" placeholder="type a message" v-model="inputMsg" @keyup.enter="addMsg">
         <button class="send-btn btn" type="button" @click.prevent="addMsg">
@@ -31,14 +33,19 @@ export default {
       const inputMsg = this.inputMsg
       const UserId = localStorage.UserId
       const input = { UserId, inputMsg }
-      this.$store.commit('PUSH_MSG', input)
+      // this.$store.commit('PUSH_MSG', input)
       this.inputMsg = ''
-      this.$socket.emit('emit_method')
+      this.$socket.emit('addMsg', input)
     }
   },
   computed: {
     msg () {
       return this.$store.state.messages
+    }
+  },
+  sockets: {
+    broadcastMsg (data) {
+      this.$store.commit('PUSH_MSG', data)
     }
   }
 }
@@ -47,6 +54,7 @@ export default {
 <style scoped>
 #msgBox {
   background: greenyellow;
-  height: 80vh;
+  height: 70vh;
+  overflow: scroll;
 }
 </style>
