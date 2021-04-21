@@ -5,8 +5,7 @@
         <h1>{{randomRecipes.name}}</h1>
       </div>
       <div class="mt-5">
-        <h3></h3>
-        <a>{{randomRecipes.category}}</a>
+        <h3>{{randomRecipes.category}}</h3>
       </div>
 
       <div class="row">
@@ -16,13 +15,13 @@
 
         <div class="col-md-4">
           <h5>
-            Ingredients:
+            Ingridients:
           </h5>
-          <p>{{randomRecipes.ingridients}}</p>
-           <div>
-            <p>di ingredients</p>
-            <span
-            >{{ingredient}}</span><br>
+           <div
+           v-for="(ingridient, i) in randomRecipes.ingridients"
+            :key="i"
+            :ingridient="ingridient">
+            <span>{{ingridient}}</span><br>
           </div>
         </div>
       </div>
@@ -40,7 +39,7 @@
 <script>
 export default {
   name: 'MealRecipes',
-  props: ['randomRecipes', 'ingredient']
+  props: ['randomRecipes']
   // components: {
   //   Ingredients
   // },

@@ -1,12 +1,10 @@
 <template>
   <div>
-    <NavbarMeal />
+    <NavbarMeal
+    :mealsCategories="mealsCategories"
+    />
     <MealRecipes
     :randomRecipes="randomRecipes"
-    :ingredients="ingredients"
-    v-for="(ingredient, i) in ingredients"
-    :key=i
-    :ingredient="ingredient"
     />
   </div>
 </template>
@@ -21,19 +19,25 @@ export default {
     randomRecipes () {
       return this.$store.state.randomMeal
     },
-    ingredients () {
-      console.log(this.$store.state.randomMeal.ingredients)
-      return this.$store.state.randomMeal.ingredients
+    mealsCategories () {
+      console.log('---------------')
+      console.log(this.$store.state.mealsCategories)
+      return this.$store.state.mealsCategories
     }
   },
   methods: {
     getRandomRecipes () {
       console.log('masuk ke method sini')
       this.$store.dispatch('getRandomRecipes')
+    },
+    getMealsCategories () {
+      console.log('getMealsCategories methods')
+      this.$store.dispatch('getMealsCategories')
     }
   },
   created () {
     this.getRandomRecipes()
+    this.getMealsCategories()
   }
 }
 </script>

@@ -5,16 +5,28 @@ import axios from '../api/axios'
 export default createStore({
   state: {
     randomMeal: {},
-    mealsCategories: []
+    randomDrink: {},
+    mealsCategories: [],
+    drinksCategories: []
   },
   mutations: {
     getRandomRecipes (state, meal) {
       state.randomMeal = meal
     },
-    getCategorries (state, categories) {
+    getRandomDrink (state, drink) {
+      console.log('mutatation drink')
+      console.log(drink)
+      state.randomDrink = drink
+    },
+    getMealsCategories (state, categories) {
+      console.log('getMealsCategories, mutations')
       state.mealsCategories = categories
+    },
+    getDrinksCategories (state, categories) {
+      console.log('getDrinksCategories, mutations')
+      console.log('!!!!!', categories)
+      state.drinksCategories = categories
     }
-
   },
   actions: {
     getRandomRecipes (context) {
@@ -27,10 +39,38 @@ export default createStore({
           console.log(err)
         })
     },
-    getCategories (context) {
-      axios.get('/meals/categorries')
+    getRandomDrink (context) {
+      console.log('actions random drink')
+      axios.get('/drinks/random')
+        .then(drink => {
+          console.log('----')
+          console.log(drink.data)
+          context.commit('getRandomDrink', drink.data)
+        })
+        .catch(err => {
+          console.log('error random drink')
+          console.log(err)
+        })
+    },
+    getMealsCategories (context) {
+      console.log('getMealsCategories, actions')
+      axios.get('/meals/categories')
         .then(categories => {
-          context.commit('getCategories', categories)
+          console.log('getMealsCategories, actions')
+          console.log(categories.data)
+          context.commit('getMealsCategories', categories.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getDrinksCategories (context) {
+      console.log('getDrinksCategories, actions 1')
+      axios.get('/drinks/categories')
+        .then(categories => {
+          console.log('getDrinksCategories, actions 2')
+          console.log(categories)
+          context.commit('getDrinksCategories', categories.data)
         })
         .catch(err => {
           console.log(err)
