@@ -5,8 +5,8 @@
       <router-link to="/about">About</router-link>
     </div> -->
     <navbar></navbar>
-    <router-view/>
     <HFooter></HFooter>
+    <router-view/>
   </div>
 </template>
 

@@ -58,12 +58,35 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/read.vue')
   },
+  {
+    path: '/searchresult',
+    name: 'searchresult',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/searchresults.vue')
+  },
+  {
+    path: '/toprated',
+    name: 'toprated',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/toprated.vue')
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const access_token = localStorage.getItem('access_token')
+
+  if (to.name === 'bookmarks' && !access_token)next('/login')
+  else next()
 })
 
 export default router

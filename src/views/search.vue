@@ -1,29 +1,56 @@
 <template>
   <div class="container">
-    <h1 style="font-family: 'Bungee Inline', cursive;">Search your manga here!</h1>
+    <h1 style="font-family: 'Bungee Inline', cursive;">
+      Search your manga here!
+    </h1>
     <div class="search-box">
       <input
         type="text"
         class="search-box-input"
         placeholder="What are you looking for ?"
+        v-model="inputSearch"
       />
-      <button class="search-box-btn" @submit.prevent="searchManga">
+      <button class="search-box-btn" @click.prevent="searchManga">
         <i class="search-box-icon material-icons">search</i>
       </button>
     </div>
+    <!-- <div
+      class="input-group mb-3"
+      style="justify-content: center; margin-top: 25px;"
+    >
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01"
+          >Languages</label
+        >
+      </div>
+      <select class="custom-select" id="inputGroupSelect01" v-model="bahasa">
+        <option selected value="EN">English</option>
+        <option value="ID">Indonesian</option>
+      </select>
+    </div> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "search",
+  data() {
+    return {
+      inputSearch: "",
+     
+    };
+  },
   methods: {
-    searchManga(){
-      
-    }
-
-  }
-
+    searchManga() {
+      let payload = {
+        mangaTitle: this.inputSearch,
+    
+      };
+      this.$store.dispatch("searchManga", payload);
+      this.$router.push("/searchresult");
+      this.inputSearch = "";
+    },
+  },
 };
 </script>
 
