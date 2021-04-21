@@ -1,8 +1,8 @@
 <template>
   <div class="home container" style="margin-top: 12vh">
-    <div class="row">
+    <div class="row justify-content-around">
       <h2 class="col-12">Welcome {{name}} !</h2>
-      <table class="table col-12 table-dark table-striped">
+      <table class="table col-12 my-3 table-dark table-striped">
         <thead>
             <tr>
               <th scope="col">My Account Saldo</th>
@@ -19,9 +19,9 @@
         </tbody>
       </table>
       <div class="col-7">
-        <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/search?q=Bank%20Sampah&key=AIzaSyAixPAAmPjVM16e3JneMCoT36vqcFNoSnA"></iframe>
+        <iframe width="100%" height="400" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/search?q=Bank%20Sampah&key=AIzaSyAixPAAmPjVM16e3JneMCoT36vqcFNoSnA"></iframe>
       </div>
-      <div class="col-5">
+      <div class="col-3">
         <AirPollution
         :airQ="airQ"
         :weather="weather"

@@ -1,23 +1,20 @@
 <template>
   <div class="container" style="margin-top: 12vh">
       <div class="row">
-        <h3 class="col-12">Price List</h3>
-        <table class="table col-12 my-3 table-dark table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Condition</th>
-                    <th scope="col">Price/baseUnit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="waste in wastes" :key="waste.id" :waste="waste" class="cart-row">
-                    <td>{{ waste.name }}</td>
-                    <td>{{ waste.condition }}</td>
-                    <td>{{ toRupiah(waste.price) }} /{{waste.baseUnit}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <h3 class="col-12 mb-3">Price List</h3>
+        <div class="row wt rounded text-center">
+          <div v-for="waste in wastes" :key="waste.id" :waste="waste" class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ waste.name }}</h5>
+                <p class="card-text">{{ waste.condition }}</p>
+              </div>
+              <div class="card-footer">
+                <p>{{ toRupiah(waste.price) }} /{{waste.baseUnit}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
   </div>
 </template>

@@ -21,7 +21,7 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button @click.prevent="logout" class="btn btn-outline-danger" type="submit">Log Out</button>
+          <button @click.prevent="logout" class="trans" type="submit"><GoogleLogin class="btn btn-outline-danger" :params="params" :logoutButton=true>Logout</GoogleLogin></button>
         </form>
       </div>
     </div>
@@ -29,12 +29,19 @@
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login'
 export default {
   name: 'Navbar',
   data () {
     return {
-      page: ''
+      page: '',
+      params: {
+        client_id: '1063244199097-ngvat44cl0qedpdsjiuj389oil6d69rq.apps.googleusercontent.com'
+      }
     }
+  },
+  components: {
+    GoogleLogin
   },
   methods: {
     switchPage (param) {
@@ -50,4 +57,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.trans {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
 </style>

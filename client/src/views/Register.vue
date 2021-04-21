@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1 class="text-dark text-center" style="margin-top: 14vh">Welcome to Bank Sampah</h1>
+    <h1 class="text-dark text-center" style="margin-top: 14vh">Bank Sampah</h1>
     <form id="register">
-      <div class="card justify-content mx-auto mt-5 p-3" style="width: 50vh">
+      <div class="card justify-content mx-auto mt-5 p-3" style="width: 30vw">
       <h2 class="text-dark" style="text-align: center;">Register</h2>
         <div class="mb-3 form-floating">
           <input type="email" v-model="email" class="form-control" id="InputRegist" placeholder="example@mail.com" aria-describedby="emailHelp">

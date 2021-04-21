@@ -70,6 +70,40 @@ const store = new Vuex.Store({
         })
     },
 
+    googleLogin (context, payload) {
+      const idToken = payload.idToken
+      axios({
+        method: 'POST',
+        url: '/googlelogin',
+        data: {
+          id_token: idToken
+        }
+      })
+        .then(res => {
+          localStorage.setItem('access_token', res.data.access_token)
+          localStorage.setItem('isLoggedIn', true)
+          localStorage.setItem('name', res.data.name)
+          context.commit('SETLOGIN', { status: true })
+          context.commit('SETNAME', { name: res.data.name })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Logged In',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          router.push({ name: 'Home' })
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Invalid email/password!'
+          })
+          console.log(err)
+        })
+    },
+
     register (context, payload) {
       axios({
         method: 'POST',
@@ -198,7 +232,6 @@ const store = new Vuex.Store({
       })
         .then(res => {
           context.dispatch('getUserWastes')
-          router.push({ name: 'Saldo' })
         })
         .catch(err => {
           console.log(err)
