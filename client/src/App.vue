@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navbar v-if="isLoggedIn"/>
     <router-view/>
+    <HFooter/>
   </div>
 </template>
+
+<script>
+import Navbar from '@/components/Navbar'
+import HFooter from 'vue-hacktiv-footer'
+export default {
+  components: {
+    Navbar,
+    HFooter
+  },
+  computed: {
+    isLoggedIn () {
+      return this.$store.state.isLoggedIn
+    }
+  }
+}
+</script>
 
 <style>
 #app {
