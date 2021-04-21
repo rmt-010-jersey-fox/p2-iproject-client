@@ -28,9 +28,34 @@ export default new Vuex.Store({
         .then(({ data }) => {
           localStorage.setItem('access_token', data.access_token)
           router.push('/')
+
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Login in successfully'
+          })
         })
         .catch(err => {
           console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please input correctly',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
@@ -39,9 +64,34 @@ export default new Vuex.Store({
         .then(({ data }) => {
           console.log('Berhasil Register')
           router.push('/login')
+
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Register in successfully'
+          })
         })
         .catch(err => {
           console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
@@ -51,9 +101,34 @@ export default new Vuex.Store({
           console.log(response)
           localStorage.setItem('access_token', response.data.access_token)
           router.push('/')
+
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Login in successfully'
+          })
         })
         .catch((err) => {
           console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
@@ -75,9 +150,33 @@ export default new Vuex.Store({
           }
           // context.dispatch('fetchSurah')
           router.push('/surah').catch(() => {})
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Get Surah in successfully'
+          })
         })
         .catch(err => {
           console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
@@ -95,9 +194,33 @@ export default new Vuex.Store({
           context.commit('FETCH_HADIST', arr)
 
           router.push('/hadist').catch(() => {})
+
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Get Hadist in successfully'
+          })
         })
         .catch(err => {
           console.log(err)
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
@@ -125,9 +248,34 @@ export default new Vuex.Store({
           context.commit('FETCH_JADWAL_SOLAT', data)
 
           router.push('/').catch(() => {})
+
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Get Pray Time in successfully'
+          })
         })
         .catch(err => {
           console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
         })
     },
 
@@ -149,6 +297,24 @@ export default new Vuex.Store({
     logout (context) {
       localStorage.removeItem('access_token')
       router.push('/login')
+
+      // Sweetalert
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Logout in successfully'
+      })
     }
   },
   modules: {

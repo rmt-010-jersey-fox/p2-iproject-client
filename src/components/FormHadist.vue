@@ -23,7 +23,7 @@
             <div class="mb-3">
               <label for="password" class="form-label" style="color: white">Nomor Hadist:</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 v-model="nomor"
                 placeholder="input number 1-4000"
