@@ -32,20 +32,34 @@
 <script>
 import BookCard from '../components/BookCard'
 export default {
-  data () {
+  data() {
     return {
-      searchByTitle : '',
+      searchByTitle: ''
     }
   },
-  computed : {
-    books () {
-      return this.$store.state.books.filter(e=>{
+  computed: {
+    books() {
+      let wishlists = this.$store.state.wishlists
+      let books = this.$store.state.books
+      let filtered = []
+      for (let i = 0; i < books.length; i++) {
+        let count = 0
+        for (let j = 0; j < wishlists.length; j++) {
+          if (books[i].isbn != wishlists[j].isbn) {
+            count++
+          }
+        }
+        if (count === wishlists.length) {
+          filtered.push(books[i])
+        }
+      }
+      return filtered.filter(e => {
         return e.title.toLowerCase().includes(this.searchByTitle.toLowerCase())
       })
     }
   },
-  components : {BookCard},
-  created () {
+  components: { BookCard },
+  created() {
     this.$store.dispatch('fetchBooks', this.$route.params.category)
     // console.log(this.$store.state.books)
   }
