@@ -51,9 +51,7 @@
 <script>
 export default {
   name: "searchresult",
-  //    created() {
-  //   this.$store.dispatch("searchManga");
-  // },
+
   computed: {
     searchResult() {
       return this.$store.state.searchResult;
@@ -61,7 +59,6 @@ export default {
   },
   methods: {
     mangaDetail(mangaId) {
-      console.log(mangaId);
       this.$store.commit("getMangaId", mangaId);
       this.$router.push("/mangadetail");
     },

@@ -31,7 +31,6 @@
 <script>
 export default {
   created() {
-    console.log("m,asuk");
     this.$store.dispatch("fetchMangaDetail");
   },
   computed: {
@@ -42,12 +41,9 @@ export default {
     methods: {
       readManga(chapterLink){
         
-        // let payload = {
-        //   chapterLink
-        // }
          this.$router.push('/read')
         this.$store.commit("readManga", chapterLink)
-        // this.$store.dispatch('readManga',payload)
+    
       }
     }
 };
