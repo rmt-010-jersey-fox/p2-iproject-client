@@ -73,7 +73,7 @@ export default {
 
 .login,
 .image {
-  min-height: 88vh;
+  min-height: 86vh;
   background-color: rgba(19, 83, 75, 0.39);
   color: white;
   margin: 0%;

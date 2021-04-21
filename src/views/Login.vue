@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid">
   <div class="row no-gutter" style="height: 88vh">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://i.redd.it/be2ednhduemy.jpg'); height: 88vh"></div>
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" style="background-image: url('https://i.redd.it/be2ednhduemy.jpg'); height: 86vh"></div>
     <div class="col-md-8 col-lg-6" style="height: 88vh">
       <div class="login d-flex align-items-center">
         <div class="container">
@@ -77,7 +77,7 @@ export default {
 
 .login,
 .image {
-  min-height: 88vh;
+  min-height: 86vh;
   background-color: rgba(19, 83, 75, 0.39);
   color: white;
   margin: 0%;
