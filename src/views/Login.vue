@@ -6,22 +6,33 @@
     <br>
     <br>
     <br>
-      <h3 class="mb-4 text-success">Log In</h3>
-      <div class="mb-3 col-3">
-        <label class="form-label">Email address</label>
-        <input v-model="email" type="email" class="form-control">
+    <br>
+    <div class="row text-center">
+       <h1 class="display-1 text-primary">Welcome to Book Lovers</h1>
+    </div>
+    <div class="row d-flex" style="align-items: center ">
+      <div class="col-4">
+        <h3 class="mb-4 text-success">Log In</h3>
+          <div class="mb-3 col-9">
+            <label class="form-label">Email address</label>
+            <input v-model="email" type="email" class="form-control">
+          </div>
+          <div class="mb-3 col-9">
+            <label class="form-label">Password</label>
+            <input v-model="password" type="password" class="form-control">
+          </div>
+          <div class="d-flex">
+            <button type="submit" class="btn btn-primary" style="width:250px; height:40px">Sign In</button><br>
+          </div>
+          <div class="d-flex">
+            <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+          </div>
       </div>
-      <div class="mb-3 col-3">
-        <label class="form-label">Password</label>
-        <input v-model="password" type="password" class="form-control">
+      <div class="col-8 text-center">
+        <img src="https://cdn.dribbble.com/users/24158/screenshots/14414173/media/0ba2af910e5a71b94ef5af77b730f134.jpg?compress=1&resize=1000x750" style="" alt="">
       </div>
-      <div class="d-flex col-3">
-        <button type="submit" class="btn btn-primary" style="width:250px; height:40px">Sign In</button><br>
-      </div>
-      <div class="d-flex col-3">
-         <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
-
-      </div>
+    </div>
+      
     </div>
   </form>
   <!-- END FORM LOGIN -->
