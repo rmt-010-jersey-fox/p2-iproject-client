@@ -13,10 +13,12 @@ export default new Vuex.Store({
     profile: {},
     loggedUser: {
       username: '',
-      id: 0
+      id: 0,
+      avatar: ''
     },
     card: {},
     cards: [],
+    filteredCards: [],
     decks: [],
     deck: {},
     dueCards: [],
@@ -35,8 +37,13 @@ export default new Vuex.Store({
     setLoggedUser (state, payload) {
       state.loggedUser = {
         username: payload.username,
-        id: payload.id
+        id: payload.id,
+        avatar: payload.avatar
       }
+    },
+
+    setLoggedUserAvatar (state, payload) {
+      state.loggedUser.avatar = payload.avatar
     },
 
     setDecks (state, payload) {
@@ -50,6 +57,11 @@ export default new Vuex.Store({
         UserId: payload.deck.UserId
       }
       state.cards = payload.deck.Cards
+      state.filteredCards = payload.deck.Cards
+    },
+
+    setFilteredCards (state, payload) {
+      state.filteredCards = payload.filteredCards
     },
 
     setDueCards (state, payload) {
@@ -88,13 +100,13 @@ export default new Vuex.Store({
         }
       })
         .then(response => {
-          console.log(response.data)
           localStorage.setItem('access_token', response.data.access_token)
           localStorage.setItem('username', response.data.username)
           localStorage.setItem('userId', response.data.id)
+          localStorage.setItem('avatar_url', response.data.avatarImageUrl)
 
           context.commit('setLoginStatus', { status: true })
-          context.commit('setLoggedUser', { username: response.data.username, id: response.data.id })
+          context.commit('setLoggedUser', { username: response.data.username, id: response.data.id, avatar: response.data.avatarImageUrl })
 
           router.push({ name: 'Home' })
         })
@@ -163,8 +175,35 @@ export default new Vuex.Store({
         })
     },
 
-    editUserDesc (context, payload) {
+    editUserAvatar (context, payload) {
+      axios({
+        method: 'PATCH',
+        url: '/profile/avatar',
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: {
+          random: payload.random,
+          avatarImageUrl: payload.url
+        }
+      })
+        .then(response => {
+          localStorage.setItem('avatar_url', response.data)
+          context.commit('setLoggedUserAvatar', { avatar: response.data })
+          context.dispatch('getUserProfile', { id: router.currentRoute.params.id })
+          Swal.fire({
+            icon: 'success',
+            title: 'Your change has been saved!'
+          })
+        })
 
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: err.response.data.error,
+            background: 'mistyrose'
+          })
+        })
     },
 
     getUserDecks (context, payload) {

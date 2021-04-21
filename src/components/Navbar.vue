@@ -7,8 +7,13 @@
   <nav>
     <ul>
       <!-- <router-link :to="{ name: 'Home'}"><li>About</li></router-link> -->
+      <router-link v-if="loginStatus" :to="{ name: 'User', params: { id: loggedUser.id }}">
+        <li>
+          <img id="avatar" :src="loggedUser.avatar" alt="user's avatar">
+          {{ loggedUser.username }}
+        </li>
+      </router-link>
       <router-link v-if="loginStatus" :to="{ name: 'CardAdd'}"><li>Add</li></router-link>
-      <router-link v-if="loginStatus" :to="{ name: 'User', params: { id: loggedUser.id }}"><li>{{ loggedUser.username }}</li></router-link>
       <li v-if="loginStatus" @click="logout">Logout</li>
     </ul>
   </nav>
@@ -61,6 +66,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
   }
 
   nav ul {
@@ -84,5 +90,11 @@ export default {
   nav ul li:hover {
     color:yellow;
     transform: scale(1.15);
+  }
+
+  #avatar{
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
   }
 </style>

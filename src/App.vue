@@ -14,7 +14,7 @@ export default {
   created () {
     if (localStorage.access_token) {
       this.$store.commit('setLoginStatus', { status: true })
-      this.$store.commit('setLoggedUser', { username: localStorage.username, id: localStorage.userId })
+      this.$store.commit('setLoggedUser', { username: localStorage.username, id: localStorage.userId, avatar: localStorage.avatar_url })
     }
   },
 

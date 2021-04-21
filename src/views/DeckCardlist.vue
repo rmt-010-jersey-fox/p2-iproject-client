@@ -2,8 +2,8 @@
   <div id="deck-cardlist-page" class="page">
     <h2>{{ deck.name }} Cards</h2>
     <div id="search-container">
-      <input id="card-search" type="text" placeholder="Search a card in this deck">
-      <button><i class="fa fa-search"></i></button>
+      <input v-model="keyword" id="card-search" type="text" placeholder="Search a card in this deck">
+      <button @click="searchCards"><i class="fa fa-search"></i></button>
     </div>
       <router-link :to="{ name: 'DeckDetail', params: { id: deck.id } }"><button class="btn btn-success">Return</button></router-link>
     <br><br>
@@ -16,7 +16,7 @@
           <th>Due</th>
         </tr>
         <tr
-          v-for="card in cards"
+          v-for="card in filteredCards"
           :key="card.id"
           @click="toCardDetail(card.id)"
           class="card-row"
@@ -35,6 +35,12 @@
 export default {
   name: 'DeckCardList',
 
+  data () {
+    return {
+      keyword: ''
+    }
+  },
+
   created () {
     this.$store.dispatch('getDeck', { DeckId: this.$route.params.id })
   },
@@ -46,12 +52,21 @@ export default {
 
     cards () {
       return this.$store.state.cards
+    },
+
+    filteredCards () {
+      return this.$store.state.filteredCards
     }
   },
 
   methods: {
     toCardDetail (id) {
       this.$router.push({ name: 'CardEdit', params: { id } })
+    },
+
+    searchCards () {
+      const cards = this.cards.filter(card => card.front.includes(this.keyword) || card.back.includes(this.keyword))
+      this.$store.commit('setFilteredCards', { filteredCards: cards })
     }
   }
 }
