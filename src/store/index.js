@@ -45,6 +45,18 @@ export default new Vuex.Store({
         })
     },
 
+    googleLogin (context, payload) {
+      axios.post('/googleLogin', payload)
+        .then((response) => {
+          console.log(response)
+          localStorage.setItem('access_token', response.data.access_token)
+          router.push('/')
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+
     getSurah (context, payload) {
       // console.log(payload, '<<<<< MASUK KE STORE')
       axios.post('/surah', payload, {

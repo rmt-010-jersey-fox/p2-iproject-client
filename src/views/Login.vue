@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card bg-light border-radius shadow" style="height: 400px;">
+            <div class="card bg-light border-radius shadow" style="height: 450px;">
               <div class="card-body">
                 <form @submit.prevent="login" id="login">
                   <center>
@@ -50,6 +50,14 @@
                   </div>
                 </form>
                 <hr />
+                <div class="row mt-2 mb-1">
+                <div class="col-3">
+                  <p>Or with :</p>
+                </div>
+                <div class="col-9">
+                  <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess">Login</GoogleLogin>
+                </div>
+              </div>
                 <div>
                   <p>Don't Have Any Account ? <a href="#form-register" @click.prevent='toRegister'>Register</a></p>
                 </div>
@@ -60,14 +68,24 @@
       </div>
     </div>
 </template>
-
 <script>
+import GoogleLogin from 'vue-google-login'
+
 export default {
   name: 'Login',
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      params: {
+        client_id:
+          '270568207489-gs7fp6fr519vlco6uphfgs8opv6of32r.apps.googleusercontent.com'
+      },
+      renderParams: {
+        width: 200,
+        height: 40,
+        longtitle: true
+      }
     }
   },
   methods: {
@@ -80,7 +98,17 @@ export default {
         password: this.password
       }
       this.$store.dispatch('login', payload)
+    },
+    onSuccess (googleUser) {
+      console.log(googleUser)
+      console.log(googleUser.getBasicProfile())
+      const id_token = googleUser.getAuthResponse().id_token
+      console.log({ id_token }, '<<<<<<<<<<<< Ini Token dari gugel')
+      this.$store.dispatch('googleLogin', { id_token })
     }
+  },
+  components: {
+    GoogleLogin
   }
 }
 </script>
