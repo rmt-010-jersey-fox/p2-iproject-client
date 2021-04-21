@@ -7,32 +7,42 @@ export default createStore({
     randomMeal: {},
     randomDrink: {},
     mealsCategories: [],
-    drinksCategories: []
+    drinksCategories: [],
+    mealsByCategory: [],
+    currentMealCategory: ''
   },
   mutations: {
     getRandomRecipes (state, meal) {
       state.randomMeal = meal
     },
     getRandomDrink (state, drink) {
-      console.log('mutatation drink')
-      console.log(drink)
+      // console.log('mutatation drink')
+      // console.log(drink)
       state.randomDrink = drink
     },
     getMealsCategories (state, categories) {
-      console.log('getMealsCategories, mutations')
+      // console.log('getMealsCategories, mutations')
       state.mealsCategories = categories
     },
     getDrinksCategories (state, categories) {
-      console.log('getDrinksCategories, mutations')
-      console.log('!!!!!', categories)
+      // console.log('getDrinksCategories, mutations')
+      // console.log('!!!!!', categories)
       state.drinksCategories = categories
+    },
+    fetchMealsByCategory (state, meals) {
+      console.log('fetchMealsByCategory, mutations 2')
+      console.log(meals)
+      state.mealsByCategory = meals
+    },
+    currentCategory (state, category) {
+      state.currentMealCategory = category
     }
   },
   actions: {
     getRandomRecipes (context) {
       axios.get('/meals/random')
         .then(meal => {
-          console.log(meal.data)
+          // console.log(meal.data)
           context.commit('getRandomRecipes', meal.data)
         })
         .catch(err => {
@@ -40,24 +50,24 @@ export default createStore({
         })
     },
     getRandomDrink (context) {
-      console.log('actions random drink')
+      // console.log('actions random drink')
       axios.get('/drinks/random')
         .then(drink => {
-          console.log('----')
-          console.log(drink.data)
+          // console.log('----')
+          // console.log(drink.data)
           context.commit('getRandomDrink', drink.data)
         })
         .catch(err => {
-          console.log('error random drink')
+          // console.log('error random drink')
           console.log(err)
         })
     },
     getMealsCategories (context) {
-      console.log('getMealsCategories, actions')
+      // console.log('getMealsCategories, actions')
       axios.get('/meals/categories')
         .then(categories => {
-          console.log('getMealsCategories, actions')
-          console.log(categories.data)
+          // console.log('getMealsCategories, actions')
+          // console.log(categories.data)
           context.commit('getMealsCategories', categories.data)
         })
         .catch(err => {
@@ -65,12 +75,25 @@ export default createStore({
         })
     },
     getDrinksCategories (context) {
-      console.log('getDrinksCategories, actions 1')
+      // console.log('getDrinksCategories, actions 1')
       axios.get('/drinks/categories')
         .then(categories => {
-          console.log('getDrinksCategories, actions 2')
-          console.log(categories)
+          // console.log('getDrinksCategories, actions 2')
+          // console.log(categories)
           context.commit('getDrinksCategories', categories.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    fetchMealsByCategory (context, category) {
+      console.log('fetchMealsByCategory, actions 1')
+      console.log(category)
+      axios.get('/meals/categories/' + category)
+        .then(meals => {
+          console.log('fetchMealsByCategory, actions 2')
+          console.log(meals.data)
+          context.commit('fetchMealsByCategory', meals.data)
         })
         .catch(err => {
           console.log(err)

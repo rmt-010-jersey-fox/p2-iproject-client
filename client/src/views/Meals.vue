@@ -20,18 +20,18 @@ export default {
       return this.$store.state.randomMeal
     },
     mealsCategories () {
-      console.log('---------------')
-      console.log(this.$store.state.mealsCategories)
+      // console.log('---------------')
+      // console.log(this.$store.state.mealsCategories)
       return this.$store.state.mealsCategories
     }
   },
   methods: {
     getRandomRecipes () {
-      console.log('masuk ke method sini')
+      // console.log('masuk ke method sini')
       this.$store.dispatch('getRandomRecipes')
     },
     getMealsCategories () {
-      console.log('getMealsCategories methods')
+      // console.log('getMealsCategories methods')
       this.$store.dispatch('getMealsCategories')
     }
   },

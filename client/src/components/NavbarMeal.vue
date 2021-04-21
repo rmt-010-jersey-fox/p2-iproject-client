@@ -3,6 +3,7 @@
     <nav class="container navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand" href="#">Home</router-link>
+        <router-link to="/meals" class="navbar-brand" href="#">Meals</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,7 +16,7 @@
           :category="category"
           >
             <li class="nav-item">
-              <router-link to="/mealsCategory" class="nav-link active" aria-current="page" href="#">{{category.strCategory}}</router-link>
+              <a @click.prevent="goToCategoryPage(category.strCategory)" class="nav-link active" aria-current="page" href="#">{{category.strCategory}}</a>
             </li>
          </ul>
           <form class="d-flex">
@@ -32,8 +33,11 @@ export default {
   name: 'NavbarMeal',
   props: ['mealsCategories'],
   methods: {
-    fetchMealsByCategory (category) {
-
+    goToCategoryPage (category) {
+      console.log(category + ' di methods navbar')
+      this.$store.dispatch('fetchMealsByCategory', category)
+      this.$store.commit('currentCategory', category)
+      this.$router.push({ name: 'MealsCategory' })
     }
   }
 }
