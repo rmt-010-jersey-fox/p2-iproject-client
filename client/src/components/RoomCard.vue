@@ -35,24 +35,24 @@
 
 <script>
 export default {
-  name: "RoomCard",
-  props: ["room"],
+  name: 'RoomCard',
+  props: ['room'],
   computed: {},
   methods: {
-    profilePage() {
+    profilePage () {
       this.$router
         .push(`/dashboard/profile/${this.room.User.username}`)
-        .catch(() => {});
-      this.$store.dispatch("fetchUser", { username: this.room.User.username });
+        .catch(() => {})
+      this.$store.dispatch('fetchUser', { username: this.room.User.username })
     },
-    joinRoom() {
-      this.$socket.emit("join-room", this.room.User.username);
+    joinRoom () {
+      this.$socket.emit('join-room', this.room.User.username)
       this.$router
         .push(`/dashboard/chat/${this.room.User.username}`)
-        .catch(() => {});
+        .catch(() => {})
     }
   }
-};
+}
 </script>
 
 <style>

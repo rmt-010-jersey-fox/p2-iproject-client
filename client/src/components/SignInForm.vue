@@ -30,46 +30,46 @@
 
 <script>
 export default {
-  name: "SignInForm",
-  data() {
+  name: 'SignInForm',
+  data () {
     return {
-      email: "",
-      password: ""
-    };
+      email: '',
+      password: ''
+    }
   },
   methods: {
-    async login() {
+    async login () {
       try {
-        const data = await this.$store.dispatch("login", {
+        const data = await this.$store.dispatch('login', {
           email: this.email,
           password: this.password
-        });
-        console.log(data);
+        })
+        console.log(data)
         this.$router
           .push({
             path: `/dashboard/profile/${localStorage.username}`
           })
-          .catch(() => {});
+          .catch(() => {})
         const payload = {
           sender: localStorage.username,
           avatarUrl: localStorage.avatarUrl
-        };
-        this.$socket.emit("loginUser", payload);
+        }
+        this.$socket.emit('loginUser', payload)
       } catch (error) {
-        const msg = error.response.data.message;
+        const msg = error.response.data.message
         this.$swal({
-          icon: "error",
-          title: "Oops...",
+          icon: 'error',
+          title: 'Oops...',
           text: msg
-        });
-        console.log(error);
+        })
+        console.log(error)
       } finally {
-        this.email = "";
-        this.password = "";
+        this.email = ''
+        this.password = ''
       }
     }
   }
-};
+}
 </script>
 
 <style></style>

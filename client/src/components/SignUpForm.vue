@@ -30,43 +30,43 @@
 
 <script>
 export default {
-  name: "SignUpForm",
-  data() {
+  name: 'SignUpForm',
+  data () {
     return {
-      email: "",
-      password: "",
-      username: "",
-      roomName: ""
-    };
+      email: '',
+      password: '',
+      username: '',
+      roomName: ''
+    }
   },
   methods: {
-    async register() {
-      console.log(this.email, this.password, this.username, this.roomName);
+    async register () {
+      console.log(this.email, this.password, this.username, this.roomName)
       try {
-        const data = await this.$store.dispatch("register", {
+        const data = await this.$store.dispatch('register', {
           email: this.email,
           password: this.password,
           username: this.username,
           roomName: this.roomName
-        });
-        console.log(data, "output register");
+        })
+        console.log(data, 'output register')
       } catch (error) {
-        const msg = error.response.data.message;
+        const msg = error.response.data.message
         this.$swal({
-          icon: "error",
-          title: "Oops...",
+          icon: 'error',
+          title: 'Oops...',
           text: msg
-        });
-        console.log(error);
+        })
+        console.log(error)
       } finally {
-        this.email = "";
-        this.password = "";
-        this.username = "";
-        this.roomName = "";
+        this.email = ''
+        this.password = ''
+        this.username = ''
+        this.roomName = ''
       }
     }
   }
-};
+}
 </script>
 
 <style></style>
