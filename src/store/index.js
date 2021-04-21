@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import AxiosPlugin from 'vue-axios-cors'
 import router from '../router/index.js'
+const baseURL = 'http://localhost:3000/'
 
 Vue.use(Vuex)
-Vue.use(AxiosPlugin)
 
 export default new Vuex.Store({
   state: {
@@ -14,7 +13,10 @@ export default new Vuex.Store({
     destinationCities: [],
     tikiPrices: [],
     jnePrices: [],
-    posPrices: []
+    posPrices: [],
+    user: [],
+    histories: [],
+    item: ''
   },
   mutations: {
     setLocation (state, payload) {
@@ -34,13 +36,79 @@ export default new Vuex.Store({
     },
     setTIKIOngkir (state, payload) {
       state.tikiPrices = payload
+    },
+    setUser (state, payload) {
+      state.user = payload
+    },
+    setHistory (state, payload) {
+      state.histories = payload
+    },
+    setItem (state, payload) {
+      state.item = payload
     }
   },
   actions: {
+    register (context, payload) {
+      const { username, email, password, address } = payload
+      axios({
+        method: 'post',
+        url: baseURL + 'register',
+        data: {
+          username,
+          email,
+          password,
+          address
+        }
+      })
+        .then((res) => {
+          router.push('/login')
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+    },
+    login (context, payload) {
+      const { email, password } = payload
+      axios({
+        method: 'post',
+        url: baseURL + 'login',
+        data: {
+          email,
+          password
+        }
+      })
+        .then((res) => {
+          localStorage.setItem('access_token', res.data.access_token)
+          this.dispatch('fetchUser')
+          router.push('/')
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+    },
+    fetchUser (context) {
+      console.log('masuk fetch')
+      axios({
+        method: 'get',
+        url: baseURL + 'user',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then((res) => {
+          context.commit('setUser', res.data)
+        })
+        .catch(err => {
+          console.log(err.response)
+        })
+    },
     fetchOrigin (context) {
       axios({
         method: 'get',
-        url: 'http://localhost:3000/location'
+        url: baseURL + 'location',
+        headers: {
+          access_token: localStorage.access_token
+        }
       })
         .then((res) => {
           console.log('masuk')
@@ -56,12 +124,15 @@ export default new Vuex.Store({
       const data = []
       axios({
         method: 'post',
-        url: 'http://localhost:3000/ongkir',
+        url: baseURL + 'ongkir',
         data: {
           origin,
           destination,
           weight,
           courier: 'jne'
+        },
+        headers: {
+          access_token: localStorage.access_token
         }
       })
         .then(res => {
@@ -69,12 +140,15 @@ export default new Vuex.Store({
           data.push(res.data)
           return axios({
             method: 'post',
-            url: 'http://localhost:3000/ongkir',
+            url: baseURL + 'ongkir',
             data: {
               origin,
               destination,
               weight,
               courier: 'pos'
+            },
+            headers: {
+              access_token: localStorage.access_token
             }
           })
         })
@@ -83,12 +157,15 @@ export default new Vuex.Store({
           data.push(res.data)
           return axios({
             method: 'post',
-            url: 'http://localhost:3000/ongkir',
+            url: baseURL + 'ongkir',
             data: {
               origin,
               destination,
               weight,
               courier: 'tiki'
+            },
+            headers: {
+              access_token: localStorage.access_token
             }
           })
         })
@@ -105,7 +182,10 @@ export default new Vuex.Store({
     fetchCity (context, payload) {
       axios({
         method: 'get',
-        url: `http://localhost:3000/ongkir/${payload}`
+        url: baseURL + `ongkir/${payload}`,
+        headers: {
+          access_token: localStorage.access_token
+        }
       })
         .then(res => {
           context.commit('setCity', res.data)
@@ -117,10 +197,51 @@ export default new Vuex.Store({
     fetchDestinationCity (context, payload) {
       axios({
         method: 'get',
-        url: `http://localhost:3000/ongkir/${payload}`
+        url: baseURL + `ongkir/${payload}`,
+        headers: {
+          access_token: localStorage.access_token
+        }
       })
         .then(res => {
           context.commit('setDestinationCity', res.data)
+        })
+        .catch(err => {
+          console.log(err.response)
+        })
+    },
+    fetchHistories (context) {
+      axios({
+        method: 'get',
+        url: baseURL + 'history',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(res => {
+          console.log(res.data)
+          context.commit('setHistory', res.data)
+        })
+        .catch(err => {
+          console.log(err.response)
+        })
+    },
+    addHistories (context, payload) {
+      console.log('masuk add')
+      const { item, price } = payload
+      axios({
+        method: 'post',
+        url: baseURL + 'history',
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: {
+          item,
+          price
+        }
+      })
+        .then(res => {
+          console.log(res.data)
+          router.push('/')
         })
         .catch(err => {
           console.log(err.response)
