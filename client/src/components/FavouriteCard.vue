@@ -3,7 +3,7 @@
         <div class="hover hover-2 text-white rounded"><img :src="favourite.Image.imgUrl" alt="" style="width:400px;">
         <div class="hover-overlay"></div>
         <div class="hover-2-content px-5 py-4">
-            <h3 class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Detail </span></h3>
+            <h3 @click="handleDetail(favourite.Image.id)" class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Detail </span></h3>
             <!-- <button class="hover-2-description mb-0 btn btn-success">Favorite</button> -->
         </div>
         </div>
@@ -14,7 +14,13 @@
 export default {
   name: 'FavouriteCard',
   props: ['favourite'],
-  method: {
+  methods: {
+    handleDetail (id) {
+      this.$store.dispatch('findImage', {
+        id
+      })
+      this.$router.push('/details')
+    }
   }
 }
 </script>

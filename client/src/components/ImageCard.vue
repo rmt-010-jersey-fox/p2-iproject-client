@@ -17,6 +17,10 @@ export default {
   methods: {
     handleDetail (id) {
       // Go To Details
+      this.$store.dispatch('findImage', {
+        id
+      })
+      this.$router.push('/details')
     }
   }
 }
