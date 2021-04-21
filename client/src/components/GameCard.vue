@@ -12,7 +12,7 @@
     <div class="card-img-overlay">
       <i class="fas fa-heart wishlist"
         style="font-size: 30px;"
-        @click="wishlist(game.id)">
+        @click="wishlist(game)">
       </i>
     </div>
   </div>
@@ -23,8 +23,8 @@ export default {
   name: 'GameCard',
   props: ['game'],
   methods: {
-    wishlist (id) {
-      console.log('klick', id)
+    wishlist (vaf) {
+      this.$store.dispatch('addWishlist', { id: vaf.id, name: vaf.name })
     }
   }
 }

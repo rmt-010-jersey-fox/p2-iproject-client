@@ -1,10 +1,11 @@
 <template>
   <div class="section">
+    <CategoryBar />
     <CarouselGame />
     <!--? Content -->
     <section>
       <div class="container-fluid mt-4">
-        <div class="col d-flex flex-row flex-wrap justify-content-center" >
+        <div class="d-flex flex-row flex-wrap justify-content-center" >
           <GameCard
             class="zoom"
             v-for="game in games.data"
@@ -31,6 +32,7 @@
 <script>
 // @ is an alias to /src
 import CarouselGame from '../components/CarouselGame'
+import CategoryBar from '../components/CategoryBar'
 import GameCard from '../components/GameCard'
 
 export default {
@@ -40,6 +42,7 @@ export default {
   },
   components: {
     CarouselGame,
+    CategoryBar,
     GameCard
   },
   computed: {

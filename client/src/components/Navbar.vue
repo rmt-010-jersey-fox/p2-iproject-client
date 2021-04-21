@@ -22,10 +22,10 @@
                 </div>
               </li>
               <li>
-                <a class="dropdown-item" href="#"><i class="fas fa-heart icon"></i> Wishlist</a>
+                <a class="dropdown-item" @click.prevent="wishlist"><i class="fas fa-heart icon"></i> Wishlist</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt icon"></i>SignOut</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt icon"></i> SignOut</a>
               </li>
             </ul>
           </div>
@@ -76,6 +76,12 @@ export default {
   beforeCreate () {
     if (localStorage.access_token) this.$store.commit('setLogin', true)
     else this.$store.commit('setLogin', false)
+  },
+  methods: {
+    wishlist () {
+      console.log('click')
+      this.$router.push({ name: 'Wishlist' })
+    }
   },
   computed: {
     isLogin () {

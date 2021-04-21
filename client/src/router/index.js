@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/wishlist',
+    name: 'Wishlist',
+    component: _ => import('../views/Wishlist.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

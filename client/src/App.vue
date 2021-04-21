@@ -1,21 +1,18 @@
 <template>
   <div id="app">
     <Navbar />
-    <CategoryBar />
     <router-view/>
-    <HFooter />
+    <HFooter class="footer" />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
-import CategoryBar from './components/CategoryBar'
 import HFooter from 'vue-hacktiv-footer'
 
 export default {
   components: {
     Navbar,
-    CategoryBar,
     HFooter
   }
 }
@@ -30,7 +27,13 @@ export default {
   color: #2c3e50;
 }
 
-/* #nav a.router-link-exact-active {
-  color: #42b983;
-} */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #BB2D3B;
+  color: white;
+  text-align: center;
+}
 </style>
