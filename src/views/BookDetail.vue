@@ -17,17 +17,17 @@
               <!-- data detail buku -->
               <div class="col-5">
                 <!-- ICON PLAY -->
-                <p class="h1 mb-2"> 
+                <p class="h2 mb-2"> 
                   <b-icon 
-                  class="me-2"
-                  icon="play-circle-fill" 
-                  animation="fade" 
-                  variant="success" 
+                  class="me-2 zoom"
+                  icon="play-circle-fill"
+                  variant="success"
                   style="cursor: pointer"
                   @click.prevent="speak(book.title, book.description)">
                   </b-icon>
                   <b-icon 
-                  icon="stop-fill" 
+                  icon="stop-fill"
+                  class="zoom"
                   variant="danger" 
                   style="cursor: pointer"
                   @click.prevent="stopSpeak()">
@@ -89,18 +89,19 @@
       <div class="col-6">
         <div class="card overflow-auto text-white text-center bg-secondary mb-3" style="max-height:80vh">
           <div class="card-header fs-5"><!-- ICON PLAY -->
-                <span class="h3 me-2"> 
+                <span class="h4 me-2"> 
                   <b-icon 
-                  icon="play-circle-fill" 
-                  animation="fade" 
-                  variant="primary" 
+                  icon="play-circle-fill"
+                  variant="primary"
+                  class="zoom"
                   style="cursor: pointer"
                   @click.prevent="speakComments(comments)">
                   </b-icon>
                 </span>
                 <span class="h3 me-2"> 
                   <b-icon 
-                  icon="stop-fill" 
+                  icon="stop-fill"
+                  class="zoom"
                   variant="danger" 
                   style="cursor: pointer"
                   @click.prevent="stopSpeak()">
@@ -235,5 +236,7 @@ export default {
 </script>
 
 <style>
-
+.zoom:hover {
+  transform: scale(1.4);
+}
 </style>

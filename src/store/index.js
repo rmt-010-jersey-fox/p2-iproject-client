@@ -53,13 +53,14 @@ export default new Vuex.Store({
       })
         .then(response => {
           localStorage.setItem('token', response.data.token)
+          context.commit('setUsername', response.data.username)
           context.commit('setLogin')
           router.push({ name: 'Home' })
         })
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -122,7 +123,7 @@ export default new Vuex.Store({
           context.commit('fetchBooks', response.data)
         })
         .catch(err => {
-          console.log(err.response.data);
+          console.log(err.response.data.message);
         })
     },
     fetchOneBook(context, payload) {
@@ -141,7 +142,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -159,7 +160,7 @@ export default new Vuex.Store({
           context.commit('fetchWishlist', response.data)
         })
         .catch(err => {
-          console.log(err.response.data);
+          console.log(err.response.data.message);
         })
     },
     fetchComments(context, payload) {
@@ -174,7 +175,7 @@ export default new Vuex.Store({
           context.commit('fetchComments', response.data)
         })
         .catch(err => {
-          console.log(err.response.data);
+          console.log(err.response.data.message);
         })
     },
     fetchWishLikeAmount(context, payload) {
@@ -190,7 +191,7 @@ export default new Vuex.Store({
           context.commit('fetchWishLikeAmount', response.data)
         })
         .catch(err => {
-          console.log(err.response.data);
+          console.log(err.response.data.message);
         })
     },
     addWishLists(context, payload) {
@@ -204,11 +205,15 @@ export default new Vuex.Store({
       })
         .then(response => {
           context.dispatch('fetchWishLikeAmount', payload.isbn)
+          context.dispatch('fetchWishlists')
+          if (payload.category) {
+            context.dispatch('fetchBooks', payload.category)
+          }
         })
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -229,7 +234,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -250,7 +255,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -271,7 +276,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -292,7 +297,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -313,7 +318,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })
@@ -334,7 +339,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             title: 'Warning!',
-            text: err.response.data,
+            text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'close'
           })

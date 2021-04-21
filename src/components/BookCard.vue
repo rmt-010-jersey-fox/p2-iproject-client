@@ -24,14 +24,12 @@ export default {
   methods : {
     addWishLists (isbn) {
       let payload = {
+        category : this.$route.params.category,
         isbn : isbn
       }
       this.$store.dispatch('addWishLists',  payload )
     }
   },
-  bookDetail(isbn) {
-    
-  }
 }
 </script>
 
