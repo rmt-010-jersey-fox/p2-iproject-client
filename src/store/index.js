@@ -19,7 +19,8 @@ export default new Vuex.Store({
     decks: [],
     deck: {},
     dueCards: [],
-    returningDeckId: 0
+    returningDeckId: 0,
+    isAnswered: false
   },
   mutations: {
     setLoginStatus (state, payload) {
@@ -52,20 +53,27 @@ export default new Vuex.Store({
 
     setDueCards (state, payload) {
       state.dueCards = payload.dueCards
+      state.card = payload.dueCards[0]
     },
 
     sendCardToBack (state, payload) {
       state.dueCards.push(state.dueCards[0])
       state.dueCards.shift()
+      state.card = state.dueCards[0]
     },
 
     removeClearedCard (state, payload) {
       state.dueCards.shift()
+      state.card = state.dueCards[0]
     },
 
     setCard (state, payload) {
       state.card = payload.card
       state.returningDeckId = payload.card.DeckId
+    },
+
+    setAnswered (state, payload) {
+      state.isAnswered = payload.isAnswered
     }
   },
   actions: {
@@ -189,6 +197,13 @@ export default new Vuex.Store({
         }
       })
         .then(response => {
+          let dueCards = [...response.data.Cards]
+          const todayDate = new Date()
+          const tomorrowDate = new Date(todayDate.setDate(todayDate.getDate() + 1)).toLocaleDateString('en-CA')
+
+          dueCards = dueCards.filter(card => new Date(card.due) < new Date(tomorrowDate))
+
+          context.commit('setDueCards', { dueCards })
           context.commit('setDeck', { deck: response.data })
         })
         .catch(err => {
@@ -413,7 +428,36 @@ export default new Vuex.Store({
     },
 
     updateCardMastery (context, payload) {
+      const cardId = payload.cardId
 
+      axios({
+        method: 'PUT',
+        url: `/cards/${cardId}/mastery`,
+        data: {
+          answer: payload.answer,
+          mastery: payload.newMastery
+        },
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(response => {
+
+        })
+        .catch(err => {
+          let msg = err.response.data.error
+
+          if (Array.isArray(err.response.data.error)) {
+            msg = err.response.data.error.join('\n')
+          }
+
+          Swal.fire({
+            icon: 'error',
+            timer: 4000,
+            title: msg,
+            background: 'mistyrose'
+          })
+        })
     },
 
     deleteCard (context, payload) {

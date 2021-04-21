@@ -204,37 +204,4 @@ h2:hover i{
   border-right: solid blue 2px;
   border-left: solid blue 2px;
 }
-
-/* STUDY DECK PAGE */
-#study-deck-page {
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 70vh
-}
-
-#card-front{
-  font-size: 2.3em;
-}
-
-#card-back {
-  font-size: 1.5em;
-}
-
-#show-after-answer button {
-  height: 2em;
-  margin: 10px 15px;
-}
-
-.fa-arrow-left {
-  cursor: pointer;
-  position: absolute;
-  text-align: left;
-}
-
-.button-trio {
-  width: 25%;
-}
-
-/* modal */
 </style>

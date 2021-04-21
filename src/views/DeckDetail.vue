@@ -62,10 +62,7 @@ export default {
     },
 
     cardsToClear () {
-      const todayDate = new Date()
-      const tomorrowDate = new Date(todayDate.setDate(todayDate.getDate() + 1)).toLocaleDateString('en-CA')
-
-      return this.$store.state.cards.filter(card => new Date(card.due) < new Date(tomorrowDate)).length
+      return this.$store.state.dueCards.length
     }
   }
 }

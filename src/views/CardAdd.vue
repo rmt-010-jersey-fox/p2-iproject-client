@@ -47,7 +47,6 @@ export default {
       this.$store.dispatch('addCard', card)
       this.card.front = ''
       this.card.back = ''
-      this.card.DeckId = 0
     }
   }
 }

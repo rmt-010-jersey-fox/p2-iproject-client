@@ -12,6 +12,7 @@
         <tr>
           <th>Front</th>
           <th>Back</th>
+          <th>Mastery</th>
           <th>Due</th>
         </tr>
         <tr
@@ -22,6 +23,7 @@
         >
           <td>{{ card.front }}</td>
           <td>{{ card.back }}</td>
+          <td>{{ card.mastery }}</td>
           <td>{{ card.due }}</td>
         </tr>
       </table>

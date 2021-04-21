@@ -6,7 +6,7 @@
 
   <nav>
     <ul>
-      <router-link :to="{ name: 'Home'}"><li>About</li></router-link>
+      <!-- <router-link :to="{ name: 'Home'}"><li>About</li></router-link> -->
       <router-link v-if="loginStatus" :to="{ name: 'Home'}"><li>Home</li></router-link>
       <router-link v-if="loginStatus" :to="{ name: 'User', params: { id: loggedUser.id }}"><li>{{ loggedUser.username }}</li></router-link>
       <li v-if="loginStatus" @click="logout">Logout</li>
