@@ -6,7 +6,8 @@
     <ul>
       <a href="#" data-bs-toggle="modal" data-bs-target="#deckformmodal"><li>Edit Name</li></a>
       <router-link :to="{ name: 'DeckCardlist', params: { id: deck.id } }"><li>Browse</li></router-link>
-      <a @click.prevent="deleteDeck" class="link-danger delete-option" href=""><li>Delete This Deck</li></a>
+      <a @click="exportDeck" href="#"><li>Export</li></a>
+      <a @click.prevent="deleteDeck" class="link-danger delete-option" href=""><li>Delete</li></a>
     </ul>
     <div class="detail-deck">
       <h3>Total Cards</h3>
@@ -49,6 +50,10 @@ export default {
 
     editDeckName (newName) {
       this.$store.dispatch('editDeckName', { name: newName })
+    },
+
+    exportDeck () {
+      this.$store.dispatch('exportDeck', { deckId: this.$route.params.id })
     }
   },
 

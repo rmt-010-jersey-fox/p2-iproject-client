@@ -9,7 +9,7 @@
     <br><br>
     <div class="table-container">
       <table id="deck-table">
-        <tr>
+        <tr id="table-header">
           <th>Front</th>
           <th>Back</th>
           <th>Mastery</th>

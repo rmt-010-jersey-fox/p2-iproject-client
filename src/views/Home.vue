@@ -3,6 +3,7 @@
     <h2>My Decks Collection</h2>
     <ul>
       <a href="#" data-bs-toggle="modal" data-bs-target="#deckformmodal"><li>Create a New Deck</li></a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#importdeckmodal"><li>Import Deck</li></a>
     </ul>
     <table id="collection-table">
       <tr>
@@ -17,14 +18,14 @@
         <td>{{ deck.Cards.length }}</td>
       </tr>
     </table>
-    <DeckForm
-      @submitAction="createDeck"
-    />
+    <DeckForm @submitAction="createDeck" />
+    <ImportForm />
   </div>
 </template>
 
 <script>
 import DeckForm from '../components/DeckFormModal'
+import ImportForm from '../components/ImportForm'
 
 export default {
   name: 'Home',
@@ -39,7 +40,7 @@ export default {
     }
   },
 
-  components: { DeckForm },
+  components: { DeckForm, ImportForm },
 
   methods: {
     createDeck (name) {

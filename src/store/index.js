@@ -536,8 +536,103 @@ export default new Vuex.Store({
         })
     },
 
-    testSwal (context, payload) {
+    importDeck (context, payload) {
+      axios({
+        method: 'POST',
+        url: '/decks/import',
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: {
+          key: payload.key
+        }
+      })
+        .then(response => {
+          Swal.fire({
+            icon: 'success',
+            title: response.data.success
+          })
 
+          context.dispatch('getUserDecks')
+        })
+
+        .catch(err => {
+          let msg = err.response.data.error
+
+          if (Array.isArray(err.response.data.error)) {
+            msg = err.response.data.error.join('\n')
+          }
+
+          Swal.fire({
+            icon: 'error',
+            timer: 4000,
+            title: msg,
+            background: 'mistyrose'
+          })
+        })
+    },
+
+    exportDeck (context, payload) {
+      const deckId = payload.deckId
+
+      Swal.fire({
+        toast: false,
+        position: 'center',
+        showConfirmButton: true,
+        showCancelButton: true,
+        showCloseButton: false,
+        title: "This will export all of the deck's cards to pastebin. Only front and back data will be exported",
+        confirmButtonText: 'Export it!',
+        confirmButtonColor: 'forestgreen',
+        cancelButtonText: 'Maybe no...',
+        cancelButtonColor: 'firebrick',
+        imageUrl: 'https://i.imgur.com/LbTnxFG.png',
+        imageHeight: 170,
+        imageAlt: 'Pepe thinking',
+        timer: undefined
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            axios({
+              method: 'POST',
+              url: `/decks/${deckId}`,
+              headers: {
+                access_token: localStorage.access_token
+              }
+            })
+              .then(response => {
+                Swal.fire({
+                  toast: false,
+                  position: 'center',
+                  timer: undefined,
+                  showCloseButton: false,
+                  showConfirmButton: true,
+                  confirmButtonColor: 'dodgerblue',
+                  confirmButtonText: 'Close',
+                  imageUrl: 'https://i.imgur.com/O8ArCw0.png',
+                  imageHeight: 170,
+                  imageAlt: 'Pepe okay',
+                  title: 'Here is the link of your imported deck!',
+                  html: `<a href="${response.data.link}" target="_blank">${response.data.link}</a>`
+                })
+              })
+
+              .catch(err => {
+                let msg = err.response.data.error
+
+                if (Array.isArray(err.response.data.error)) {
+                  msg = err.response.data.error.join('\n')
+                }
+
+                Swal.fire({
+                  icon: 'error',
+                  timer: 4000,
+                  title: msg,
+                  background: 'mistyrose'
+                })
+              })
+          }
+        })
     }
   }
 })
