@@ -1,8 +1,8 @@
 <template>
   <!-- Drink Navbar -->
-  <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <router-link to="/" class="navbar-brand" href="#"><b>Home</b></router-link>
+      <router-link to="/" class="navbar-brand" href="#">Home</router-link>
       <router-link to="/drinks" class="navbar-brand" href="#">Drinks</router-link>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,8 +10,8 @@
       </button>
 
         <!-- Categories -->
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;"
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav"
         v-for="(category, i) in drinksCategories"
         :key="i"
         :category="category"

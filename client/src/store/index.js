@@ -11,7 +11,9 @@ export default createStore({
     mealsByCategory: [],
     currentMealCategory: '',
     drinksByCategory: [],
-    currentDrinkCategory: ''
+    currentDrinkCategory: '',
+    searchedMeal: {},
+    searchedDrink: {}
   },
   mutations: {
     getRandomRecipes (state, meal) {
@@ -40,13 +42,21 @@ export default createStore({
       state.currentMealCategory = category
     },
     fetchDrinksByCategory (state, drinks) {
-      console.log('fetchDrinksByCategory, mutations 2')
-      console.log(drinks)
+      // console.log('fetchDrinksByCategory, mutations 2')
+      // console.log(drinks)
       state.drinksByCategory = drinks
     },
     currentDrinkCategory (state, category) {
-      console.log('current category drink >>>', category)
+      // console.log('current category drink >>>', category)
       state.currentDrinkCategory = category
+    },
+    searchMeal (state, meal) {
+      console.log('mutation meal')
+      state.searchedMeal = meal
+    },
+    searchDrink (state, drink) {
+      console.log('mutation drink')
+      state.searchedDrink = drink
     }
   },
   actions: {
@@ -115,15 +125,36 @@ export default createStore({
       console.log(category)
       axios.get('/drinks/categories/' + category)
         .then(drinks => {
-          console.log('fetchDrinksByCategory, actions 2')
-          console.log(drinks.data.drinks)
+          // console.log('fetchDrinksByCategory, actions 2')
+          // console.log(drinks.data.drinks)
           context.commit('fetchDrinksByCategory', drinks.data.drinks)
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    searchMeal (context, name) {
+      console.log('actions', name)
+      axios.get('/meals/search/' + name)
+        .then(meal => {
+          console.log('acations ok')
+          context.commit('searchMeal', meal.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    searchDrink (context, name) {
+      console.log('actions', name)
+      axios.get('/drinks/search/' + name)
+        .then(drink => {
+          console.log('actions ok')
+          context.commit('searchDrink', drink.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
-
   },
   modules: {
   }

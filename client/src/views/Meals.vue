@@ -4,7 +4,7 @@
     :mealsCategories="mealsCategories"
     />
     <MealRecipes
-    :randomRecipes="randomRecipes"
+    :recipes="randomRecipes"
     />
   </div>
 </template>

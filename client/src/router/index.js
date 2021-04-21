@@ -26,6 +26,16 @@ const routes = [
     path: '/drinksCategory',
     name: 'DrinksCategory',
     component: () => import('../views/DrinksCategory.vue')
+  },
+  {
+    path: '/searchedMeal',
+    name: 'SearchedMeal',
+    component: () => import('../views/SearchedMeal.vue')
+  },
+  {
+    path: '/searchedDrink',
+    name: 'SearchedDrink',
+    component: () => import('../views/SearchedDrink.vue')
   }
 ]
 

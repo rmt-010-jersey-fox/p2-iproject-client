@@ -4,7 +4,7 @@
     :drinksCategories="drinksCategories"
     />
     <DrinkRecipes
-    :randomDrink="randomDrink"
+    :drinkRecipes="randomDrink"
     />
   </div>
 
