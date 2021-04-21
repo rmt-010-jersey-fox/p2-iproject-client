@@ -14,29 +14,29 @@
                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">First Name</label>
-                        <input type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <input v-model="userFirstName" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-purple-600">
                     </div>
 
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">Last Name</label>
-                        <input type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <input v-model="userLastName" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-purple-600">
                     </div>
 
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">Email Address</label>
-                        <input type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <input v-model="userEmail" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-purple-600">
                     </div>
 
                     <div>
                         <label class="text-gray-700 dark:text-gray-200">Password</label>
-                        <input type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <input v-model="userPassword" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-purple-600">
                     </div>
                 </div>
 
                 <div class="flex justify-end mt-6">
-                    <button class="px-6 py-2 w-full leading-5 text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-700 focus:outline-none">Register</button>
+                    <button @click.prevent="register" class="px-6 py-2 w-full leading-5 text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-700 focus:outline-none">Register</button>
                 </div>
-                    <p class="inline-block text-center w-full mt-5">Already have an account? Login <span class="text-purple-500">here</span></p>
+                    <p class="inline-block text-center w-full mt-5">Already have an account? Login <span @click="login" class="text-purple-500 cursor-pointer">here</span></p>
             </form>
           </div>
         </div>
@@ -52,7 +52,31 @@
 
 <script>
 export default {
-    name: 'Register'
+    name: 'Register',
+    data () {
+      return {
+        userFirstName: '',
+        userLastName: '',
+        userEmail: '',
+        userPassword: ''
+
+      }
+    },
+    methods: {
+      register () {
+        this.$store.dispatch('register', { user: { email: this.userEmail, password: this.userPassword, firstName: this.userFirstName, lastName: this.userLastName } })
+          .then(({ data }) => {
+            localStorage.setItem('access_token', data.access_token)
+            this.$router.push({ name: 'Home' })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      },
+      login () {
+        this.$router.push({ name: 'Login' })
+      }
+    }
 }
 </script>
 

@@ -6,7 +6,7 @@
         <p class="text-lg font-medium italic text-purple-300 p-1">Build your library</p>
       </div>
       <div class="flex justify-between w-2/3 mx-auto mt-16 space-x-24">
-        <img class="w-2/6 h-auto" src="@/assets/illustration.png" alt="">
+        <img class="w-2/6 h-auto" src="@/assets/login-illustration.png" alt="">
         <div class="w-4/6">
           <div class="bg-white w-full rounded-3xl h-full shadow-lg p-7">
             <p class="text-2xl font-semibold">Login</p>
@@ -14,18 +14,18 @@
             <div class="flex-col gap-6 mt-4">
                 <div>
                     <label class="text-gray-700 dark:text-gray-200">Email</label>
-                    <input type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    <input v-model="userEmail" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600">
                 </div>
 
                 <div>
                     <label class="text-gray-700 dark:text-gray-200" for="password">Password</label>
-                    <input type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    <input v-model="userPassword" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-600">
                 </div>
             </div>
 
             <div class="mt-6 space-y-3">
-                <button @click.prevent class="px-6 py-2 w-full leading-5 text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-700 focus:outline-none">Login</button>
-                <p class="inline-block text-center w-full">Doesnt have an account yet? Register <span class="text-purple-500">here</span></p>
+                <button @click.prevent="login" class="px-6 py-2 w-full leading-5 text-white transition-colors duration-200 transform bg-purple-500 rounded-md hover:bg-purple-700 focus:outline-none">Login</button>
+                <p class="inline-block text-center w-full">Doesnt have an account yet? Register <span @click="register" class="text-purple-500 cursor-pointer">here</span></p>
             </div>
         </form>
           </div>
@@ -41,7 +41,28 @@
 
 <script>
 export default {
-    name: 'Login'
+    name: 'Login',
+    data () {
+      return {
+        userEmail: '',
+        userPassword: ''
+      }
+    },
+    methods: {
+      login () {
+        this.$store.dispatch('login', { user: { email: this.userEmail, password: this.userPassword } })
+          .then(({ data }) => {
+            localStorage.setItem('access_token', data.access_token)
+            this.$router.push({ name: 'Home' })
+          })
+          .catch(err => {
+            console.log(err.response);
+          })
+      },
+      register () {
+        this.$router.push({ name: 'Register' })
+      }
+    }
 }
 </script>
 

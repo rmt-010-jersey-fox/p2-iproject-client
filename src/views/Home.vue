@@ -3,8 +3,7 @@
       <div class="container bg-gradient-to-br from-purple-200 to-gray-300 flex justify-center items-center h-screen">
           <div class="bg-white w-4/5 h-4/5 rounded-3xl overflow-auto shadow-2xl flex">
               <Sidebar></Sidebar>
-              <!-- <Library></Library> -->
-              <!-- <Search></Search> -->
+              <router-view></router-view>
           </div>
       </div>
   </div>
