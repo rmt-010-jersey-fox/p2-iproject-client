@@ -2,10 +2,10 @@
   <div id="app">
      <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="#">
+        <router-link to="/" class="navbar-brand" href="#" style="margin-top:0px; padding-top:0px">
+            <img src="./assets/logo.png" height="50" alt="">
             <strong>SewaMobil.com</strong>
-            <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> -->
-        </a>
+        </router-link>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <button v-show="!checkLogin" @click.prevent="gotoRegister" type="button" class="btn btn-primary" style="background-color: #0770cd !important">Register</button>
@@ -125,6 +125,7 @@ nav {
     position: fixed !important;
     top: 0 !important;
     width: 100%;
+    height: 55px;
 }
 nav a {
   margin-left: 250px;

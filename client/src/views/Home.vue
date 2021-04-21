@@ -2,10 +2,10 @@
   <div class="home">
     <!-- HEADER -->
     <div>
-        <img src="https://cars.usnews.com/pics/size/640x420/static/images/article/202006/128503/216702_New_Volvo_XC40_-_exterior_640x420.jpg" class="img" alt="Responsive image" style="width: 100%; height: 50vh;">
+        <img src="../assets/10851.jpg" class="img" alt="Responsive image" style="margin-top:95px; width: 100%; ">
     </div>
     <!-- FORM CARI MOBIL -->
-    <div class="search-car border border-secondary">
+    <div class="search-car border border-secondary" style="margin-top:25px">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sewa Lepas Kunci</a>
@@ -18,38 +18,23 @@
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <form>
                     <div class="form-group">
-                      <label for="input-location">Lokasi Sewa Mobil</label>
-                      <select id="input-location" class="form-control">
-                        <option selected disabled>----- Pilih Lokasi -----</option>
-                        <option>...</option>
+                      <label>Lokasi Sewa Mobil</label>
+                      <select v-model="location" class="js-example-basic-single form-control">
+                        <option value="default" selected="selected" disabled>--- choose ---</option>
+                        <option v-for="(prov, idx) in provinsi" :key="idx" :value="prov">{{ prov }}</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                        <label for="select-cars">Tipe / Merk Mobil</label>
-                        <select id="select-cars" class="form-control">
-                          <option selected disabled>----- Pilih Tipe / Merek Mobil -----</option>
-                          <option>...</option>
-                        </select>
-                      </div>
                     <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="startBook">Tanggal Mulai Sewa</label>
-                        <input type="date" class="form-control" id="startBook">
+                      <div class="form-group col-md-6">
+                        <label>Tanggal Mulai Sewa</label>
+                        <input type="date" class="form-control" v-model="start_date">
                       </div>
-                      <div class="form-group col-md-2">
-                        <label for="time-start">Pukul</label>
-                        <input type="text" class="form-control" id="time-start">
-                      </div>
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                         <label for="startBook">Tanggal Selesai Sewa</label>
-                        <input type="date" class="form-control" id="startBook">
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="time-start">Pukul</label>
-                        <input type="text" class="form-control" id="time-start">
+                        <input type="date" class="form-control" v-model="end_date">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Cari Mobil</button>
+                    <button type="submit" class="btn btn-primary" @click.prevent="searchCar(location)">Cari Mobil</button>
                   </form>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
@@ -61,7 +46,26 @@
 
 <script>
 // @ is an alias to /src
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  data () {
+    return {
+      location: 'default',
+      start_date: '',
+      end_date: ''
+    }
+  },
+  computed: {
+    provinsi () {
+      return this.$store.state.provinsi
+    }
+  },
+  methods: {
+    searchCar (location) {
+      this.$store.dispatch('getCarsByLocation', { location })
+      this.$router.push('/detailsCar')
+    }
+  }
 }
 </script>
