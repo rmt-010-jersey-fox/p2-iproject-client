@@ -4,9 +4,9 @@
     <h2>{{ deck.name }}</h2>
     <hr>
     <ul>
-      <a href=""><li>Edit Name</li></a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#deckformmodal"><li>Edit Name</li></a>
       <router-link :to="{ name: 'DeckCardlist', params: { id: deck.id } }"><li>Browse</li></router-link>
-      <a class="delete-option" href=""><li>Delete This Deck</li></a>
+      <a @click.prevent="deleteDeck" class="link-danger delete-option" href=""><li>Delete This Deck</li></a>
     </ul>
     <div class="detail-deck">
       <h3>Total Cards</h3>
@@ -16,23 +16,39 @@
       <h3>Cards to Clear</h3>
       <h3>{{ cardsToClear }}</h3>
     </div>
+    <!-- :disabled="cardsToclear === 0" -->
+    <button @click.prevent="study()" :disabled="cardsToClear === 0" class = "button-pair btn btn-primary">Start!</button>
+    <router-link :to="{ name: 'Home' }"><button class="button-pair btn btn-danger">Cancel</button></router-link>
 
-    <button @click.prevent="study()" :disabled="cardsToclear === 0" class = "button-pair">Start!</button>
-    <router-link :to="{ name: 'Home' }"><button class = "button-pair">Cancel</button></router-link>
+    <DeckForm
+      @submitAction="editDeckName"
+    />
   </div>
 </template>
 
 <script>
+import DeckForm from '../components/DeckFormModal'
+
 export default {
   name: 'DeckDetail',
 
   created () {
-    this.$store.dispatch('getDeck')
+    this.$store.dispatch('getDeck', { DeckId: this.$route.params.id })
   },
+
+  components: { DeckForm },
 
   methods: {
     study () {
       this.$router.push({ name: 'StudyDeck', params: { id: this.$route.params.id } })
+    },
+
+    deleteDeck () {
+      this.$store.dispatch('deleteDeck')
+    },
+
+    editDeckName (newName) {
+      this.$store.dispatch('editDeckName', { name: newName })
     }
   },
 
@@ -55,6 +71,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  h2 {
+    font-size: 1.9em;
+    font-weight: bolder;
+  }
 
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h3:nth-child(odd) {
+    font-weight: bold;
+  }
 </style>

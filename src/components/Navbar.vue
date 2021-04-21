@@ -9,7 +9,7 @@
       <router-link :to="{ name: 'Home'}"><li>About</li></router-link>
       <router-link v-if="loginStatus" :to="{ name: 'Home'}"><li>Home</li></router-link>
       <router-link v-if="loginStatus" :to="{ name: 'User', params: { id: loggedUser.id }}"><li>{{ loggedUser.username }}</li></router-link>
-      <li @click="logout">Logout</li>
+      <li v-if="loginStatus" @click="logout">Logout</li>
     </ul>
   </nav>
 </header>
@@ -44,4 +44,37 @@ export default {
     cursor: pointer;
   }
 
+  header {
+    background-color:steelblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    margin:auto;
+    list-style: none;
+  }
+
+  nav ul a {
+    text-decoration: none;
+  }
+
+  nav ul li {
+    color:palegreen;
+    margin-right: 15px;
+    transition: all 0.4s;
+  }
+
+  nav ul li:hover {
+    color:yellow;
+    transform: scale(1.15);
+  }
 </style>

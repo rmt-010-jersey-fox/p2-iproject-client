@@ -1,12 +1,13 @@
 <template>
   <div id="edit-page" class="page form-page">
     <h2>Card Edit</h2>
-    <a class="delete-option" href="">Delete This Card</a>
+    <a @click.prevent="deleteCard" class="delete-option" href="">Delete This Card</a>
     <br><br>
     <CardForm
       :card="card"
       :decks="decks"
-      @returnTo="deckBrowse"
+      @returnTo="deckBrowse()"
+      @submitForm="editCard"
     />
   </div>
 </template>
@@ -18,8 +19,8 @@ export default {
   name: 'CardEdit',
 
   created () {
-    this.$store.dispatch('getCard')
     this.$store.dispatch('getUserDecks')
+    this.$store.dispatch('getCard')
   },
 
   computed: {
@@ -29,12 +30,24 @@ export default {
 
     decks () {
       return this.$store.state.decks
+    },
+
+    returningDeckId () {
+      return this.$store.state.returningDeckId
     }
   },
 
   methods: {
     deckBrowse () {
-      this.$router.push({ name: 'DeckCardlist', params: { id: this.card.DeckId } })
+      this.$router.push({ name: 'DeckCardlist', params: { id: this.returningDeckId } })
+    },
+
+    editCard (updatedCard) {
+      this.$store.dispatch('editCard', updatedCard)
+    },
+
+    deleteCard () {
+      this.$store.dispatch('deleteCard', { DeckId: this.card.DeckId })
     }
   },
 
@@ -42,6 +55,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  h2 {
+    font-size: 1.9em;
+    font-weight: bolder;
+  }
 </style>

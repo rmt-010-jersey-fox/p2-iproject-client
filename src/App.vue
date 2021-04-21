@@ -29,14 +29,16 @@ export default {
 /* TAG STYLING */
 html {
   background-color: azure;
-  font-family: Neucha, "Comic Sans MS";
 }
 
 body {
   margin: 0;
   padding: 0;
+  font-family: Neucha, "Comic Sans MS" !important;
 }
-
+#app {
+  background-color: azure;
+}
 h1 {
   font-size: 2.4em;
   margin:0 15px;
@@ -44,20 +46,12 @@ h1 {
   color: peachpuff;
 }
 
-h2 {
-  font-size: 1.9em;
-}
-
-h3 {
-  font-size: 1.5em;
-}
-
 button, input[type=submit] {
   cursor: pointer;
 }
 
 input, label, p, tr, td, th, button, select{
-  font-size: 1.2em;
+  font-size: 1.2em !important;
 }
 
 table {
@@ -90,40 +84,7 @@ tr:nth-child(odd) {
   margin: 70px auto;
   text-align: center;
   padding: 20px 10px;
-}
-
-/* NAV BAR */
-header {
-  background-color:steelblue;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul {
-  font-size: 1.3em;
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-nav ul a {
-  text-decoration: none;
-}
-
-nav ul li {
-  color:palegreen;
-  margin-right: 15px;
-  transition: all 0.4s;
-}
-
-nav ul li:hover {
-  color:yellow;
-  transform: scale(1.15);
+  background-color: azure;
 }
 
 /* PAGE WITH FORM */
@@ -212,20 +173,9 @@ h2:hover i{
 
 /* ADD / EDIT CARD PAGE */
 .button-pair{
-  width: 25%;
+  width: 24%;
   height: 2em;
-}
-
- textarea {
-  font-size: 1.4em;
-  font-family: 'Neucha';
-  resize: none;
-  margin: auto;
-  text-align:left;
-  width: 50%;
-  min-height: 3em;
-  background-color: white;
-  border: solid black 1px;
+  margin: 0.3em;
 }
 
 /* DECK CARD LIST PAGE */
@@ -285,4 +235,6 @@ h2:hover i{
 .button-trio {
   width: 25%;
 }
+
+/* modal */
 </style>

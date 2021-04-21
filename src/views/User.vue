@@ -27,7 +27,7 @@
       </tr>
     </table>
 
-    <button class ="standalone-button">Return to My Collection</button>
+    <router-link :to="{ name: 'Home' }"><button class ="standalone-button btn btn-success">Return to My Collection</button></router-link>
   </div>
 </template>
 
@@ -47,6 +47,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  h2 {
+    font-size: 1.9em;
+    font-weight: bolder;
+  }
 
+  td:nth-child(odd) {
+    font-weight: bold;
+  }
 </style>
