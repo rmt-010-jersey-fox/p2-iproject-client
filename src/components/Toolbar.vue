@@ -12,7 +12,7 @@
       <v-toolbar-title
         class="white--text font-weight-black ml-6"
         style="cursor: pointer"
-        @click.prevent="$router.push('/dashboard')"
+        @click.prevent="$router.push('/dashboard').catch(() => {})"
         >Dashboard</v-toolbar-title
       >
       <v-toolbar-title
@@ -27,7 +27,7 @@
         rounded
         depressed
         large
-        @click.prevent="$router.push('/register')"
+        @click.prevent="$router.push('/register').catch(() => {})"
         color="warning"
       >
         <v-icon left>mdi-account-plus</v-icon>
@@ -37,7 +37,7 @@
         rounded
         depressed
         large
-        @click.prevent="$router.push('/login')"
+        @click.prevent="$router.push('/login').catch(() => {})"
         color="white"
         class="mx-4"
       >
@@ -48,7 +48,7 @@
         rounded
         depressed
         large
-        @click.prevent="$router.push('/explore')"
+        @click.prevent="$router.push('/explore').catch(() => {})"
         color="warning"
       >
         <v-icon left class="black--text">mdi-earth</v-icon>

@@ -2,24 +2,11 @@
   <div>
     <v-container class="my-6" id="users-page">
       <h1 class="white--text text-center mb-6">Teman-Teman di Sekitarmu</h1>
-      <v-row justify="center">
-        <v-col sm="7">
-          <v-text-field
-            label="Cari User"
-            type="text"
-            prepend-inner-icon="mdi-magnify"
-            solo
-            rounded
-            flat
-            dense
-          ></v-text-field>
-        </v-col>
-      </v-row>
       <div id="scrollable">
         <v-row
           justify="center"
           class="my-4"
-          v-for="(user, i) in allUsers"
+          v-for="(user, i) in filtered"
           :key="i"
         >
           <v-col sm="8">
@@ -34,11 +21,23 @@
                   <h2 class="primary--text">@{{ user.username }}</h2>
                 </v-col>
                 <v-col>
-                  <v-btn rounded depressed class="mr-2 success">
+                  <v-btn
+                    rounded
+                    depressed
+                    class="mr-2 success"
+                    @click.prevent="
+                      $store.dispatch('addFriend', { id: user.id })
+                    "
+                  >
                     <v-icon></v-icon>
                     <b class="primary--text">Tambah Teman</b>
                   </v-btn>
-                  <v-btn rounded depressed class="mr-2 prmary">
+                  <v-btn
+                    rounded
+                    depressed
+                    class="mr-2 prmary"
+                    @click.prevent="$router.push(`/user/${user.id}`)"
+                  >
                     <b>Profil</b>
                   </v-btn>
                 </v-col>
@@ -56,9 +55,21 @@ import { mapState } from "vuex";
 export default {
   name: "UsersPage",
   computed: {
-    ...mapState(["allUsers"]),
+    ...mapState(["allUsers", "currentUser"]),
+    filtered() {
+      const ids = [];
+      const showFiltered = [];
+      this.currentUser.Friends.forEach((f) => {
+        ids.push(f.FriendId);
+      });
+      this.allUsers.forEach((e) => {
+        if (!ids.includes(e.id)) showFiltered.push(e);
+      });
+      return showFiltered;
+    },
   },
   created() {
+    this.$store.dispatch("changeCurrentUser");
     this.$store.dispatch("fetchUsers");
   },
 };

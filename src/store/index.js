@@ -11,8 +11,9 @@ export default new Vuex.Store({
     userPosts: [],
     userPost: [],
     allUsers: [],
-    currentUser: {},
-    currentUserFriends: [],
+    currentUser: { Friends: [] },
+    currentFriend: { Friends: [], Posts: [] },
+    messages: []
   },
   mutations: {
     FETCH_UNSPLASH_PHOTOS(state, payload) {
@@ -27,13 +28,16 @@ export default new Vuex.Store({
     CHANGE_CURRENT_USER(state, payload) {
       state.currentUser = payload.user;
     },
-    FETCH_CURRENT_USER_FRIENDS(state, payload) {
-      state.currentUserFriends = payload.friends;
+    CHANGE_CURRENT_FRIEND(state, payload) {
+      state.currentFriend = payload.friend;
     },
     FETCH_ALL_USERS(state, payload) {
       // except current user who logged in
-      state.allUsers = payload.users
+      state.allUsers = payload.users;
     },
+    PUSH_MESSAGE(state, payload) {
+      state.messages.push(payload);
+    }
   },
   actions: {
     async fetchUnsplashPhotos(context) {
@@ -142,7 +146,7 @@ export default new Vuex.Store({
         console.log(err.response);
       }
     },
-    async login(context, payload) {
+    async login({dispatch}, payload) {
       try {
         const { data } = await axios({
           url: "/login",
@@ -154,6 +158,7 @@ export default new Vuex.Store({
         });
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("currentUserId", data.id);
+        dispatch("changeCurrentUser")
         router.push("/dashboard");
       } catch (err) {
         console.log(err.response);
@@ -177,21 +182,7 @@ export default new Vuex.Store({
         console.log(err.response);
       }
     },
-    async fetchUserFriends({ commit }) {
-      try {
-        const { data } = await axios({
-          url: "/friends",
-          method: "GET",
-          headers: {
-            access_token: localStorage.access_token,
-          },
-        });
-        commit("FETCH_CURRENT_USER_FRIENDS", { friends: data.data });
-      } catch (err) {
-        console.log(err.response);
-      }
-    },
-    async fetchUsers({ commit }) {
+    async fetchUsers({ commit, dispatch }) {
       try {
         let { data } = await axios({
           url: "/users",
@@ -200,12 +191,114 @@ export default new Vuex.Store({
             access_token: localStorage.access_token,
           },
         });
-        data = data.filter(user => user.id !== +localStorage.currentUserId);
+        data = data.filter((user) => user.id !== +localStorage.currentUserId);
         commit("FETCH_ALL_USERS", { users: data });
       } catch (err) {
         console.log(err.response);
       }
     },
+    async changeCurrentFriend({ commit }, payload) {
+      try {
+        const { data } = await axios({
+          url: `/users/${payload.id}`,
+          method: "GET",
+          headers: {
+            access_token: localStorage.access_token,
+          },
+        });
+        commit("CHANGE_CURRENT_FRIEND", { friend: data });
+      } catch (err) {
+        console.log(err.response);
+      }
+    },
+    async addFriend({ dispatch }, payload) {
+      try {
+        const { data } = await axios({
+          url: `/friends`,
+          method: "POST",
+          data: {
+            FriendId: payload.id,
+          },
+          headers: {
+            access_token: localStorage.access_token,
+          },
+        });
+        console.log(data);
+        dispatch("changeCurrentUser");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async deleteFriend({ dispatch }, payload) {
+      try {
+        const { data } = await axios({
+          url: `/friends/${payload.id}`,
+          method: "DELETE",
+          headers: {
+            access_token: localStorage.access_token,
+          },
+        });
+        dispatch("changeCurrentUser");
+        console.log(data);
+      } catch (err) {
+        console.log(err.response);
+      }
+    },
+    async changeAvatar({ dispatch }, payload) {
+      try {
+        payload.random = payload.random.replace(" ", "");
+        const { data } = await axios({
+          url: `/users/avatar/${localStorage.currentUserId}`,
+          method: "PATCH",
+          headers: {
+            access_token: localStorage.access_token,
+          },
+          data: {
+            avatar: `https://avatars.dicebear.com/api/micah/${payload.random}.svg`,
+          },
+        });
+        console.log(data);
+        dispatch("changeCurrentUser");
+      } catch (err) {
+        console.log(err.response);
+      }
+    },
+    async changeUsername({ dispatch }, payload) {
+      try {
+        const { data } = await axios({
+          url: `/users/${localStorage.currentUserId}`,
+          method: "PATCH",
+          headers: {
+            access_token: localStorage.access_token,
+          },
+          data: {
+            username: payload.username
+          }
+        })
+        console.log(data);
+        dispatch("changeCurrentUser")
+      }
+      catch(err) {
+        console.log(err.response)
+      }
+    },
+    async deleteUser({ dispatch }, payload) {
+      try {
+        const { data } = await axios({
+          url: `/users/${localStorage.currentUserId}`,
+          method: "DELETE",
+          headers: {
+            access_token: localStorage.access_token,
+          }
+        })
+        console.log(data);
+        localStorage.clear()
+        router.push('/').catch(() => {})
+      }
+      catch(err) {
+        console.log(err.response)
+      }
+    }
   },
   modules: {},
 });

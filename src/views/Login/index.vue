@@ -96,6 +96,7 @@ export default {
         password: this.password,
       });
       this.$refs.form.validate();
+      this.$socket.emit("userLogin", { email: this.email });
     },
     toRegisterPage() {
       this.$router.push("/register").catch(() => {});

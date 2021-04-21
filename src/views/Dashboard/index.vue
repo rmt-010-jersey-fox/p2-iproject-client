@@ -8,11 +8,18 @@
       </v-row>
       <v-row justify="center">
         <h1 class="warning--text">@{{ currentUser.username }}</h1>
+        <v-btn icon class="mt-2 ml-3">
+          <v-icon class="white--text" @click.prevent="UserSettingsDialog = true"
+            >mdi-account-cog</v-icon
+          >
+        </v-btn>
       </v-row>
       <v-row justify="center" align="center">
         <v-col>
           <h2 class="text-center white--text">Post</h2>
-          <h3 class="text-center white--text">2</h3>
+          <h3 class="text-center white--text">
+            {{ userPosts.length }}
+          </h3>
         </v-col>
         <v-col align="center">
           <!-- button Add post -->
@@ -29,7 +36,9 @@
         </v-col>
         <v-col @click.prevent="FriendsDialog = true" style="cursor: pointer">
           <h2 class="text-center white--text">Teman</h2>
-          <h3 class="text-center white--text">0</h3>
+          <h3 class="text-center white--text">
+            {{ currentUser.Friends.length }}
+          </h3>
         </v-col>
       </v-row>
       <v-row align="center" justify="center">
@@ -73,11 +82,16 @@
       :FriendsDialog="FriendsDialog"
       @closeDialog="FriendsDialog = false"
     ></FriendsDialog>
+    <UserSettingsDialog
+      :UserSettingsDialog="UserSettingsDialog"
+      @closeDialog="UserSettingsDialog = false"
+    ></UserSettingsDialog>
   </div>
 </template>
 
 <script>
 import UploadDialog from "./components/UploadDialog";
+import UserSettingsDialog from "./components/UserSettingsDialog";
 import EditDialog from "./components/EditDialog";
 import FriendsDialog from "./components/FriendsDialog";
 import { mapState } from "vuex";
@@ -88,12 +102,14 @@ export default {
       UploadDialog: false,
       EditDialog: false,
       FriendsDialog: false,
+      UserSettingsDialog: false,
     };
   },
   components: {
     UploadDialog,
     EditDialog,
     FriendsDialog,
+    UserSettingsDialog,
   },
   methods: {
     editCaption(id) {
@@ -105,9 +121,8 @@ export default {
     ...mapState(["userPosts", "currentUser"]),
   },
   created() {
-    this.$store.dispatch("changeCurrentUser");
     this.$store.dispatch("fetchPosts");
-    this.$store.dispatch("fetchUserFriends");
+    this.$store.dispatch("changeCurrentUser");
   },
 };
 </script>
