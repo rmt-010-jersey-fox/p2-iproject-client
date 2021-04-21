@@ -10,22 +10,25 @@
         <hr style="border: 3px solid rgb(255, 255, 255)" />
         <form @submit.prevent="searchSurah">
           <div class="mb-3">
-            <label for="surah" class="form-label" style="color: white">Surat:</label>
+            <label for="surah" class="form-label" style="color: white; font-weight: bold">Surat:</label>
             <input
               type="number"
               class="form-control"
               v-model="surah"
+              placeholder="Input number 1 - 114"
               required
             />
-            <div class="form-text" style="color: white">Referensi nomor surat (1-114) <a  target="_blank" href="https://id.wikipedia.org/wiki/Surah">Link</a></div>
+            <div class="form-text" style="color: white">Referensi nomor surat (1-114) <a style="color: white" target="_blank" href="https://id.wikipedia.org/wiki/Surah">Link</a></div>
           </div>
           <div class="mb-3">
-            <label for="password" class="form-label" style="color: white">Nomor Ayat:</label>
+            <label for="password" class="form-label" style="color: white;font-weight: bold">Nomor Ayat:</label>
             <input
               type="number"
               class="form-control"
+              placeholder="Input number or empty"
               v-model="ayat"
             />
+            <div class="form-text" style="color: white"> Jika ingin melihat full surah kosongkan nomor ayat</div>
           </div>
           <div class="col d-grid gap-2">
             <button type="submit" class="btn btn-warning">

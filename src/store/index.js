@@ -8,7 +8,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     ayatSurahs: [],
-    hadists: []
+    hadists: [],
+    jadwalSolat: {},
+    jadwalSolatUp: {}
   },
   mutations: {
     FETCH_AYAT (state, data) {
@@ -16,6 +18,12 @@ export default new Vuex.Store({
     },
     FETCH_HADIST (state, data) {
       state.hadists = data
+    },
+    FETCH_JADWAL_SOLAT (state, data) {
+      state.jadwalSolat = data
+    },
+    FETCH_JADWAL_SOLAT_UP (state, data) {
+      state.jadwalSolatUp = data
     }
   },
   actions: {
@@ -79,6 +87,51 @@ export default new Vuex.Store({
           context.commit('FETCH_HADIST', arr)
 
           router.push('/hadist').catch(() => {})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    getJadwalSolat (context, payload) {
+      // console.log(payload)
+      const day = +payload.date.split('-')[2]
+      const month = +payload.date.split('-')[1]
+      const year = +payload.date.split('-')[0]
+      // console.log(day, month, year)
+      const newPayload = {
+        day: day,
+        month: month,
+        year: year,
+        place: payload.place
+      }
+      axios.post('/jadwalSolat', newPayload, {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          console.log(data.data, '<<< Di Jadwal Solatttt')
+          // const arr = []
+          // arr.push(data.data)
+          context.commit('FETCH_JADWAL_SOLAT', data)
+
+          router.push('/').catch(() => {})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    fetchJadwalSolat (context, payload) {
+      axios.get('/jadwalsolatUp', {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          console.log(data)
+          context.commit('FETCH_JADWAL_SOLAT', data)
         })
         .catch(err => {
           console.log(err)

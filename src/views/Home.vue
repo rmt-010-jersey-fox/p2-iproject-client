@@ -3,7 +3,7 @@
     <Navbar></Navbar>
     <Carousel></Carousel>
     <FormSurah></FormSurah>
-    <JadwalSolat></JadwalSolat>
+    <JadwalSolat :jadwalSolat="jadwalSolat"></JadwalSolat>
     <FormHadist></FormHadist>
     <HFooter></HFooter>
   </div>
@@ -19,6 +19,12 @@ import HFooter from 'vue-hacktiv-footer'
 
 export default {
   name: 'Home',
+  data () {
+    return {
+      place: '',
+      date: ''
+    }
+  },
   components: {
     Navbar,
     Carousel,
@@ -26,6 +32,19 @@ export default {
     JadwalSolat,
     FormHadist,
     HFooter
+  },
+  created () {
+    this.getJadwalSolatUp()
+  },
+  methods: {
+    getJadwalSolatUp () {
+      this.$store.dispatch('fetchJadwalSolat')
+    }
+  },
+  computed: {
+    jadwalSolat () {
+      return this.$store.state.jadwalSolat
+    }
   }
 }
 </script>

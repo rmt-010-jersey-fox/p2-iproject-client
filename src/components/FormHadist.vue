@@ -15,8 +15,10 @@
               type="text"
               class="form-control"
               v-model="kitab"
+              placeholder="abu-daud, ahmad, bukhari, darimi, ibnu-majah, nasai, malik, muslim"
               required
             />
+            <div class="form-text" style="color: white">Kitab yang tersedia : abu-daud, ahmad, bukhari, darimi, ibnu-majah, nasai, malik, muslim</div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label" style="color: white">Nomor Hadist:</label>
@@ -24,6 +26,7 @@
                 type="text"
                 class="form-control"
                 v-model="nomor"
+                placeholder="input number 1-4000"
                 required
               />
             </div>
