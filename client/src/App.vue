@@ -145,6 +145,7 @@ nav form {
 }
 nav p {
     background-color: #f6f6f6;
+      box-shadow: 0px 4px 10px rgb(3 18 26 / 15%);
     width: 100%;
     position: fixed;
     left: 0;

@@ -65,6 +65,9 @@ export default {
     searchCar (location) {
       this.$store.dispatch('getCarsByLocation', { location })
       this.$router.push('/detailsCar')
+      this.$store.commit('start_date', this.start_date)
+      this.$store.commit('end_date', this.end_date)
+      this.$store.commit('location', this.location)
     }
   }
 }
