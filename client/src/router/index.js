@@ -8,15 +8,12 @@ import Add from '../views/Add.vue'
 import Favourites from '../views/Favourites.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Edit from '../views/Edit.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+
   {
     path: '/login',
     name: 'Login',
@@ -51,6 +48,16 @@ const routes = [
     path: '/add',
     name: 'Add',
     component: Add
+  },
+  {
+    path: '/edit',
+    name: 'Edit',
+    component: Edit
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
   }
 ]
 

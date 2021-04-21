@@ -1,10 +1,10 @@
 <template>
   <div class="col-4 mb-3">
-        <div class="hover hover-2 text-white rounded"><img :src="favourite.Image.imgUrl" alt="" style="width:400px;">
+        <div class="hover hover-2 text-white rounded"><img :src="favourite.Image.imgUrl" alt="" style="width:130%">
         <div class="hover-overlay"></div>
         <div class="hover-2-content px-5 py-4">
             <h3 @click="handleDetail(favourite.Image.id)" class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Detail </span></h3>
-            <!-- <button class="hover-2-description mb-0 btn btn-success">Favorite</button> -->
+            <button @click="handleRemove(favourite.id)" class="hover-2-description mb-0 btn btn-danger">REMOVE</button>
         </div>
         </div>
     </div>
@@ -20,6 +20,11 @@ export default {
         id
       })
       this.$router.push('/details')
+    },
+    handleRemove (id) {
+      this.$store.dispatch('removeFavourite', {
+        id
+      })
     }
   }
 }
@@ -117,11 +122,11 @@ export default {
   }
 
   .hover-2-description {
-    width: 30%;
+    width: 40%;
     position: absolute;
     bottom: 0;
     opacity: 0;
-    left: 70%;
+    left: 30%;
     text-align: center;
     z-index: 99;
     transition: all 0.3s;

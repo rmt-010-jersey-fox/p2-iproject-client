@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from '../API/axios.js'
 import Swal from 'sweetalert2'
 import router from '../router'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     galleries: [],
     favourites: [],
     currentImage: {},
+    comments: [],
     pexels: []
   },
   mutations: {
@@ -33,6 +35,9 @@ export default new Vuex.Store({
     },
     setPexels (state, payload) {
       state.pexels = payload
+    },
+    setComments (state, payload) {
+      state.comments = payload
     }
   },
   actions: {
@@ -111,6 +116,22 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    fetchComments (context, payload) {
+      axios({
+        method: 'GET',
+        url: `/comments/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+        .then(response => {
+          const data = response.data
+          context.commit('setComments', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     findImage (context, payload) {
       axios({
         method: 'GET',
@@ -122,6 +143,9 @@ export default new Vuex.Store({
         .then(response => {
           const data = response.data
           context.commit('setCurrentImage', data)
+          context.dispatch('fetchComments', {
+            id: data.id
+          })
         })
         .catch(err => {
           console.log(err)
@@ -221,8 +245,219 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+    editImage (context, payload) {
+      console.log(payload)
+
+      axios({
+        method: 'PUT',
+        url: `/images/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          imgUrl: payload.imgUrl,
+          category: payload.category,
+          description: payload.description
+        }
+      })
+        .then(response => {
+          console.log('image updated succesfully')
+          Swal.fire({
+            icon: 'success',
+            title: 'Image updated successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          router.go(-1)
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    editDescription (context, payload) {
+      axios({
+        method: 'PATCH',
+        url: `/images/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          description: payload.description
+        }
+      })
+        .then(response => {
+          console.log('Description updated successfully')
+          // context.dispatch('findImage', payload)
+          Swal.fire({
+            icon: 'success',
+            title: 'Description updated successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    addFavourite (context, payload) {
+      axios({
+        method: 'POST',
+        url: `/favourites/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+        .then(response => {
+          console.log('Added to favourites successfully')
+          // context.dispatch('findImage', payload)
+          Swal.fire({
+            icon: 'success',
+            title: 'Added to Favourites',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    removeFavourite (context, payload) {
+      axios({
+        method: 'DELETE',
+        url: `/favourites/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+        .then(response => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Favourite deleted',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          context.dispatch('fetchFavourites')
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    postComment (context, payload) {
+      axios({
+        method: 'POST',
+        url: `/comments/${payload.imageId}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          content: payload.content
+        }
+      })
+        .then(response => {
+          console.log('Post comment successfully')
+          // context.dispatch('findImage', payload)
+          context.dispatch('fetchComments', {
+            id: payload.imageId
+          })
+          Swal.fire({
+            icon: 'success',
+            title: 'Comment Posted',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    deleteComment (context, payload) {
+      axios({
+        method: 'DELETE',
+        url: `/comments/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+        .then(response => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Comment deleted',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          context.dispatch('fetchComments', {
+            id: payload.imageId
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    editContent (context, payload) {
+      axios({
+        method: 'PATCH',
+        url: `/comments/${payload.id}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          content: payload.content
+        }
+      })
+        .then(response => {
+          console.log('comment edited succesfully')
+          Swal.fire({
+            icon: 'success',
+            title: 'Comment edited',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          context.dispatch('fetchComments', {
+            id: payload.imageId
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
     }
   },
   modules: {
-  }
+  },
+  plugins: [createPersistedState()]
 })

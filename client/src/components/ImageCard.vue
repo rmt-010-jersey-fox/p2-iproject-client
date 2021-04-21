@@ -1,10 +1,10 @@
 <template>
   <div class="col-4 mb-3">
-        <div class="hover hover-2 text-white"><img :src="picture.imgUrl" alt="" style="width:400px">
+        <div class="hover hover-2 text-white"><img :src="picture.imgUrl" alt="" style="width:130%">
         <div class="hover-overlay"></div>
         <div class="hover-2-content px-5 py-4">
             <h3 @click="handleDetail(picture.id)" class="hover-2-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Detail </span></h3>
-            <button class="hover-2-description mb-0 btn btn-success">Favorite</button>
+            <!-- <button @click="handleFavourite(picture.id)" class="hover-2-description mb-0 btn btn-success">Favorite</button> -->
         </div>
         </div>
     </div>
@@ -21,6 +21,9 @@ export default {
         id
       })
       this.$router.push('/details')
+    },
+    handleFavourite (id) {
+
     }
   }
 }
