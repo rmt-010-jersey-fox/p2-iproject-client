@@ -39,32 +39,49 @@
     </nav>
     <!-- AKHIR NAVBAR -->
   <router-view/>
+      <HFooter
+      :class="[activeClass]"
+      />
   </div>
 </template>
 
 <script>
+import HFooter from 'vue-hacktiv-footer'
 export default {
-  data () {
-    return {
-      username :localStorage.getItem('username')
-    }
-  },
-  computed : {
-    isLogin () {
+  components: { HFooter },
+  computed: {
+    username() {
+      return this.$store.state.username
+    },
+    isLogin() {
       return this.$store.state.isLogin
-    }
+    },
+    activeClass() {
+      if (this.$route.name != "Books" && this.$route.name != "Wishlists") {
+        return 'stickBawah'
+      }
+      else {
+        return ''
+      }
+    },
   },
-  methods:{
-    logout () {
+  methods: {
+    logout() {
       this.$store.commit('setLogout')
       localStorage.removeItem('token')
-      localStorage.removeItem('username')
-      this.$router.push({name : 'Login'})
+      this.$router.push({ name: 'Login' })
     }
-  }
+  },
 }
 </script>
 
 <style>
-
+.stickBawah {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+}
 </style>

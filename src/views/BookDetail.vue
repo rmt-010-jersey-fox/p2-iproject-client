@@ -67,10 +67,11 @@
             </div>
           </div>
         </div>
+        <button @click.prevent="speak(book.description)">tes suara</button>
       </div>
       <!-- kolom komentar -->
       <div class="col-6">
-        <div class="card text-white text-center bg-secondary mb-3">
+        <div class="card overflow-auto text-white text-center bg-secondary mb-3" style="max-height:80vh">
           <div class="card-header fs-5">Apa Kata Orang-Orang?</div>
           <div class="card-body">
             <!-- LOOPING DISINI -->
@@ -88,6 +89,7 @@
 </template>
 
 <script>
+
 import CommentCard from '../components/CommentCard'
 export default {
   data() {
@@ -95,7 +97,7 @@ export default {
       komentar: ''
     }
   },
-  components: { CommentCard },
+  components: { CommentCard},
   methods: {
     addWishLists(isbn) {
       let payload = {
@@ -115,7 +117,7 @@ export default {
       }
       this.$store.dispatch('dislike', payload)
     },
-    addComment (isbn) {
+    addComment(isbn) {
       let payload = {
         isbn: isbn,
         comment: this.komentar
@@ -124,10 +126,15 @@ export default {
     },
     deleteWishlist(isbn) {
       this.$store.dispatch('deleteWishlist', isbn)
+    },
+    speak(text) {
+      var msg = new SpeechSynthesisUtterance()
+      msg.text = text
+      window.speechSynthesis.speak(msg)
     }
   },
   computed: {
-    commented () {
+    commented() {
       let commented = false
       this.$store.state.comments.forEach(e => {
         if (e.commented) {

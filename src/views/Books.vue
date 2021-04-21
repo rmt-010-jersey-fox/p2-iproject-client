@@ -34,7 +34,7 @@ import BookCard from '../components/BookCard'
 export default {
   data () {
     return {
-      searchByTitle : ''
+      searchByTitle : '',
     }
   },
   computed : {

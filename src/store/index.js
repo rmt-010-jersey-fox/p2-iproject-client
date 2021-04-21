@@ -14,6 +14,7 @@ export default new Vuex.Store({
     wishlists: [],
     comments: [],
     wishLikeAmount: {},
+    username : ''
   },
   mutations: {
     setLogin(state) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     setLogout(state) {
       state.isLogin = false
+    },
+    setUsername(state, payload) {
+      state.username = payload
     },
     fetchBooks(state, payload) {
       state.books = payload
@@ -62,16 +66,14 @@ export default new Vuex.Store({
         })
     },
     login(context, payload) {
-      // console.log(payload);
       axios({
         method: 'POST',
         url: '/login',
         data: payload
       })
         .then(response => {
-          // console.log('dilogin');
           localStorage.setItem('token', response.data.token)
-          localStorage.setItem('username', response.data.username)
+          context.commit('setUsername', response.data.username)
           context.commit('setLogin')
           router.push({ name: 'Home' })
         })

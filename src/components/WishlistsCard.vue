@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 mt-4">
+  <div class="col-3 mb-4">
     <div class="btn zoom card overflow-auto" style="height:70vh" @click.prevent="$router.push({name:'BookDetail', params:{isbn:wishlist.isbn}})">
       <img :src="wishlist.bookImage" class="card-img-top" alt="...">
       <div class="card-body ">
@@ -13,13 +13,11 @@
     </div>
     <div class="card text-center ">
       <button @click.prevent="deleteWishlist(wishlist.isbn)" class="zoom btn btn-danger">Delete From Wish List</button>
-      <!-- <button @click.prevent="speak">speak </button> -->
     </div>
   </div>
 </template>
 
 <script>
-// import responsiveVoice from 'responsiveVoice';
 export default {
   name: 'WishlistCard',
   props: ['wishlist'],
@@ -27,11 +25,6 @@ export default {
     deleteWishlist(isbn) {
       this.$store.dispatch('deleteWishlist', isbn)
     },
-    speak() {
-      // let msg = new SpeechSynthesisUtterance()
-      // msg.text = 'Hello World'
-      // window.speechSynthesis.speak(msg)
-    }
   }
 }
 </script>

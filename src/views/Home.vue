@@ -5,7 +5,7 @@
     <br>
     <br>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'manga'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'manga'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Manga</h5>
@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'animals'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'animals'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Animals</h5>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'education'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'education'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Education</h5>
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'humor'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'humor'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Humor</h5>
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'family'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'family'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Family</h5>
@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'travel'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'travel'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Travel</h5>
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'health'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'health'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Health</h5>
@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="col btn zoom" @click="$router.push({name : 'Books', params : {category:'games-and-activities'}})">
+      <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'games-and-activities'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
             <h5>Games And Activities</h5>
