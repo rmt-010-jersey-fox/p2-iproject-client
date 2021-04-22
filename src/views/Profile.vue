@@ -1,32 +1,31 @@
 <template>
-<!-- <div> -->
-  <!-- <Navbar /> -->
-
+<div>
+    <Navbar />
   <div class="container">
-      <div class="row">
-          <ProfileDetail />
-      </div>
-      <div class="row">
-          <MemeUser />
-      </div>
+    <h4 class="display-4 text-center">Your Profile</h4>
+    <hr />
+    <ProfileDetail />
+    <hr />
+    <h4 class="display-4 text-center">Your Collections</h4>
+    <hr />
+    <MemeUser />
   </div>
-<!-- </div> -->
+</div>
 </template>
 
 <script>
-// import Navbar from '@/components/Navbar.vue'
-import ProfileDetail from '@/components/ProfileDetail.vue'
-import MemeUser from '@/components/MemeUser.vue'
+import Navbar from '@/components/Navbar.vue'
+import ProfileDetail from "@/components/ProfileDetail.vue";
+import MemeUser from "@/components/MemeUser.vue";
 export default {
-    name: 'Profile',
-    component: {
-        // Navbar,
-        ProfileDetail,
-        MemeUser
-    }
-}
+  name: "Profile",
+  components: {
+    Navbar,
+    ProfileDetail,
+    MemeUser,
+  },
+};
 </script>
 
 <style>
-
 </style>
