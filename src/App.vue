@@ -28,7 +28,6 @@ export default {
         access_token: localStorage.getItem("access_token"),
       };
       this.$store.commit("SET_LOGIN", payload);
-      this.$router.push({ path: "/" });
     }
   },
 };

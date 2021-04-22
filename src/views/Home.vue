@@ -72,30 +72,44 @@ export default {
       return this.$store.state.news.technology;
     },
   },
-  /*methods: {*/
-  /*getAllCategoriesNews() {*/
-  /*const */
-  /*const categories = [*/
-  /*"general",*/
-  /*"sports",*/
-  /*"entertainment",*/
-  /*"business",*/
-  /*"entertainment",*/
-  /*"health",*/
-  /*"science",*/
-  /*"technology",*/
-  /*];*/
-  /*Promise.all()*/
-  /*},*/
-  /*},*/
+  methods: {
+    getAllCategoriesNews() {
+      const categories = [
+        "general",
+        "sports",
+        "entertainment",
+        "business",
+        "entertainment",
+        "health",
+        "science",
+        "technology",
+      ];
+
+      Promise.all(
+        categories.map((cat) => {
+          return this.$store.dispatch("getNews", { category: cat });
+        })
+      )
+        .then((res) => {
+          return Promise.all(res.map((r) => r.json()));
+        })
+        .then((data) => {
+          const news = {};
+          for (let i = 0; i < data.length - 1; i++) {
+            Object.defineProperty(news, categories[i], {
+              value: data[i].news,
+              writable: true,
+            });
+          }
+          this.$store.commit("SET_NEWS_ALL", news);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
   created() {
-    this.$store.dispatch("getNews", { category: "general" });
-    this.$store.dispatch("getNews", { category: "sports" });
-    this.$store.dispatch("getNews", { category: "business" });
-    this.$store.dispatch("getNews", { category: "entertainment" });
-    this.$store.dispatch("getNews", { category: "health" });
-    this.$store.dispatch("getNews", { category: "science" });
-    this.$store.dispatch("getNews", { category: "technology" });
+    this.getAllCategoriesNews();
   },
 };
 </script>

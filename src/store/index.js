@@ -25,7 +25,7 @@ export default new Vuex.Store({
       state.readlists = payload;
     },
     SET_NEWS_ALL(state, payload) {
-      state.news[`${payload.category}`] = payload.news;
+      state.news = payload;
     },
     SET_POPULARS(state, payload) {
       state.populars = payload;
@@ -159,19 +159,7 @@ export default new Vuex.Store({
     },
     getNews(context, payload) {
       const category = payload.category;
-      fetch(`${CURRENTSAPI_URL}?category=${category}&apiKey=${API_KEY}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const filteredData = data.news.filter(
-            (el) => el.image && el.description
-          );
-          const mutationsPayload = {
-            category: payload.category,
-            news: filteredData,
-          };
-          context.commit("SET_NEWS_ALL", mutationsPayload);
-          router.push({ path: "/" });
-        });
+      return fetch(`${CURRENTSAPI_URL}?category=${category}&apiKey=${API_KEY}`);
     },
 
     signUp(context, payload) {
