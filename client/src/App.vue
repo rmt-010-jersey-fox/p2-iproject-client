@@ -26,7 +26,7 @@ export default {
 <style>
 
 #app {
-  background: #25292E;
+  background: white;
   min-height: 100vh;
   background-size: cover;
 }
@@ -41,6 +41,6 @@ export default {
 .navbar {
   position: relative;
   top: -2em;
-  margin-bottom: -50px;
+  margin-bottom: -40px;
 }
 </style>

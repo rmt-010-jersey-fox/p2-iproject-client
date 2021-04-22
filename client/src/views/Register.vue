@@ -1,5 +1,9 @@
 <template>
-  <div class="col-6 pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+      </div>
+      <div class="col-6 pt-5">
       <div class="card-form">
         <form @submit.prevent="register">
           <h3 class="mb-2 text-center">Sign Up To Use Chat Room</h3>
@@ -13,7 +17,7 @@
           </div>
           <div class="row">
             <div class="col-5">
-              <p>already have an account? <a href="">Login</a></p>
+              <p>already have an account? <a href="" @click.prevent="changeLogin">Login</a></p>
             </div>
             <div class="col-7">
               <button type="submit" class="btn btn-dark col-12 btnAdd">SIGN UP</button>
@@ -22,6 +26,8 @@
         </form>
       </div>
       </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -44,6 +50,9 @@ export default {
       this.$store.dispatch('register', data)
       this.name = ''
       this.email = ''
+    },
+    changeLogin () {
+      this.$router.push('/login')
     }
   }
 }

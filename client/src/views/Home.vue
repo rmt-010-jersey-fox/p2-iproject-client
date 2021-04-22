@@ -8,7 +8,7 @@
       <div class="main-left pt-4">
         <h2 class="lh-sm">Let's Help The Earth. <br><span>Starts From Us!</span></h2>
         <p>how do you fight something you can't see? That's the question when it comes to the Covid-19 crisis which currently has many of us holed up at home.</p>
-        <button class="getWellSoonButton" @click="getNews">Get News</button>
+        <button class="getWellSoonButton" @click="getNews">News</button>
       </div>
     </div>
     <div class="col-6 text-light">
@@ -33,7 +33,6 @@ export default {
 <style scoped>
 .container{
   position: relative;
-  /* bottom: 1em; */
   width: 100%;
   height: 100%;
 }
@@ -41,7 +40,7 @@ export default {
 .getWellSoon {
   padding: 4px;
   width: 350px;
-  background-color: #383D41;
+  background-color: #2BA5F6;
   border-radius: 12px;
 }
 
@@ -58,7 +57,7 @@ export default {
 .getWellSoon h2{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
-  color: #2BA5F6;
+  color: white;
   position: relative;
   top: 3px;
 }
@@ -66,12 +65,17 @@ export default {
 .getWellSoonButton{
   border-radius: 10px;
   padding: 12px 32px;
-  background: linear-gradient(#71747D,#2BA5F6);
+  background: #2BA5F6;
+  border:none;
   color: white;
   font-size: 20px;
+  font-weight: 600;
+  transition: 0.8s;
 }
 
 .getWellSoonButton:hover{
   cursor: pointer;
+  transform: scale(1.15);
+  transition: 1s;
 }
 </style>

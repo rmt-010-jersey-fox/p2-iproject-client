@@ -2,25 +2,25 @@
   <div class="container">
     <div class="row" v-for="(indoCase,i) in showCaseIndo" :key="i">
       <div class="col-md-3">
-        <div class="card card-1">
+        <div class="card card-1 uk-animation-scale-up">
           <p>Positif</p>
           <h3>{{indoCase.positif}}</h3>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card card-2">
+        <div class="card card-2 uk-animation-scale-up">
           <p>Sembuh</p>
           <h3>{{indoCase.sembuh}}</h3>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card card-3">
+        <div class="card card-3 uk-animation-scale-up">
           <p>Dirawat</p>
           <h3>{{indoCase.dirawat}}</h3>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="card card-4">
+        <div class="card card-4 uk-animation-scale-up">
           <p>Meninggal</p>
           <h3>{{indoCase.meninggal}}</h3>
         </div>
@@ -44,16 +44,16 @@ export default {
 </script>
 
 <style scoped>
-  body {
-    font-family: 'Nunito', sans-serif;
-    padding: 50px;
+  .container{
+    position:relative;
+    top: 120px;
   }
 
   .card {
     border-radius: 4px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-    padding: 14px 80px 28px 36px;
+    padding: 60px 80px 60px 36px;
     cursor: pointer;
   }
 
@@ -66,6 +66,12 @@ export default {
     font-weight: 600;
   }
 
+  .card h3, .card p {
+    color: white;
+  }
+  .card p{
+    font-weight: 700;
+  }
   .card img {
     position: absolute;
     top: 20px;

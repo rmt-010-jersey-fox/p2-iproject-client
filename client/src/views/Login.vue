@@ -18,24 +18,19 @@
               <button type="submit" class="btn btn-dark col-12">SIGN IN</button>
             </div>
             <div class="col-5">
-              <p>don't have an account yet? <a href="">Register</a></p>
+              <p>don't have an account yet? <a href="" @click.prevent="changeRegister">Register</a></p>
             </div>
           </div>
         </form>
       </div>
       </div>
-  <Register></Register>
     </div>
   </div>
 </template>
 
 <script>
-import Register from './Register'
 export default {
   name: 'createName',
-  components: {
-    Register
-  },
   data () {
     return {
       name: '',
@@ -51,6 +46,9 @@ export default {
       this.$store.dispatch('login', data)
       this.name = ''
       this.email = ''
+    },
+    changeRegister () {
+      this.$router.push('/register')
     }
   }
 }
@@ -58,7 +56,8 @@ export default {
 
 <style scoped>
   form {
-    background-color: #383D41;
+    /* background-color: #752C20; */
+    color: white;
     border-radius:20px
   }
 </style>

@@ -58,20 +58,24 @@ export default {
 
   header ul li a{
     text-decoration: none;
-    color: #838589;
+    color: #2073A7;
     border-radius: 20px;
     padding: 6px 15px;
     transition: .4s;
     font-weight: 700;
   }
   header ul li a:hover{
-    background: white;
-    color: #2073A7;
+    background: #2073A7;
+    color: white;
     transition: .4s;
     font-weight: 700;
   }
   header ul li .FAQ{
-    background: white;
-    color: #2073A7;
+    background: #2073A7;
+    color: white;
+  }
+  header ul li .FAQ:hover{
+    background: #2073A7;
+    color: white;
   }
 </style>

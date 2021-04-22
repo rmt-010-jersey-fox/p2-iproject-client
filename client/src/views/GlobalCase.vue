@@ -78,12 +78,15 @@ export default {
 </script>
 
 <style scoped>
+  .container{
+    position:relative;
+    top: 120px;
+    }
   .card {
     border-radius: 4px;
-    /* transition: ; */
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-    padding: 14px 80px 28px 36px;
+    padding: 60px 80px 60px 36px;
     cursor: pointer;
   }
 
@@ -93,6 +96,13 @@ export default {
   }
 
   .card h3 {
+    font-weight: 700;
+  }
+
+  .card h3, .card p {
+    color: white;
+  }
+  .card p{
     font-weight: 700;
   }
 
@@ -134,7 +144,7 @@ export default {
     background-repeat: no-repeat;
     background-position: 6.3em;
     background-size: 180px;
-    padding-bottom: 70px;
+    padding-bottom: 102px;
   }
 
   @media(max-width: 990px) {

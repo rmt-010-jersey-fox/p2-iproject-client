@@ -126,6 +126,7 @@ export default new Vuex.Store({
       })
         .then(response => {
           console.log(response)
+          router.push({ name: 'Login' })
         })
         .catch(err => {
           console.log(err)

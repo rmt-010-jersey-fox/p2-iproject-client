@@ -9,28 +9,10 @@
           <div class="col-md-8">
             <div class="card-body">
               <h6 class="card-title">{{news.title}}</h6>
-              <a :href="news.link">read more</a>
+              <a :href="news.link" target="_blank">read more</a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <h3 class="text-light text-center">How Cat It Spereads</h3>
-    <div class="row testing">
-      <div class="col-md-4">
-        <h1>ini nanti gambar</h1>
-        <h4>Contaminated Objects or Sustances</h4>
-        <p>the covid-19 virus can be transmitted through objects in public places</p>
-      </div>
-      <div class="col-md-4">
-        <h1>ini nanti gambar</h1>
-        <h4>Contaminated Objects or Sustances</h4>
-        <p>the covid-19 virus can be transmitted through objects in public places</p>
-      </div>
-      <div class="col-md-4">
-        <h1>ini nanti gambar</h1>
-        <h4>Contaminated Objects or Sustances</h4>
-        <p>the covid-19 virus can be transmitted through objects in public places</p>
       </div>
     </div>
   </div>

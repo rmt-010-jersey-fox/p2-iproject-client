@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import VueSocketIO from 'vue-socket.io'
+import Vuikit from 'vuikit'
+import VuikitIcons from '@vuikit/icons'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -22,6 +24,8 @@ Vue.use(new VueSocketIO({
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+Vue.use(Vuikit)
+Vue.use(VuikitIcons)
 Vue.config.productionTip = false
 
 new Vue({

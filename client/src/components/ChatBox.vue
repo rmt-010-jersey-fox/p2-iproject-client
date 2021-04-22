@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <h1 class="text-center">Public Chat</h1>
+  <h1 class="text-center title">Public Chat</h1>
   <MainChat></MainChat>
 </div>
 </template>
@@ -17,14 +17,15 @@ export default {
 
 <style scoped>
 div.container{
-    background-color: white;
+    background-color: #fff;
     width: 100%;
-    /* padding-bottom: 95px;
-    padding-top: 10px;
-    padding-left: 50px;
-    padding-right: 50px; */
     margin:2px auto 2px auto;
     position: relative;
     bottom: 20px
+}
+
+.title{
+  font-weight: 600;
+  color: #2073A7;
 }
 </style>
