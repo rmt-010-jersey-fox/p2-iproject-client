@@ -78,7 +78,7 @@
       <div class="col btn zoom mt-3" @click="$router.push({name : 'Books', params : {category:'games-and-activities'}})">
         <div class="card" style="height:40vh">
           <div class="card-header bg-light">
-            <h5>Games And Activities</h5>
+            <h5>Games and Activities</h5>
           </div>
           <div class="card-body"
             style="background: url(https://images.unsplash.com/photo-1577741314755-048d8525d31e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z2FtZXN8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60) no-repeat;  background-position: center;background-size: cover; opacity: 0.9">
