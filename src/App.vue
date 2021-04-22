@@ -19,7 +19,7 @@ export default {
 </script>
 <style>
 html,body {
-background-image: url(https://media.istockphoto.com/vectors/pattern-with-lines-background-seamless-pattern-vector-id1138949343?b=1&k=6&m=1138949343&s=612x612&w=0&h=1BVboj0gz70Yvj6i77ngiM6jughWlabbwoPJ6JkmLrs=);
+background-image: url(https://i.pinimg.com/564x/e7/8a/4e/e78a4ed8bdc63c195970778ee913fe53.jpg);
 }
 
 #app {

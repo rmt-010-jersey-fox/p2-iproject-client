@@ -4,6 +4,7 @@ import axios from 'axios'
 import router from '../router/index.js'
 import Swal from 'sweetalert2'
 const baseURL = 'https://cekongkir-mulki.herokuapp.com/'
+// const baseURL = 'https://localhost:3000/'
 
 Vue.use(Vuex)
 
@@ -80,6 +81,10 @@ export default new Vuex.Store({
           router.push('/login')
         })
         .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: `${err.response.data.message}`
+          })
           console.log(err.message)
         })
     },
@@ -116,7 +121,7 @@ export default new Vuex.Store({
         .catch(err => {
           Swal.fire({
             icon: 'error',
-            title: 'Invalid Email or Password'
+            title: `${err.response.data.message}`
           })
           console.log(err.response)
         })
