@@ -8,18 +8,28 @@ export default new Vuex.Store({
   state: {
     articles: [],
     comments: [],
-    isLogin: false
+    isLogin: false,
+    actions: [],
+    specificComment: []
   },
   mutations: {
     fetchArticles(state, payload) {
       state.articles = payload
     },
     fetchComments(state, payload) {
+      // console.log(payload)
       state.comments = payload
     },
     isLogin(state, payload) {
-      console.log(payload, "payload")
+      // console.log(payload, "payload")
       state.isLogin = payload
+    },
+    fetchActions(state, payload) {
+      state.actions = payload
+    },
+    specificComment(state, payload) {
+      state.specificComment = payload
+      router.push({name: 'AddComment'})
     }
   },
   actions: {
@@ -61,8 +71,23 @@ export default new Vuex.Store({
         console.log(error);
       })
     },
-    fetchComments(context, payload) {
-      axios.get('/comments', {
+    comments(context, payload) {
+      axios.get(`/comments?title=${payload}`, {
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+      .then(({data}) => {
+        console.log(data)
+        context.commit('specificComment', data)
+        context.commit('isLogin', true)
+      })
+      .catch((error) => {
+        console.log(error.response);
+      })
+    },
+    newComments(context, payload) {
+      axios.post(`/comments?title=${payload}`, {
         headers: {
           access_token: localStorage.getItem('access_token')
         }
@@ -74,6 +99,29 @@ export default new Vuex.Store({
       })
       .catch((error) => {
         console.log(error.response);
+      })
+    },
+    addComment(context, payload) {
+      axios.post('/comments', payload, {
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+      .then(({data}) => {
+        context.commit('fetchComments', data)
+      })
+      .catch((error) => {
+        console.log(error.response);
+      })
+    },
+    fetchActions(context, payload) {
+      axios.get('/action')
+      .then(({data}) => {
+        console.log(data)
+      context.commit('fetchActions', data)
+      })
+      .catch((error) => {
+        console.log(error);
       })
     }
   },
