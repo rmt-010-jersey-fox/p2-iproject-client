@@ -20,7 +20,7 @@
               <p>already have an account? <a href="" @click.prevent="changeLogin">Login</a></p>
             </div>
             <div class="col-7">
-              <button type="submit" class="btn btn-dark col-12 btnAdd">SIGN UP</button>
+              <button type="submit" class="btn col-12 btnAdd">SIGN UP</button>
             </div>
           </div>
         </form>
@@ -62,4 +62,25 @@ export default {
 form{
     color: white;
 }
+
+h3{
+  color: #E968C5;
+  font-weight: 600;
+}
+
+p{
+    color: #838589;
+    font-weight: 800;
+}
+
+p a{
+  color: #E968C5;
+}
+
+button{
+    background-color: #E968C5;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+  }
 </style>
