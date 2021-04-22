@@ -1,0 +1,215 @@
+<template>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- sidebar left -->
+      <div class="col-3 bg-white h-100 shadow-lg " style="overflow:scroll">
+        <!-- sidebar header -->
+        <div
+          class="row sidebar-header text-white shadow-sm"
+          style="height: 8vh"
+        >
+          <div class="col-3 p-0">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <img
+                @click="profilePage(username)"
+                :src="image"
+                alt=""
+                class="avatar btn p-0 btn-dark"
+              />
+            </div>
+          </div>
+          <div
+            class="col-6 p-0 d-flex justify-content-start align-items-center"
+          >
+            <div>
+              <p class="text m-0">@{{ username }}</p>
+            </div>
+          </div>
+          <div
+            class="col-3 p-0 d-flex justify-content-start align-items-center"
+          >
+            <div>
+              <button
+                @click.prevent="signOut"
+                class="btn btn-outline-light border-0 rounded-pill"
+              >
+                Sign out
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- category -->
+        <div class="p-2">
+          <div class="d-flex justify-content-start align-items-center">
+            <button
+              @click="optionActive = 'Active User'"
+              class="btn border-0 p-1 m-1"
+              :class="{
+                'btn-success': optionActive === 'Active User',
+                'btn-outline-success': optionActive !== 'Active User'
+              }"
+            >
+              Active User
+            </button>
+            <button
+              @click="optionActive = 'Available Room'"
+              class="btn border-0 p-1 m-1"
+              :class="{
+                'btn-success': optionActive === 'Available Room',
+                'btn-outline-success': optionActive !== 'Available Room'
+              }"
+            >
+              Available Room
+            </button>
+          </div>
+        </div>
+        <!-- list of messages -->
+        <div class="overflow-scroll" style="height: 80vh">
+          <div v-if="optionActive === 'Active User'">
+            <ActiveUser
+              v-for="user in activeUser"
+              :key="user.sender"
+              :user="user"
+            />
+          </div>
+          <div v-else>
+            <RoomCard v-for="room in rooms" :key="room.id" :room="room" />
+          </div>
+        </div>
+      </div>
+      <div
+        class="backgroundImage col-9 h-100 p-0 sidebar-right d-flex justify-content-center align-items-center"
+      >
+        <!-- chat section -->
+        <!-- card profile -->
+
+        <router-view />
+      </div>
+    </div>
+    <div class="live-chat">
+      <button @click.prevent="liveChat" class="btn rounded-pill orn">
+        Live Chat
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+import ActiveUser from '../components/ActiveUser'
+import RoomCard from '../components/RoomCard'
+import { mapState } from 'vuex'
+export default {
+  name: 'Dashboard',
+  data () {
+    return {
+      image: localStorage.avatarUrl,
+      username: localStorage.username,
+      optionActive: 'Active User'
+    }
+  },
+  components: { ActiveUser, RoomCard },
+  computed: {
+    ...mapState(['activeUser', 'rooms'])
+  },
+  methods: {
+    async fetchCatImage () {
+      try {
+        const { data } = await this.$store.dispatch('fetchCatImage')
+        this.image = data.image_url
+        console.log(data)
+      } catch (error) {
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
+        console.log(error)
+      }
+    },
+    signOut () {
+      localStorage.clear()
+      this.$router.push({ name: 'LandingPage' }).catch(() => {})
+    },
+    profilePage (username) {
+      this.$router.push(`/dashboard/profile/${username}`).catch(() => {})
+      this.$store.dispatch('fetchUser', { username })
+    },
+    liveChat () {
+      this.$router.push('/dashboard/chat/live-chat').catch(() => {})
+    },
+    async getRooms () {
+      try {
+        const data = await this.$store.dispatch('getRooms')
+        console.log(data)
+      } catch (error) {
+        const msg = error.response.data.message
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: msg
+        })
+        console.log(error)
+      }
+    }
+  },
+  sockets: {
+    activeUser (data) {
+      this.$store.commit('activeUser', data)
+    },
+    getActiveUser (data) {
+      this.$store.commit('activeUser', data)
+    }
+  },
+  created () {
+    this.$socket.emit('checkActiveUser')
+    this.getRooms()
+  }
+}
+</script>
+
+<style>
+.row {
+  height: 100vh;
+}
+.sidebar-right {
+  background-color: #77602544;
+}
+.sidebar-header {
+  background-image: linear-gradient(to right, #ff8800, #c8543dce);
+}
+.card-profile {
+  background-image: url("../assets/landing-page.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 55vh;
+  width: 35vh;
+  border-radius: 30px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.avatar-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.live-chat {
+  position: absolute;
+  right: 5%;
+  bottom: 3%;
+}
+.backgroundImage {
+  background: url("../assets/cat-doodle.webp");
+  background-color: rgb(56 45 29 / 80%);
+  background-blend-mode: darken;
+}
+.orn {
+  color: black;
+  background-color: #f48319;
+}
+</style>
