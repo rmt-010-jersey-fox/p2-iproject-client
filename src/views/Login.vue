@@ -68,7 +68,12 @@ export default {
             this.$router.push({ name: 'Home' })
           })
           .catch(err => {
-            console.log(err);
+            console.log(err.response);
+            Swal.fire({
+              icon: 'error',
+              title: 'Something went wrong :/',
+              text: err.response.data.message
+            })
           })
           .then(() => {
             this.userEmail = ''
