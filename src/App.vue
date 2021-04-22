@@ -57,7 +57,7 @@ export default {
       return this.$store.state.isLogin
     },
     activeClass() {
-      if (this.$route.name != "Books") {
+      if (this.$route.name != "Books" && this.$route.name != "BookDetail") {
         return 'stickBawah'
       }
       else {

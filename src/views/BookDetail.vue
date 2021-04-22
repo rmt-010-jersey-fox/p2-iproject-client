@@ -68,7 +68,7 @@
                   <div class="card-body ">
                     <span></span>
                     <h3 class="text-center text-white">{{jumlahWish}} People</h3>
-                    <p class="text-center text-white">wish to has this book </p>
+                    <p class="text-center text-white">wish to have this book </p>
                   </div>
                 </div>
               </div>
@@ -122,6 +122,7 @@
         </div>
       </div>
     </div>
+      <br>
   </div>
 </template>
 
@@ -175,8 +176,8 @@ export default {
         window.speechSynthesis.speak(msg)
       }, 1000)
     },
-    stopSpeak () {
-      window.speechSynthesis.cancel();
+    stopSpeak() {
+      window.speechSynthesis.cancel()
     },
     speakComments(array) {
       let msg = new SpeechSynthesisUtterance()
@@ -189,7 +190,7 @@ export default {
       if (list.length) {
         msg.text = list[0]
         window.speechSynthesis.speak(msg)
-        msg.addEventListener('end', ()=> {
+        msg.addEventListener('end', () => {
           window.setTimeout(() => {
             this.speakComments(array.slice(1))
           }, 500)
