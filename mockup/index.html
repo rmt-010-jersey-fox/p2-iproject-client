@@ -11,8 +11,9 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav id="navbar" class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <a id="nav-home" class="navbar-brand" href="#">8Hag</a>
+        <a id="nav-home" class="navbar-brand" href="#"><i class="far fa-angry"></i> 8Hag</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a id="nav-add" class="nav-link" href="#"> Add Meme</a>
+                    <a id="nav-add" class="nav-link" href="#"><i class="far fa-plus-square"></i> Add Meme</a>
                 </li>
             </ul>
             <span id="navbar-user" class="navbar-text mr-3">
@@ -32,7 +33,10 @@
                     class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
     </nav>
+    <!-- End of navbar -->
 
+
+    <!-- Content -->
     <div id="app" class="container mb-2 mt-2">
 
         <div class="row">
@@ -46,9 +50,9 @@
                     <div class="card-body">
                         <h5 class="card-title">Ini adalah title</h5>
                         <h5 class="card-subtitle mb-2"><small><i>Posted on February 19, 2016</i></small></h5>
-                        <button class="btn btn-success"><i class="far fa-heart"></i> Love it</button>
-                        <button class="btn btn-danger"> Hate it </button>
-                        <button class="btn btn-warning"> Report </button>
+                        <button class="btn btn-outline-success"><i class="far fa-thumbs-up"></i> Love it</button>
+                        <button class="btn btn-outline-danger"><i class="far fa-thumbs-down"></i> Hate it </button>
+                        <button class="btn btn-warning"><i class="fas fa-bullhorn"></i> Report </button>
                         <p class="card-text"><small class="text-muted">You, Andi wakwaw and 20 people love it</small>
                         </p>
                     </div>
@@ -62,9 +66,9 @@
                     <div class="card-body">
                         <h5 class="card-title">Ini adalah title</h5>
                         <h5 class="card-subtitle mb-2"><small><i>Posted on February 19, 2016</i></small></h5>
-                        <button class="btn btn-success"><i class="far fa-heart"></i> Love it</button>
-                        <button class="btn btn-danger"> Hate it </button>
-                        <button class="btn btn-warning"> Report </button>
+                        <button class="btn btn-success"><i class="far fa-thumbs-up"></i> Love it</button>
+                        <button class="btn btn-danger"><i class="far fa-thumbs-down"></i> Hate it </button>
+                        <button class="btn btn-warning"><i class="fas fa-bullhorn"></i> Report </button>
                         <p class="card-text"><small class="text-muted">You, Andi wakwaw and 20 people love it</small>
                         </p>
                     </div>
@@ -75,7 +79,9 @@
                 <h1 style="text-align: center;">Api</h1>
             </div>
         </div>
+        <!-- End of content -->
 
+        <!-- Login -->
             <section id="page-login" style="overflow-x: hidden; background-color: white">
                 <div class="row" style="height : 100vh; ">
                     <div class="col">
@@ -99,7 +105,9 @@
                     </div>
                 </div>
             </section>
+            <!-- End of Login -->
 
+            <!-- Register -->
         <section id="page-register" style="overflow-x: hidden; background-color: white">
             <div class="row">
                 <div class="col-md-5">
@@ -129,6 +137,8 @@
             </div>
         </section>
 
+
+        <!-- Add meme -->
         <section id="add-meme" style="overflow-x: hidden; background-color: white">
             <div class="row">
                 <div class="col-md-12">
@@ -148,7 +158,9 @@
                 </div>
             </div>
         </section>
+        <!-- end of Add meme -->
 
+        <!-- Edit meme -->
         <section id="edit-meme" style="overflow-x: hidden; background-color: white">
             <div class="row">
                 <div class="col-md-12">
