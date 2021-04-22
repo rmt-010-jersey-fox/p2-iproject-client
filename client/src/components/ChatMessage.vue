@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="!isUser" class="media media-chat">
-      <p>{{ message.username }}</p>
       <div>
         <img
           @click.prevent="userPage"
@@ -9,6 +8,9 @@
           :src="message.avatarUrl"
           :alt="message.sender"
         />
+        <p class="text text-center text-secondary" style="font-size:10px">
+          @{{ message.sender }}
+        </p>
       </div>
       <div class="media-body">
         <p>{{ message.content }}</p>

@@ -40,13 +40,28 @@
         </div>
         <!-- category -->
         <div class="p-2">
-          <select
-            v-model="optionActive"
-            class="form-control btn-outline-success px-0 border-0 "
-          >
-            <option>Active User</option>
-            <option>Available Room</option>
-          </select>
+          <div class="d-flex justify-content-start align-items-center">
+            <button
+              @click="optionActive = 'Active User'"
+              class="btn border-0 p-1 m-1"
+              :class="{
+                'btn-success': optionActive === 'Active User',
+                'btn-outline-success': optionActive !== 'Active User'
+              }"
+            >
+              Active User
+            </button>
+            <button
+              @click="optionActive = 'Available Room'"
+              class="btn border-0 p-1 m-1"
+              :class="{
+                'btn-success': optionActive === 'Available Room',
+                'btn-outline-success': optionActive !== 'Available Room'
+              }"
+            >
+              Available Room
+            </button>
+          </div>
         </div>
         <!-- list of messages -->
         <div class="overflow-scroll" style="height: 80vh">

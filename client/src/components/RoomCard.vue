@@ -3,7 +3,7 @@
     <div class="p-3">
       <div class="row" style="height: 5vh">
         <div class="col-3 p-0 h-100">
-          <div class="d-flex justify-content-start align-items-center h-100">
+          <div class="d-flex justify-content-center align-items-center h-100">
             <img
               @click="profilePage"
               :src="room.User.avatarUrl"
