@@ -1,32 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="navbar">
+      <Navbar></Navbar>
+    </div>
+    <!-- <img src="https://hubpng.com/download/BkJDaVka7F1J0J4bLCGWNwYvrLQcL0AugNoo16ojRfjQrk1eVGGIgfR5A86PinHAl1w0yHBBpcvBlcQBeWbpl1xjZMlg9ouMqWTsEGuvW0MLBuOns9OWwYkzqTfAXD9yHepG7zojd2UqsWN4gd9eISPrz92eOdScqpDoPOangSCXv1aUeGzI0gYkgcva1THByhS275w5/large" alt="virus" width="350px"> -->
+    <div class="footer">
+      <Footer></Footer>
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+export default {
+  name: 'app',
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
+
 <style>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background: #25292E;
+  min-height: 100vh;
+  background-size: cover;
 }
 
-#nav {
-  padding: 30px;
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #25292E;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.navbar {
+  position: relative;
+  top: -2em;
+  margin-bottom: -50px;
 }
 </style>
