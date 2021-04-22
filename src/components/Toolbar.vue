@@ -68,7 +68,7 @@ import Swal from "sweetalert2";
 export default {
   name: "Toolbar",
   methods: {
-    logout(gapi) {
+    logout() {
       localStorage.clear();
       this.$store.commit("CHECK_IS_LOGIN");
       this.$router.push("/").catch(() => {});

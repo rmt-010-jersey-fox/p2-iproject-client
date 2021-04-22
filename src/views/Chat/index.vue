@@ -45,7 +45,6 @@
                       type="text"
                       placeholder="Sapa Temanmu..."
                       v-model="message"
-                      :rules="messageRules"
                       @keyup.enter="sendMessage"
                       required
                     ></v-text-field>
@@ -77,7 +76,6 @@ export default {
   data: () => ({
     message: "",
     avaliableUsers: [],
-    messageRules: [(v) => / /.test(v) || "Ngirim Chat Kosong ?"],
   }),
   computed: {
     ...mapState(["currentUser", "messages"]),
