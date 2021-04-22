@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
+    <CategoryBar class="category"/>
     <router-view/>
     <HFooter class="footer" />
   </div>
@@ -8,11 +9,13 @@
 
 <script>
 import Navbar from './components/Navbar'
+import CategoryBar from './components/CategoryBar'
 import HFooter from 'vue-hacktiv-footer'
 
 export default {
   components: {
     Navbar,
+    CategoryBar,
     HFooter
   }
 }
@@ -35,5 +38,13 @@ export default {
   background-color: #BB2D3B;
   color: white;
   text-align: center;
+}
+
+.category {
+  background-color: #0A0A0A;
+}
+
+body {
+  background-color: #0A0A0A;
 }
 </style>

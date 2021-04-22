@@ -11,7 +11,8 @@ export default new Vuex.Store({
     currentUser: {},
     games: [],
     wishlist: [],
-    detailGame: {}
+    detailGame: {},
+    filterGame: []
   },
   mutations: {
     setLogin (state, value) {
@@ -31,8 +32,16 @@ export default new Vuex.Store({
     FAVORITE_GAMES (state, value) {
       state.wishlist = value
     },
+    FILTER_GAMES (state, data) {
+      state.filterGame = data
+    },
     DETAILS_GAME (state, payload) {
       state.detailGame = payload
+    }
+  },
+  getters: {
+    getCurrentUser (state) {
+      return state.currentUser
     }
   },
   actions: {
@@ -54,6 +63,20 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           context.commit('FAVORITE_GAMES', data)
+        })
+        .catch(err => console.log(err))
+    },
+    fetchFilterGame (context, category) {
+      console.log(category, 'diisppp')
+      axios
+        .post('/games/filter', { platform: category }, {
+          headers: {
+            'Access-Control-Allow-Origin': true,
+            access_token: localStorage.access_token
+          }
+        })
+        .then(({ data }) => {
+          context.commit('FILTER_GAMES', data)
         })
         .catch(err => console.log(err))
     },
@@ -90,7 +113,7 @@ export default new Vuex.Store({
           console.log(data)
           context.commit('setUser', data)
           localStorage.setItem('access_token', data.access_token)
-          router.push({ name: 'Home' })
+          router.push({ name: 'Home' }).catch(_ => {})
         })
         .catch(err => console.log(err))
     },
@@ -115,6 +138,18 @@ export default new Vuex.Store({
           context.commit('DETAILS_GAME', data)
         })
         .catch(err => console.log(err))
+    },
+    googleLogin (context, idToken) {
+      axios
+        .post('/users/googleLogin', { idToken })
+        .then(({ data }) => {
+          console.log('Success Login', data)
+          localStorage.setItem('access_token', data.access_token)
+          context.commit('setUser', data)
+          context.commit('setLogin', true)
+          router.push({ name: 'Home' }).catch(_ => {})
+        })
+        .catch((err) => console.log(err))
     }
   },
   modules: {

@@ -1,15 +1,13 @@
 <template>
   <div class="section">
-    <CarouselGame />
-    <!--? Content -->
     <section>
       <div class="container-fluid mt-4">
         <div class="d-flex flex-row flex-wrap justify-content-center" >
-          <GameCard
-            class="zoom"
-            v-for="game in games.data"
-            :key="game.id"
-            :game="game"/>
+          <CategoryCard
+            v-for="category in filterGames.data"
+            :key="category.id"
+            :category="category"
+          />
         </div>
       </div>
     </section>
@@ -17,22 +15,19 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import CarouselGame from '../components/CarouselGame'
-import GameCard from '../components/GameCard'
-
+import CategoryCard from '../components/CategoryCard'
 export default {
-  name: 'Home',
-  beforeCreate () {
-    this.$store.dispatch('fecthGames')
-  },
+  name: 'Playstation',
   components: {
-    CarouselGame,
-    GameCard
+    CategoryCard
+  },
+  beforeCreate () {
+    const platform = this.$route.params.categoryId
+    this.$store.dispatch('fetchFilterGame', platform)
   },
   computed: {
-    games () {
-      return this.$store.state.games
+    filterGames () {
+      return this.$store.state.filterGame
     }
   }
 }
@@ -42,7 +37,6 @@ export default {
   .game-card {
     /* width: calc(15% - 20px); */
     width: 12.3em;
-
     display: inline-block;
     margin: 0 10px 20px;
     position: relative;

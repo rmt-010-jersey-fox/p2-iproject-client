@@ -24,7 +24,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li>
                 <div>
-                  <a class="dropdown-item" href="#"><i class="fas fa-user-circle icon"></i> Profile</a>
+                  <a class="dropdown-item" @click.prevent="profile"><i class="fas fa-user-circle icon"></i> Profile</a>
                 </div>
               </li>
               <li>
@@ -53,7 +53,9 @@
             <div class="row">
               <div class="col-5">
                 <div class="row sign">or connect with</div>
-                <div class="col d-flex justify-content-center mt-3"><button type="button" class="btn btn-success">GOOGLE</button></div>
+                <div class="col d-flex justify-content-center mt-3">
+                  <button v-google-signin-button="clientId" class="google-signin-button"><i class="fab fa-google"></i></button>
+                </div>
                 <div class="row sign mt-2">
                   <p class="text-center">or signup manually <a @click.prevent="signup" href="#" data-bs-dismiss="modal">here</a></p>
                 </div>
@@ -91,7 +93,8 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      clientId: '477949842281-22et6lkr8vh7vf1ki14phhal0f3mdksh.apps.googleusercontent.com'
     }
   },
   methods: {
@@ -113,6 +116,15 @@ export default {
       localStorage.clear()
       this.$router.push({ name: 'Home' }).catch(_ => {})
       this.$router.go(0)
+    },
+    profile () {
+      this.$router.push({ name: 'Profile' })
+    },
+    OnGoogleAuthSuccess (idToken) {
+      this.$store.dispatch('googleLogin', idToken)
+    },
+    OnGoogleAuthFail (error) {
+      console.log(error, 'error')
     }
   },
   computed: {
@@ -127,5 +139,15 @@ export default {
   .sign {
     justify-content: center;
     font-size: smaller;
+  }
+
+  .google-signin-button {
+    color: white;
+    background-color:#BB2D3B;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 3em;
+    padding: 10px 20px 25px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 </style>

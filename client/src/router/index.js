@@ -34,6 +34,16 @@ const routes = [
     component: _ => import('../views/DetailGame.vue')
   },
   {
+    path: '/profile',
+    name: 'Profile',
+    component: _ => import('../views/Profile.vue')
+  },
+  {
+    path: '/category/:categoryId',
+    name: 'Category',
+    component: _ => import('../views/FilterByPlaystation.vue')
+  },
+  {
     path: '*',
     name: 'PageNotFound',
     component: _ => import('../views/NotFoundPage.vue')

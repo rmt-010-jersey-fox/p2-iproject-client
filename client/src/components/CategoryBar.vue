@@ -16,13 +16,12 @@
               </ul> -->
 
               <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" style="width: 10rem;">
-                Platform
+                Platforms
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Playstation</a></li>
-                <li><a class="dropdown-item" href="#">Xbox</a></li>
-                <li><a class="dropdown-item" href="#">Steam</a></li>
-                <li><a class="dropdown-item" href="#">Uplay</a></li>
+                <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { categoryId: '48,9,16,7' }}">Playstation</router-link></li>
+                <li><router-link class="dropdown-item" to="/playstation">Xbox</router-link></li>
+                <li><router-link class="dropdown-item" to="/playstation">PC</router-link></li>
               </ul>
             </div>
           </div>

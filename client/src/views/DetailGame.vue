@@ -10,7 +10,7 @@
         <img
           v-else
           class="detailCard"
-          :src="detailGame.detailGame.detail[0].cover.url.replace('t_thumb', 't_cover_big')"
+          src="../assets/NO_picture.jpg"
           alt="default.jpg">
       </div>
       <div class="col-8" style="height: 569px;">
