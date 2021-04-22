@@ -6,9 +6,17 @@
       <router-link to="/login">Login</router-link>
     </div> -->
     <router-view/>
+    <HFooter></HFooter>
   </div>
 </template>
-
+<script>
+import HFooter from 'vue-hacktiv-footer'
+export default {
+  components: {
+    HFooter
+  }
+}
+</script>
 <style>
 html,body {
 background-image: url(https://media.istockphoto.com/vectors/pattern-with-lines-background-seamless-pattern-vector-id1138949343?b=1&k=6&m=1138949343&s=612x612&w=0&h=1BVboj0gz70Yvj6i77ngiM6jughWlabbwoPJ6JkmLrs=);

@@ -44,3 +44,24 @@ You're about to initialize a Firebase project in this directory:
 [info] will contain Hosting assets to be uploaded with firebase deploy. If you
 [info] have a build process for your assets, use your build's output directory.
 [info] 
+[debug] [2021-04-22T02:10:15.230Z] ----------------------------------------------------------------------
+[debug] [2021-04-22T02:10:15.233Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Mulki\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-04-22T02:10:15.233Z] CLI Version:   9.10.0
+[debug] [2021-04-22T02:10:15.234Z] Platform:      win32
+[debug] [2021-04-22T02:10:15.234Z] Node Version:  v14.15.4
+[debug] [2021-04-22T02:10:15.239Z] Time:          Thu Apr 22 2021 09:10:15 GMT+0700 (Western Indonesia Time)
+[debug] [2021-04-22T02:10:15.239Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-22T02:10:15.249Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-22T02:10:15.250Z] > authorizing via signed-in user (mulkimrwn@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\hacktiv8\tugas\phase 2\week-2\p2-iproject-client
+
