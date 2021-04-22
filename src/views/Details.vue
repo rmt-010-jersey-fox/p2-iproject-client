@@ -9,7 +9,7 @@
             class="card-img-top m-3"
             alt="..."
           />
-          <div class="ms-3"><button @click.prevent="addToWatchlist(details.imdbID)" class="btn btn-success">add to watchlist</button></div>
+          <div class="ms-3"><button @click.prevent="addToWatchlist(details.imdbID)" class="btn btn-success">Add to Watchlist</button></div>
           <div class="card-body">
             <h5 class="card-title mb-5">{{ details.Title }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Released Date:</h6>

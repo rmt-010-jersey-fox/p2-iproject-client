@@ -3,7 +3,7 @@
 <div class="row card m-1">
   <div class="card-body p-0">
     <div>
-        <img style="width:20px" :src="`https://avatars.dicebear.com/api/bottts/${m.UserId}.svg`" alt="">
+        <img style="width:25px" :src="`https://avatars.dicebear.com/api/gridy/${m.UserId}.svg`" alt="">
     </div>
     <div class="receivedMsg">
       <div>
