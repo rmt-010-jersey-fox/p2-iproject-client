@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import router from '../router/index.js'
 import Swal from 'sweetalert2'
-const baseURL = 'http://localhost:3000/'
+const baseURL = 'https://cekongkir-mulki.herokuapp.com/'
 
 Vue.use(Vuex)
 
