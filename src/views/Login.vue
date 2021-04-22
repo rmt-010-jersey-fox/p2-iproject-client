@@ -12,8 +12,9 @@
         <label class="form-label">Password</label>
         <input type="password" class="form-control" v-model="password">
     </div>
-    <button type="submit" class="btn btn-primary mx-auto" @click.prevent="login">Submit</button>
-    <button type="submit" class="btn btn-primary mx-auto" @click.prevent="register">Register</button>
+    <button type="submit" class="btn btn-primary mx-auto" @click.prevent="login">Login</button>
+    <br> <br>
+    <button type="submit" class="btn btn-info mx-auto" @click.prevent="register">Don't Have Account yet? Register Here</button>
 </form>
 </div>
 </div>

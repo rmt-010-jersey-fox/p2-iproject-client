@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from '../router/index.js'
+import Swal from 'sweetalert2'
 const baseURL = 'http://localhost:3000/'
 
 Vue.use(Vuex)
@@ -61,6 +62,21 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: 'Registered successfully'
+          })
           router.push('/login')
         })
         .catch(err => {
@@ -81,13 +97,31 @@ export default new Vuex.Store({
           localStorage.setItem('access_token', res.data.access_token)
           this.dispatch('fetchUser')
           router.push('/')
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          })
         })
         .catch(err => {
-          console.log(err.message)
+          Swal.fire({
+            icon: 'error',
+            title: 'Invalid Email or Password'
+          })
+          console.log(err.response)
         })
     },
     fetchUser (context) {
-      console.log('masuk fetch')
       axios({
         method: 'get',
         url: baseURL + 'user',
@@ -111,11 +145,9 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log('masuk')
           context.commit('setLocation', res.data)
         })
         .catch(err => {
-          console.log('gamasuk', err.message)
           console.log(err)
         })
     },
@@ -172,7 +204,6 @@ export default new Vuex.Store({
         .then(res => {
           context.commit('setTIKIOngkir', res.data)
           data.push(res.data)
-          console.log(data)
           router.push('/search')
         })
         .catch(err => {
@@ -218,7 +249,6 @@ export default new Vuex.Store({
         }
       })
         .then(res => {
-          console.log(res.data)
           context.commit('setHistory', res.data)
         })
         .catch(err => {
@@ -226,7 +256,6 @@ export default new Vuex.Store({
         })
     },
     addHistories (context, payload) {
-      console.log('masuk add')
       const { item, price } = payload
       axios({
         method: 'post',
@@ -240,7 +269,6 @@ export default new Vuex.Store({
         }
       })
         .then(res => {
-          console.log(res.data)
           router.push('/')
         })
         .catch(err => {
