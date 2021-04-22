@@ -8,7 +8,9 @@
             alt="mb-1"
             style="width:7vh"
           />
-          <h2 class="text-white p-0 m-0 font-monospace">koecheng</h2>
+          <h2 class="text-white p-0 mb-2 font-monospace d-flex align-self-end">
+            koecheng
+          </h2>
         </div>
         <div class="col-6 d-flex justify-content-end align-items-center"></div>
       </div>
