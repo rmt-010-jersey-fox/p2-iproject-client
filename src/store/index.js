@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import router from "../router";
 import { NotificationProgrammatic as Notification } from "buefy";
 
-const SERVER_URL = "http://localhost:3000";
+const SERVER_URL = "https://news-fead.herokuapp.com";
 const CURRENTSAPI_URL = "https://api.currentsapi.services/v1/search";
 const API_KEY = "bX_wrk5Nv8QY8Iqw39unTLXKr73V-rUjhnL3oE7-h8doxpUa";
 
