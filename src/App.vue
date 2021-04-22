@@ -13,13 +13,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class=navbar-nav>
-                    <li class="nav-item" v-if="isLogin && $route.name!='Home'">
+                    <li class="nav-item" v-if="$route.name!='Home'">
                         <router-link class="nav-link btn-success text-white fs-5 me-3" to="/" > Home</router-link>
                     </li>
                     <li class="nav-item" v-if="isLogin && $route.name!='Wishlists' && $route.name!='Error404'">
                         <router-link class="nav-link btn-success text-white fs-5 me-3" to="/wishlists" > My Wish List</router-link>
                     </li >
-                      <b-dropdown id="dropdown-left" text="Category" variant="primary" size="lg" v-if="isLogin && $route.name!='Home' && $route.name!='Error404'">
+                      <b-dropdown id="dropdown-left" text="Category" variant="primary" size="lg" v-if="$route.name!='Home' && $route.name!='Error404'">
                         <b-dropdown-item @click="navbarCategory('manga')">Manga</b-dropdown-item>
                         <b-dropdown-item @click="navbarCategory('animals')">Animals</b-dropdown-item>
                         <b-dropdown-item @click="navbarCategory('education')">Education</b-dropdown-item>
@@ -35,7 +35,7 @@
                         <p class="nav-link text-white fs-5 me-4" v-if="isLogin">Hello {{username}}</p>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link btn-info text-dark fs-5" to="/login" v-if="!isLogin && $route.name!='Login'">Login</router-link>
+                        <router-link class="nav-link btn-info text-dark fs-5 me-3" to="/login" v-if="!isLogin && $route.name!='Login'">Login</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link btn-info text-dark fs-5" to="/register" v-if="!isLogin && $route.name!='Register'">Register</router-link>

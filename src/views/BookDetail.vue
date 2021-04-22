@@ -53,8 +53,9 @@
                     <a v-if="liked" @click.prevent="dislike(book.isbn)" class="btn btn-danger fs-5 w-100">Dislike This Book</a>
                   </div>
                   <div class="card-body ">
-                    <h3 class="text-center text-white">{{jumlahLike}} People</h3>
-                    <p class="text-center text-white"> like this book</p>
+                    <h5 v-if="!isLogin" class="text-center text-white">please login first to see this content</h5>
+                    <h3 v-if="isLogin" class="text-center text-white">{{jumlahLike}} People</h3>
+                    <p v-if="isLogin" class="text-center text-white"> like this book</p>
                   </div>
                 </div>
               </div>
@@ -67,8 +68,9 @@
                   </div>
                   <div class="card-body ">
                     <span></span>
-                    <h3 class="text-center text-white">{{jumlahWish}} People</h3>
-                    <p class="text-center text-white">wish to have this book </p>
+                    <h5 v-if="!isLogin" class="text-center text-white">please login first to see this content</h5>
+                    <h3 v-if="isLogin" class="text-center text-white">{{jumlahWish}} People</h3>
+                    <p v-if="isLogin" class="text-center text-white">wish to have this book </p>
                   </div>
                 </div>
               </div>
@@ -111,13 +113,23 @@
                 Apa Kata Orang-Orang? <span class="text-secondary">etasdfdf</span>
           </div>
           <div class="card-body">
+            <div v-if="isLogin">
             <!-- LOOPING DISINI -->
-            <CommentCard
-            v-for="comment in comments"
-            :key="comment.id"
-            :comment="comment"
-            />
+              <CommentCard
+              v-for="comment in comments"
+              :key="comment.id"
+              :comment="comment"
+              />
             <!-- BERHENTI LOOPING DISINI -->
+            </div>
+            <!-- JIKA BELUM LOGIN -->
+            <div v-if="!isLogin" class="card text-dark bg-light mb-3">
+              <div class="card-header"></div>
+              <div class="card-body">
+                <h5 class="card-title">silahkan login terlebih dahulu untuk melihat konten ini</h5>
+              </div>
+            </div>
+            <!-- AKHIR JIKA BELUM LOGIN -->
           </div>
         </div>
       </div>
@@ -199,6 +211,9 @@ export default {
     }
   },
   computed: {
+    isLogin () {
+      return this.$store.state.isLogin
+    },
     commented () {
       let commented = false
       this.$store.state.comments.forEach(e => {
