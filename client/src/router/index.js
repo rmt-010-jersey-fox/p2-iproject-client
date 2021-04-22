@@ -81,6 +81,7 @@ router.beforeEach((to, from, next) => {
   else if (to.name === 'Favourites' && !isAuthenticated) next({ name: 'Login' })
   else if (to.name === 'Add' && !isAuthenticated) next({ name: 'Login' })
   else if (to.name === 'Edit' && !isAuthenticated) next({ name: 'Login' })
+  else if (to.name === 'Details' && !isAuthenticated) next({ name: 'Login' })
   else next()
 })
 
