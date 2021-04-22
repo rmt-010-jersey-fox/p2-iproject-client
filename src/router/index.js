@@ -43,6 +43,4 @@ const router = new VueRouter({
 })
 
 // navguard 
-
-
 export default router

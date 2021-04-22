@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <a class="navbar-brand" href="#">
       <img src="../assets/deliver.png" width="30" height="30" class="d-inline-block align-top" alt="">
       NutriSum
@@ -16,7 +16,7 @@
           <a class="nav-link" href="#" @click.prevent="$router.push('/nutrient')" >Nutrient</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" @click.prevent="$router.push('/recipe')">Recipe</a>
+          <a class="nav-link" href="#" @click.prevent="$router.push('/recipes')">Recipes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="#" @click.prevent="$router.push('/login')">Login</a>
@@ -25,7 +25,7 @@
           <a class="nav-link " href="#" @click.prevent="$router.push('/register')" >Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">Logout</a>
+          <a class="nav-link " href="#" @click.prevent="logout">Logout</a>
         </li>
       </ul>
     </div>
@@ -34,7 +34,23 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  methods: {
+    logout () {
+      // ! clear local
+      this.$store.dispatch('logout')
+      // ! check and change isLogin true/false
+      this.$store.dispatch('isLogin')
+    }
+  },
+  created () {
+    this.$store.dispatch('isLogin')
+  },
+  computed : {
+    isLogged () {
+      return this.$store.state.isLogged
+    }
+  }
 }
 </script>
 

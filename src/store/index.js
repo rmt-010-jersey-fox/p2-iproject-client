@@ -9,18 +9,24 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     recipes: [],
-    nutrient: {},
-    random: {}
+    nutrient: [],
+    random: [],
+    isLogged: false
   },
   mutations: {
     FETCH_RECIPE_BY_SUGAR_CALORIE (state, payload) {
       state.recipes = payload
+      // console.log(state.recipes, `<< ini dari mutate`);
     },
     FETCH_NUTRIENT_BY_NAME (state, payload) {
       state.nutrient = payload
+      console.log(state.nutrient, `<< ini dari mutate`);
     },
     FETCH_RANDOM (state, payload) {
       state.random = payload
+    },
+    LOGGED (state, payload) {
+      state.isLogged = payload
     }
   },
   actions: {
@@ -34,7 +40,8 @@ export default new Vuex.Store({
       })
 
       .then(({data}) => {
-        context.commit('FETCH_RECIPE_BY_SUGAR_CALORIE', payload)
+        console.log(data ,`<<< data dari recipe`);
+        context.commit('FETCH_RECIPE_BY_SUGAR_CALORIE', data)
       })
 
       .catch((err) => {
@@ -52,7 +59,8 @@ export default new Vuex.Store({
       })
 
       .then(({data}) => {
-        context.commit('FETCH_NUTRIENT_BY_NAME', payload)
+        console.log(data ,`<<< data dari nutrient`);
+        context.commit('FETCH_NUTRIENT_BY_NAME', data)
       })
 
       .catch((err) => {
@@ -61,6 +69,7 @@ export default new Vuex.Store({
     },
 
     fetchRandom (context,payload) {
+      console.log(payload ,`<<< fetch random`);
       axios({
         url: '/random',
         method: 'GET',
@@ -70,9 +79,8 @@ export default new Vuex.Store({
       })
 
       .then(({data}) => {
-        console.log(data.recipes, `<< data dari random`);
-        console.log(payload.recipes ,`<<< payload recipes`);
-        context.commit('FETCH_RANDOM', payload)
+        console.log(data, `<< data dari random`);
+        context.commit('FETCH_RANDOM', data)
       })
 
       .catch((err) => {
@@ -95,6 +103,7 @@ export default new Vuex.Store({
       .then(({data}) => {
         console.log(data);
         localStorage.setItem('access_token',data.access_token)
+        context.dispatch('isLogin')
         router.push('/')
       })
 
@@ -135,6 +144,14 @@ export default new Vuex.Store({
     logout (context, payload) {
       localStorage.clear()
       router.push('/login')
+    },
+
+    isLogin (context, payload) {
+      if (localStorage.access_token) {
+        context.commit('LOGGED', true)
+      } else {
+        context.commit('LOGGED', false)
+      }
     }
   }
 })
