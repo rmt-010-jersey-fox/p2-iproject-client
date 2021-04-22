@@ -185,7 +185,7 @@ export default {
         var wrong = new Audio(require("../assets/sound/wrong.mp3"));
         wrong.play();
 
-        this.gameOver()
+        this.gameOver();
       }
     },
     lockAnswer(val) {
@@ -215,14 +215,13 @@ export default {
   `,
           });
         }
-      }, 2500);
-    },gameOver(){
-
-        setTimeout(()=>{
-            this.$store.commit("setGameStatus", -1);
-
-        })
-    }
+      }, 3000);
+    },
+    gameOver() {
+      setTimeout(() => {
+        this.$store.commit("setGameStatus", -1);
+      },4000);
+    },
   },
 
   mounted() {
