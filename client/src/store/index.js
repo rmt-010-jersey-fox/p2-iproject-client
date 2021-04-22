@@ -8,12 +8,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin: false,
+    currentUser: {},
     games: [],
     wishlist: []
   },
   mutations: {
     setLogin (state, value) {
       state.isLogin = value
+    },
+    setUser (state, payload) {
+      const loggedUser = {
+        id: payload.id,
+        email: payload.email,
+        username: payload.username
+      }
+      state.currentUser = loggedUser
     },
     FETCH_GAME (state, data) {
       state.games = data
@@ -67,6 +76,26 @@ export default new Vuex.Store({
           console.log('success delete')
           context.dispatch('favoriteGames')
           router.push({ name: 'Wishlist' }).catch(_ => {})
+        })
+        .catch(err => console.log(err))
+    },
+    signin (context, payload) {
+      axios
+        .post('/users/signin', payload)
+        .then(({ data }) => {
+          console.log(data)
+          context.commit('setUser', data)
+          localStorage.setItem('access_token', data.access_token)
+          router.push({ name: 'Home' })
+        })
+        .catch(err => console.log(err))
+    },
+    signup (_, newUserData) {
+      axios
+        .post('/users/signup', newUserData)
+        .then(({ data }) => {
+          console.log(data, 'Success Sign Up')
+          router.push({ name: 'Home' })
         })
         .catch(err => console.log(err))
     }

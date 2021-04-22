@@ -43,7 +43,9 @@ export default {
 
 <style scoped>
   .game-card {
-    width: calc(15% - 20px);
+    /* width: calc(15% - 20px); */
+    width: 12.3em;
+
     display: inline-block;
     margin: 0 10px 20px;
     position: relative;

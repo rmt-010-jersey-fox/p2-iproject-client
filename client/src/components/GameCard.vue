@@ -11,7 +11,7 @@
         v-else src="../assets/NO_picture.jpg">
     <div class="card-img-overlay">
       <i class="fas fa-heart wishlist"
-        style="font-size: 30px;"
+        style="font-size: 25px;"
         @click="wishlist(game)">
       </i>
     </div>
@@ -24,7 +24,8 @@ export default {
   props: ['game'],
   methods: {
     wishlist (vaf) {
-      this.$store.dispatch('addWishlist', { id: vaf.id, name: vaf.name })
+      if (!localStorage.access_token) this.$router.push({ name: 'SignUp' })
+      else this.$store.dispatch('addWishlist', { id: vaf.id, name: vaf.name })
     }
   }
 }
@@ -35,6 +36,7 @@ export default {
     border: 0px solid rgba(0,0,0,.125);
   }
   .auto-crop {
+    width: 12.3em;
     height: 250px;
     object-position: center;
     object-fit:fill;

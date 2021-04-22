@@ -13,15 +13,20 @@ const routes = [
   {
     path: '/wishlist',
     name: 'Wishlist',
-    component: _ => import('../views/Wishlist.vue')
+    component: _ => import('../views/Wishlist.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!localStorage.access_token) next({ name: 'Home' })
+      else next()
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('../views/SignUp.vue'),
+    beforeEnter: (to, from, next) => {
+      if (localStorage.access_token) next({ name: 'Home' })
+      else next()
+    }
   }
 ]
 
