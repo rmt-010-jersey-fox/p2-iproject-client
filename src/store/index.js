@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "@/api/axios";
 import router from "@/router";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 Vue.use(Vuex);
 
@@ -41,12 +41,12 @@ export default new Vuex.Store({
       state.messages.push(payload);
     },
     CHECK_IS_LOGIN(state, payload) {
-      if(localStorage.access_token) {
-        state.isLogin = true
+      if (localStorage.access_token) {
+        state.isLogin = true;
       } else {
-        state.isLogin = false
+        state.isLogin = false;
       }
-    }
+    },
   },
   actions: {
     async fetchUnsplashPhotos(context) {
@@ -77,12 +77,12 @@ export default new Vuex.Store({
         dispatch("fetchPosts");
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
       }
@@ -128,12 +128,12 @@ export default new Vuex.Store({
         dispatch("fetchPosts");
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
       }
@@ -154,12 +154,12 @@ export default new Vuex.Store({
         dispatch("fetchPosts");
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
       }
@@ -191,28 +191,28 @@ export default new Vuex.Store({
         });
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("currentUserId", data.id);
-        commit('CHECK_IS_LOGIN')
-        dispatch("changeCurrentUser")
+        commit("CHECK_IS_LOGIN");
+        dispatch("changeCurrentUser");
         router.push("/dashboard");
         Swal.fire({
           title: `Welcome back, ${data.email} !`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
-        if(err.response.status === 400) {
+        if (err.response.status === 400) {
           Swal.fire({
             title: `${err.response.data.message}`,
-            timer:3000,
-            icon:"error",
-            showConfirmButton:false,
-            toast:true,
-            position:"bottom-end"
-          })
+            timer: 3000,
+            icon: "error",
+            showConfirmButton: false,
+            toast: true,
+            position: "bottom-end",
+          });
         }
       }
     },
@@ -232,22 +232,22 @@ export default new Vuex.Store({
         router.push("/login").catch(() => {});
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
         Swal.fire({
           title: `${err.response.data.message}`,
-          timer:3000,
-          icon:"error",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "error",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       }
     },
     async fetchUsers({ commit, dispatch }) {
@@ -295,12 +295,12 @@ export default new Vuex.Store({
         dispatch("changeCurrentUser");
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err);
       }
@@ -318,12 +318,12 @@ export default new Vuex.Store({
         console.log(data);
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
       }
@@ -345,12 +345,12 @@ export default new Vuex.Store({
         dispatch("changeCurrentUser");
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
       } catch (err) {
         console.log(err.response);
       }
@@ -364,22 +364,21 @@ export default new Vuex.Store({
             access_token: localStorage.access_token,
           },
           data: {
-            username: payload.username
-          }
-        })
+            username: payload.username,
+          },
+        });
         console.log(data);
-        dispatch("changeCurrentUser")
+        dispatch("changeCurrentUser");
         Swal.fire({
           title: `Success :)`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
-      }
-      catch(err) {
-        console.log(err.response)
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
+      } catch (err) {
+        console.log(err.response);
       }
     },
     async deleteUser({ dispatch, commit }, payload) {
@@ -389,25 +388,24 @@ export default new Vuex.Store({
           method: "DELETE",
           headers: {
             access_token: localStorage.access_token,
-          }
-        })
+          },
+        });
         console.log(data);
-        localStorage.clear()
-        router.push('/').catch(() => {})
+        localStorage.clear();
+        router.push("/").catch(() => {});
         Swal.fire({
           title: `Bye ~`,
-          timer:3000,
-          icon:"success",
-          showConfirmButton:false,
-          toast:true,
-          position:"bottom-end"
-        })
-        commit('CHECK_IS_LOGIN')
+          timer: 3000,
+          icon: "success",
+          showConfirmButton: false,
+          toast: true,
+          position: "bottom-end",
+        });
+        commit("CHECK_IS_LOGIN");
+      } catch (err) {
+        console.log(err.response);
       }
-      catch(err) {
-        console.log(err.response)
-      }
-    }
+    },
   },
   modules: {},
 });

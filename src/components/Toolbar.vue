@@ -28,6 +28,18 @@
         rounded
         depressed
         large
+        @click.prevent="$router.push('/users').catch(() => {})"
+        v-if="$store.state.isLogin"
+        color="success"
+        class="mx-4"
+      >
+        <v-icon left>mdi-account-search</v-icon>
+        <strong>Temukan</strong>
+      </v-btn>
+      <v-btn
+        rounded
+        depressed
+        large
         @click.prevent="$router.push('/login').catch(() => {})"
         v-if="!$store.state.isLogin"
         color="white"
