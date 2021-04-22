@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import AddMeme from '@/components/AddMeme.vue'
+import Profile from '@/views/Profile.vue'
 
 
 Vue.use(VueRouter)
@@ -22,6 +24,16 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/memes/add',
+    name: 'AddMeme',
+    component: AddMeme
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
   // {
   //   path: '/about',
