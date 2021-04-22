@@ -86,6 +86,7 @@
         ></DetailCards3>
       </div>
     </div>
+    <HFooter></HFooter>
   </div>
 </template>
 
@@ -94,9 +95,10 @@ import Navbar from '../components/Navbar'
 import DetailCards from '../components/DetailCards'
 import DetailCards2 from '../components/DetailCards2'
 import DetailCards3 from '../components/DetailCards3'
+import HFooter from 'vue-hacktiv-footer'
 export default {
   name: 'Movies',
-  components: { Navbar, DetailCards, DetailCards2, DetailCards3 },
+  components: { Navbar, DetailCards, DetailCards2, DetailCards3, HFooter },
   computed: {
     result () {
       return this.$store.state.result

@@ -41,6 +41,12 @@
 <script>
 export default {
   name: 'Navbar'
+//   methods: {
+//     logout () {
+//       this.$store.commit('changePage', { isLogin: false })
+//       this.$store.dispatch('logout')
+//     }
+//   }
 }
 </script>
 

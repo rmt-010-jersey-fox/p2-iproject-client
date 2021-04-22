@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 // import Swal from 'sweetalert2'
 import axios from '../API/axios'
 import router from '../router'
-// import router from '../router/index'
 
 Vue.use(Vuex)
 
@@ -12,11 +11,15 @@ export default new Vuex.Store({
     result: [],
     resultRated: [],
     resultUpcoming: [],
-    detailPopular: []
+    detailPopular: [],
+    isLogin: false
   },
   mutations: {
     fetchPopular (state, payload) {
       state.result = payload.popular
+    },
+    changePage (state, payload) {
+      state.isLogin = payload.login
     },
     fetchTopRated (state, payload) {
       state.resultRated = payload.TopRated
@@ -34,6 +37,7 @@ export default new Vuex.Store({
         method: 'GET',
         url: '/movies/popular',
         headers: {
+          access_token: localStorage.access_token,
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGJkNzM2ZGQzODJiN2I5Njg4YTFkNmVhYmEyYjdjYyIsInN1YiI6IjYwNjc3YWJhMGQyZjUzMDA2ZTA2NTdiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xROjvugUQL2A8z-U97j-teMVXEpIdOtm8GPYHMUhiZw'
         }
       })
@@ -50,6 +54,7 @@ export default new Vuex.Store({
         method: 'GET',
         url: '/movies/top_rated',
         headers: {
+          access_token: localStorage.access_token,
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGJkNzM2ZGQzODJiN2I5Njg4YTFkNmVhYmEyYjdjYyIsInN1YiI6IjYwNjc3YWJhMGQyZjUzMDA2ZTA2NTdiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xROjvugUQL2A8z-U97j-teMVXEpIdOtm8GPYHMUhiZw'
         }
       })
@@ -65,6 +70,7 @@ export default new Vuex.Store({
         method: 'GET',
         url: '/movies/upcoming',
         headers: {
+          access_token: localStorage.access_token,
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGJkNzM2ZGQzODJiN2I5Njg4YTFkNmVhYmEyYjdjYyIsInN1YiI6IjYwNjc3YWJhMGQyZjUzMDA2ZTA2NTdiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xROjvugUQL2A8z-U97j-teMVXEpIdOtm8GPYHMUhiZw'
         }
       })
@@ -81,6 +87,7 @@ export default new Vuex.Store({
         method: 'GET',
         url: `/movies/${payload.id}`,
         headers: {
+          access_token: localStorage.access_token,
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OGJkNzM2ZGQzODJiN2I5Njg4YTFkNmVhYmEyYjdjYyIsInN1YiI6IjYwNjc3YWJhMGQyZjUzMDA2ZTA2NTdiYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xROjvugUQL2A8z-U97j-teMVXEpIdOtm8GPYHMUhiZw'
         }
       })
@@ -101,9 +108,10 @@ export default new Vuex.Store({
     //     data: payload
     //   })
     //     .then((response) => {
+    //       // localStorage.access_token = response.data.
     //       localStorage.setItem('access_token', response.data.access_token)
     //       context.commit('changePage', { login: true })
-    //       router.push('/movies')
+    //       router.push('/')
     //       Swal.fire({
     //         position: 'center',
     //         icon: 'success',
@@ -144,9 +152,9 @@ export default new Vuex.Store({
     //       })
     //     })
     // },
-    // logout () {
+    // logout (context) {
     //   localStorage.removeItem('access_token')
-    //   router.push('/login')
+    //   context.commit('changePage', { login: false })
     //   Swal.fire({
     //     position: 'center',
     //     icon: 'success',
@@ -155,7 +163,6 @@ export default new Vuex.Store({
     //     timer: 1500
     //   })
     // }
-
   },
   modules: {
   }

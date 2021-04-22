@@ -14,6 +14,16 @@ const routes = [
     name: 'DetailMovies',
     component: () => import('../views/DetailMovies')
   }
+//   {
+//     path: '/login',
+//     name: 'Login',
+//     component: () => import('../views/Login')
+//   },
+//   {
+//     path: '/register',
+//     name: 'Register',
+//     component: () => import('../views/Register')
+//   }
 ]
 
 const router = new VueRouter({
@@ -21,5 +31,11 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//   if (to.name !== 'Login' && !localStorage.access_token) {
+//     next({ name: 'Login' })
+//   } else next()
+// })
 
 export default router
