@@ -43,4 +43,12 @@ const router = new VueRouter({
 })
 
 // navguard 
+// router.beforeEach((from,to,next) => {
+//   if (to.name === 'Nutrient' && !localStorage.access_token) {
+//     next({ name: "Login"})
+//   } else {
+//     next()
+//   }
+
+// })
 export default router

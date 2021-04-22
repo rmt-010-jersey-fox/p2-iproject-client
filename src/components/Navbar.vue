@@ -19,13 +19,13 @@
           <a class="nav-link" href="#" @click.prevent="$router.push('/recipes')">Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#" @click.prevent="$router.push('/login')">Login</a>
+          <a class="nav-link " href="#" v-if="!isLogged" @click.prevent="$router.push('/login')">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#" @click.prevent="$router.push('/register')" >Register</a>
+          <a class="nav-link " href="#" v-if="!isLogged" @click.prevent="$router.push('/register')" >Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#" @click.prevent="logout">Logout</a>
+          <a class="nav-link " href="#" v-if="isLogged" @click.prevent="logout">Logout</a>
         </li>
       </ul>
     </div>

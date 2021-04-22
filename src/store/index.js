@@ -103,7 +103,7 @@ export default new Vuex.Store({
       .then(({data}) => {
         console.log(data);
         localStorage.setItem('access_token',data.access_token)
-        context.dispatch('isLogin')
+        context.commit('LOGGED', true)
         router.push('/')
       })
 
