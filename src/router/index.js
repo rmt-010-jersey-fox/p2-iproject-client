@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login'
-import Profile from '../views/Profile'
 import Register from '../views/Register'
 import EventsList from '../components/EventsList'
 import ThreadList from '../components/ThreadList'
@@ -40,11 +39,6 @@ const routes = [
     ]
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile
-  },
-  {
     path: '/login',
     name: 'Login',
     component: Login
@@ -66,6 +60,10 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const isAuthenticated = localStorage.access_token
   if (to.name === 'Thread' && !isAuthenticated) next({ name: 'Login' })
+  if (to.name === 'ThreadList' && !isAuthenticated) next({ name: 'Login' })
+  if (to.name === 'EventsList' && !isAuthenticated) next({ name: 'Login' })
+  if (to.name === 'MyThreadsList' && !isAuthenticated) next({ name: 'Login' })
+  if (to.name === 'PopularGames' && !isAuthenticated) next({ name: 'Login' })
   if (to.name === 'Home' && !isAuthenticated) next({ name: 'Login' })
   if (to.name === 'Events' && !isAuthenticated) next({ name: 'Login' })
   else next()

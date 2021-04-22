@@ -11,35 +11,33 @@
 		<div class="central-meta item">
 			<div class="user-post">
 				<div class="friend-info">
+					<!-- <figure>
+						<img :src="getImage" alt="">
+					</figure> -->
 					<figure>
-						<img :src="thread.User.image" alt="">
+						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="">
 					</figure>
 					<div class="friend-name">
-						<div class="more">
-							<div class="more-post-optns"><i class="ti-more-alt"></i>
-								<ul>
-									<li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-									<li><i class="fa fa-trash-o"></i>Delete Post</li>
-									<li><i class="fa fa-flag"></i>Report</li>
-									<li><i class="fa fa-address-card-o"></i>Boost This Post</li>
-									<li><i class="fa fa-clock-o"></i>Schedule Post</li>
-									<li><i class="fa fa-wpexplorer"></i>Select as featured</li>
-									<li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
-								</ul>
-							</div>
-						</div>
 						<ins><a href="time-line.html" title="">{{ thread.User.fullname }}</a></ins>
+						<!-- <ins><a title=""></a></ins> -->
 						<span>published: {{ getPublished }}</span>
+						<!-- <span></span> -->
 					</div>
 					
 					<div class="post-meta">
 						<figure>
-							<img :src="thread.image" alt="">
+							<img v-if="thread.image" :src="thread.image" alt="">
+							<img src="" v-if="!thread.image" alt="">
 						</figure>	
+						<!-- <figure>
+						</figure>	 -->
 						<div class="description">
 							<center> <h1>{{ thread.title }}</h1> </center> 
 							{{ thread.content }}
 						</div>
+						<!-- <div class="description">
+							<center> <h1></h1> </center> 
+						</div> -->
 						
 						<div class="we-video-info">
 							

@@ -10,7 +10,7 @@
           <img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" v-if="!user.image" alt="" width="90">
           <div class="frnd-name">
             <a title="" href="#">{{ user.fullname }}</a>
-            <span>@{{ user.username }}{{user.image}}</span>
+            <span>@{{ user.username }}</span>
           </div>
           <!-- <a class="main-btn2" href="#" title="">Follow</a> -->
         </div>

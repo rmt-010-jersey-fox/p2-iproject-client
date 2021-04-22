@@ -18,12 +18,12 @@
                 </ul>
               </div>
             </div> -->
-            <ins><a title="" href="time-line.html">{{ thread.User.fullname }}</a></ins>
+            <ins><a title="">{{ thread.User.fullname }}</a></ins>
             <span><i class="fa fa-globe"></i> {{ getDate }} </span>
           </div>
           <div class="post-meta">
             <figure>
-              <a title="" href="">
+              <a title="" data-bs-toggle="modal" data-bs-target="#threadModal">
                 <img alt="" :src="thread.image">	
               </a>
             </figure>												
