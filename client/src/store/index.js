@@ -182,6 +182,7 @@ export default new Vuex.Store({
           context.dispatch('fetchComments', {
             id: data.id
           })
+          router.push('/details').catch(() => {})
         })
         .catch(err => {
           console.log(err)

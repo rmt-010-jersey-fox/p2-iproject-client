@@ -20,7 +20,6 @@ export default {
       this.$store.dispatch('findImage', {
         id
       })
-      this.$router.push('/details')
     },
     handleFavourite (id) {
 
