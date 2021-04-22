@@ -50,7 +50,9 @@ export default {
   methods: {
     addTrip () {
       this.$store.dispatch('goAddTrip', this.formAdd)
-      // this.$router.push('/').catch(() => {})
+      this.$nextTick(() => {
+        this.$router.push('/').catch(() => {})
+      })
     }
   }
 }

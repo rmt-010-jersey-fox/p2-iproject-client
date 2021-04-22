@@ -13,9 +13,9 @@
               <div class="media"><img :src="`https://avatars.dicebear.com/api/male/${user}.svg?background=%230000ff`" alt="user" width="50" class="rounded-circle">
                 <div class="media-body ml-4">
                   <div class="d-flex align-items-center justify-content-between mb-1">
-                    <h6 class="mb-0">{{ user }}</h6><small class="small font-weight-bold">25 Dec</small>
+                    <h6 class="mb-0">{{ user }}</h6><small class="small font-weight-bold">{{ new Date().toISOString().split('T')[0] }}</small>
                   </div>
-                  <p class="font-italic mb-0 text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                  <p class="font-italic mb-0 text-small">User</p>
                 </div>
               </div>
             </a>

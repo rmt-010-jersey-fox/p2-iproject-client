@@ -47,7 +47,7 @@ export default new Vuex.Store({
       state.addTrip = payload.addTrip
     },
 
-    setUsertrips (state, payload) {
+    setUserTrips (state, payload) {
       state.userTrips = payload
     }
   },

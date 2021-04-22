@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import ChatRoom from '../views/ChatRoom.vue'
-import Weather from '../components/Weather.vue'
+// import Weather from '../components/Weather.vue'
 
 Vue.use(VueRouter)
 
@@ -32,11 +32,12 @@ const routes = [
     name: 'Register',
     component: Register
   },
-  {
-    path: '/weather',
-    name: 'Weather',
-    component: Weather
-  },
+  // ,
+  // {
+  //   path: '/weather',
+  //   name: 'Weather',
+  //   component: Weather
+  // },
   {
     path: '/add-page',
     name: 'AddPage',
@@ -55,6 +56,12 @@ router.beforeEach((to, from, next) => {
   // const forbiden = ['Home', 'ChatRoom', 'Weather', 'AddPage']
   if (currentUser && to.path === '/login') {
     next({ path: '/' })
+  } else if (!currentUser && to.name === 'Home') {
+    next({ name: 'Login' })
+  } else if (!currentUser && to.name === 'AddPage') {
+    next({ name: 'Login' })
+  } else if (!currentUser && to.name === 'ChatRoom') {
+    next({ name: 'Login' })
   } else {
     next()
   }

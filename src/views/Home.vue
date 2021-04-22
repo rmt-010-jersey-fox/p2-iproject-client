@@ -1,10 +1,35 @@
 <template>
     <div>
+    <div>
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand href="#">Travelers</b-navbar-brand>
+      <b-navbar-nav class="ml-auto">
+      <div class="row">
+        <div class="col-sm">
+        <b-button style="margin: 10px"
+        @click.prevent="doLogOut"
+        size="sm"
+        class="my-2 my-sm-0"
+        type="button"
+        >LOGOUT
+        </b-button>
+        <b-button
+        @click.prevent="loginPage"
+        size="sm"
+        class="my-2 my-sm-0"
+        type="button"
+        >LOGIN
+        </b-button>
+        </div>
+      </div>
+      </b-navbar-nav>
+    </b-navbar>
+  </div>
       <div>
         <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
           <div class="row">
             <div class="col-md">
-          <TripTodo v-for="trip in userTrips" :key="trip.id"
+          <TripTodo v-for="trip in userTrip" :key="trip.id"
           trip:trip/>
             </div>
           </div>
@@ -52,7 +77,7 @@ export default {
   computed: {
     ...mapState({
       weather: 'weather',
-      userTrips: 'userTrips'
+      userTrip: 'userTrip'
     })
   },
 
@@ -67,12 +92,23 @@ export default {
 
     goAddPage () {
       this.$router.push('/add-page')
+    },
+
+    doLogOut () {
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('username')
+      this.$router.push('/login')
     }
   },
 
   created () {
     this.$store.dispatch('showAllTrips')
+  },
+
+  loginPage () {
+    this.$router.push('/login')
   }
+
 }
 </script>
 
