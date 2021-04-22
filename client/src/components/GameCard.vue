@@ -1,19 +1,22 @@
 <template>
   <div
+    @click="detailGame(game.id)"
     class="card bg-dark text-white game-card"
     data-bs-toggle="tooltip"
     :title="game.name">
-      <img v-if="game.cover"
+      <img
+        v-if="game.cover"
         class="card-img auto-crop" :alt="game.id"
         :src="game.cover.url.replace('t_thumb', 't_cover_big')">
       <img
-        class="card-img auto-crop" alt="defaultImage"
-        v-else src="../assets/NO_picture.jpg">
+        v-else src="../assets/NO_picture.jpg"
+        class="card-img auto-crop" alt="defaultImage">
     <div class="card-img-overlay">
       <i class="fas fa-heart wishlist"
         style="font-size: 25px;"
         @click="wishlist(game)">
       </i>
+      <a v-if="!game.cover" href="http://www.freepik.com"><p style="font-size:10px;">Designed by pch.vector / Freepik</p></a>
     </div>
   </div>
 </template>
@@ -26,6 +29,10 @@ export default {
     wishlist (vaf) {
       if (!localStorage.access_token) this.$router.push({ name: 'SignUp' })
       else this.$store.dispatch('addWishlist', { id: vaf.id, name: vaf.name })
+    },
+    detailGame (gameId) {
+      console.log(gameId, 'mmmmmmmmmmmmmmmmmmmmmmmm')
+      this.$router.push({ name: 'DetailGame', params: { id: gameId } })
     }
   }
 }

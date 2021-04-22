@@ -1,7 +1,7 @@
 <template>
   <!--? Menu -->
   <section>
-    <div id="menu" class="container" style="background-color: rgb(241, 241, 241);">
+    <div id="menu" class="container" style="background-color: #0A0A0A;">
       <div class="row" style="height: 5rem;">
         <div class="col-12">
           <div class="row text-center">

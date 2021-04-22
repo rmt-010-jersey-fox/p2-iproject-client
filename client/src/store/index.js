@@ -10,7 +10,8 @@ export default new Vuex.Store({
     isLogin: false,
     currentUser: {},
     games: [],
-    wishlist: []
+    wishlist: [],
+    detailGame: {}
   },
   mutations: {
     setLogin (state, value) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     FAVORITE_GAMES (state, value) {
       state.wishlist = value
+    },
+    DETAILS_GAME (state, payload) {
+      state.detailGame = payload
     }
   },
   actions: {
@@ -45,7 +49,7 @@ export default new Vuex.Store({
         .get('/games/wishlists', {
           headers: {
             'Access-Control-Allow-Origin': true,
-            access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjbGllbnRAbWFpbC5jb20iLCJ1c2VybmFtZSI6ImNsaWVudCIsImlhdCI6MTYxOTAxMjQ5Nn0.ADpqi_n6dGdU2wp_MVPAC-N1s7Y08zE9qSWEPw6UCSk'
+            access_token: localStorage.access_token
           }
         })
         .then(({ data }) => {
@@ -58,7 +62,7 @@ export default new Vuex.Store({
         .post('/games', game, {
           headers: {
             'Access-Control-Allow-Origin': true,
-            access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjbGllbnRAbWFpbC5jb20iLCJ1c2VybmFtZSI6ImNsaWVudCIsImlhdCI6MTYxOTAxMjQ5Nn0.ADpqi_n6dGdU2wp_MVPAC-N1s7Y08zE9qSWEPw6UCSk'
+            access_token: localStorage.access_token
           }
         })
         .then(_ => console.log('suksess'))
@@ -69,7 +73,7 @@ export default new Vuex.Store({
         .delete(`/games/wishlists/${id}`, {
           headers: {
             'Access-Control-Allow-Origin': true,
-            access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjbGllbnRAbWFpbC5jb20iLCJ1c2VybmFtZSI6ImNsaWVudCIsImlhdCI6MTYxOTAxMjQ5Nn0.ADpqi_n6dGdU2wp_MVPAC-N1s7Y08zE9qSWEPw6UCSk'
+            access_token: localStorage.access_token
           }
         })
         .then(_ => {
@@ -96,6 +100,19 @@ export default new Vuex.Store({
         .then(({ data }) => {
           console.log(data, 'Success Sign Up')
           router.push({ name: 'Home' })
+        })
+        .catch(err => console.log(err))
+    },
+    fetchDetailGame (context, id) {
+      axios
+        .get(`/games/detail/${id}`, {
+          headers: {
+            'Access-Control-Allow-Origin': true,
+            access_token: localStorage.access_token
+          }
+        })
+        .then(({ data }) => {
+          context.commit('DETAILS_GAME', data)
         })
         .catch(err => console.log(err))
     }

@@ -14,7 +14,7 @@ const routes = [
     path: '/wishlist',
     name: 'Wishlist',
     component: _ => import('../views/Wishlist.vue'),
-    beforeEnter: (to, from, next) => {
+    beforeEnter: (_1, _2, next) => {
       if (!localStorage.access_token) next({ name: 'Home' })
       else next()
     }
@@ -22,11 +22,21 @@ const routes = [
   {
     path: '/signup',
     name: 'SignUp',
-    component: () => import('../views/SignUp.vue'),
-    beforeEnter: (to, from, next) => {
+    component: _ => import('../views/SignUp.vue'),
+    beforeEnter: (_1, _2, next) => {
       if (localStorage.access_token) next({ name: 'Home' })
       else next()
     }
+  },
+  {
+    path: '/detail/:id',
+    name: 'DetailGame',
+    component: _ => import('../views/DetailGame.vue')
+  },
+  {
+    path: '*',
+    name: 'PageNotFound',
+    component: _ => import('../views/NotFoundPage.vue')
   }
 ]
 
