@@ -9,25 +9,44 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     songs: [],
+    song: {},
     playlists: [],
-    playlist: {}
+    playlist: {},
+    isLogin: false,
+    songSearchResults: [],
+    lyrics: ''
   },
   mutations: {
-    FETCH_DATA (state, payload) {
+    FETCH_SONGS (state, payload) {
       state.songs = payload
     },
     FETCH_PLAYLISTS (state, payload) {
       state.playlists = payload
     },
-    FIND_ONE (state, payload) {
+    FIND_PLAYLIST (state, payload) {
       state.playlist = payload
+    },
+    FIND_SONG (state, payload) {
+      state.song = payload
+    },
+    IS_LOGIN (state, payload) {
+      state.isLogin = payload
+    },
+    SEARCHRESULT_SONG (state, payload) {
+      state.songSearchResults = payload
+    },
+    SEARCHRESULT_LYRICS (state, payload) {
+      state.lyrics = payload
+    },
+    CLEAR_SEARCHRESULT (state, payload) {
+      state.songSearchResults = payload
     }
   },
   actions: {
-    fetchData (context) {
+    fetchSongs (context, payload) {
       axios.get('/songs')
         .then(({ data }) => {
-          context.commit('FETCH_DATA', data)
+          context.commit('FETCH_SONGS', data)
         })
         .catch(console.log)
     },
@@ -38,8 +57,9 @@ export default new Vuex.Store({
       }
       axios.post('/login', loginData)
         .then(({ data }) => {
-          const accessToken = data.token
-          localStorage.setItem('token', accessToken)
+          const token = data.token
+          localStorage.setItem('token', token)
+          context.commit('IS_LOGIN', true)
           router.push('/songs')
         })
         .catch(() => {
@@ -62,14 +82,18 @@ export default new Vuex.Store({
         })
         .catch(console.log)
     },
-    fetchPlaylists (context) {
-      axios.get('/playlist')
+    fetchPlaylists (context, payload) {
+      axios.get('/playlist', {
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
         .then(({ data }) => {
           context.commit('FETCH_PLAYLISTS', data)
         })
         .catch(console.log)
     },
-    addData (context, payload) {
+    addPlaylist (context, payload) {
       const newData = {
         name: payload.name,
         cover: payload.cover
@@ -80,19 +104,18 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
+          context.dispatch('fetchPlaylist')
           router.push('/playlist')
         })
         .catch(console.log)
     },
-    addToPlaylist (context, payload) {
-      const newData = {
-        UserId: payload.UserId,
-        PlaylistId: payload.PlaylistId,
-        SongId: payload.id
-      }
-      axios.put(`/playlist/${payload.id}`, newData, {
+    addSongToPlaylist (context, payload) {
+      axios.put(`/playlist/${payload.id}`, {
         headers: {
           token: localStorage.getItem('token')
+        },
+        data: {
+          name: payload.name
         }
       })
         .then(() => {
@@ -101,6 +124,7 @@ export default new Vuex.Store({
             text: 'Successfully Added To Playlist',
             icon: 'success'
           })
+          context.dispatch('fetchPlaylist')
           router.push('/playlist')
         })
         .catch(console.log)
@@ -129,6 +153,57 @@ export default new Vuex.Store({
         .then(() => {
           context.dispatch('fetchPlaylist')
           router.push('/playlist')
+        })
+        .catch(console.log)
+    },
+    findSong (context, payload) {
+      axios.get(`/songs/${payload.id}`)
+        .then(({ data }) => {
+          context.commit('FIND_SONG', data)
+        })
+        .catch(console.log)
+    },
+    findPlaylist (context, payload) {
+      axios.get(`/playlist/${payload.id}`)
+        .then(({ data }) => {
+          context.commit('FIND_PLAYLIST', data)
+        })
+        .catch(console.log)
+    },
+    searchSong (context, payload) {
+      context.commit('CLEAR_SEARCHRESULT', [])
+      axios.get('/search', {
+        data: {
+          keywords: payload.keywords
+        }
+      })
+        .then(({ data }) => {
+          context.commit('SEARCHRESULT_SONG', data)
+        })
+        .catch(console.log)
+    },
+    addToSong (context, payload) {
+      const newData = {
+        track_title: payload.track_title,
+        artist: payload.artist,
+        album_title: payload.album_title
+      }
+      axios.post('/songs', newData)
+        .then(() => {
+          context.dispatch('fetchSongs')
+          router.push('/')
+        })
+        .catch(console.log)
+    },
+    fetchLyrics (context, payload) {
+      axios.get('/lyrics', {
+        data: {
+          keywords: payload.keywords
+        }
+      })
+        .then(({ data }) => {
+          context.commit('SEARCHRESULT_LYRICS', data)
+          router.push('/lyrics')
         })
         .catch(console.log)
     }

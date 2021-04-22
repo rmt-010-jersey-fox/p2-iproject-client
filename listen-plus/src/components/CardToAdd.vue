@@ -13,7 +13,7 @@
       </div>
       <div class="col-2 p-3">
         <div class="song-action d-grid gap-5">
-          <button class="btn" @click="addToPlaylist" style="background-color: #EDDDC6;">Add To Playlist</button>
+          <button class="btn" @click="addToSong" style="background-color: #EDDDC6;">Add To Song List</button>
         </div>
       </div>
     </div>
@@ -24,9 +24,20 @@
 export default {
   name: 'CardToAdd',
   props: ['song'],
+  data () {
+    return {
+      track_title: '',
+      artist: '',
+      album_title: ''
+    }
+  },
   methods: {
-    addToPlaylist (id) {
-      this.$store.dispatch('addToPlaylist', { id })
+    addToSong () {
+      this.$store.dispatch('addToSong', {
+        track_title: this.track_title,
+        artist: this.artist,
+        album_title: this.album_title
+      })
     }
   }
 }

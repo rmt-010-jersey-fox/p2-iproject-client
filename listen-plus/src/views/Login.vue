@@ -25,19 +25,16 @@
           </div>
         </div>
       </section>
-      <HFooter></HFooter>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
-import HFooter from 'vue-hacktiv-footer'
 
 export default {
   name: 'Login',
   components: {
-    Navbar,
-    HFooter
+    Navbar
   },
   data () {
     return {

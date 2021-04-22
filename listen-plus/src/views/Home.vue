@@ -10,19 +10,19 @@
       </div>
       <!-- Content -->
       <div class="container" id="table-data" style="overflow-y: auto;">
-        <Card v-for="song in songs"
+        <CardSongList v-for="song in songs"
         :key="song.id"
         :song="song"
         />
       </div>
     </section>
-    <HFooter></HFooter>
+    <div class="fixed-bottom"><HFooter></HFooter></div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/Card'
+import CardSongList from '@/components/CardSongList'
 import Navbar from '@/components/Navbar'
 import HFooter from 'vue-hacktiv-footer'
 import { mapActions, mapState } from 'vuex'
@@ -30,14 +30,14 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
-    Card,
+    CardSongList,
     Navbar,
     HFooter
   },
   computed: mapState(['songs']),
-  methods: mapActions(['fetchData']),
+  methods: mapActions(['fetchSongs']),
   created () {
-    this.fetchData()
+    this.fetchSongs()
   }
 }
 </script>

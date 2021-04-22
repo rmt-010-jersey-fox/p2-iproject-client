@@ -1,11 +1,35 @@
 <template>
   <!-- Nav Bar -->
   <section>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/playlist">My Playlist</router-link> |
-      <router-link to="/register">Register</router-link> |
-      <a @click.prevent="logOut()" href="/">Log Out</a>
+    <div id="nav" class="d-flex justify-content-center">
+      <div class="col-1">
+        <router-link to="/">
+          <button class="clickable-btn circle-icon"><i class="fas fa-home"></i></button>
+        </router-link>
+      </div>
+      <div class="col-1">
+        <router-link to="/playlist">
+          <button class="clickable-btn circle-icon"><i class="fas fa-heart"></i></button>
+        </router-link>
+      </div>
+      <div class="col-1">
+        <router-link to="/songs">
+          <button class="clickable-btn circle-icon"><i class="fas fa-music"></i></button>
+        </router-link>
+      </div>
+      <div class="col-1">
+        <router-link to="/register">
+          <button class="clickable-btn circle-icon"><i class="fas fa-user-tie"></i></button>
+        </router-link>
+      </div>
+      <div class="col-1">
+        <router-link to="/login">
+          <button class="clickable-btn circle-icon"><i class="fas fa-sign-in-alt"></i></button>
+        </router-link>
+      </div>
+      <div class="col-1">
+          <button class="clickable-btn circle-icon" @click.prevent="logOut()"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
     </div>
   <!-- Website Name -->
     <h2>Listen+</h2>
@@ -21,6 +45,9 @@ export default {
     logOut () {
       localStorage.clear()
       router.push('/')
+    },
+    redirHome () {
+      router.push('/')
     }
   }
 }
@@ -32,8 +59,19 @@ export default {
   padding: 30px;
 }
 
-#nav a {
-  font-weight: bold;
+.circle-icon {
+    background: #f9f9f7;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-color: #f9f9f7;
+    text-align: center;
+    line-height: 30px;
+    vertical-align: middle;
+    padding: 0px;
+}
+
+.clickable-btn {
   color: #000000;
 }
 

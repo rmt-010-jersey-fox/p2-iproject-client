@@ -9,11 +9,11 @@
         </div>
       </div>
       <div>
-      <router-link to="/add">Add Playlist</router-link> |
+      <router-link to="/add">Add Playlist</router-link>
       </div>
       <!-- Content -->
       <div class="container" id="table-data" style="overflow-y: auto;">
-        <Card v-for="playlist in playlists"
+        <PlaylistCard v-for="playlist in playlists"
         :key="playlist.id"
         :playlist="playlist"
         />
@@ -24,14 +24,14 @@
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/Card'
+import PlaylistCard from '@/components/PlaylistCard'
 import Navbar from '@/components/Navbar'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
-    Card,
+    PlaylistCard,
     Navbar
   },
   computed: mapState(['playlists']),

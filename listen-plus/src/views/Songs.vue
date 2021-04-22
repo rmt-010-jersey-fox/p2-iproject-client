@@ -8,15 +8,22 @@
           <h4>Songs</h4>
         </div>
       </div>
+      <div class="d-flex justify-content-center">
+        <div class="col-4 input-group rounded">
+          <input v-model="keywords" type="text" class="form-control rounded" placeholder="Search" />
+          <span class="input-group-text border-0" id="search-addon">
+            <button class="clickable-btn" @click="searchSong"><i class="fas fa-search"></i></button>
+          </span>
+        </div>
+      </div>
       <!-- Content -->
       <div class="container" id="table-data" style="overflow-y: auto;">
-        <CardToAdd v-for="song in songs"
+        <CardToAdd v-for="song in songSearchResults"
         :key="song.id"
         :song="song"
         />
       </div>
     </section>
-    <HFooter></HFooter>
   </div>
 </template>
 
@@ -24,20 +31,29 @@
 // @ is an alias to /src
 import CardToAdd from '@/components/CardToAdd'
 import Navbar from '@/components/Navbar'
-import HFooter from 'vue-hacktiv-footer'
-import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Songs',
   components: {
     CardToAdd,
-    Navbar,
-    HFooter
+    Navbar
   },
-  computed: mapState(['songs']),
-  methods: mapActions(['fetchData']),
+  data () {
+    return {
+      keywords: ''
+    }
+  },
+  methods: {
+    searchSong () {
+      this.$store.dispatch('searchSong', {
+        keywords: this.keywords
+      })
+    }
+  },
   created () {
-    this.fetchData()
-  }
+    this.searchSong()
+  },
+  computed: mapState(['songSearchResults'])
 }
 </script>
