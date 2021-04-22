@@ -8,7 +8,7 @@
             <div class="col-md-4 offset-md-4">
                 <div class="login-form bg-light mt-4 p-4">
                     <form @submit.prevent="addDiseaseData" class="row g-3">
-                        <h4>Add Patient Data</h4>
+                        <h4>Add Disease Data</h4>
                         <div class="col-12">
                             <label>Name</label>
                             <input type="text" name="name" v-model="diseaseData.name" class="form-control" placeholder="Name">
