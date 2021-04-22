@@ -5,18 +5,20 @@
     <section>
       <div class="container">
         <div class="row page-title border-bottom">
-          <h4>Songs</h4>
+          <h4>My Playlist</h4>
         </div>
+      </div>
+      <div>
+      <router-link to="/add">Add Playlist</router-link> |
       </div>
       <!-- Content -->
       <div class="container" id="table-data" style="overflow-y: auto;">
-        <Card v-for="song in songs"
-        :key="song.id"
-        :song="song"
+        <Card v-for="playlist in playlists"
+        :key="playlist.id"
+        :playlist="playlist"
         />
       </div>
     </section>
-    <HFooter></HFooter>
   </div>
 </template>
 
@@ -24,20 +26,18 @@
 // @ is an alias to /src
 import Card from '@/components/Card'
 import Navbar from '@/components/Navbar'
-import HFooter from 'vue-hacktiv-footer'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
     Card,
-    Navbar,
-    HFooter
+    Navbar
   },
-  computed: mapState(['songs']),
-  methods: mapActions(['fetchData']),
+  computed: mapState(['playlists']),
+  methods: mapActions(['fetchPlaylists']),
   created () {
-    this.fetchData()
+    this.fetchPlaylists()
   }
 }
 </script>

@@ -10,7 +10,7 @@
       </div>
       <!-- Content -->
       <div class="container" id="table-data" style="overflow-y: auto;">
-        <Card v-for="song in songs"
+        <CardToAdd v-for="song in songs"
         :key="song.id"
         :song="song"
         />
@@ -22,15 +22,15 @@
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/Card'
+import CardToAdd from '@/components/CardToAdd'
 import Navbar from '@/components/Navbar'
 import HFooter from 'vue-hacktiv-footer'
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: 'Home',
+  name: 'Songs',
   components: {
-    Card,
+    CardToAdd,
     Navbar,
     HFooter
   },
