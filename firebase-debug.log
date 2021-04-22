@@ -1,0 +1,83 @@
+[debug] [2021-04-22T03:39:04.661Z] ----------------------------------------------------------------------
+[debug] [2021-04-22T03:39:04.665Z] Command:       /usr/bin/node /usr/local/bin/firebase projects:list
+[debug] [2021-04-22T03:39:04.666Z] CLI Version:   9.9.0
+[debug] [2021-04-22T03:39:04.666Z] Platform:      linux
+[debug] [2021-04-22T03:39:04.666Z] Node Version:  v10.19.0
+[debug] [2021-04-22T03:39:04.667Z] Time:          Thu Apr 22 2021 10:39:04 GMT+0700 (Western Indonesia Time)
+[debug] [2021-04-22T03:39:04.667Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-22T03:39:04.671Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-04-22T03:39:04.699Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-22T03:39:04.700Z] > authorizing via signed-in user (bobybewa6@gmail.com)
+[debug] [2021-04-22T03:39:04.708Z] > refreshing access token with scopes: []
+[debug] [2021-04-22T03:39:04.709Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-22T03:39:05.532Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-04-22T03:39:05.533Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2021-04-22T03:39:14.742Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2021-04-22T03:39:26.288Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (/usr/local/lib/node_modules/firebase-tools/lib/auth.js:141:12)
+    at refreshTokens (/usr/local/lib/node_modules/firebase-tools/lib/auth.js:450:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
+[debug] [2021-04-22T03:40:14.368Z] ----------------------------------------------------------------------
+[debug] [2021-04-22T03:40:14.370Z] Command:       /usr/bin/node /usr/local/bin/firebase projects:list
+[debug] [2021-04-22T03:40:14.371Z] CLI Version:   9.9.0
+[debug] [2021-04-22T03:40:14.371Z] Platform:      linux
+[debug] [2021-04-22T03:40:14.371Z] Node Version:  v10.19.0
+[debug] [2021-04-22T03:40:14.372Z] Time:          Thu Apr 22 2021 10:40:14 GMT+0700 (Western Indonesia Time)
+[debug] [2021-04-22T03:40:14.373Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-22T03:40:14.381Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-22T03:40:14.381Z] > authorizing via signed-in user (bobybewa6@gmail.com)
+[debug] [2021-04-22T03:40:14.390Z] > refreshing access token with scopes: []
+[debug] [2021-04-22T03:40:14.391Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-22T03:40:21.219Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Thu, 22 Apr 2021 03:40:21 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-22T03:40:21.233Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2021-04-22T03:40:36.248Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+[debug] [2021-04-22T03:40:37.388Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+    at Client.doRequest (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:211:19)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
+[debug] [2021-04-22T03:44:01.745Z] ----------------------------------------------------------------------
+[debug] [2021-04-22T03:44:01.747Z] Command:       /usr/bin/node /usr/local/bin/firebase init
+[debug] [2021-04-22T03:44:01.748Z] CLI Version:   9.9.0
+[debug] [2021-04-22T03:44:01.748Z] Platform:      linux
+[debug] [2021-04-22T03:44:01.748Z] Node Version:  v10.19.0
+[debug] [2021-04-22T03:44:01.748Z] Time:          Thu Apr 22 2021 10:44:01 GMT+0700 (Western Indonesia Time)
+[debug] [2021-04-22T03:44:01.749Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-22T03:44:01.755Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-22T03:44:01.756Z] > authorizing via signed-in user (bobybewa6@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/hacktiv8/Documents/covidPorto/p2-iproject-client
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-04-22T03:44:22.558Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2021-04-22T03:44:32.593Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects?pageSize=100
+[debug] [2021-04-22T03:44:47.618Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects?pageSize=100
+    at Client.doRequest (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:211:19)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.
