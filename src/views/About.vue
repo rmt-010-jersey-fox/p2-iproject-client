@@ -5,7 +5,7 @@
       <p>Prepare to be not surprised -- Flashero is just a glorified version of <a href="https://en.wikipedia.org/wiki/Flashcard" target="_blank">flashcard</a> in the real world</p>
       <p>If you are not familiar to some term associated with it, <b>flashcard</b> is basically a small piece of paper that contains information on both sides: front side is the problem or question, and back side is the solution</p>
       <img src="https://i.imgur.com/4dT0GhF.png" alt="Guide-1">
-      <p>We calls a stack of a flashcard in one category a <b>Deck</b>. Basically, the common pattern when using a flashcard is for memorization by clearing a deck and adding it with new cards regularly</p>
+      <p>We calls a stack of a flashcard in one category a <b>Deck</b>. A common pattern when using a flashcard is for memorization by clearing a deck and adding it with new cards regularly</p>
     </div>
     <hr>
     <div id="feature">
