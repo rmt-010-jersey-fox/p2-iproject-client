@@ -4,17 +4,17 @@
         <div class="container myForm">
             <form @submit.prevent="editImage">
                 <div class="mb-3">
-                  <label for="name" class="form-label">Image URL</label>
+                  <label for="image-url" class="form-label">Image URL</label>
                   <input v-model="currentImage.imgUrl" type="text" class="form-control" placeholder="Enter image url...">
                 </div>
 
                 <div class="mb-3">
-                    <label for="img_url" class="form-label">Category</label>
+                    <label for="category" class="form-label">Category</label>
                     <input v-model="currentImage.category" type="text" class="form-control" placeholder="Enter category...">
                 </div>
 
                 <div class="mb-3">
-                    <label for="price" class="form-label">Description</label>
+                    <label for="description" class="form-label">Description</label>
                     <input v-model="currentImage.description" type="text" class="form-control" placeholder="Enter description...">
                 </div>
 

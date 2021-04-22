@@ -6,26 +6,26 @@
             <hr>
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <img class="mb-3" :src="currentImage.imgUrl" alt="" style="width: 50%;">
-                <p class="h3 text-muted mb-3">{{currentImage.description}}</p>
-                <p class="h4 text-muted mb-3">By {{currentImage.User.username}}</p>
-                <div>
-                    <button @click="handleFavourite(currentImage.id)" class="btn btn-success mb-3 mr-3">ADD TO FAVORITES</button>
-                    <button @click="handleEdit" class="btn btn-info mb-3 mr-3">EDIT IMAGE</button>
-                    <b-button v-b-modal="'edit-modal'" class="btn btn-info mb-3 mr-3">EDIT DESCRIPTION</b-button>
+                <p class="h3 text-muted mb-3">Description: {{currentImage.description}}</p>
+                <p class="h4 text-muted mb-3">{{currentImage.User.username}}</p>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button v-if="page === 'Home'" @click="handleFavourite(currentImage.id)" class="btn btn-success mb-3 mr-3">ADD TO FAVORITES</button>
+                    <button v-if="page === 'Gallery'" @click="handleEdit" class="btn btn-info mb-3 mr-3">EDIT IMAGE</button>
+                    <b-button v-if="page === 'Gallery'" v-b-modal="'edit-modal'" class="btn btn-info mb-3 mr-3">EDIT DESCRIPTION</b-button>
                     <b-modal id="edit-modal" @cancel="handleCancel(currentImage.id)" @ok="handleDesc(currentImage.id)">
                         <div class="mb-3">
                           <label for="description" class="form-label">Description</label>
                           <b-form-input v-model="currentImage.description" type="text" class="form-control" placeholder="Enter description..."></b-form-input>
                         </div>
                     </b-modal>
-                    <button @click="handleDelete(currentImage.id)" class="btn btn-danger mb-3 mr-3">DELETE</button>
+                    <button v-if="page === 'Gallery'" @click="handleDelete(currentImage.id)" class="btn btn-danger mb-3 mr-3">DELETE</button>
                 </div>
             </div>
 
             <!-- COMMENT SECTION -->
         <div class="row d-flex justify-content-center mt-100 mb-100">
             <div class="col-lg-6 ">
-                <div class="card bg-light">
+                <div class="card" style="background-color: #ff971d;">
                     <div class="card-body text-center">
                         <h4 class="card-title mb-3">Latest Comments</h4>
                         <b-button v-b-modal="'post-comment'" class="btn rounded-pill" style="background-color: blue">POST COMMENT</b-button>
@@ -72,6 +72,9 @@ export default {
     },
     comments () {
       return this.$store.state.comments
+    },
+    page () {
+      return this.$store.state.page
     }
   },
   methods: {

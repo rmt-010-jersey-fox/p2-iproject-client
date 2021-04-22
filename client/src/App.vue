@@ -27,10 +27,11 @@ export default {
 
 <style>
 body, html {
-    height: 100%;
-    margin: 0;
+    height: 180%;
+    margin-bottom: 20px;
   }
   #app {
     height: 100%;
+    background-color: #f9f6f7;
   }
 </style>

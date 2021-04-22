@@ -30,6 +30,7 @@ export default {
   },
   created () {
     this.$store.dispatch('fetchImages')
+    this.$store.commit('setPage', 'Home')
   }
 }
 </script>

@@ -15,7 +15,9 @@ export default new Vuex.Store({
     favourites: [],
     currentImage: {},
     comments: [],
-    pexels: []
+    pexels: [],
+    pixa: [],
+    page: 'Home'
   },
   mutations: {
     setLogin (state, payload) {
@@ -36,8 +38,14 @@ export default new Vuex.Store({
     setPexels (state, payload) {
       state.pexels = payload
     },
+    setPixa (state, payload) {
+      state.pixa = payload
+    },
     setComments (state, payload) {
       state.comments = payload
+    },
+    setPage (state, payload) {
+      state.page = payload
     }
   },
   actions: {
@@ -61,6 +69,34 @@ export default new Vuex.Store({
             timer: 1500
           })
           router.push('/')
+        })
+        .catch(err => {
+          console.log(err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!'
+          })
+        })
+    },
+    register (context, payload) {
+      axios({
+        method: 'POST',
+        url: '/register',
+        data: {
+          username: payload.username,
+          email: payload.email,
+          password: payload.password
+        }
+      })
+        .then(response => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Register successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          router.push('/login')
         })
         .catch(err => {
           console.log(err)
@@ -241,6 +277,22 @@ export default new Vuex.Store({
         .then(response => {
           const data = response.data
           context.commit('setPexels', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    fetchPixa (context, payload) {
+      axios({
+        method: 'GET',
+        url: `/pixa?category=${payload.category}&page=${payload.page}`,
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        }
+      })
+        .then(response => {
+          const data = response.data
+          context.commit('setPixa', data)
         })
         .catch(err => {
           console.log(err)
