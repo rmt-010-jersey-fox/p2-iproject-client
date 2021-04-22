@@ -15,7 +15,7 @@ const routes = [
     component: () => import('../views/Register.vue')
   },
   {
-    path: '/playlists',
+    path: '/',
     name: 'Playlists',
     component: () => import('../views/Playlists.vue')
   },
