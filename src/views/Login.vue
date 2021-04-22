@@ -39,6 +39,7 @@ export default {
       this.$nextTick(() => {
         const user = localStorage.username
         if (user) {
+          this.$socket.emit('loginUser', user)
           this.$router.push('/')
         } else if (!localStorage.username) {
           this.$router.push('/login').catch(() => {})

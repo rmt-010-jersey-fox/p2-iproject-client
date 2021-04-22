@@ -2,6 +2,12 @@
     <div>
       <div>
         <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
+          <div class="row">
+            <div class="col-md">
+          <TripTodo v-for="trip in userTrips" :key="trip.id"
+          trip:trip/>
+            </div>
+          </div>
           <div class="row d-flex justify-content-center px-3">
             <div class="card" style="background-image: url('https://i.imgur.com/dpqZJV5.jpg')">
               <form class="form-inline" @submit.prevent="changeCity">
@@ -21,6 +27,8 @@
               <p class="ml-4 mb-4">{{ new Date().toISOString().split('T')[0] }}</p>
             </div>
           </div>
+           <b-button @click="goChat" variant="outline-secondary">Chat With Other Travelers</b-button>
+           <b-button @click="goAddPage"  variant="outline-secondary">Or Wanna Save Trip for latter</b-button>
         </div>
       </div>
     </div>
@@ -29,10 +37,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import TripTodo from '@/components/TripTodo.vue'
 
 export default {
   name: 'Home',
   components: {
+    TripTodo
   },
   data () {
     return {
@@ -41,32 +51,32 @@ export default {
   },
   computed: {
     ...mapState({
-      weather: 'weather'
+      weather: 'weather',
+      userTrips: 'userTrips'
     })
   },
 
   methods: {
     changeCity () {
       this.$store.dispatch('getWeather', { city: this.city })
-    }
-  }
+    },
 
-  // created () {
-  //   this.$store.dispatch('getWeather', { city: this.city })
-  // }
+    goChat () {
+      this.$router.push('/chat-room')
+    },
+
+    goAddPage () {
+      this.$router.push('/add-page')
+    }
+  },
+
+  created () {
+    this.$store.dispatch('showAllTrips')
+  }
 }
-// di halaman login pas method login di emit 'loginUser' dari server
-// this.$socket.emit('loginUser', this.username)
 </script>
 
 <style>
-body {
-    color: #fff;
-    overflow-x: hidden;
-    height: 100%;
-    background-color: #CFD8DC;
-    background-repeat: no-repeat
-}
 
 .card {
     background-size: cover;

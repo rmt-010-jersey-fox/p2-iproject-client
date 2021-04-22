@@ -13,7 +13,9 @@ export default new Vuex.Store({
       temp: '',
       ampm: ''
     },
-    userName: ''
+    userName: '',
+    addTrip: 'not yet',
+    userTrip: []
   },
   mutations: {
     pushMessage (state, payload) {
@@ -39,6 +41,14 @@ export default new Vuex.Store({
     setUserName (state, payload) {
       state.userName = payload.username
       localStorage.setItem('username', payload.username)
+    },
+
+    addTripStat (state, payload) {
+      state.addTrip = payload.addTrip
+    },
+
+    setUsertrips (state, payload) {
+      state.userTrips = payload
     }
   },
   actions: {
@@ -77,6 +87,33 @@ export default new Vuex.Store({
           console.log(data)
 
           context.commit('setWeather', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    goAddTrip (context, payload) {
+      axios.post('/trips', {
+        title: payload.title,
+        origin: payload.origin,
+        destination: payload.destination,
+        depatureDate: payload.depatureDate
+      })
+        .then(({ data }) => {
+          console.log(data, '<<<<<<<<<<<<<<<')
+          context.commit('addTripStat', { addTrip: 'success' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    showAllTrips (context) {
+      axios.get('/trips')
+        .then(({ data }) => {
+          console.log(data)
+          context.commit('setUserTrips', data)
         })
         .catch(err => {
           console.log(err)

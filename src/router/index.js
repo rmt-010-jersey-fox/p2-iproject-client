@@ -36,6 +36,11 @@ const routes = [
     path: '/weather',
     name: 'Weather',
     component: Weather
+  },
+  {
+    path: '/add-page',
+    name: 'AddPage',
+    component: () => import('../views/AddPage.vue')
   }
 ]
 
@@ -43,6 +48,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const currentUser = localStorage.access_token
+  const forbiden = ['Home', 'ChatRoom', 'Weather', 'AddPage']
+  if (currentUser && to.path === '/login') {
+    next({ path: '/' })
+  } else if (!currentUser && to.name.includes(forbiden)) {
+    next({ name: 'Login' })
+  } else {
+    next()
+  }
 })
 
 export default router
