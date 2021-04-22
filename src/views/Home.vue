@@ -7,9 +7,9 @@
           <MsgBox/>
         </div>
         <div id="movies" class="col-md-8">
-          <div id="second-col" class="d-flex flex-column align-items-center">
-            <div class="col-md-8 m-2 text-center">
-              <h4>Online Movie Forum</h4>
+          <div id="second-col" class="d-flex flex-column">
+            <div class="col-md-8 ms-5 mt-2 mb-2">
+              <h4>Welcome to movieForum.net!</h4>
             </div>
             <div class="col-md-6 mb-3">
               <!-- search bar -->
@@ -19,7 +19,7 @@
                     type="text"
                     class="form-control"
                     v-model="search"
-                    placeholder="search title..."
+                    placeholder="search movie title..."
                   />
                 </div>
 
