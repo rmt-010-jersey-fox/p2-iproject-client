@@ -6,7 +6,7 @@
     <div>
         <div class="container-fluid d-flex justify-content-md-center bg-light" id="disease-page1">
             <div class="row justify-content-md-center">
-                <h1 style="text-align: center;">Patient List</h1>
+                <h1 style="text-align: center;">Disease List</h1>
                 <table class="table-light table-bordered">
                     <thead>
                         <tr>

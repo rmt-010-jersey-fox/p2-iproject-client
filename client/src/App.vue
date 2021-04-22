@@ -1,9 +1,19 @@
 <template>
   <div id="app">
     <router-view/>
+  <div id="footer">
+  <HFooter></HFooter>
+  </div>
   </div>
 </template>
-
+<script>
+import HFooter from 'vue-hacktiv-footer'
+export default {
+  components: {
+    HFooter
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -11,6 +21,13 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
 }
 
 #nav {
