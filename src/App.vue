@@ -2,11 +2,13 @@
   <div id="app">
     <Navbar />
     <router-view/>
+    <HFooter />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
+import HFooter from 'vue-hacktiv-footer'
 
 export default {
   name: 'App',
@@ -18,7 +20,7 @@ export default {
     }
   },
 
-  components: { Navbar }
+  components: { Navbar, HFooter }
 }
 
 </script>
