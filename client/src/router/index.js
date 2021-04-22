@@ -21,12 +21,28 @@ const routes = [
   {
     path: '/detailsCar',
     name: 'DetailCar',
-    component: DetailCar
+    component: DetailCar,
+    beforeEnter: (to, from, next) => {
+      const token = localStorage.getItem('access_token')
+      if (from.name === 'Home' && token) {
+        next()
+      } else {
+        next('/')
+      }
+    }
   },
   {
     path: '/booking',
     name: 'Booking Detail',
-    component: BookingDetail
+    component: BookingDetail,
+    beforeEnter: (to, from, next) => {
+      const token = localStorage.getItem('access_token')
+      if (from.name === 'DetailCar' && token) {
+        next()
+      } else {
+        next('/')
+      }
+    }
   }
 ]
 

@@ -21,11 +21,13 @@
         <p>Anda memiliki usaha rental mobil ? Bergabunglah bersama kami !<a style="color: blue; margin-left: 3px;">Click disini untuk bergabung</a></p>
     </nav>
     <router-view/>
+    <HFooter></HFooter>
   </div>
 </template>
 
 <script>
 import axios from '../api/axios'
+import HFooter from 'vue-hacktiv-footer'
 import Swal from 'sweetalert2'
 export default {
   name: 'App',
@@ -35,6 +37,7 @@ export default {
       password: ''
     }
   },
+  components: { HFooter },
   computed: {
     checkLogin () {
       return this.$store.state.isLogin
@@ -81,6 +84,7 @@ export default {
         showConfirmButton: false,
         timer: 1500
       })
+      this.$router.push('/')
     },
     gotoRegister () {
       this.$router.push('/register')

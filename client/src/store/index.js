@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from '../../api/axios'
 
 Vue.use(Vuex)
 
@@ -12,8 +11,7 @@ export default new Vuex.Store({
     start_date: '',
     end_date: '',
     location: '',
-    car: [],
-    booking: 0
+    car: []
   },
   mutations: {
     setLogin (state, payload) {
@@ -21,6 +19,9 @@ export default new Vuex.Store({
     },
     CarByLoc (state, payload) {
       state.CarByLoc = payload.data
+    },
+    setCarByLoc (state, payload) {
+      state.CarByLoc = payload
     },
     start_date (state, payload) {
       state.start_date = payload
@@ -33,42 +34,9 @@ export default new Vuex.Store({
     },
     car (state, payload) {
       state.car = payload.data
-    },
-    booking (state, payload) {
-      state.booking = state.start_date.getDate() - state.end_date.getDate()
     }
   },
   actions: {
-    getCarsByLocation ({ commit }, data) {
-      console.log(data, 'masuk gak')
-      axios({
-        method: 'POST',
-        url: 'rentals',
-        data: { address: data.location }
-      })
-        .then(data => {
-          commit('CarByLoc', data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
-    getCar ({ commit }, data) {
-      console.log(data, ' inidata')
-      axios({
-        method: 'GET',
-        url: 'cars/' + data,
-        headers: { access_token: localStorage.getItem('access_token') }
-      })
-        .then(data => {
-          console.log('masuk then')
-          commit('car', data)
-          commit('booking')
-        })
-        .catch(err => {
-          console.log(err, 'cathc')
-        })
-    }
   },
   modules: {
   }

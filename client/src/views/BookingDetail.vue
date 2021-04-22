@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top:120px">
+    <div  style="margin-top:95px; padding-top:35px; background-color: #e6eaed; height: 115vh">
         <!-- Booking detail -->
     <div class="w3-col l8 s12" style="margin-left: 250px; width: 900px;">
       <!-- Mobil yg di pick -->
@@ -44,7 +44,7 @@
     <!-- Detail Rental dan Pembayaran -->
     <div class="w3-col l4" style="width: 500px;">
       <!-- Location -->
-      <div class="w3-card w3-margin">
+      <div class="w3-card w3-margin w3-white">
         <div class="w3-containe" style="padding: 40px">
           <p><span class="w3-tag"><strong>!</strong></span>     <span><b>Sebelum memesan, anda harus menyematkan lokasi terkini anda</b></span></p>
           <p><button @click.prevent="getLocation" class="w3-button w3-block w3-margin-bottom" style="margin-top:30px; background-color: rgb(255, 94, 31); border-radius: 5px; font-weight:bolder; color: white"><b>Dapatkan Lokasi Anda</b></button></p>
@@ -53,11 +53,10 @@
             </iframe>
           </div>
         </div>
-      </div>
-      <hr>
+      </div><hr>
 
       <!-- Pembayaran -->
-      <div class="w3-card w3-margin">
+      <div class="w3-card w3-margin w3-white">
         <div class="w3-containe" style="padding: 40px">
           <h2 class="w3-center" style="font-weight: bolder; color: #0770cd">Informasi Pembayaran</h2><hr>
           <p>Pemesanan dilakukan pada : <br> tanggal <strong>{{ start_date }}</strong> sampai dengan tanggal <strong>{{ end_date }}</strong></p>

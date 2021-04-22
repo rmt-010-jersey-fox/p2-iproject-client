@@ -36,7 +36,7 @@
     <!-- FORM -->
       <div class="w3-container w3-cell" style="width: 700px; padding: 50px;">
         <div class="row set-color">
-          <h2 style="padding:30px 180px;"><strong>Form Register</strong></h2>
+          <h2 style="padding:10px 180px;"><strong>Form Register</strong></h2>
             <div class="container" >
               <form>
                 <div class="row">
@@ -68,6 +68,8 @@
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary" @click.prevent="register">Register</button>
+                <hr>
+                <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
               </form>
             </div>
       </div>
@@ -76,6 +78,7 @@
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login'
 import axios from '../../api/axios'
 import Swal from 'sweetalert2'
 export default {
@@ -88,7 +91,16 @@ export default {
       password: '',
       gender: '',
       address: '',
-      phone: ''
+      phone: '',
+      params: {
+        client_id: '814573947699-tbfohh2ijjotqcf6n2v54tmt2hg1tchp.apps.googleusercontent.com'
+      },
+      // only needed if you want to render the button with the google ui
+      renderParams: {
+        width: 550,
+        height: 50,
+        longtitle: true
+      }
     }
   },
   methods: {
@@ -131,12 +143,48 @@ export default {
           })
           console.log(err)
         })
+    },
+    onSuccess (googleUser) {
+      const token = googleUser.getAuthResponse().id_token
+      axios({
+        method: 'POST',
+        url: 'googleLogin',
+        data: { id_token: token }
+      })
+        .then(data => {
+          localStorage.setItem('access_token', data.data.access_token)
+          this.$store.commit('setLogin', true)
+          this.$router.push('/')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Successfully Login',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: err
+          })
+          console.log(err)
+        })
+    },
+    onFailure () {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
     }
-  }
+  },
+  components: { GoogleLogin }
 
 }
 </script>
 
 <style>
-
 </style>

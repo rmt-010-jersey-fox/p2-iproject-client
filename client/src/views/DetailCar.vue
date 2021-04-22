@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import axios from '../../api/axios'
+import Swal from 'sweetalert2'
 export default {
   name: 'DetailCar',
   computed: {
@@ -57,11 +59,39 @@ export default {
       ribuan = ribuan.join('.').split('').reverse().join('')
       return `Rp. ${ribuan},-`
     },
+    getCar (id) {
+      axios({
+        method: 'GET',
+        url: 'cars/' + id,
+        headers: { access_token: localStorage.getItem('access_token') }
+      })
+        .then(data => {
+          this.$store.commit('car', data)
+          this.$router.push('/booking')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     gotoBooking (id) {
-      this.$router.push('/booking')
-      this.$store.dispatch('getCar', id)
+      if (localStorage.access_token) {
+        this.getCar(id)
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Anda belum Login',
+          footer: 'Silahkan login sebelum melakukan transaksi'
+        })
+        this.$router.push('/register')
+      }
     },
     gotoHome () {
+      this.$router.push('/')
+    }
+  },
+  created () {
+    if (!this.$store.state.CarByLoc[0].Cars) {
       this.$router.push('/')
     }
   }
