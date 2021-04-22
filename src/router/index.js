@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import ChatRoom from '../views/ChatRoom.vue'
+import Trips from '../views/Trips.vue'
 // import Weather from '../components/Weather.vue'
 
 Vue.use(VueRouter)
@@ -32,12 +33,11 @@ const routes = [
     name: 'Register',
     component: Register
   },
-  // ,
-  // {
-  //   path: '/weather',
-  //   name: 'Weather',
-  //   component: Weather
-  // },
+  {
+    path: '/trips',
+    name: 'Trips',
+    component: Trips
+  },
   {
     path: '/add-page',
     name: 'AddPage',

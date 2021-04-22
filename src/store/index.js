@@ -15,7 +15,8 @@ export default new Vuex.Store({
     },
     userName: '',
     addTrip: 'not yet',
-    userTrips: []
+    userTrips: [],
+    todo: []
   },
   mutations: {
     pushMessage (state, payload) {
@@ -45,10 +46,17 @@ export default new Vuex.Store({
 
     addTripStat (state, payload) {
       state.addTrip = payload.addTrip
+      // console.log(state.addTrip, '<<<<<<')
     },
 
     setUserTrips (state, payload) {
       state.userTrips = payload
+      // console.log(state.userTrips, 'userTrips di state')
+    },
+
+    setTodo (state, payload) {
+      state.todo.push(payload)
+      console.log(state.todo, 'state TOdo')
     }
   },
   actions: {
@@ -111,7 +119,7 @@ export default new Vuex.Store({
     showAllTrips (context) {
       axios.get('/trips')
         .then(({ data }) => {
-          console.log(data, 'feeetccchhh dataaaa')
+          // console.log(data, 'feeetccchhh dataaaa')
           context.commit('setUserTrips', data)
         })
         .catch(err => {
@@ -123,6 +131,20 @@ export default new Vuex.Store({
       axios.delete(`/trips/${payload.id}`)
         .then(({ data }) => {
           console.log(data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    addTodo (context, payload) {
+      axios.post(`/trips/${payload.id}/todos`, {
+        title: payload.title,
+        description: payload.description
+      })
+        .then(({ data }) => {
+          // console.log(data)
+          context.commit('setTodo', data)
         })
         .catch(err => {
           console.log(err)
