@@ -52,11 +52,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const currentUser = localStorage.access_token
-  const forbiden = ['Home', 'ChatRoom', 'Weather', 'AddPage']
+  // const forbiden = ['Home', 'ChatRoom', 'Weather', 'AddPage']
   if (currentUser && to.path === '/login') {
     next({ path: '/' })
-  } else if (!currentUser && to.name.includes(forbiden)) {
-    next({ name: 'Login' })
   } else {
     next()
   }

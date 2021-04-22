@@ -18,6 +18,7 @@
             <div class="form-group">
               <button class="btn btn-primary btn-block" type="submit">Login</button>
             </div>
+              <button @click="goRegisterPage">REGISTER</button>
               <a href="#" class="forgot">Forgot your email or password?</a>
           </form>
       </div>
@@ -45,6 +46,9 @@ export default {
           this.$router.push('/login').catch(() => {})
         }
       })
+    },
+    goRegisterPage () {
+      this.$router.push('/register')
     }
   }
 }
