@@ -7,12 +7,12 @@
                             <hr />
                             <h1 class="h3 mb-3 fw-normal">Edit memes</h1><br>
                             <label for="title">Title</label><br>
-                            <input class="w-100" type="text" id="title" placeholder="Kamu ketika makan siang" required
+                            <input class="w-100" type="text" v-model="item.title" placeholder="Kamu ketika makan siang" required
                                 autofocus><br><br>
                             <label for="imageURL">Image source</label><br>
-                            <input type="file" id="myfile" name="myfile"><br>
+                            <input type="text" v-model="item.image_url" name="myfile" disabled><br>
                             <hr />
-                            <button class="w-100 btn btn-lg btn-success" id="btn-add" type="submit">Submit</button>
+                            <button class="w-100 btn btn-lg btn-success" @click.prevent="updateMeme(item.id)" type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -22,7 +22,20 @@
 
 <script>
 export default {
-
+  name: "Update",
+  computed: {
+    item() {
+      return this.$store.state.item;
+    },
+  },
+  methods: {
+    updateMeme(id) {
+      this.$store.dispatch("updateMeme", {
+        id: id,
+        router: this.$router,
+      });
+    },
+  }
 }
 </script>
 

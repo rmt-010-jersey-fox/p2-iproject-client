@@ -7,6 +7,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    memes: [],
+    usermeme: [],
+    item: []
   },
   mutations,
   actions,

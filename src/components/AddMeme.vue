@@ -7,10 +7,10 @@
                             <hr />
                             <h1 class="h3 mb-3 fw-normal">Add memes</h1><br>
                             <label for="title">Title</label><br>
-                            <input class="w-100" type="text" id="title" placeholder="Kamu ketika makan siang" required
+                            <input class="w-100" type="text" v-model="title" placeholder="Kamu ketika makan siang" required
                                 autofocus><br><br>
                             <label for="imageURL">Image source</label><br>
-                            <input type="file" id="myfile" name="myfile"><br>
+                            <input type="text" v-model="myfile" name="myfile"><br>
                             <hr />
                             <button class="w-100 btn btn-lg btn-success" id="btn-add" type="submit">Add</button>
                         </form>

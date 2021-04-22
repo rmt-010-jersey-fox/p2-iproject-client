@@ -3,8 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
-import Favorite from '../views/Favorite.vue'
-import Reported from '../views/ReportMeme.vue'
+
 
 Vue.use(VueRouter)
 
@@ -23,17 +22,7 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
-  },
-  {
-    path: '/favorite',
-    name: 'Favorite',
-    component: Favorite
-  },
-  {
-    path: '/reported',
-    name: 'Reported',
-    component: Reported
-  },
+  }
   // {
   //   path: '/about',
   //   name: 'About',
