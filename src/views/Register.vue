@@ -8,11 +8,9 @@
                     <h2>Register Account</h2>
                     <form @submit.prevent="register">
                         <div class="input-group">
-                            <span><i class="fas fa-user" aria-hidden="true"></i></span>
                             <input type="email" v-model="email" placeholder="Username or Email" required="">
                         </div>
                         <div class="input-group">
-                            <span><i class="fas fa-key" aria-hidden="true"></i></span>
                             <input type="password" v-model="password" placeholder="Password" required="">
                         </div>
                         <button class="btn btn-primary" type="submit">Submit</button>

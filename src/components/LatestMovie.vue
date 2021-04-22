@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-3 mb-3">
+  <div class="col-md-3 mt-3 mb-1">
     <div class="card text-white bg-dark">
       <img :src="lat.thumbnailPotrait" alt="...">
         <div class="card-body">

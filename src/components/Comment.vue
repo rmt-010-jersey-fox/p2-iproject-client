@@ -1,10 +1,13 @@
 <template>
-  <div class="card text-white bg-dark m-1 col">
-    <div class="card-body d-flex">
+  <div class="card pe-0 text-white bg-dark m-1 col">
+    <div class="mb-1 pt-1">
+        <img style="width:25px" :src="`https://avatars.dicebear.com/api/micah/${com.UserId}.svg`" alt="">
+    </div>
+    <div class="card-body p-0 pb-1 d-flex">
       <div class="col md-11">
       {{ com.comment }}
       </div>
-      <div v-if="UserId == com.UserId" class="col-md-1 align-self-center text-end">
+      <div v-if="UserId == com.UserId" class="col-md-1 align-self-center text-center">
         <i @click.prevent="removeComment(com.id)" class="far fa-trash-alt"></i>
       </div>
     </div>
@@ -23,7 +26,18 @@ export default {
     removeComment (id) {
       const MovieId = this.com.imdbId
       const input = { MovieId, id }
-      this.$store.dispatch('removeComment', input)
+      this.$swal({
+        title: 'Delete this comment?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+      }).then((result) => { // <--
+        if (result.value) { // <-- if confirmed
+          this.$store.dispatch('removeComment', input)
+        }
+      })
     }
   }
 }

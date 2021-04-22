@@ -15,7 +15,18 @@ export default {
   props: ['w'],
   methods: {
     removeWatch (id) {
-      this.$store.dispatch('removeWatch', id)
+      this.$swal({
+        title: 'Remove from Watchlists?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+      }).then((result) => { // <--
+        if (result.value) { // <-- if confirmed
+          this.$store.dispatch('removeWatch', id)
+        }
+      })
     }
   }
 }
