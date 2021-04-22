@@ -68,7 +68,6 @@ export default {
         name: localStorage.getItem('username'),
         msg: this.inputMessage
       }
-      // this.$store.commit('getMessage', data)
       this.$socket.emit('sendMessage', data)
       this.inputMessage = ''
     },

@@ -15,7 +15,7 @@
           </div>
           <div class="row">
             <div class="col-7">
-              <button type="submit" class="btn btn-dark col-12">SIGN IN</button>
+              <button type="submit" class="btn col-12">SIGN IN</button>
             </div>
             <div class="col-5">
               <p>don't have an account yet? <a href="" @click.prevent="changeRegister">Register</a></p>
@@ -59,5 +59,22 @@ export default {
     /* background-color: #752C20; */
     color: white;
     border-radius:20px
+  }
+
+  h3{
+    color: #2073A7;
+    font-weight: 600;
+  }
+
+  button{
+    background-color: #2073A7;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  p{
+    color: #838589;
+    font-weight: 800;
   }
 </style>
