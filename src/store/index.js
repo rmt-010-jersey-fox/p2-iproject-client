@@ -15,7 +15,7 @@ export default new Vuex.Store({
     },
     userName: '',
     addTrip: 'not yet',
-    userTrip: []
+    userTrips: []
   },
   mutations: {
     pushMessage (state, payload) {
@@ -101,7 +101,6 @@ export default new Vuex.Store({
         depatureDate: payload.depatureDate
       })
         .then(({ data }) => {
-          console.log(data, '<<<<<<<<<<<<<<<')
           context.commit('addTripStat', { addTrip: 'success' })
         })
         .catch(err => {
@@ -112,8 +111,18 @@ export default new Vuex.Store({
     showAllTrips (context) {
       axios.get('/trips')
         .then(({ data }) => {
-          console.log(data)
+          console.log(data, 'feeetccchhh dataaaa')
           context.commit('setUserTrips', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    goDelete (context, payload) {
+      axios.delete(`/trips/${payload.id}`)
+        .then(({ data }) => {
+          console.log(data)
         })
         .catch(err => {
           console.log(err)

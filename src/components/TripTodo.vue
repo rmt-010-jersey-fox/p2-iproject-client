@@ -14,16 +14,24 @@
     <b-card-text>
       {{ trip.origin }} {{ trip.destination }} {{ trip.depatureDate }}
     </b-card-text>
+    <b-button variant="outline-light">Edit</b-button> <b-button variant="outline-warning" @click="goDelete(trip.id)">Delete</b-button>
   </b-card>
-  <div class="d-flex justify-content-center">
-  <b-button variant="outline-light">Edit</b-button> <b-button variant="outline-warning">Delete</b-button>
-  </div>
 </div>
 </template>
 
 <script>
 export default {
-  props: ['trip']
+  props: ['trip'],
+
+  methods: {
+    goDelete (id) {
+      this.$store.dispatch('goDelete', { id })
+      this.$nextTick(() => {
+        this.$store.dispatch('showAllTrips')
+        this.$swal('succes delete')
+      })
+    }
+  }
 }
 </script>
 
