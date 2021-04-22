@@ -6,7 +6,7 @@
               <li><a href="" @click.prevent="changePage('')">Home</a></li>
               <li><a href="" @click.prevent="changePage('localCase')">Indonesian Case</a></li>
               <li><a href="" @click.prevent="changePage('globalCase')">Global Case</a></li>
-              <li><a href="" @click.prevent="changePage('chat')">Chat With Stranger</a></li>
+              <li><a href="" @click.prevent="changePage('chat')">Chat With Public</a></li>
               <li><a href="" class="FAQ" @click.prevent="changePage('faq')">FAQ</a></li>
           </ul>
       </header>
