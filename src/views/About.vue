@@ -82,5 +82,6 @@ export default {
 
   img {
     border: solid black 2px;
+    max-width: 100%
   }
 </style>
