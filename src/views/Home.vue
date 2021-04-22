@@ -1,12 +1,17 @@
 <template>
   <section class="home-pg">
     <div class="home-left">
-      <h1>Home-1</h1>
       <div class="matches-container">
-        <div class="gw-setter">
-          <a @click.prevent="decrement" href="#" class="btn btn-primary">Kurang</a>
-          <h1>GAMEWEEK {{count}}</h1>
-          <a @click.prevent="increment" href="#" class="btn btn-primary">Tambah</a>
+        <div class="gw-setter mt-5">
+          <div>
+            <a @click.prevent="decrement" href="#"><chevron-left-icon size="2.5x" class="custom-class"></chevron-left-icon></a>
+          </div>
+          <div>
+            <h1>GAMEWEEK {{count}}</h1>
+          </div>
+          <div>
+            <a @click.prevent="increment" href="#"><chevron-right-icon size="2.5x" class="custom-class"></chevron-right-icon></a>
+          </div>
         </div>
         <!-- Match-card -->
         <Match
@@ -17,51 +22,20 @@
       </div>
     </div>
     <div class="home-right">
-      <h1>Home-2</h1>
       <Highlights />
-      <div class="player-list container mt-5">
-        <table class="table table-dark">
-          <thead>
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Name</th>
-              <th scope="col">Club</th>
-              <th scope="col">Position</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>N'Golo Kanté</td>
-              <td>Chelsea FC</td>
-              <td>Midfielder</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Timo Werner</td>
-              <td>Chelsea FC</td>
-              <td>Attacker</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Declan Rice</td>
-              <td>West Ham United</td>
-              <td>Midfielder</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
   </section>
 </template>
 
 <script>
+import moment from 'moment'
+import { ChevronLeftIcon, ChevronRightIcon } from 'vue-feather-icons'
 import Match from '../components/Match'
 import Highlights from '../components/Highlights'
 export default {
   name: 'Home',
   components: {
-    Match, Highlights
+    Match, Highlights, ChevronLeftIcon, ChevronRightIcon
   },
   computed: {
     matches () {
@@ -69,6 +43,7 @@ export default {
       const allMatches = this.$store.state.matches
       allMatches.forEach(e => {
         e.id = i++
+        e.date = moment(String(e.date)).format('MM/DD/YYYY hh:mm A')
       })
       return allMatches
     },
@@ -82,9 +57,21 @@ export default {
   methods: {
     increment () {
       this.$store.dispatch('increment')
+        .then(res => {
+          this.$store.dispatch('getMatches')
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     decrement () {
       this.$store.dispatch('decrement')
+        .then(res => {
+          this.$store.dispatch('getMatches')
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }

@@ -6,50 +6,50 @@
         <h5 class="card-title">{{ midfielder.name }}</h5>
         <p class="card-text">{{ midfielder.Club.name }}</p>
         <div class="btn-container">
-          <a @click.prevent="changePlayer(midfielder.PlayerId)" href="#" class="btn btn-primary">Change</a>
-          <a @click.prevent="deletePlayer(midfielder.PlayerId)" href="#" class="btn btn-primary">Delete</a>
+          <a @click.prevent="changePlayer(midfielder.PlayerId)" href="#" class="btn btn-warning">Change</a>
+          <a @click.prevent="deletePlayer(midfielder.PlayerId)" href="#" class="btn btn-warning">Delete</a>
         </div>
       </div>
     </div>
 
-    <div v-if="midfielders.length < 1" class="card card-player">
+    <div v-if="midfielders.length < 1" class="card card-noPlayer">
       <h5 class="card-header">Midfielder</h5>
       <div class="card-body">
-        <h5 class="card-title">Kosong</h5>
-        <p class="card-text">Kosong</p>
-        <a @click.prevent="addPlayer" href="#" class="btn btn-primary">Add Player</a>
+        <h5 class="card-title">No Player</h5>
+        <p class="card-text">-</p>
+        <a @click.prevent="addPlayer" href="#" class="btn btn-warning">Add Player</a>
       </div>
     </div>
-    <div v-if="midfielders.length < 2" class="card card-player">
+    <div v-if="midfielders.length < 2" class="card card-noPlayer">
       <h5 class="card-header">Midfielder</h5>
       <div class="card-body">
-        <h5 class="card-title">Kosong</h5>
-        <p class="card-text">Ksosong</p>
-        <a @click.prevent="addPlayer" href="#" class="btn btn-primary">Add Player</a>
+        <h5 class="card-title">No Player</h5>
+        <p class="card-text">-</p>
+        <a @click.prevent="addPlayer" href="#" class="btn btn-warning">Add Player</a>
       </div>
     </div>
-    <div v-if="midfielders.length < 3" class="card card-player">
+    <div v-if="midfielders.length < 3" class="card card-noPlayer">
       <h5 class="card-header">Midfielder</h5>
       <div class="card-body">
-        <h5 class="card-title">Kosong</h5>
-        <p class="card-text">Kosong</p>
-        <a @click.prevent="addPlayer" href="#" class="btn btn-primary">Add Player</a>
+        <h5 class="card-title">No Player</h5>
+        <p class="card-text">-</p>
+        <a @click.prevent="addPlayer" href="#" class="btn btn-warning">Add Player</a>
       </div>
     </div>
-    <div v-if="midfielders.length < 4" class="card card-player">
+    <div v-if="midfielders.length < 4" class="card card-noPlayer">
       <h5 class="card-header">Midfielder</h5>
       <div class="card-body">
-        <h5 class="card-title">Kosong</h5>
-        <p class="card-text">Ksosong</p>
-        <a @click.prevent="addPlayer" href="#" class="btn btn-primary">Add Player</a>
+        <h5 class="card-title">No Player</h5>
+        <p class="card-text">-</p>
+        <a @click.prevent="addPlayer" href="#" class="btn btn-warning">Add Player</a>
       </div>
     </div>
-    <div v-if="midfielders.length < 5" class="card card-player">
+    <div v-if="midfielders.length < 5" class="card card-noPlayer">
       <h5 class="card-header">Midfielder</h5>
       <div class="card-body">
-        <h5 class="card-title">Kosong</h5>
-        <p class="card-text">Ksosong</p>
-        <a @click.prevent="addPlayer" href="#" class="btn btn-primary">Add Player</a>
+        <h5 class="card-title">No Player</h5>
+        <p class="card-text">-</p>
+        <a @click.prevent="addPlayer" href="#" class="btn btn-warning">Add Player</a>
       </div>
     </div>
   </div>

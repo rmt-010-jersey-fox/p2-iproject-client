@@ -1,8 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Cabin:wght@400;700&display=swap');
+
+* {
+  font-family: 'Cabin', sans-serif;
+}
+
 .navbar {
   height: 150px;
   display: flex;
   justify-content: space-evenly;
-  background-image: radial-gradient(rgb(248, 157, 147), salmon);
+  background-image: radial-gradient(#979DAC, #7D8597);
+}
+
+.custom-login-right {
+  color: #ffffff;
+}
+
+.app-title {
+  font-family: 'Bangers', cursive;
+  color: #303030 !important;
+  font-size: 50px;
 }
 
 .navbar-item {
@@ -14,12 +31,13 @@
 
 .navbar-link {
   text-decoration: none !important;
-  color: whitesmoke;
+  color: #303030;
   transition: 200ms;
 }
 
 .navbar-link:hover {
-  color: greenyellow;
+  text-decoration: none !important;
+  color: white;
   transition: 200ms;
 }
 
@@ -41,7 +59,7 @@
 
 .flex-login {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .flex-register {
@@ -62,12 +80,13 @@
 
 .home-right {
   flex: 2;
-  background-color: brown;
+  background-image: radial-gradient(whitesmoke, #ffffff);
 }
 
 .gw-setter {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .profile-left {
@@ -88,17 +107,22 @@
   align-items: center;
   justify-content: center;
   overflow-y: auto;
+  background-color: #001845;
+  color: #ffffff;
+  height: 100%;
 
 }
 
 .match-card {
   display: flex;
   flex-direction: column;
-  border-style: solid;
+  border-style: hidden;
   padding: 10px;
   margin: 20px 10px;
   border-radius: 10px;
   width: 70%;
+  color: #ffffff;
+  background-image: radial-gradient(#0353A4, #001233);
 }
 
 .detail {
@@ -134,17 +158,21 @@
 .squad-container {
   display: flex;
   flex-direction: column;
+  background-image: radial-gradient(#0353A4, #001233);
 }
 
 .squad-list {
   display: flex;
   flex-direction: column;
+  color: #ffffff;
+  margin-bottom: 50px;
 }
 
 .goalkeeper {
   display: flex;
   justify-content: space-around;
 }
+
 
 .defender {
   display: flex;
@@ -164,6 +192,13 @@
 .card-player {
   width: 250px;
   height: 200px;
+  background-image: linear-gradient(#979DAC, #5C677D);
+}
+
+.card-noPlayer {
+  width: 250px;
+  height: 200px;
+  background-image: linear-gradient(salmon,#dd5647) !important;
 }
 
 .btn-container {

@@ -2,7 +2,7 @@
   <section class="login-pg">
     <div class="custom-login-left"></div>
     <div class="custom-login-right">
-      <div class="my-5 bg-light border loginregister-form" style="padding: 50px; width: 700px;">
+      <div class="my-5 bg-dark border loginregister-form" style="padding: 50px; width: 700px;">
         <h3 class="text-center font-weight-bold">Login</h3>
         <form @submit.prevent="login" id="login">
           <div class="form-group my-2">
@@ -23,12 +23,6 @@
             <small class="form-text text-bold" style="line-height: 30px;">Don't have an account</small>
             <div>
               <button @click.prevent="toRegister" id="to-register" type="submit" class="btn btn-warning">Create New Account</button>
-            </div>
-          </div>
-          <div class="text-center my-2">
-            <small class="form-text text-bold" style="line-height: 30px;">or signin with google?</small>
-            <div id="login-google">
-              <button id="to-register" type="submit" class="btn btn-warning">Google</button>
             </div>
           </div>
         </div>

@@ -1,18 +1,17 @@
 <template>
   <section class="navbar">
     <div class="navbar-item">
-      <router-link to="/"><p class="navbar-link">My FPL Team Checker</p></router-link>
+      <router-link to="/"><p class="navbar-link app-title">My FPL Helper</p></router-link>
     </div>
+    <div class="navbar-item"></div>
     <div v-if="loggedIn" class="navbar-item">
       <router-link to="/myTeam"><p class="navbar-link">My FPL Team</p></router-link>
     </div>
-    <div v-if="loggedIn" class="navbar-item">
-      <a class="navbar-link" href="#">Highlights</a>
-    </div>
+    <div class="navbar-item"></div>
     <div class="navbar-item"></div>
     <div class="navbar-item"></div>
     <div v-if="loggedIn" class="navbar-item">
-      <a @click.prevent="logout" class="navbar-link" href="#">Logout</a>
+      <router-link to="/login"><p @click.prevent="logout" class="navbar-link" href="#">Logout</p></router-link>
     </div>
   </section>
 </template>

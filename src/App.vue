@@ -1,18 +1,17 @@
 <template>
   <div id="app">
     <Navbar />
-    <!-- <HFooter></HFooter> -->
     <router-view/>
+    <HFooter></HFooter>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
-// import HFooter from './components/HFooter'
+import HFooter from 'vue-hacktiv-footer'
 export default {
   components: {
-    Navbar
-    // , HFooter
+    Navbar, HFooter
   },
   created () {
     this.$store.dispatch('getMatches')
