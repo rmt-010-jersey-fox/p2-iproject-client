@@ -17,7 +17,7 @@
       <h3>Cards to Clear</h3>
       <h3>{{ cardsToClear }}</h3>
     </div>
-    <!-- :disabled="cardsToclear === 0" -->
+    <br>
     <button @click.prevent="study()" :disabled="cardsToClear === 0" class = "button-pair btn btn-primary">Start!</button>
     <router-link :to="{ name: 'Home' }"><button class="button-pair btn btn-danger">Cancel</button></router-link>
 
@@ -85,5 +85,9 @@ export default {
 
   h3:nth-child(odd) {
     font-weight: bold;
+  }
+
+  ul {
+    margin-bottom: 1em !important;
   }
 </style>

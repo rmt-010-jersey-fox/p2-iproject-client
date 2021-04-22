@@ -87,6 +87,7 @@ tr:nth-child(odd) {
   text-align: center;
   padding: 20px 10px;
   background-color: azure;
+  min-height: 68vh
 }
 
 /* PAGE WITH FORM */
