@@ -1,7 +1,7 @@
 <template>
 
        <div class="bg">
-        <div class="container myForm bg-light" >
+        <div class="container myForm" >
             <div class="row m-0 h-100 ">
 
                 <div class="col">
@@ -42,7 +42,14 @@ export default {
   },
   methods: {
     handleRegister () {
-
+      this.$store.dispatch('register', {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      })
+      this.username = ''
+      this.email = ''
+      this.password = ''
     }
   }
 }
@@ -57,6 +64,7 @@ export default {
         transform: translate(-50%, -50%);
         font-size: 1.5rem;
         padding: 10px;
+        background-color: #e1f4f3;
     }
 
     p {
@@ -69,15 +77,14 @@ export default {
         }
     }
 
-    .bg {
-        /* The image used */
+    /* .bg {
+
         background-image: url("https://wallpapercave.com/wp/wp2618282.png");
 
-        /* Full height */
         height: 100%;
-        /* Center and scale the image nicely */
+
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-    }
+    } */
 </style>

@@ -29,6 +29,7 @@ export default {
   },
   created () {
     this.$store.dispatch('fetchGalleries')
+    this.$store.commit('setPage', 'Gallery')
   }
 }
 </script>

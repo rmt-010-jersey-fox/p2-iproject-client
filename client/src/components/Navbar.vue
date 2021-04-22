@@ -25,9 +25,15 @@
                 <li class="nav-item">
                   <router-link class="nav-link" to="/discover">DISCOVER</router-link>
                 </li>
+                <li class="nav-item">
+                  <router-link class="nav-link" to="/categories">CATEGORIES</router-link>
+                </li>
+                <li v-if="!getLogin" class="nav-item">
+                  <router-link class="nav-link" to="/login">LOGIN</router-link>
+                </li>
               </ul>
             </div>
-            <button @click="handleLogout" class="btn btn-danger my-2 my-sm-0" type="button">LOGOUT</button>
+            <button v-if="getLogin" @click="handleLogout" class="btn btn-danger my-2 my-sm-0" type="button">LOGOUT</button>
           </nav>
     </section>
 </template>
@@ -40,6 +46,11 @@ export default {
       localStorage.clear()
       this.$router.push('/login')
       this.$store.commit('setLogin', false)
+    }
+  },
+  computed: {
+    getLogin () {
+      return this.$store.state.isLogin
     }
   }
 }

@@ -1,17 +1,48 @@
 <template>
   <!-- Comment Row -->
     <div class="d-flex flex-row comment-row m-t-0">
-        <div class="p-2"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg" alt="user" width="50" class="rounded-circle"></div>
+        <div class="p-2"><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="user" width="50" class="rounded-circle"></div>
         <div class="comment-text w-100">
-            <h6 class="font-medium">James Thomas</h6> <span class="m-b-15 d-block">This is awesome website. I would love to comeback again. </span>
-            <div class="comment-footer"> <span class="text-muted float-right">April 14, 2019</span> <button type="button" class="btn btn-info btn-sm">Edit</button> <button type="button" class="btn btn-danger btn-sm">Delete</button> </div>
+            <h6 class="font-medium">{{comment.User.username}}</h6> <span class="m-b-15 d-block">{{comment.content}}</span>
+            <div class="comment-footer">
+                <b-button v-b-modal="'patch-modal' + comment.id" type="button" class="btn btn-info btn-sm rounded-pill mr-2">Edit</b-button>
+                 <b-modal @ok="handlePatch(comment.id)" @cancel="handleCancel(comment.id)" :id="'patch-modal' + comment.id">
+                    <label for="content" class="form-label">Edit Comment</label>
+                    <b-form-input v-model="content" lazy type="text" class="form-control" placeholder="Enter content..."></b-form-input>
+                 </b-modal>
+                <button type="button" @click="handleDelete(comment.id)" class="btn btn-danger btn-sm rounded-pill">Delete</button>
+            </div>
         </div>
     </div> <!-- Comment Row -->
 </template>
 
 <script>
 export default {
-  name: 'Comment'
+  name: 'Comment',
+  props: ['comment'],
+  data () {
+    return {
+      content: this.comment.content
+    }
+  },
+  methods: {
+    handleDelete (id) {
+      this.$store.dispatch('deleteComment', {
+        id,
+        imageId: this.comment.Image.id
+      })
+    },
+    handlePatch (id) {
+      this.$store.dispatch('editContent', {
+        id,
+        content: this.content,
+        imageId: this.comment.Image.id
+      })
+    },
+    handleCancel (id) {
+      this.content = this.comment.content
+    }
+  }
 
 }
 </script>

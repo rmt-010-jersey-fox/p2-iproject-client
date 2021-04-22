@@ -29,6 +29,7 @@ export default {
   },
   created () {
     this.$store.dispatch('fetchFavourites')
+    this.$store.commit('setPage', 'Favourites')
   }
 }
 </script>

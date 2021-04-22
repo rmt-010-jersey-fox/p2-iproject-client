@@ -8,15 +8,13 @@ import Add from '../views/Add.vue'
 import Favourites from '../views/Favourites.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Edit from '../views/Edit.vue'
+import Categories from '../views/Categories.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+
   {
     path: '/login',
     name: 'Login',
@@ -48,9 +46,24 @@ const routes = [
     component: Discover
   },
   {
+    path: '/categories',
+    name: 'Categories',
+    component: Categories
+  },
+  {
     path: '/add',
     name: 'Add',
     component: Add
+  },
+  {
+    path: '/edit',
+    name: 'Edit',
+    component: Edit
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
   }
 ]
 
@@ -58,6 +71,17 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// GOOD
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem('access_token')
+  if (to.name === 'Login' && isAuthenticated) next({ name: 'Home' })
+  else if (to.name === 'Gallery' && !isAuthenticated) next({ name: 'Login' })
+  else if (to.name === 'Favourites' && !isAuthenticated) next({ name: 'Login' })
+  else if (to.name === 'Add' && !isAuthenticated) next({ name: 'Login' })
+  else if (to.name === 'Edit' && !isAuthenticated) next({ name: 'Login' })
+  else next()
 })
 
 export default router
