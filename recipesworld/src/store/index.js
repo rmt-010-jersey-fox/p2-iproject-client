@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 // import axios from '../api/axios'
 
-export default Vuex.Store({
+export default new Vuex.Store({
   state: {
     isLogin: false,
     randomMeal: {},
