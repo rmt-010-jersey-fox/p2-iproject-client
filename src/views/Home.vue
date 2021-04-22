@@ -6,6 +6,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="row merged20" id="page-contents">
+  <!-- <HFooter/> -->
                 <Aside/>
                 <router-view/>
               </div>	
@@ -19,9 +20,10 @@
 
 <script>
 import Aside from '../components/Aside'
+import HFooter from 'vue-hacktiv-footer'
 export default {
   name: 'Home',
-  components: { Aside },
+  components: { Aside, HFooter },
   created () {
     if (localStorage.access_token) {
       this.$store.dispatch('changeIsLogin', true)
@@ -29,7 +31,7 @@ export default {
       this.$store.dispatch('fetchThreads')
       this.$store.dispatch('myThreads')
       this.$store.dispatch('fetchPopularGames')
-      // this.$store.dispatch('fetchUser')
+      // this.$store.dispatch('getUser')
     } else {
       this.$store.dispatch('changeIsLogin', false)
     }

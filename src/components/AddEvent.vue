@@ -61,6 +61,7 @@
 
 <script>
 // import {gmapApi} from 'vue2-google-maps'
+import Swal from 'sweetalert2'
 import $ from 'jquery'
 // import { mapState } from 'vuex'
 export default {
@@ -84,6 +85,13 @@ export default {
           const data = { title, image, content, location, date } 
         //   console.log(data)
         this.$store.dispatch('addEvent', data)
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your Event has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
         $('.main-btn3').click()
       }
   }
