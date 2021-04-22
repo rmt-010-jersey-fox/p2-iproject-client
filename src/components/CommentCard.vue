@@ -5,7 +5,7 @@
       <h5 class="card-title">{{comment.comment}}</h5>
     </div>
     <div class="input-group" v-if="bukaEditor">
-      <textarea v-model="commentInEditor" class="form-control text-center" aria-label="With textarea"></textarea>  
+      <textarea v-model="commentInEditor" class="form-control text-center" aria-label="With textarea"></textarea>
     </div>
     <div class="card-footer"  v-if="comment.username==username">
       <button v-if="!bukaEditor" @click.prevent="openEditor()" class="btn-warning">Edit My Comment</button>
@@ -20,33 +20,33 @@
 export default {
   name: 'CommentCard',
   props: ['comment'],
-  data() {
+  data () {
     return {
       commentInEditor: this.comment.comment,
       bukaEditor: false
     }
   },
   computed: {
-    username() {
+    username () {
       return this.$store.state.username
     }
   },
   methods: {
-    deleteComment() {
+    deleteComment () {
       this.$store.dispatch('deleteComment', this.$route.params.isbn)
     },
-    editComment() {
+    editComment () {
       this.bukaEditor = false
-      let payload = {
+      const payload = {
         isbn: this.$route.params.isbn,
         comment: this.commentInEditor
       }
       this.$store.dispatch('editComment', payload)
     },
-    openEditor() {
+    openEditor () {
       this.bukaEditor = true
     },
-    closeEditor() {
+    closeEditor () {
       this.bukaEditor = false
     }
   }

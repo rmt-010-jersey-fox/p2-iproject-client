@@ -31,13 +31,13 @@ import WishlistCard from '../components/WishlistsCard'
 export default {
   data () {
     return {
-      searchByTitle : ''
+      searchByTitle: ''
     }
   },
-  components : {WishlistCard},
-  computed : {
+  components: { WishlistCard },
+  computed: {
     wishlists () {
-      return this.$store.state.wishlists.filter(e=>{
+      return this.$store.state.wishlists.filter(e => {
         return e.title.toLowerCase().includes(this.searchByTitle.toLowerCase())
       })
     }

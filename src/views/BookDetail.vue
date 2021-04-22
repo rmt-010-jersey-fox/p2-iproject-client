@@ -17,18 +17,18 @@
               <!-- data detail buku -->
               <div class="col-5">
                 <!-- ICON PLAY -->
-                <p class="h2 mb-2"> 
-                  <b-icon 
+                <p class="h2 mb-2">
+                  <b-icon
                   class="me-2 zoomPlay"
                   icon="play-circle-fill"
                   variant="success"
                   style="cursor: pointer"
                   @click.prevent="speak(book.title, book.description)">
                   </b-icon>
-                  <b-icon 
+                  <b-icon
                   icon="stop-fill"
                   class="zoomPlay"
-                  variant="danger" 
+                  variant="danger"
                   style="cursor: pointer"
                   @click.prevent="stopSpeak()">
                   </b-icon>
@@ -76,7 +76,7 @@
               <div class="row mt-3">
                 <div class="col">
                   <div v-if="!commented" class="input-group">
-                    <textarea v-model="komentar" class="form-control" aria-label="With textarea"></textarea>  
+                    <textarea v-model="komentar" class="form-control" aria-label="With textarea"></textarea>
                     <span @click.prevent="addComment(book.isbn)" class="btn btn-warning input-group-text fs-5">Submit Comment</span>
                   </div>
                 </div>
@@ -89,8 +89,8 @@
       <div class="col-6">
         <div class="card overflow-auto text-white text-center bg-secondary mb-3" style="max-height:80vh">
           <div class="card-header fs-5"><!-- ICON PLAY -->
-                <span class="h4 me-2"> 
-                  <b-icon 
+                <span class="h4 me-2">
+                  <b-icon
                   icon="play-circle-fill"
                   variant="primary"
                   class="zoomPlay"
@@ -98,11 +98,11 @@
                   @click.prevent="speakComments(comments)">
                   </b-icon>
                 </span>
-                <span class="h3 me-2"> 
-                  <b-icon 
+                <span class="h3 me-2">
+                  <b-icon
                   icon="stop-fill"
                   class="zoomPlay"
-                  variant="danger" 
+                  variant="danger"
                   style="cursor: pointer"
                   @click.prevent="stopSpeak()">
                   </b-icon>
@@ -127,63 +127,63 @@
 </template>
 
 <script>
-import { BIcon, BIconArrowUp, BIconArrowDown } from 'bootstrap-vue'
+import { BIcon } from 'bootstrap-vue'
 import CommentCard from '../components/CommentCard'
 export default {
-  data() {
+  data () {
     return {
       komentar: ''
     }
   },
   components: { CommentCard, BIcon },
   methods: {
-    addWishLists(isbn) {
-      let payload = {
+    addWishLists (isbn) {
+      const payload = {
         isbn: isbn
       }
       this.$store.dispatch('addWishLists', payload)
     },
-    addLike(isbn) {
-      let payload = {
+    addLike (isbn) {
+      const payload = {
         isbn: isbn
       }
       this.$store.dispatch('addLike', payload)
     },
-    dislike(isbn) {
-      let payload = {
+    dislike (isbn) {
+      const payload = {
         isbn: isbn
       }
       this.$store.dispatch('dislike', payload)
     },
-    addComment(isbn) {
-      let payload = {
+    addComment (isbn) {
+      const payload = {
         isbn: isbn,
         comment: this.komentar
       }
       this.$store.dispatch('addComment', payload)
       this.komentar = ''
     },
-    deleteWishlist(isbn) {
+    deleteWishlist (isbn) {
       this.$store.dispatch('deleteWishlist', isbn)
     },
-    speak(text1, text2) {
-      let msg = new SpeechSynthesisUtterance()
+    speak (text1, text2) {
+      const msg = new SpeechSynthesisUtterance()
       msg.text = text1
       msg.rate = 0.8
       window.speechSynthesis.speak(msg)
       msg.text = text2
-      setTimeout(function() {
+      setTimeout(function () {
         window.speechSynthesis.speak(msg)
       }, 1000)
     },
-    stopSpeak() {
+    stopSpeak () {
       window.speechSynthesis.cancel()
     },
-    speakComments(array) {
-      let msg = new SpeechSynthesisUtterance()
+    speakComments (array) {
+      const msg = new SpeechSynthesisUtterance()
       msg.rate = 0.8
       msg.lang = 'id'
-      let list = []
+      const list = []
       for (let i = 0; i < array.length; i++) {
         list.push(`kata ${array[i].username} . ${array[i].comment}`)
       }
@@ -199,7 +199,7 @@ export default {
     }
   },
   computed: {
-    commented() {
+    commented () {
       let commented = false
       this.$store.state.comments.forEach(e => {
         if (e.commented) {
@@ -208,26 +208,26 @@ export default {
       })
       return commented
     },
-    liked() {
+    liked () {
       return this.$store.state.wishLikeAmount.liked
     },
-    wished() {
+    wished () {
       return this.$store.state.wishLikeAmount.wished
     },
-    book() {
+    book () {
       return this.$store.state.book
     },
-    comments() {
+    comments () {
       return this.$store.state.comments
     },
-    jumlahLike() {
+    jumlahLike () {
       return this.$store.state.wishLikeAmount.jumlahLike
     },
-    jumlahWish() {
+    jumlahWish () {
       return this.$store.state.wishLikeAmount.jumlahWish
     }
   },
-  created() {
+  created () {
     this.$store.dispatch('fetchOneBook', this.$route.params.isbn)
     this.$store.dispatch('fetchComments', this.$route.params.isbn)
     this.$store.dispatch('fetchWishLikeAmount', this.$route.params.isbn)

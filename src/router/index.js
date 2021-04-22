@@ -45,7 +45,7 @@ const routes = [
     path: '*',
     name: 'Error404',
     component: Error404
-  },
+  }
 ]
 
 const router = new VueRouter({
@@ -55,13 +55,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!localStorage.getItem('token') && (to.name !== 'Login' && to.name !== 'Register')){
-    next({name : 'Login'})
-  }
-  else if (localStorage.getItem('token') && (to.name === 'Login')) {
-    next({name : 'Home'})
-  }
-  else{
+  if (!localStorage.getItem('token') && (to.name !== 'Login' && to.name !== 'Register')) {
+    next({ name: 'Login' })
+  } else if (localStorage.getItem('token') && (to.name === 'Login')) {
+    next({ name: 'Home' })
+  } else {
     next()
   }
 })

@@ -22,9 +22,9 @@ export default {
   name: 'WishlistCard',
   props: ['wishlist'],
   methods: {
-    deleteWishlist(isbn) {
+    deleteWishlist (isbn) {
       this.$store.dispatch('deleteWishlist', isbn)
-    },
+    }
   }
 }
 </script>

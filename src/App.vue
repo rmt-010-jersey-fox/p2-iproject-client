@@ -60,32 +60,31 @@ import HFooter from 'vue-hacktiv-footer'
 export default {
   components: { HFooter },
   computed: {
-    username() {
+    username () {
       return this.$store.state.username
     },
-    isLogin() {
+    isLogin () {
       return this.$store.state.isLogin
     },
-    activeClass() {
-      if (this.$route.name != "Books" && this.$route.name != "BookDetail") {
+    activeClass () {
+      if (this.$route.name !== 'Books' && this.$route.name !== 'BookDetail') {
         return 'stickBawah'
-      }
-      else {
+      } else {
         return ''
       }
-    },
+    }
   },
   methods: {
-    logout() {
+    logout () {
       this.$store.commit('setLogout')
       localStorage.removeItem('token')
       this.$router.push({ name: 'Login' })
     },
-    navbarCategory(category) {
-      this.$router.push(`/books/${category}`).catch(()=>{});
+    navbarCategory (category) {
+      this.$router.push(`/books/${category}`).catch(() => {})
       this.$store.dispatch('fetchBooks', category)
     }
-  },
+  }
 }
 </script>
 

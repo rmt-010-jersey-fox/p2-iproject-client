@@ -19,17 +19,17 @@
 
 <script>
 export default {
-  name : 'BookCard',
-  props : ['book'],
-  methods : {
+  name: 'BookCard',
+  props: ['book'],
+  methods: {
     addWishLists (isbn) {
-      let payload = {
-        category : this.$route.params.category,
-        isbn : isbn
+      const payload = {
+        category: this.$route.params.category,
+        isbn: isbn
       }
-      this.$store.dispatch('addWishLists',  payload )
+      this.$store.dispatch('addWishLists', payload)
     }
-  },
+  }
 }
 </script>
 

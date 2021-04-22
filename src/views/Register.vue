@@ -43,17 +43,17 @@
 export default {
   data () {
     return {
-      username : '',
-      inputRegisterEmail : '',
-      inputRegisterPassword : ''
+      username: '',
+      inputRegisterEmail: '',
+      inputRegisterPassword: ''
     }
   },
-  methods : {
+  methods: {
     register () {
-      let payload = {
-        username : this.username,
-        email : this.inputRegisterEmail,
-        password : this.inputRegisterPassword
+      const payload = {
+        username: this.username,
+        email: this.inputRegisterEmail,
+        password: this.inputRegisterPassword
       }
       this.$store.dispatch('register', payload)
     }

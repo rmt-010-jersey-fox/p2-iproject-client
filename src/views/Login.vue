@@ -32,7 +32,7 @@
         <img src="https://cdn.dribbble.com/users/24158/screenshots/14414173/media/0ba2af910e5a71b94ef5af77b730f134.jpg?compress=1&resize=1000x750" style="" alt="">
       </div>
     </div>
-      
+
     </div>
   </form>
   <!-- END FORM LOGIN -->
@@ -54,18 +54,18 @@ export default {
         height: 50,
         longtitle: true
       },
-      email : '',
-      password : ''
+      email: '',
+      password: ''
     }
   },
   components: { GoogleLogin },
-  methods : {
+  methods: {
     login () {
-      let payload = {
-        email : this.email,
-        password : this.password
+      const payload = {
+        email: this.email,
+        password: this.password
       }
-      this.$store.dispatch('login',payload)
+      this.$store.dispatch('login', payload)
     },
     onSuccess (googleUser) {
       const token = googleUser.getAuthResponse().id_token

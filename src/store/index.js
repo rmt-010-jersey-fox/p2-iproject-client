@@ -1,49 +1,49 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
-
 import axios from '../api/index'
 import router from '../router/index'
 import Swal from 'sweetalert2'
+
+Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    isLogin: localStorage.getItem('token') ? true : false,
+    isLogin: !!localStorage.getItem('token'),
     books: [],
     book: {},
     wishlists: [],
     comments: [],
     wishLikeAmount: {},
-    username : ''
+    username: ''
   },
   mutations: {
-    setLogin(state) {
+    setLogin (state) {
       state.isLogin = true
     },
-    setLogout(state) {
+    setLogout (state) {
       state.isLogin = false
     },
-    setUsername(state, payload) {
+    setUsername (state, payload) {
       state.username = payload
     },
-    fetchBooks(state, payload) {
+    fetchBooks (state, payload) {
       state.books = payload
     },
-    fetchOneBook(state, payload) {
+    fetchOneBook (state, payload) {
       state.book = payload
     },
-    fetchWishlist(state, payload) {
+    fetchWishlist (state, payload) {
       state.wishlists = payload
     },
-    fetchComments(state, payload) {
+    fetchComments (state, payload) {
       state.comments = payload
     },
-    fetchWishLikeAmount(state, payload) {
+    fetchWishLikeAmount (state, payload) {
       state.wishLikeAmount = payload
     }
   },
   actions: {
-    googleLogin(context, payload) {
+    googleLogin (context, payload) {
       axios({
         method: 'post',
         url: '/googleLogin',
@@ -66,7 +66,7 @@ export default new Vuex.Store({
           })
         })
     },
-    login(context, payload) {
+    login (context, payload) {
       axios({
         method: 'POST',
         url: '/login',
@@ -87,11 +87,11 @@ export default new Vuex.Store({
           })
         })
     },
-    register(context, payload) {
+    register (context, payload) {
       axios({
         method: 'POST',
         url: '/register',
-        data: payload,
+        data: payload
       })
         .then(response => {
           Swal.fire({
@@ -111,7 +111,7 @@ export default new Vuex.Store({
           })
         })
     },
-    fetchBooks(context, payload) {
+    fetchBooks (context, payload) {
       axios({
         method: 'GET',
         url: `/books/${payload}`,
@@ -123,10 +123,10 @@ export default new Vuex.Store({
           context.commit('fetchBooks', response.data)
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          console.log(err.response.data.message)
         })
     },
-    fetchOneBook(context, payload) {
+    fetchOneBook (context, payload) {
       // console.log(payload);
       axios({
         method: 'GET',
@@ -148,7 +148,7 @@ export default new Vuex.Store({
           })
         })
     },
-    fetchWishlists(context, payload) {
+    fetchWishlists (context, payload) {
       axios({
         method: 'GET',
         url: '/favouriteBooks',
@@ -160,10 +160,10 @@ export default new Vuex.Store({
           context.commit('fetchWishlist', response.data)
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          console.log(err.response.data.message)
         })
     },
-    fetchComments(context, payload) {
+    fetchComments (context, payload) {
       axios({
         method: 'GET',
         url: `/favouriteBooks/comments/${payload}`,
@@ -175,10 +175,10 @@ export default new Vuex.Store({
           context.commit('fetchComments', response.data)
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          console.log(err.response.data.message)
         })
     },
-    fetchWishLikeAmount(context, payload) {
+    fetchWishLikeAmount (context, payload) {
       axios({
         method: 'GET',
         url: `/favouriteBooks/likes/${payload}`,
@@ -191,10 +191,10 @@ export default new Vuex.Store({
           context.commit('fetchWishLikeAmount', response.data)
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          console.log(err.response.data.message)
         })
     },
-    addWishLists(context, payload) {
+    addWishLists (context, payload) {
       axios({
         method: 'POST',
         url: '/favouriteBooks',
@@ -219,10 +219,10 @@ export default new Vuex.Store({
           })
         })
     },
-    addLike(context, payload) {
+    addLike (context, payload) {
       axios({
         method: 'POST',
-        url: `favouriteBooks/likes`,
+        url: 'favouriteBooks/likes',
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -240,10 +240,10 @@ export default new Vuex.Store({
           })
         })
     },
-    dislike(context, payload) {
+    dislike (context, payload) {
       axios({
         method: 'PATCH',
-        url: `favouriteBooks/likes`,
+        url: 'favouriteBooks/likes',
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -261,7 +261,7 @@ export default new Vuex.Store({
           })
         })
     },
-    addComment(context, payload) {
+    addComment (context, payload) {
       axios({
         method: 'POST',
         url: '/favouriteBooks/comments/',
@@ -282,10 +282,10 @@ export default new Vuex.Store({
           })
         })
     },
-    editComment(context, payload) {
+    editComment (context, payload) {
       axios({
         method: 'PATCH',
-        url: `/favouriteBooks/comments/`,
+        url: '/favouriteBooks/comments/',
         data: payload,
         headers: {
           token: localStorage.getItem('token')
@@ -303,7 +303,7 @@ export default new Vuex.Store({
           })
         })
     },
-    deleteComment(context, payload) {
+    deleteComment (context, payload) {
       axios({
         method: 'DELETE',
         url: `/favouriteBooks/comments/${payload}`,
@@ -324,7 +324,7 @@ export default new Vuex.Store({
           })
         })
     },
-    deleteWishlist(context, payload) {
+    deleteWishlist (context, payload) {
       axios({
         method: 'DELETE',
         url: `/favouriteBooks/${payload}`,
@@ -344,7 +344,7 @@ export default new Vuex.Store({
             confirmButtonText: 'close'
           })
         })
-    },
+    }
   },
   modules: {
   }

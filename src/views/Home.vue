@@ -98,7 +98,6 @@ export default {
 }
 </script>
 
-
 <style>
 .zoom:hover {
   transform: scale(1.02);

@@ -32,20 +32,20 @@
 <script>
 import BookCard from '../components/BookCard'
 export default {
-  data() {
+  data () {
     return {
       searchByTitle: ''
     }
   },
   computed: {
-    books() {
-      let wishlists = this.$store.state.wishlists
-      let books = this.$store.state.books
-      let filtered = []
+    books () {
+      const wishlists = this.$store.state.wishlists
+      const books = this.$store.state.books
+      const filtered = []
       for (let i = 0; i < books.length; i++) {
         let count = 0
         for (let j = 0; j < wishlists.length; j++) {
-          if (books[i].isbn != wishlists[j].isbn) {
+          if (books[i].isbn !== wishlists[j].isbn) {
             count++
           }
         }
@@ -59,7 +59,7 @@ export default {
     }
   },
   components: { BookCard },
-  created() {
+  created () {
     this.$store.dispatch('fetchBooks', this.$route.params.category)
     // console.log(this.$store.state.books)
   }
