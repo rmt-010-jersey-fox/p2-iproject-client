@@ -3,7 +3,7 @@
   <div class="container mt-5 mb-5" id="quran">
     <div class="row shadow" >
       <div class="col-6">
-        <img class="border-radius" src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="" style="height: 400px;">
+        <img class="border-radius" src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="" style="height: 450px;">
       </div>
       <div class="col-6 border-radius shadow" style="background-color: #3e9ca5">
         <h3 class="text-center mt-3" style="color: white; font-weight: bold">Cari Surah</h3>
@@ -36,6 +36,12 @@
             </button>
           </div>
         </form>
+        <hr class="garis">
+        <div class="mb-3 mt-3 d-grid gap-2">
+          <button @click.prevent="getAllSurah" class="btn btn-light">
+            All Surah
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -58,6 +64,10 @@ export default {
       }
 
       this.$store.dispatch('getSurah', payload)
+    },
+
+    getAllSurah () {
+      this.$store.dispatch('getAllSurah')
     }
   }
 }

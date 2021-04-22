@@ -9,11 +9,15 @@ export default new Vuex.Store({
   state: {
     ayatSurahs: [],
     hadists: [],
-    jadwalSolat: {}
+    jadwalSolat: {},
+    surahQurans: []
   },
   mutations: {
     FETCH_AYAT (state, data) {
       state.ayatSurahs = data
+    },
+    FETCH_SURAH (state, data) {
+      state.surahQurans = data
     },
     FETCH_HADIST (state, data) {
       state.hadists = data
@@ -132,8 +136,24 @@ export default new Vuex.Store({
         })
     },
 
+    getAllSurah (context, payload) {
+      axios.get('/quran', {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+      .then((data) => {
+        console.log(data.data)
+        context.commit('FETCH_SURAH', data.data)
+        router.push('/allsurah')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },
+
     getSurah (context, payload) {
-      // console.log(payload, '<<<<< MASUK KE STORE')
+      console.log(payload, '<<<<< MASUK KE STORE')
       axios.post('/surah', payload, {
         headers: {
           access_token: localStorage.access_token
