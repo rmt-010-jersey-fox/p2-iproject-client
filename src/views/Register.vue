@@ -38,8 +38,8 @@ export default {
       const { username, email, password, fullname , image} = this
       const data = { username, email, password, fullname, image }
       // console.log(data)
-      this.$store.dispatch('register', data)
       this.$router.replace({ name: 'Login' })  
+      this.$store.dispatch('register', data)
          .then(({ data }) => {
           console.log(data)
           Swal.fire({
