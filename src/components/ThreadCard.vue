@@ -1,4 +1,5 @@
 <template>
+
   <div class="col-lg-6 col-md-6">
     <div class="central-meta">
       <div class="blog-post">
@@ -41,14 +42,18 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
+// import Thread from '../views/Thread'
 export default {
   name: 'ThreadCard',
   props: ['thread'],
+  // components: { Thread },
   methods: {
     getThread(id) {
+      // console.log(id)
         this.$store.dispatch('getThread', id)
     }
   },

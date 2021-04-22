@@ -22,7 +22,7 @@ const routes = [
         component: EventsList
       },
       {
-        path: 'thread',
+        path: 'threads',
         name: 'ThreadList',
         component: ThreadList
       },

@@ -39,6 +39,7 @@ export default new Vuex.Store({
       this.state.threads = data
     },
     getThread (commit, data) {
+      console.log(data)
       this.state.thread = data
     },
     myThreads (commit, data) {

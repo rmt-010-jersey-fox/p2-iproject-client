@@ -31,7 +31,8 @@
 				<button class="btn btn-primary" @click.prevent="$router.replace({ name: 'Login' })">Login</button> |  <button class="btn btn-primary" @click.prevent="$router.replace({ name: 'Register' })">Register</button>
 			</div>
 			<div class="user-img" v-if="isLogin">
-				<h5>{{ user.fullname }}</h5>
+				<h5 v-if="user.fullname">{{ user.fullname }}</h5>
+				<h5 v-if="!user.fullname">Welcome</h5>
 				<!-- <div v-if="user.image"> -->
 					<img :src="user.image" v-if="user.image" alt="" width="60">
 					<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" v-if="!user.image" alt="" width="60">

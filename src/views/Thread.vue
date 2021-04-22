@@ -18,22 +18,21 @@
 						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="">
 					</figure>
 					<div class="friend-name">
-						<ins><a href="time-line.html" title="">{{ thread.User.fullname }}</a></ins>
-						<!-- <ins><a title=""></a></ins> -->
+						<ins  v-if="thread"><a href="time-line.html" title="">{{ getThread.User.fullname }}</a></ins>
+						<ins  v-if="!thread"><a href="time-line.html" title=""></a></ins>
 						<span>published: {{ getPublished }}</span>
-						<!-- <span></span> -->
 					</div>
 					
 					<div class="post-meta">
 						<figure>
-							<img v-if="thread.image" :src="thread.image" alt="">
-							<img src="" v-if="!thread.image" alt="">
+							<img v-if="thread" :src="getThread.image" alt="">
+							<img src="" v-if="!thread" alt="">
 						</figure>	
 						<!-- <figure>
 						</figure>	 -->
 						<div class="description">
-							<center> <h1>{{ thread.title }}</h1> </center> 
-							{{ thread.content }}
+							<center> <h1>{{ getThread.title }}</h1> </center> 
+							{{ getThread.content }}
 						</div>
 						<!-- <div class="description">
 							<center> <h1></h1> </center> 
@@ -132,7 +131,14 @@ export default {
   computed: {
 	  ...mapState(['thread']),
 	  getPublished() {
-		  return this.thread.createdAt.split('T').join(' ')
+		  return this.getThread.createdAt.split('T').join(' ')
+	  },
+	  getThread() {
+		  if(!this.thread){
+			  return { User: { fullname: ''}, image: '', title: '', content: ''}
+		  } else {
+			  return this.thread
+		  }
 	  }
   }
 }

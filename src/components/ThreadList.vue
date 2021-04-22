@@ -39,6 +39,7 @@
       <span>Viewing 1-6 of 44 posts</span>
       <button class="btn-view btn-load-more"></button>
     </div> -->
+    <!-- <Thread/> -->
   </div><!-- centerl meta -->
 </template>
 
