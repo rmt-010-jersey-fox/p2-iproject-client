@@ -1,0 +1,258 @@
+
+    <div class="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <img class="object-cover w-full h-56" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+        
+        <div class="py-5 text-center">
+            <a href="#" class="block text-2xl font-bold text-gray-800 dark:text-white">John Doe</a>
+            <span class="text-sm text-gray-700 dark:text-gray-200">Software Engineer</span>
+        </div>
+    </div>
+
+
+
+    <nav class="bg-white shadow dark:bg-gray-800">
+      <div class="container px-6 py-3 mx-auto md:flex">
+          <div class="flex items-center justify-between">
+              <div>
+                  <a class="text-xl font-bold text-gray-800 dark:text-white md:text-2xl hover:text-gray-700 dark:hover:text-gray-300" href="#">Brand</a>
+              </div>
+              
+              <!-- Mobile menu button -->
+              <div class="flex md:hidden">
+                  <button type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                      <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                          <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                      </svg>
+                  </button>
+              </div>
+          </div>
+
+          <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+          <div class="w-full md:flex md:items-center md:justify-between">
+              <div class="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0">
+                  <a href="#" class="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Home</a>
+                  <a href="#" class="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">About</a>
+                  <a href="#" class="px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2">Contact</a>
+              </div>
+              
+              <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                      <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+                          <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                  </span>
+
+                  <input type="text" class="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Search">
+              </div>
+          </div>
+      </div>
+  </nav>
+
+  <a v-if="isLogin === false" @click.prevent="login" class="flex items-center uppercase font-bold leading-snug text-black hover:opacity-75" href="#">Login</a>
+                <a v-if="isLogin === true" @click.prevent="logout" class="flex items-center uppercase font-bold leading-snug text-black hover:opacity-75" href="#">Logout</a>
+
+
+                <template>
+                    <!-- LOGIN -->
+                      <div id="Login" class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
+                        <div class="flex flex-col justify-center sm:w-96 sm:m-auto max-w-md mx-5 mb-5 space-y-8">
+                          <h1 class="font-bold text-center text-4xl text-white">LayarTancep<span class="text-yellow-500">Web</span></h1>
+                          <form @submit.prevent="login">
+                            <div class="flex flex-col bg-white p-10 rounded-lg shadow space-y-6">
+                              <h1 class="font-bold text-xl text-center">Sign in to your account</h1>
+                  
+                              <div class="flex flex-col space-y-1">
+                                <input type="email" v-model="email" name="email" class="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow" placeholder="email" />
+                              </div>
+                              <div class="flex flex-col space-y-1">
+                                <input v-model="password" type="password" name="password" id="password" class="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow" placeholder="Password" />
+                              </div>
+                  
+                                <a @click.prevent="register" href="#" class="inline-block text-blue-500 hover:text-blue-800 hover:underline">Belum punya akun yak? yuk buat disini</a>
+                              <div class="flex flex-col-reverse sm:flex-row sm:justify-between items-center">
+                                <button type="submit" class="bg-blue-500 text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-700 transition-colors">Log In</button>
+                              </div>
+                            </div>
+                          </form>
+                          <div class="flex justify-center text-gray-500 text-sm">
+                            <p>&copy;2021. LayarTancepWeb. Developer by abdulmajid | hacktiv8</p>
+                          </div>
+                        </div>
+                      </div>
+                  </template>
+                  
+                  <script>
+                  export default {
+                    name: 'Login',
+                    data () {
+                      return {
+                        email: '',
+                        password: ''
+                      }
+                    },
+                    methods: {
+                      login () {
+                        const result = {
+                          email: this.email,
+                          password: this.password
+                        }
+                        this.$store.dispatch('login', result)
+                        this.email = ''
+                        this.password = ''
+                      },
+                      register () {
+                        console.log('MASUK SINI TAK')
+                        this.$router.push('/register')
+                      }
+                    }
+                  }
+                  </script>
+                  
+                  <style>
+                    #Login {
+                        background-image: url('../assets/gambar-back1.jpg');
+                        background-size: cover;
+                    }
+                  </style>
+                
+                
+                <template>
+                    <div id="Register" class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
+                       <div class="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 mb-5 space-y-8">
+                         <h1 class="font-bold text-center text-4xl text-yellow-500">LayarTancep<span class="text-blue-500">Web</span></h1>
+                         <form @submit.prevent="register">
+                           <div class="flex flex-col bg-white p-10 rounded-lg shadow space-y-6">
+                             <h1 class="font-bold text-xl text-center">Register your account</h1>
+                 
+                             <div class="flex flex-col space-y-1">
+                               <input type="text" v-model="email" name="email" class="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow" placeholder="email" />
+                             </div>
+                 
+                             <div class="flex flex-col space-y-1">
+                               <input type="password" v-model="password" name="password" id="password" class="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow" placeholder="Password" />
+                             </div>
+                 
+                             <div class="flex flex-col-reverse sm:flex-row sm:justify-between items-center">
+                               <button type="submit" class="bg-blue-500 text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-700 transition-colors">Daftar</button>
+                               <button @click.prevent="cancel" type="button" class="bg-red-500 text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-red-700 transition-colors">Batal</button>
+                             </div>
+                           </div>
+                         </form>
+                         <div class="flex justify-center text-gray-500 text-sm">
+                           <p>&copy;2021. LayarTancepWeb. Developer by abdulmajid | hacktiv8</p>
+                         </div>
+                       </div>
+                     </div>
+                 </template>
+                 
+                 <script>
+                 export default {
+                   name: 'Register',
+                   data () {
+                     return {
+                       email: '',
+                       password: ''
+                     }
+                   },
+                   methods: {
+                     register () {
+                       const result = {
+                         email: this.email,
+                         password: this.password
+                       }
+                       this.$store.dispatch('register', result)
+                       this.email = ''
+                       this.password = ''
+                     },
+                     cancel () {
+                       this.$router.push('/login')
+                     }
+                   }
+                 }
+                 </script>
+                 
+                 <style>
+                   #Register {
+                     background-image: url('../assets/gambar-back1.jpg');
+                     background-size: cover;
+                   }
+                 </style>
+                 
+
+                 <div class="container-fluid mt-5">
+                  <div class="row ml-5">
+                    <div class="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                      <img class="object-cover w-full h-56" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+                      <div class="py-5 text-center">
+                          <a href="#" class="block text-2xl font-bold text-gray-800 dark:text-white">John Doe</a>
+                          <span class="text-sm text-gray-700 dark:text-gray-200">Software Engineer</span>
+                      </div>
+                  </div>              
+                  </div>
+                </div>
+                
+
+
+                <div class="card mb-5 mt-5">
+                  <div class="card-body">
+                      <h5 class="card-title text-center" style="font-size: 25px">{{task.title}}</h5>
+                      <p class="card-text text-center" style="font-size: 15px">
+                          {{task.User.email}} - {{new Date(task.createdAt).getDate()}} / {{new Date(task.createdAt).getMonth()+1}} / {{new Date(task.createdAt).getFullYear()}}
+                      </p>
+                  </div>
+                  <a style="color: blue; cursor: pointer;" data-bs-target="#example-modal" @click="editTask(task.id)"><i class="far fa-edit"></i></a>
+                  <a style="color: green" data-bs-toggle="modal" data-bs-target="#patch-modal" @click="getPatch(task.id)"><i class="fas fa-pen-square"></i></a>
+                  <a style="margin-bottom: 25px; color: red" @click="deleteTask(task.id)"><i class="fas fa-trash-alt"></i></a>
+              </div>
+
+              <div class="container px-5 py-24 mx-auto">
+                <div class="lg:w-4/5 mx-auto flex flex-wrap">
+                  <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                    <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+                    <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ result.Product.name }}</h1>
+                    <div class="flex mb-4">
+                      <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+                    </div>
+                    <p class="leading-relaxed mb-4">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam inxigo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean.</p>
+                    <div class="flex border-t border-gray-200 py-2">
+                      <span class="text-gray-500">Stock</span>
+                      <span class="ml-auto text-gray-900">{{ result.Product.stock }}</span>
+                    </div>
+                    <div class="form-group">
+                    <label>quantity</label>
+                    <h5>status: {{ showStatus }}</h5>
+                    <input type="number" v-model="quantity" class="text-center">
+                    <button @click.prevent="editQuantity(result.id, result.Product.id)" type="button" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">editQuantity</button>
+                  </div>
+                    <div class="flex">
+                      <span class="title-font font-medium text-2xl text-gray-900">{{ convertToRupiah (result.Product.price) }}</span>
+                      <button @click.prevent="check(result.id)" type="button" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">checkout</button>
+                      <button @click.prevent="deleteCart" type="button" class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">delete cart</button>
+                    </div>
+                  </div>
+                  <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" :src="result.Product.image_url">
+                </div>
+              </div>
+
+              <div class="container px-5 py-24 mx-auto mr-10">
+                <div class="flex flex-wrap -m-4 ">
+              <div class="lg:w-1/4 md:w-1/2 p-4 w-full hover:shadow-2xl mr-5 mb-5">
+                <a class="block relative h-48 rounded overflow-hidden">
+                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" :src=result.image_url>
+                </a>
+                <div class="mt-4 -ml-10">
+                  <h2 class="title-font font-medium text-center text-2xl">{{ result.name }}</h2>
+                  <div class="ml-20 mt-2">
+                    <h4 class="text-green-700 text-bold text-2xl">Price</h4><h5 class="text-xl -mt-5 ml-48 mb-2 text-yellow-900 text-bold">Stock</h5>
+                  <span class="text-2xl text-grey-darker  px-2 -ml-2">
+                      {{ convertToRupiah(result.price) }}
+                  </span> | <span class="text-center px-3 text-2xl">{{ result.stock }}</span>
+                  </div>
+                  <div class="ml-24 px-6 py-4">
+                      <router-link :to="{ name: 'EditProducts', params: { id: result.id, result: result }}" class="px-2"><i class="fas text-4xl text-green-500 fa-pen-square"></i></router-link>
+                      <a @click.prevent="deleteProduct(result.id)" class="px-2"><i class="fas text-4xl text-red-500 fa-trash-alt"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
