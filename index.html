@@ -30,7 +30,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#appointment">Appointment</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#register">Register</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#login">Login</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" >User</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#user">User</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#logout">Logout</a></li>
                     </ul>
                 </div>
@@ -138,8 +138,62 @@
                 </div>
             </div>
         </section>
+        <!-- Login -->
+        <div class="row" style="margin-top: 8vh;">
+            <div class="col-6 row">
+              <div class="col-2"></div>
+              <div class="col-8" style="margin-top: 15vh;">
+                <form @submit.prevent="login">
+                  <h2>E-Commerse Customers</h2><hr class="my-4">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">
+                      Email Address
+                    </label>
+                    <input type="email" v-model="email" placeholder="Enter email" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">
+                      Password
+                    </label>
+                    <input type="password" v-model="password" placeholder="Enter password" class="form-control" required>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">LOGIN</button>
+                  <p class="my-2"> dont have account?<router-link :to="{ name: 'Register' }"><u>register now</u></router-link></p>
+                </form>
+              </div>
+            </div>
+            <div class="col-6">
+              <img src="https://www.dezvolta.com/img/ecommerce-website-design-devlopment.png" alt="image cannot be shown" style="width: 100%;">
+            </div>
+        </div>
 
-
+        <!-- Register -->
+        <div class="row" style="margin-top: 8vh;">
+            <div class="col-6 row">
+              <div class="col-2"></div>
+              <div class="col-8" style="margin-top: 15vh;">
+                <form @submit.prevent="register">
+                  <h2>SPORTS HUBB</h2>
+                  <hr class="my-4">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email Address</label>
+                    <input type="email" v-model="email" placeholder="Enter email" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" v-model="password" placeholder="Enter password" class="form-control" required>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">REGISTER</button>
+                  <p class="my-2"> already have account? <a href=""><u><router-link :to="{ name: 'Login' }">login</router-link></u></a></p>
+                </form>
+              </div>
+            </div>
+            <div class="col-6">
+              <img src="https://www.dezvolta.com/img/ecommerce-website-design-devlopment.png" alt="image cannot be shown" style="width: 100%;">
+            </div>
+        </div>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
