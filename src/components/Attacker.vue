@@ -5,7 +5,10 @@
       <div class="card-body">
         <h5 class="card-title">{{ attacker.name }}</h5>
         <p class="card-text">{{ attacker.Club.name }}</p>
-        <a @click.prevent="changePlayer(attacker.PlayerId)" href="#" class="btn btn-primary">Change Player</a>
+        <div class="btn-container">
+          <a @click.prevent="changePlayer(attacker.PlayerId)" href="#" class="btn btn-primary">Change</a>
+          <a @click.prevent="deletePlayer(attacker.PlayerId)" href="#" class="btn btn-primary">Delete</a>
+        </div>
       </div>
     </div>
 
@@ -120,6 +123,15 @@ export default {
             return this.$store.dispatch('changePlayer', this.attackerChangePayload)
           }
         })
+        .then(res => {
+          this.$store.dispatch('getSquad')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    deletePlayer (PlayerId) {
+      this.$store.dispatch('deletePlayer', { PlayerId })
         .then(res => {
           this.$store.dispatch('getSquad')
         })

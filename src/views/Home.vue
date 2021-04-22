@@ -2,9 +2,12 @@
   <section class="home-pg">
     <div class="home-left">
       <h1>Home-1</h1>
-      <div style="width: 300px; height: 200px" v-html="highlights[1].link"></div>
       <div class="matches-container">
-        <h1>GAMEWEEK 33</h1>
+        <div class="gw-setter">
+          <a @click.prevent="decrement" href="#" class="btn btn-primary">Kurang</a>
+          <h1>GAMEWEEK {{count}}</h1>
+          <a @click.prevent="increment" href="#" class="btn btn-primary">Tambah</a>
+        </div>
         <!-- Match-card -->
         <Match
           v-for="match in matches"
@@ -15,6 +18,7 @@
     </div>
     <div class="home-right">
       <h1>Home-2</h1>
+      <Highlights />
       <div class="player-list container mt-5">
         <table class="table table-dark">
           <thead>
@@ -53,10 +57,11 @@
 
 <script>
 import Match from '../components/Match'
+import Highlights from '../components/Highlights'
 export default {
   name: 'Home',
   components: {
-    Match
+    Match, Highlights
   },
   computed: {
     matches () {
@@ -69,6 +74,17 @@ export default {
     },
     highlights () {
       return this.$store.state.highlights
+    },
+    count () {
+      return this.$store.state.count
+    }
+  },
+  methods: {
+    increment () {
+      this.$store.dispatch('increment')
+    },
+    decrement () {
+      this.$store.dispatch('decrement')
     }
   }
 }

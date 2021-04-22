@@ -35,7 +35,10 @@
 
 <script>
 export default {
+  name: 'MatchDetail',
+  computed: {
 
+  }
 }
 </script>
 

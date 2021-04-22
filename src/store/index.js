@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loggedIn: false,
+    count: 33,
     matches: [],
     highlights: [],
     players: [],
@@ -20,6 +21,12 @@ export default new Vuex.Store({
   mutations: {
     setLogin (state, boolean) {
       state.loggedIn = boolean
+    },
+    increment (state) {
+      state.count++
+    },
+    decrement (state) {
+      state.count--
     },
     setMatches (state, payload) {
       state.matches = payload
@@ -45,6 +52,12 @@ export default new Vuex.Store({
         }
       })
     },
+    increment (context) {
+      context.commit('increment')
+    },
+    decrement (context) {
+      context.commit('decrement')
+    },
     confirmLogin (context, boolean) {
       context.commit('setLogin', boolean)
     },
@@ -61,7 +74,7 @@ export default new Vuex.Store({
     getMatches (context) {
       axios({
         method: 'GET',
-        url: '/schedules/34'
+        url: `schedules/${context.state.count}`
       })
         .then(res => {
           console.log(res.data.matches)
@@ -77,7 +90,6 @@ export default new Vuex.Store({
         url: '/highlights'
       })
         .then(res => {
-          console.log(res.data, '<<<<<<')
           context.commit('setHighlights', res.data)
         })
         .catch(err => {
@@ -91,7 +103,6 @@ export default new Vuex.Store({
         headers: { access_token: localStorage.getItem('access_token') }
       })
         .then(res => {
-          console.log(res.data, 'squadddd')
           context.commit('setPlayers', res.data)
         })
         .catch(err => {
@@ -125,6 +136,14 @@ export default new Vuex.Store({
         data: {
           PlayerId: newPlayerId
         },
+        headers: { access_token: localStorage.getItem('access_token') }
+      })
+    },
+    deletePlayer (context, payload) {
+      const { PlayerId } = payload
+      return axios({
+        method: 'DELETE',
+        url: `/mySquad/${PlayerId}`,
         headers: { access_token: localStorage.getItem('access_token') }
       })
     }
