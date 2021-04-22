@@ -1,0 +1,14 @@
+<template>
+  <div id="app">
+    <router-view/>
+  </div>
+</template>
+
+<style>
+body {
+  background-color: #74EBD5;
+  background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+
+  min-height: 100vh;
+}
+</style>
