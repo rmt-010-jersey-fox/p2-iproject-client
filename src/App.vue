@@ -13,12 +13,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class=navbar-nav>
-                    <li class="nav-item">
-                        <router-link class="nav-link btn-success text-white fs-5 me-3" to="/" v-if="isLogin && $route.name!='Home'"> Home</router-link>
+                    <li class="nav-item" v-if="isLogin && $route.name!='Home'">
+                        <router-link class="nav-link btn-success text-white fs-5 me-3" to="/" > Home</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link btn-success text-white fs-5" to="/wishlists" v-if="isLogin && $route.name!='Wishlists' && $route.name!='Error404'"> My Wish List</router-link>
-                    </li>
+                    <li class="nav-item" v-if="isLogin && $route.name!='Wishlists' && $route.name!='Error404'">
+                        <router-link class="nav-link btn-success text-white fs-5 me-3" to="/wishlists" > My Wish List</router-link>
+                    </li >
+                      <b-dropdown id="dropdown-left" text="Category" variant="primary" size="lg" v-if="isLogin && $route.name!='Home' && $route.name!='Error404'">
+                        <b-dropdown-item @click="navbarCategory('manga')">Manga</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('animals')">Animals</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('education')">Education</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('humor')">Humor</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('family')">Family</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('travel')">Travel</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('health')">Health</b-dropdown-item>
+                        <b-dropdown-item @click="navbarCategory('games-and-activities')">Games and Activities</b-dropdown-item>
+                      </b-dropdown>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -70,6 +80,10 @@ export default {
       this.$store.commit('setLogout')
       localStorage.removeItem('token')
       this.$router.push({ name: 'Login' })
+    },
+    navbarCategory(category) {
+      this.$router.push(`/books/${category}`).catch(()=>{});
+      this.$store.dispatch('fetchBooks', category)
     }
   },
 }
