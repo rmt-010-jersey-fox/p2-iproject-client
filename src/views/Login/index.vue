@@ -74,6 +74,7 @@
 
 <script>
 import GoogleLogin from "vue-google-login";
+import Swal from "sweetalert2";
 import axios from "@/api/axios";
 export default {
   name: "Login",
@@ -125,6 +126,7 @@ export default {
     },
     onSuccess(googleUser) {
       // This only gets the user information: id, name, imageUrl and email
+      const profile = googleUser.getBasicProfile();
       const idToken = googleUser.getAuthResponse().id_token;
       axios({
         method: "POST",
@@ -139,6 +141,14 @@ export default {
           this.$store.commit("CHECK_IS_LOGIN");
           this.$store.dispatch("changeCurrentUser");
           this.$router.push("/dashboard");
+          Swal.fire({
+            title: `Welcome back, ${profile.getEmail()} !`,
+            timer: 3000,
+            icon: "success",
+            showConfirmButton: false,
+            toast: true,
+            position: "bottom-end",
+          });
         })
         .catch((err) => {
           console.log(err.response);

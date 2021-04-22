@@ -33,8 +33,8 @@
         color="success"
         class="mx-4"
       >
-        <v-icon left>mdi-account-search</v-icon>
-        <strong>Temukan</strong>
+        <v-icon left class="black--text">mdi-account-search</v-icon>
+        <strong class="black--text">Temukan</strong>
       </v-btn>
       <v-btn
         rounded
