@@ -6,6 +6,10 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import VueSocketIO from 'vue-socket.io'
 import Vuikit from 'vuikit'
 import VuikitIcons from '@vuikit/icons'
+import VueSweetalert2 from 'vue-sweetalert2'
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -19,7 +23,7 @@ Vue.use(new VueSocketIO({
     mutationPrefix: 'SOCKET_'
   }
 }))
-
+Vue.use(VueSweetalert2)
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

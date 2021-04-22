@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
 import axios from '../axios/axios'
+import Swal from 'sweetalert2'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -113,6 +114,7 @@ export default new Vuex.Store({
           localStorage.setItem('token', response.data.token)
           localStorage.setItem('username', payload.name)
           router.push({ name: 'Chat' })
+          Swal.fire('success', 'success login!!!', 'success')
         })
         .catch(err => {
           console.log(err)
@@ -127,6 +129,7 @@ export default new Vuex.Store({
         .then(response => {
           console.log(response)
           router.push({ name: 'Login' })
+          Swal.fire('success', 'success register!!!', 'success')
         })
         .catch(err => {
           console.log(err)
