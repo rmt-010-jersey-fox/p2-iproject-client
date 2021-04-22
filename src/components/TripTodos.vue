@@ -14,22 +14,18 @@
           </div>
         </div>
         <div class="px-3 pt-3">
-          <h3 class="name">Dr. Stefan</h3>
+          <h3 class="name">{{ todos.title }}</h3>
           <p class="quote2">
-            Mr. Doctor needs a new office, let's do something nice!
+            {{ todos.description }}
           </p>
         </div>
         <div class="d-flex justify-content-start px-3 align-items-center">
           <i class="mdi mdi-view-comfy task"></i>
-          <span class="quote2 pl-2">Task: Commercial project</span>
+          <span class="quote2 pl-2">Task: todos in your trip</span>
         </div>
         <div
           class="d-flex justify-content-between px-3 align-items-center pb-3"
         >
-          <div class="d-flex justify-content-start align-items-center">
-            <i class="mdi mdi-calendar-clock date"></i>
-            <span class="quote2 pl-2">Date: 01.12.2020</span>
-          </div>
           <div class="d-flex justify-content-end">
             <img
               src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-girl-musical-notes.png"
@@ -53,7 +49,7 @@
 
 <script>
 export default {
-
+  props: ['todos']
 }
 </script>
 

@@ -51,7 +51,7 @@ export default new Vuex.Store({
 
     setUserTrips (state, payload) {
       state.userTrips = payload
-      // console.log(state.userTrips, 'userTrips di state')
+      console.log(state.userTrips, 'userTrips di state')
     },
 
     setTodo (state, payload) {

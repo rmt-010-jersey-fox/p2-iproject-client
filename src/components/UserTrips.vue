@@ -54,7 +54,8 @@
         <ModalAddTodo :tripId="trip.id"/>
     </div>
     <div class="pt-2">
-      <TripTodos />
+      <TripTodos v-for="todos in trip.Todos" :key="todos.id"
+      :todos="todos"/>
     </div>
   </div>
 </template>

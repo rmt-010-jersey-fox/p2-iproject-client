@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="one">
                 <div class="px-3 pb-4">
                     <div><img src="https://img.icons8.com/bubbles/50/000000/blond-short-hair-lady-with-blue-glasses.png" width="15" class="pic1" /><img src="https://img.icons8.com/bubbles/50/000000/girl-with-chemical-test-tube.png" width="22" class="pic2" /></div>
@@ -33,45 +33,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <UserTrips v-for="trip in userTrips" :key="trip.id"
           :trip="trip"/>
-        </div>
-        <div class="col-md-4">
-            <div class="">
-                <div class="two">
-                    <div class="d-flex justify-content-end px-3 pt-1"><i class="mdi mdi-star-outline pr-1 star"></i><i class="mdi mdi-dots-horizontal dot"></i></div>
-                    <div class="px-3">
-                        <div class="round"><img src="https://img.icons8.com/cotton/64/000000/football-ball.png" width="23" class="imgfix" /></div>
-                    </div>
-                    <div class="px-3 pt-3">
-                        <h3 class="name">Dressing Room</h3>
-                        <p class="quote2">Wonderful news! Let's arrange the hosts and guest's dressing rooms!</p>
-                    </div>
-                    <div class="d-flex justify-content-start px-3 align-items-center"> <i class="mdi mdi-view-comfy task"></i> <span class="quote2 pl-2">Task: Commercial project</span> </div>
-                    <div class="d-flex justify-content-between px-3 align-items-center pb-3">
-                        <div class="d-flex justify-content-start align-items-center"> <i class="mdi mdi-calendar-clock date"></i> <span class="quote2 pl-2">Date: 01.08.2020</span> </div>
-                        <div class="d-flex justify-content-end"> <img src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-girl-musical-notes.png" width="20" class="img1" /> <img src="https://img.icons8.com/bubbles/50/000000/girl-and-playing-card.png" width="20" class="img2" /> <img src="https://img.icons8.com/bubbles/50/000000/short-hair-girl-question-mark.png" width="20" class="img3" /> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-2">
-                <div class="two">
-                    <div class="d-flex justify-content-end px-3 pt-1"><i class="mdi mdi-star-outline pr-1 star"></i><i class="mdi mdi-dots-horizontal dot"></i></div>
-                    <div class="px-3">
-                        <div class="round"><img src="https://img.icons8.com/plasticine/100/000000/santas-hat.png" width="23" class="imgfix" /></div>
-                    </div>
-                    <div class="px-3 pt-3">
-                        <h3 class="name">Ho, Ho, Ho!</h3>
-                        <p class="quote2">Christmas is coming! will we try to prepare something for this occasion?</p>
-                    </div>
-                    <div class="d-flex justify-content-start px-3 align-items-center"> <i class="mdi mdi-view-comfy task"></i> <span class="quote2 pl-2">Task: Practice</span> </div>
-                    <div class="d-flex justify-content-between px-3 align-items-center pb-3">
-                        <div class="d-flex justify-content-start align-items-center"> <i class="mdi mdi-calendar-clock date"></i> <span class="quote2 pl-2">Date: 20.12.2020</span> </div>
-                        <div class="d-flex justify-content-end"> <img src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-girl-musical-notes.png" width="20" class="img1" /> <img src="https://img.icons8.com/bubbles/50/000000/girl-and-playing-card.png" width="20" class="img2" /> <img src="https://img.icons8.com/bubbles/50/000000/short-hair-girl-question-mark.png" width="20" class="img3" /> </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <Modal />
