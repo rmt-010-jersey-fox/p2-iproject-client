@@ -54,8 +54,7 @@ export default {
       return {
           title: '',
           image: '',
-          content: '',
-          GameId: ''
+          content: ''
       }
   },
   computed: {
@@ -74,6 +73,9 @@ export default {
             timer: 1500
           })
           $('.main-btn3').click()
+          this.title = ''
+          this.content = ''
+          this.image = ''
       }
   }
 
