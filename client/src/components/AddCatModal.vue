@@ -55,7 +55,7 @@ export default {
           imageUrl: this.imageUrl
         })
         this.$emit('closeModal', 'add-modal')
-        console.log(data)
+        console.log(data, 'ini kucing')
       } catch (error) {
         const msg = error.response.data.message
         this.$swal({

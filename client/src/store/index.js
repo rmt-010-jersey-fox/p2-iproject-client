@@ -54,7 +54,7 @@ export default new Vuex.Store({
         const { data } = await axios.get(`/users/${payload.username}`, {
           headers: { access_token: localStorage.access_token }
         })
-        console.log(data.user.username, 'fetch user')
+        console.log(data, 'fetch user')
         context.commit('updateUserProfile', data.user)
         context.commit('updateUserCats', data.user.Cats)
       } catch (error) {
