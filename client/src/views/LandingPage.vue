@@ -1,9 +1,14 @@
 <template>
   <div class="home">
     <div class="container-fluid">
-      <div class="row" style="height: 10vh">
+      <div class="row g-0" style="height: 10vh">
         <div class="col-6 d-flex justify-content-start align-items-center">
-          <h2 class="text-white font-monospace">@koecheng</h2>
+          <img
+            src="https://cdn.discordapp.com/attachments/826319487266717706/834614133612871691/cat.png"
+            alt="mb-1"
+            style="width:7vh"
+          />
+          <h2 class="text-white p-0 m-0 font-monospace">koecheng</h2>
         </div>
         <div class="col-6 d-flex justify-content-end align-items-center"></div>
       </div>

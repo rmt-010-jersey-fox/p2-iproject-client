@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <!-- sidebar left -->
-      <div class="col-3 bg-white h-100 shadow-lg">
+      <div class="col-3 bg-white h-100 shadow-lg " style="overflow:scroll">
         <!-- sidebar header -->
         <div
           class="row sidebar-header text-white shadow-sm"
@@ -49,15 +49,17 @@
           </select>
         </div>
         <!-- list of messages -->
-        <div v-if="optionActive === 'Active User'">
-          <ActiveUser
-            v-for="user in activeUser"
-            :key="user.sender"
-            :user="user"
-          />
-        </div>
-        <div v-else>
-          <RoomCard v-for="room in rooms" :key="room.id" :room="room" />
+        <div class="overflow-scroll" style="height: 80vh">
+          <div v-if="optionActive === 'Active User'">
+            <ActiveUser
+              v-for="user in activeUser"
+              :key="user.sender"
+              :user="user"
+            />
+          </div>
+          <div v-else>
+            <RoomCard v-for="room in rooms" :key="room.id" :room="room" />
+          </div>
         </div>
       </div>
       <div
