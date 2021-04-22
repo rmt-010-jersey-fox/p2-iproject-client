@@ -17,5 +17,5 @@ module.exports = {
       ringOpacity: ['hover', 'active']
     },
   },
-  plugins: [],
+  plugins: [require("windstrap")],
 }
