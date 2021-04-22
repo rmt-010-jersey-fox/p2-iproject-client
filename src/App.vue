@@ -15,6 +15,9 @@ export default {
   data: () => ({
     //
   }),
+  created() {
+    this.$store.commit("CHECK_IS_LOGIN");
+  },
 };
 </script>
 

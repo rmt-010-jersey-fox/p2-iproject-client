@@ -6,14 +6,24 @@
           <v-img src="@/assets/illustration-1.png"></v-img>
         </v-col>
         <v-col>
-          <h1 class="white--text text-center">Ekspresikan Dirimu Disini !</h1>
+          <h1 class="white--text text-center">
+            Beragam Inspirasi Ada Disini !
+          </h1>
           <h3 class="warning--text text-center">
             Bergabunglah Bersama Yang Lainnya
           </h3>
-          <v-col sm="6" offset-sm="3">
-            <v-btn rounded depressed large block color="warning" class="my-6">
-              <v-icon left class="black--text">mdi-information</v-icon>
-              <strong class="black--text">Tentang Aplikasi Ini</strong>
+          <v-col sm="6" offset-sm="2">
+            <v-btn
+              rounded
+              depressed
+              large
+              block
+              color="warning"
+              class="my-6"
+              @click.prevent="$router.push('/explore').catch(() => {})"
+            >
+              <v-icon left class="black--text">mdi-earth</v-icon>
+              <strong class="black--text">Explore Karya-Karya Terbaik</strong>
             </v-btn>
           </v-col>
         </v-col>
@@ -25,7 +35,15 @@
           <h1 class="primary--text text-center">Kabari Orang-Orang Terdekat</h1>
           <h3 class="black--text text-center">Jarak Bukanlah Halangan</h3>
           <v-col sm="6" offset-sm="3">
-            <v-btn rounded depressed large block color="primary" class="my-6">
+            <v-btn
+              rounded
+              depressed
+              large
+              block
+              color="primary"
+              class="my-6"
+              @click.prevent="$router.push('/chat').catch(() => {})"
+            >
               <v-icon left class="white--text">mdi-chat</v-icon>
               <strong class="white--text">Chat Dengan Temanmu</strong>
             </v-btn>
@@ -36,28 +54,11 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-footer dark padless>
-      <v-card flat tile class="primary white--text text-center">
-        <v-card-text> </v-card-text>
-
-        <v-card-text class="white--text pt-0">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-          Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-          accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim
-          a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-          lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-          iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum
-          tempor vel ut orci. Orci varius natoque penatibus et magnis dis
-          parturient montes, nascetur ridiculus mus.
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} —
-          <strong>Made With <v-icon>mdi-heart</v-icon> By Indrafrds</strong>
-        </v-card-text>
-      </v-card>
+    <v-footer padless>
+      <v-col class="text-center" cols="12">
+        <v-icon>mdi-copyright</v-icon> MaiPren App |
+        <strong> by Indrafrds</strong> - {{ new Date().getFullYear() }}
+      </v-col>
     </v-footer>
     <HFooter></HFooter>
   </div>

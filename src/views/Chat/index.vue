@@ -2,9 +2,9 @@
   <div>
     <v-container>
       <v-row class="mt-6" justify="center">
-        <v-col sm="8">
+        <v-col sm="7">
           <v-card height="70vh" class="white" flat>
-            <h2 class="text-center primary--text">Chat Room</h2>
+            <h2 class="text-center primary--text">Chat Box</h2>
             <v-container>
               <!-- Chat Row-->
               <v-row id="scrollable">
@@ -45,7 +45,9 @@
                       type="text"
                       placeholder="Sapa Temanmu..."
                       v-model="message"
+                      :rules="messageRules"
                       @keyup.enter="sendMessage"
+                      required
                     ></v-text-field>
                     <v-btn
                       rounded
@@ -75,6 +77,7 @@ export default {
   data: () => ({
     message: "",
     avaliableUsers: [],
+    messageRules: [(v) => / /.test(v) || "Ngirim Chat Kosong ?"],
   }),
   computed: {
     ...mapState(["currentUser", "messages"]),
@@ -107,7 +110,7 @@ export default {
 
 <style>
 #scrollable {
-  height: 56vh;
+  height: 54vh;
   position: relative;
   overflow-y: scroll;
 }

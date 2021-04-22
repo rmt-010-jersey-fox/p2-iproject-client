@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "@/api/axios";
 import router from "@/router";
+import Swal from "sweetalert2"
 
 Vue.use(Vuex);
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     allUsers: [],
     currentUser: { Friends: [] },
     currentFriend: { Friends: [], Posts: [] },
-    messages: []
+    messages: [],
+    isLogin: false,
   },
   mutations: {
     FETCH_UNSPLASH_PHOTOS(state, payload) {
@@ -37,6 +39,13 @@ export default new Vuex.Store({
     },
     PUSH_MESSAGE(state, payload) {
       state.messages.push(payload);
+    },
+    CHECK_IS_LOGIN(state, payload) {
+      if(localStorage.access_token) {
+        state.isLogin = true
+      } else {
+        state.isLogin = false
+      }
     }
   },
   actions: {
@@ -66,6 +75,14 @@ export default new Vuex.Store({
         });
         console.log(data);
         dispatch("fetchPosts");
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
       }
@@ -109,6 +126,14 @@ export default new Vuex.Store({
         });
         console.log(data);
         dispatch("fetchPosts");
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
       }
@@ -127,6 +152,14 @@ export default new Vuex.Store({
         });
         console.log(data);
         dispatch("fetchPosts");
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
       }
@@ -146,7 +179,7 @@ export default new Vuex.Store({
         console.log(err.response);
       }
     },
-    async login({dispatch}, payload) {
+    async login({ dispatch, commit }, payload) {
       try {
         const { data } = await axios({
           url: "/login",
@@ -158,10 +191,29 @@ export default new Vuex.Store({
         });
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("currentUserId", data.id);
+        commit('CHECK_IS_LOGIN')
         dispatch("changeCurrentUser")
         router.push("/dashboard");
+        Swal.fire({
+          title: `Welcome back, ${data.email} !`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
+        if(err.response.status === 400) {
+          Swal.fire({
+            title: `${err.response.data.message}`,
+            timer:3000,
+            icon:"error",
+            showConfirmButton:false,
+            toast:true,
+            position:"bottom-end"
+          })
+        }
       }
     },
     async register(context, payload) {
@@ -178,8 +230,24 @@ export default new Vuex.Store({
         });
         console.log(data);
         router.push("/login").catch(() => {});
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
+        Swal.fire({
+          title: `${err.response.data.message}`,
+          timer:3000,
+          icon:"error",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       }
     },
     async fetchUsers({ commit, dispatch }) {
@@ -225,6 +293,14 @@ export default new Vuex.Store({
         });
         console.log(data);
         dispatch("changeCurrentUser");
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err);
       }
@@ -240,6 +316,14 @@ export default new Vuex.Store({
         });
         dispatch("changeCurrentUser");
         console.log(data);
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
       }
@@ -259,6 +343,14 @@ export default new Vuex.Store({
         });
         console.log(data);
         dispatch("changeCurrentUser");
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       } catch (err) {
         console.log(err.response);
       }
@@ -277,12 +369,20 @@ export default new Vuex.Store({
         })
         console.log(data);
         dispatch("changeCurrentUser")
+        Swal.fire({
+          title: `Success :)`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
       }
       catch(err) {
         console.log(err.response)
       }
     },
-    async deleteUser({ dispatch }, payload) {
+    async deleteUser({ dispatch, commit }, payload) {
       try {
         const { data } = await axios({
           url: `/users/${localStorage.currentUserId}`,
@@ -294,6 +394,15 @@ export default new Vuex.Store({
         console.log(data);
         localStorage.clear()
         router.push('/').catch(() => {})
+        Swal.fire({
+          title: `Bye ~`,
+          timer:3000,
+          icon:"success",
+          showConfirmButton:false,
+          toast:true,
+          position:"bottom-end"
+        })
+        commit('CHECK_IS_LOGIN')
       }
       catch(err) {
         console.log(err.response)

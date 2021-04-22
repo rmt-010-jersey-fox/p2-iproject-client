@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:4321",
+  baseURL: "https://maipren-server.herokuapp.com",
 });

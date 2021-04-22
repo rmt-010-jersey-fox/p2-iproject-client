@@ -38,15 +38,23 @@
                   @click.prevent="login"
                   >Masuk</v-btn
                 >
-                <h4 class="grey--text mt-5">
-                  Engga Punya Akun ?
-                  <span
-                    class="primary--text"
-                    id="registerLink"
-                    @click.prevent="toRegisterPage"
-                    >Daftar</span
+                <v-row justify="space-around" class="mt-4 mb-2">
+                  <h4 class="grey--text mt-5">
+                    <span
+                      class="primary--text mr-3"
+                      id="registerLink"
+                      @click.prevent="toRegisterPage"
+                      >Daftar</span
+                    >
+                    Atau Login Dengan
+                  </h4>
+                  <GoogleLogin
+                    :params="params"
+                    :renderParams="renderParams"
+                    :onSuccess="onSuccess"
                   >
-                </h4>
+                  </GoogleLogin>
+                </v-row>
               </v-form>
             </v-container>
           </v-col>
@@ -65,11 +73,25 @@
 </template>
 
 <script>
+import GoogleLogin from "vue-google-login";
+import axios from "@/api/axios";
 export default {
   name: "Login",
+  components: {
+    GoogleLogin,
+  },
   data() {
     return {
       loading: false,
+      params: {
+        client_id:
+          "550626435415-63qc3rtgga5d5umbju7vnoplpp9n776g.apps.googleusercontent.com",
+      },
+      renderParams: {
+        width: 250,
+        height: 50,
+        longtitle: true,
+      },
       selection: 1,
       valid: true,
       email: "",
@@ -100,6 +122,27 @@ export default {
     },
     toRegisterPage() {
       this.$router.push("/register").catch(() => {});
+    },
+    onSuccess(googleUser) {
+      // This only gets the user information: id, name, imageUrl and email
+      const idToken = googleUser.getAuthResponse().id_token;
+      axios({
+        method: "POST",
+        url: "/googleLogin",
+        data: {
+          idToken,
+        },
+      })
+        .then(({ data }) => {
+          localStorage.setItem("access_token", data.access_token);
+          localStorage.setItem("currentUserId", data.id);
+          this.$store.commit("CHECK_IS_LOGIN");
+          this.$store.dispatch("changeCurrentUser");
+          this.$router.push("/dashboard");
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
     },
   },
 };

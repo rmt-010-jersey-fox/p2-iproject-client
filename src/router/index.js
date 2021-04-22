@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Swal from "sweetalert2"
 
 Vue.use(VueRouter);
 
@@ -51,5 +52,25 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach((to,from,next) => {
+  const notLoggedIn = ["Chat","Dashboard","UserDashboard","Users"]
+  const loggedIn = ["Login","Register"]
+  if(notLoggedIn.includes(to.name) && !localStorage.access_token) {
+    Swal.fire({
+      title: "Login dulu ya :)",
+      timer:3000,
+      icon:"info",
+      showConfirmButton:false,
+      toast:true,
+      position:"bottom-end"
+    })
+    next({ name: "Login" })
+  } else if (loggedIn.includes(to.name) && localStorage.access_token) {
+    next({ name: "Dashboard" })
+  } else {
+    next()
+  }
+})
 
 export default router;

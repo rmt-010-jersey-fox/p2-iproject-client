@@ -29,7 +29,7 @@
             <v-img
               width="300"
               height="250"
-              :src="'http://localhost:4321/' + post.filePath"
+              :src="'https://maipren-server.herokuapp.com/' + post.filePath"
             ></v-img>
             <v-row class="mt-1" justify="center" align="center">
               <v-card-subtitle>{{ post.caption }}</v-card-subtitle>
