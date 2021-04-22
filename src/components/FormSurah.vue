@@ -10,7 +10,7 @@
         <hr style="border: 3px solid rgb(255, 255, 255)" />
         <form @submit.prevent="searchSurah">
           <div class="mb-3">
-            <label for="surah" class="form-label" style="color: white; font-weight: bold">Surat:</label>
+            <label for="surah" class="form-label" style="color: white; font-weight: bold">Surah:</label>
             <input
               type="number"
               class="form-control"

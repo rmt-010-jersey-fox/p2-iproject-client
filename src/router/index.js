@@ -84,7 +84,9 @@ router.beforeEach((to, from, next) => {
     next({ name: 'Login' })
   } else if (to.name === 'FavoriteSurah' && !localStorage.access_token) {
     next({ name: 'Login' })
-  } else {
+  } else if (to.name === 'About' && !localStorage.access_token) {
+    next({ name: 'Login' })
+  }else {
     next()
   }
 })
