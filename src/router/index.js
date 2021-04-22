@@ -15,11 +15,6 @@ const routes = [
     component: () => import('../views/Register.vue')
   },
   {
-    path: '/',
-    name: 'Home',
-    component: () => import('../views/Home.vue')
-  },
-  {
     path: '/playlists',
     name: 'Playlists',
     component: () => import('../views/Playlists.vue')
@@ -49,7 +44,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (!localStorage.token) {
-    if (to.name === 'Home' || to.name === 'Playlists' || to.name === 'Songs' || to.name === 'Playlist' || to.name === 'Song') {
+    if (to.name === 'Playlists' || to.name === 'Songs' || to.name === 'Playlist' || to.name === 'Song') {
       next({ name: 'Login' })
     } else {
       next()

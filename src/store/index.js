@@ -13,7 +13,8 @@ export default new Vuex.Store({
     playlistDetails: {},
     songs: [],
     song: {},
-    songLyrics: ''
+    songLyrics: '',
+    charts: {}
   },
   mutations: {
     getPlaylists (state, payload) {
@@ -40,7 +41,10 @@ export default new Vuex.Store({
     },
     clearSongPage (state, payload) {
       state.song = {}
-      state.songLyric = ''
+      state.songLyrics = ''
+    },
+    getBillboardCharts (state, payload) {
+      state.charts = payload
     }
   },
   actions: {
@@ -82,7 +86,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           localStorage.setItem('token', data.token)
-          router.push({ name: 'Home' })
+          router.push({ name: 'Playlists' })
         })
         .catch(({ response }) => {
           Swal.fire({
@@ -208,6 +212,30 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.commit('getSongLyrics', data.html)
+        })
+        .catch(({ response }) => {
+          Swal.fire({
+            icon: 'error',
+            title: response.data.message.toUpperCase()
+          })
+        })
+    },
+    getBillboardCharts (context, payload) {
+      axios({
+        method: 'GET',
+        url: '/charts',
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(({ data }) => {
+          context.commit('getBillboardCharts', data)
+        })
+        .catch(({ response }) => {
+          Swal.fire({
+            icon: 'error',
+            title: response.data.message.toUpperCase()
+          })
         })
     }
   },
