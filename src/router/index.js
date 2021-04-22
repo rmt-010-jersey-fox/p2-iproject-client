@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import NewsCategory from "../views/NewsCategory.vue";
+import Readlists from "../views/Readlists.vue";
+import Signin from "../views/Signin.vue";
+import Signup from "../views/Signup.vue";
 
 Vue.use(VueRouter);
 
@@ -13,19 +15,19 @@ const routes = [
   },
 
   {
-    path: "/home/:category",
-    name: "General",
-    component: NewsCategory,
+    path: "/readlists",
+    name: "Readlists",
+    component: Readlists,
   },
   {
     path: "/signin",
     name: "Signin",
-    component: () => import("../views/Signin.vue"),
+    component: Signin,
   },
   {
     path: "/signup",
     name: "Signup",
-    component: () => import("../views/Signup.vue"),
+    component: Signup,
   },
 ];
 
@@ -37,9 +39,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === "Signin" && localStorage.access_token) {
-    next({ path: "/home" });
+    next({ path: "/" });
   } else if (to.name === "Signup" && localStorage.access_token) {
-    next({ path: "/home" });
+    next({ path: "/" });
+  } else if (to.name === "Readlists" && !localStorage.access_token) {
+    next({ path: "/" });
   } else {
     next();
   }

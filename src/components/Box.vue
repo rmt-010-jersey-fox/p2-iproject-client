@@ -1,42 +1,44 @@
 <template>
-  <div class="box">
+  <div class="tile is-child box" :class="News.statusColor">
     <article class="media">
       <div class="media-left">
-        <figure class="image is-64x64">
-          <img
-            src="https://bulma.io/images/placeholders/128x128.png"
-            alt="Image"
-          />
+        <figure class="image is-128x128">
+          <img :src="News.image" alt="Image" />
         </figure>
       </div>
       <div class="media-content">
         <div class="content">
+          <p class="title">{{ News.title }}</p>
           <p>
-            <strong>John Smith</strong> <small>@johnsmith</small>
+            <small>{{ News.author }}</small>
             <small>31m</small>
             <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            efficitur sit amet massa fringilla egestas. Nullam condimentum
-            luctus turpis.
+            {{ News.description }}
           </p>
         </div>
         <nav class="level is-mobile">
           <div class="level-left">
-            <a class="level-item" aria-label="reply">
+            <a
+              @click.prevent="erased"
+              class="level-item clickable"
+              aria-label="reply"
+            >
               <span class="icon is-small">
-                <i class="fas fa-reply" aria-hidden="true"></i>
+                <i class="fas fa-trash" aria-hidden="true"></i>
               </span>
             </a>
-            <a class="level-item" aria-label="retweet">
+            <a
+              @click.prevent="check"
+              class="level-item clickable"
+              aria-label="retweet"
+            >
               <span class="icon is-small">
-                <i class="fas fa-retweet" aria-hidden="true"></i>
+                <i class="fas fa-check" aria-hidden="true"></i>
               </span>
             </a>
-            <a class="level-item" aria-label="like">
-              <span class="icon is-small">
-                <i class="fas fa-heart" aria-hidden="true"></i>
-              </span>
-            </a>
+            <b-button @click="openNewTab(News.url)" type="is-text"
+              >read</b-button
+            >
           </div>
         </nav>
       </div>
@@ -47,6 +49,18 @@
 <script>
 export default {
   name: "Box",
+  props: ["News", "idParams"],
+  methods: {
+    erased() {
+      this.$store.dispatch("erasedNews", this.idParams);
+    },
+    check() {
+      this.$store.dispatch("updateNews", this.idParams);
+    },
+    openNewTab(url) {
+      window.open(url, "_blank");
+    },
+  },
 };
 </script>
 

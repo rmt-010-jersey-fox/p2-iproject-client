@@ -3,6 +3,12 @@
     <div class="hero is-fullheight is-light p-5">
       <div class="tile is-ancestor">
         <div class="tile is-full is-vertical is-parent">
+          <div class="container mx-auto">
+            <vue-weather
+              api-key="b714bb0f85eac336ce1fde1c10a80738"
+              units="uk"
+            />
+          </div>
           <div class="tile is-child box">
             <p class="title">General</p>
             <Carousel :newss="general"> </Carousel>
@@ -39,10 +45,10 @@
 
 <script>
 import Carousel from "@/components/Carousel";
-
+import VueWeather from "vue-weather-widget";
 export default {
   name: "Home",
-  components: { Carousel },
+  components: { Carousel, VueWeather },
   computed: {
     general() {
       return this.$store.state.news.general;
@@ -66,6 +72,22 @@ export default {
       return this.$store.state.news.technology;
     },
   },
+  /*methods: {*/
+  /*getAllCategoriesNews() {*/
+  /*const */
+  /*const categories = [*/
+  /*"general",*/
+  /*"sports",*/
+  /*"entertainment",*/
+  /*"business",*/
+  /*"entertainment",*/
+  /*"health",*/
+  /*"science",*/
+  /*"technology",*/
+  /*];*/
+  /*Promise.all()*/
+  /*},*/
+  /*},*/
   created() {
     this.$store.dispatch("getNews", { category: "general" });
     this.$store.dispatch("getNews", { category: "sports" });

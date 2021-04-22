@@ -33,6 +33,12 @@
                   <b-button @click="openNewTab(news.url)" type="is-text"
                     >more</b-button
                   >
+                  <br />
+                  <b-button
+                    @click="addReadlist(news)"
+                    type="is-light"
+                    icon-right="plus-thick"
+                  />
                 </div>
               </div>
             </div>
@@ -61,6 +67,9 @@ export default {
     };
   },
   methods: {
+    addReadlist(news) {
+      this.$store.dispatch("addReadlist", news);
+    },
     openNewTab(url) {
       window.open(url, "_blank");
     },

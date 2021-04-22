@@ -4,6 +4,8 @@ import router from "../router";
 import { NotificationProgrammatic as Notification } from "buefy";
 
 const SERVER_URL = "http://localhost:3000";
+const CURRENTSAPI_URL = "https://api.currentsapi.services/v1/search";
+const API_KEY = "bX_wrk5Nv8QY8Iqw39unTLXKr73V-rUjhnL3oE7-h8doxpUa";
 
 Vue.use(Vuex);
 
@@ -15,10 +17,14 @@ export default new Vuex.Store({
     access_token: "",
     sidebarOpen: false,
     news: {},
+    readlists: [],
+    location: {},
   },
   mutations: {
+    SET_READLISTS(state, payload) {
+      state.readlists = payload;
+    },
     SET_NEWS_ALL(state, payload) {
-      console.log(payload);
       state.news[`${payload.category}`] = payload.news;
     },
     SET_POPULARS(state, payload) {
@@ -43,27 +49,128 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getNews(context, payload) {
-      const data = {
-        category: payload.category,
-      };
-      const access_token = localStorage.access_token;
-      fetch(`${SERVER_URL}/search`, {
-        method: "POST",
+    erasedNews(context, payload) {
+      const id = payload;
+      fetch(`${SERVER_URL}/readlists/${id}`, {
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          access_token: access_token,
+          access_token: localStorage.access_token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          this.dispatch("getReadlists");
+          console.log(data);
+        });
+    },
+    updateNews(context, payload) {
+      const id = payload;
+      const data = {
+        status: "done",
+      };
+      fetch(`${SERVER_URL}/readlists/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
         },
         body: JSON.stringify(data),
       })
         .then((res) => res.json())
         .then((data) => {
-          const filteredData = data.filter((el) => el.image && el.description);
+          console.log(data);
+          this.dispatch("getReadlists");
+        });
+    },
+    getReadlists(context) {
+      fetch(`${SERVER_URL}/readlists`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const readlists = data;
+
+          context.commit("SET_READLISTS", readlists);
+        })
+        .catch((err) => console.log(err));
+    },
+    addReadlist(context, payload) {
+      console.log(payload);
+      const data = {
+        title: payload.title,
+        description: payload.description,
+        url: payload.url,
+        author: payload.author,
+        image: payload.image,
+        language: payload.language,
+        category: payload.category[0],
+        published: payload.published,
+      };
+      fetch(`${SERVER_URL}/news`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+        body: JSON.stringify(data),
+      })
+        .then(() => {
+          return fetch(`${SERVER_URL}/news`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              access_token: localStorage.access_token,
+            },
+          });
+        })
+        .then((res) => {
+          const data = res.json();
+          return data;
+        })
+        .then((data) => {
+          const foundNews = data.find((el) => el.title === payload.title);
+          const dataHeaders = {
+            NewsId: foundNews.id,
+          };
+          return fetch(`${SERVER_URL}/readlists`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              access_token: localStorage.access_token,
+            },
+            body: JSON.stringify(dataHeaders),
+          });
+        })
+        .then((res) => res.json())
+        .then(() => {
+          Notification.open({
+            duration: 1000,
+            message: "add to readlists",
+            position: "is-bottom-right",
+            type: "is-success",
+            hasIcon: true,
+          });
+        });
+    },
+    getNews(context, payload) {
+      const category = payload.category;
+      fetch(`${CURRENTSAPI_URL}?category=${category}&apiKey=${API_KEY}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const filteredData = data.news.filter(
+            (el) => el.image && el.description
+          );
           const mutationsPayload = {
             category: payload.category,
             news: filteredData,
           };
           context.commit("SET_NEWS_ALL", mutationsPayload);
+          router.push({ path: "/" });
         });
     },
 

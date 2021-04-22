@@ -16,40 +16,14 @@
           </b-menu-list>
           <b-menu-list label="category">
             <b-menu-item
-              @click="onCategory('general')"
+              @click="forwardAll"
               icon="newspaper"
               label="General"
             ></b-menu-item>
             <b-menu-item
-              @click="onCategory('sports')"
-              icon="basketball"
-              label="Sports"
-            ></b-menu-item>
-            <b-menu-item
-              @click="onCategory('bussines')"
-              icon="office-building"
-              label="Bussiness"
-            ></b-menu-item>
-            <b-menu-item
-              class="is-light"
-              @click="onCategory('entertainment')"
-              icon="microphone-variant"
-              label="Entertaiment"
-            ></b-menu-item>
-            <b-menu-item
-              @click="onCategory('health')"
-              icon="hospital-box"
-              label="Health"
-            ></b-menu-item>
-            <b-menu-item
-              @click="onCategory('science')"
-              icon="eyedropper"
-              label="Science"
-            ></b-menu-item>
-            <b-menu-item
-              @click="onCategory('technology')"
-              icon="chemical-weapon"
-              label="Technology"
+              @click="forwardReadlists"
+              icon="book"
+              label="Readlists"
             ></b-menu-item>
           </b-menu-list>
           <b-menu-list label="Actions">
@@ -77,17 +51,11 @@ export default {
     };
   },
   methods: {
-    onCategory(category) {
-      let payload = {
-        category: category,
-        language: "id",
-      };
-      this.$store.dispatch("getHeadlines", payload);
-      payload = {
-        q: category,
-        language: "id",
-      };
-      this.$store.dispatch("getPopulars", payload);
+    forwardAll() {
+      this.$router.push({ path: "/" });
+    },
+    forwardReadlists() {
+      this.$router.push({ path: "/readlists" });
     },
     sidebarOpen() {
       this.$store.commit("SIDEPANEL_CTRL");
