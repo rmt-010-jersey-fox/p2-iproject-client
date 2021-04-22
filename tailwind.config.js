@@ -14,7 +14,8 @@ module.exports = {
     extend: {
       overflow: ['hover'],
       translate: ['group-hover'],
+      ringOpacity: ['hover', 'active']
     },
   },
-  plugins: [],
+  plugins: [require("windstrap")],
 }
