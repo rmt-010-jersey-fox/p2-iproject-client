@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import AddMeme from '@/components/AddMeme.vue'
+import EditMeme from '@/components/EditMeme.vue'
 import Profile from '@/views/Profile.vue'
 
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/memes/add',
     name: 'AddMeme',
     component: AddMeme
+  },
+  {
+    path: '/memes/edit',
+    name: 'EditMeme',
+    component: EditMeme
   },
   {
     path: '/profile',

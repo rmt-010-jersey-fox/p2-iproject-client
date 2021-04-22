@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- <Navbar /> -->
+    <Navbar />
     <div class="container">
       <div class="row">
         <div class="col-9">
@@ -17,14 +17,14 @@
 
 <script>
 // @ is an alias to /src
-// import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/components/Navbar.vue'
 import RightContent from "@/components/RightContent.vue";
 import LeftContent from "@/components/LeftContent.vue";
 
 export default {
   name: "Home",
   components: {
-    // Navbar,
+    Navbar,
     RightContent,
     LeftContent,
   },
