@@ -5,6 +5,7 @@
       <HFooter/>
       <AddEvent/>
       <AddThread/>
+  <HFooter/>
       <EditThread/>
       <!-- <Thread/> -->
       <router-view/>
