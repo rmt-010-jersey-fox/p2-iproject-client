@@ -7,7 +7,7 @@
       <p class="card-text">Jumah : {{surahQuran.surahAyat}} Ayat</p>
       <div>
         <a @click.prevent="readSurah" class="btn btn-warning btn-sm"><i class="bi bi-book-half"></i> Read</a>
-        <a class="btn btn-primary btn-sm"><i class="bi bi-bookmark-heart"></i> Favorite</a>
+        <a @click.prevent="favoriteSurah" class="btn btn-primary btn-sm"><i class="bi bi-bookmark-heart"></i> Favorite</a>
       </div>
     </div>
   </div>
@@ -26,6 +26,18 @@ export default {
       }
 
       this.$store.dispatch('getSurah', payload)
+    },
+
+    favoriteSurah () {
+      const payload = {
+        SurahId: this.surahQuran.SurahId,
+        surahName: this.surahQuran.surahName,
+        surahArti: this.surahQuran.surahArti,
+        surahJenis: this.surahQuran.surahJenis,
+        surahAyat: this.surahQuran.surahAyat
+      }
+
+      this.$store.dispatch('addFavoriteSurah', payload)
     }
   }
 }

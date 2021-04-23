@@ -39,7 +39,7 @@
         <hr class="garis">
         <div class="mb-3 mt-3 d-grid gap-2">
           <button @click.prevent="getAllSurah" class="btn btn-light">
-            All Surah
+            Show All Surah
           </button>
         </div>
       </div>
