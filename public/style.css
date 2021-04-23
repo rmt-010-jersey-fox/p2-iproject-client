@@ -89,6 +89,13 @@
   align-items: center;
 }
 
+.detail-table {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  margin-right: 10px;
+}
+
 .profile-left {
   flex: 4;
   background-color: white;

@@ -18,10 +18,16 @@
           v-for="match in matches"
           :key="match.id"
           :match="match"
+          @setChosenClubs="setChosenClubs"
         />
       </div>
     </div>
     <div class="home-right">
+      <MatchDetail
+        v-if="chosenClub.homeTeam && chosenClub.awayTeam"
+        :chosenClub="chosenClub"
+        class="detail-table"
+      />
       <Highlights />
     </div>
   </section>
@@ -32,10 +38,19 @@ import moment from 'moment'
 import { ChevronLeftIcon, ChevronRightIcon } from 'vue-feather-icons'
 import Match from '../components/Match'
 import Highlights from '../components/Highlights'
+import MatchDetail from '../components/MatchDetail'
 export default {
   name: 'Home',
   components: {
-    Match, Highlights, ChevronLeftIcon, ChevronRightIcon
+    Match, Highlights, ChevronLeftIcon, ChevronRightIcon, MatchDetail
+  },
+  data () {
+    return {
+      chosenClub: {
+        homeTeam: '',
+        awayTeam: ''
+      }
+    }
   },
   computed: {
     matches () {
@@ -72,6 +87,13 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+    setChosenClubs (home, away) {
+      this.chosenClub = {
+        homeTeam: home,
+        awayTeam: away
+      }
+      console.log(this.chosenClub, 'chosenClub')
     }
   }
 }

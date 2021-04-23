@@ -19,7 +19,7 @@
     </div>
     <div>
       <div class="text-center">
-        <a href="#" class="btn btn-warning" style="width: 70%">Details</a>
+        <a @click.prevent="setDetails" href="#" class="btn btn-warning" style="width: 70%">Details</a>
       </div>
     </div>
   </div>
@@ -28,7 +28,12 @@
 <script>
 export default {
   name: 'Match',
-  props: ['match']
+  props: ['match'],
+  methods: {
+    setDetails () {
+      this.$emit('setChosenClubs', this.match.homeTeam, this.match.awayTeam)
+    }
+  }
 }
 </script>
 

@@ -10,23 +10,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="(player, i) in filterPlayers" :key="i">
           <th scope="row">1</th>
-          <td>N'Golo Kanté</td>
-          <td>Chelsea FC</td>
-          <td>Midfielder</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Timo Werner</td>
-          <td>Chelsea FC</td>
-          <td>Attacker</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Declan Rice</td>
-          <td>West Ham United</td>
-          <td>Midfielder</td>
+          <td>{{player.name}}</td>
+          <td>{{player.Club.name}}</td>
+          <td>{{player.Player.position}}</td>
         </tr>
       </tbody>
     </table>
@@ -36,8 +24,14 @@
 <script>
 export default {
   name: 'MatchDetail',
+  props: ['chosenClub'],
   computed: {
-
+    filterPlayers () {
+      const players = this.$store.state.players
+      const result = players.filter(e => e.Club.name === this.chosenClub.homeTeam || e.Club.name === this.chosenClub.awayTeam)
+      console.log(result)
+      return result
+    }
   }
 }
 </script>
