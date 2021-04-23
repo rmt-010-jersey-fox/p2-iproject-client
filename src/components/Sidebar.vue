@@ -22,18 +22,23 @@
             ></b-menu-item>
             <b-menu-item
               @click="category('sports')"
-              icon="newspaper"
-              label="sports"
+              icon="volleyball"
+              label="Sports"
             ></b-menu-item>
             <b-menu-item
               @click="category('business')"
-              icon="newspaper"
-              label="business"
+              icon="cash"
+              label="Business"
             ></b-menu-item>
             <b-menu-item
               @click="category('entertainment')"
-              icon="newspaper"
-              label="entertainment"
+              icon="microphone"
+              label="Entertaiment"
+            ></b-menu-item>
+            <b-menu-item
+              @click="category('science and technology')"
+              icon="chemical-weapon"
+              label="Science & Tech"
             ></b-menu-item>
           </b-menu-list>
           <b-menu-list label="Actions">
