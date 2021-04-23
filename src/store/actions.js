@@ -163,19 +163,23 @@ export function unreport({ dispatch }, { id }) {
         })
 }
 
-export function addMeme ({commit}, {title, image, router}) {
+export function addMeme ({commit}, {title, top, bottom, name,  router}) {
     const addData = {
         title: title,
-        image_url: image,
+        top: top,
+        bottom: bottom,
+        meme:name
       }
+      console.log(addData)
     axios
-    .post(`${baseURL}memes/add`, addData, {
+    .post(`${baseURL}memegenerate`, addData, {
       headers: {
         access_token: localStorage.access_token
       }
     })
     .then(response => {
       router.push('/')
+    // console.log(response)
     })
     .catch(error => console.log(error))
 }
@@ -210,4 +214,15 @@ export function deleteMeme ({dispatch}, {id}) {
         dispatch('getUserProfile')
     })
     .catch((error) => console.log(error))
+}
+
+export function getMemeGacha({ commit }) {
+    // console.log(localStorage.access_token)
+    axios
+        .get(`${baseURL}memegacha`)
+        .then(res => {
+            // console.log(res.data)
+            commit('SET_MEMEGACHA', res.data)
+        })
+        .catch(error => console.log(error))
 }

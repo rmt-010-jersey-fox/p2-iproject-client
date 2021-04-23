@@ -11,3 +11,7 @@ export const SET_MEMEBYID = (state, item) => {
 export const SET_USERMEMES = (state, usermeme) => {
     state.usermeme = usermeme
 }
+
+export const SET_MEMEGACHA = (state, memegacha) => {
+    state.memegacha = memegacha
+}

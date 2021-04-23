@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     memes: [],
     usermeme: [],
-    item: []
+    item: [],
+    memegacha: {}
   },
   mutations,
   actions,
