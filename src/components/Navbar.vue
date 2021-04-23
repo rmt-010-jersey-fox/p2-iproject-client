@@ -7,6 +7,7 @@
           <div class="col-sm-4">
               <router-link to="/login">Login  |</router-link>
               <router-link to="/about">  Logout  |</router-link>
+              <!-- <router-link to="/register">  Register  |</router-link> -->
               <router-link to="/homepage">  Home  |</router-link>
               <router-link to="/schedule">  My Schedule</router-link>
           </div>

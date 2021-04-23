@@ -6,6 +6,7 @@ import Homepage   from '../views/Homepage.vue'
 import Card   from '../views/Card.vue'
 import BuddyDetail   from '../views/BuddyDetail.vue'
 import Schedule   from '../views/Schedule.vue'
+import Register   from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,11 @@ const routes = [
       path: '/login',
       name: 'Login',
       component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/schedule',

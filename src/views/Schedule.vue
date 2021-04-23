@@ -10,6 +10,7 @@
                     <th scope="col">Topic</th>
                     <th scope="col">Buddy</th>
                     <th scope="col">Time</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -19,6 +20,7 @@
                     <td>{{sch.BuddyMaterial.Material.topic}}</td>
                     <td>{{sch.BuddySchedule.User.first_name}} {{sch.BuddySchedule.User.last_name}}</td>
                     <td>{{sch.BuddySchedule.day}} {{sch.BuddySchedule.time}}</td>
+                    <td>{{sch.bookingDate}}</td>
                     <td>{{sch.status}}</td>
                     <td>
                       <button @click.prevent="cancel(sch.id)" type="button" class="btn btn-light">Cancel</button>
