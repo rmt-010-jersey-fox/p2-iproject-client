@@ -200,6 +200,33 @@ const store = new Vuex.Store({
       context.commit('setServiceId', id)
       router.push({ name: 'Add' })
     },
+    sendmail (context) {
+      axios({
+        method: 'GET',
+        url: '/nodemailer',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          toast.fire({
+            icon: 'success',
+            iconColor: 'blue',
+            title: 'Success, email send!',
+            background: 'azure'
+          })
+          this.fetchAppointment()
+          this.sendmail()
+          router.push({ name: 'Home' })
+        })
+        .catch((err) => {
+          toast.fire({
+            icon: 'error',
+            title: err.response.data.message,
+            background: 'mistyrose'
+          })
+        })
+    },
     postAppointment (context, payload) {
       axios({
         method: 'POST',
@@ -222,6 +249,7 @@ const store = new Vuex.Store({
             background: 'azure'
           })
           this.fetchAppointment()
+          this.sendmail()
           router.push({ name: 'Home' })
         })
         .catch((err) => {
