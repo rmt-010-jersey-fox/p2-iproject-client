@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Navbar />
-    <Header />
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -12,13 +11,11 @@
 </template>
 <script>
 import Navbar from './components/Navbar'
-import Header from './components/Header'
 import HFooter from 'vue-hacktiv-footer'
 export default {
   name: 'App',
   components: {
     Navbar,
-    Header,
     HFooter
   },
   created () {

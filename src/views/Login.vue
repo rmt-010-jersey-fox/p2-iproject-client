@@ -5,7 +5,7 @@
       <div class="col-2"></div>
       <div class="col-8" style="margin-top: 15vh;">
         <form @submit.prevent="login">
-          <h2>E-Commerse Customers</h2><hr class="my-4">
+          <h2>Barber Shop Customers</h2><hr class="my-4">
           <div class="form-group">
             <label for="exampleInputEmail1">
               Email Address

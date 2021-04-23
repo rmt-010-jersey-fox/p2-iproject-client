@@ -25,7 +25,8 @@ const store = new Vuex.Store({
     username: '',
     cards: [],
     carts: [],
-    cartCount: 0
+    booking: {},
+    serviceId: undefined
   },
   mutations: {
     setLogin (state, payload) {
@@ -40,8 +41,11 @@ const store = new Vuex.Store({
     setCards (state, payload) {
       state.cards = payload.cards
     },
-    setCartCount (state, payload) {
-      state.cartCount = payload
+    setBooking (state, payload) {
+      state.booking = payload
+    },
+    setServiceId (state, payload) {
+      state.serviceId = payload
     }
   },
   actions: {
@@ -126,7 +130,43 @@ const store = new Vuex.Store({
             background: 'mistyrose'
           })
         })
-    }
+    },
+    formAppointment (context, id) {
+      context.commit('setServiceId', id)
+      router.push({ name: 'Add' })
+    },
+    postAppointment (context, payload) {
+      axios({
+        method: 'POST',
+        url: `/appointments/${payload.BarberShopId}`,
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: {
+          ServiceId: payload.ServiceId,
+          BarberId: payload.username,
+          date: payload.date,
+          scheduleStart: payload.scheduleStart
+        }
+      })
+        .then(({ data }) => {
+          router.push({ name: 'Home' })
+
+          toast.fire({
+            icon: 'success',
+            iconColor: 'blue',
+            title: 'Success, you ready have an Appointment!',
+            background: 'azure'
+          })
+        })
+        .catch((err) => {
+          toast.fire({
+            icon: 'error',
+            title: err.response.data.message,
+            background: 'mistyrose'
+          })
+        })
+    },
     // deleteCart (context, id) {
     //   if (confirm('Delete This Cart?')) {
     //     axios.delete(`/carts/${id}`, {
@@ -180,35 +220,10 @@ const store = new Vuex.Store({
     // setCartCount (context, count) {
     //   context.commit('setCartCount', count)
     // },
-    // addCart (context, id) {
-    //   axios({
-    //     method: 'POST',
-    //     url: '/carts',
-    //     headers: {
-    //       access_token: localStorage.access_token
-    //     },
-    //     data: {
-    //       ProductId: id
-    //     }
-    //   })
-    //     .then(({ data }) => {
-    //       toast.fire({
-    //         icon: 'success',
-    //         title: 'Success Added to Cart!'
-    //       })
-    //       this.dispatch('fetchCard')
-    //       this.dispatch('fetchCart')
-    //       router.push({ name: 'Home' })
-    //     })
-    //     .catch(err => {
-    //       toast.fire({
-    //         icon: 'error',
-    //         title: err.response.data.message,
-    //         background: 'mistyrose',
-    //         timer: 3000
-    //       })
-    //     })
-    // },
+    booking (context, object) {
+      context.commit('setBooking', object)
+      router.push({ name: 'Booking' })
+    }
     // plusCart (context, id) {
     //   axios({
     //     method: 'POST',
