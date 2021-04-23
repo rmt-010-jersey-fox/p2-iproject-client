@@ -2,12 +2,12 @@
     <div class="bg-purple-200 dark:bg-gray-600 h-full w-1/4 select-none">
         <div class="flex p-5 gap-6 items-center h-1/5">
             <img class="rounded-full bg-white dark:bg-gray-300 p-3 w-20 shadow-lg" :src="`https://avatars.dicebear.com/api/bottts/${user.firstName + ' ' + user.lastName}.svg`" alt="">
-            <div class="gap-3 text-gray-600">
-                <p class="text-xl font-bold dark:text-gray-200">{{user.firstName}} {{user.lastName}}</p>
-                <p class="text-base italic dark:text-gray-200">{{user.email}}</p>
+            <div class="gap-3 text-gray-600 overflow-ellipsis overflow-hidden">
+                <p class="text-xl font-bold dark:text-gray-200 overflow-ellipsis overflow-hidden w-40">{{user.firstName}} {{user.lastName}}</p>
+                <p class="text-base italic dark:text-gray-200 overflow-ellipsis overflow-hidden w-40">{{user.email}}</p>
             </div>
         </div>
-        <div class="p-2 flex-col h-4/5 relative">
+        <div class="p-2 flex-col h-4/5 relative overflow-hidden">
             <div @click="changePage('Library')" class="cursor-pointer flex group m-3 text-gray-600 justify-between items-centerp p-3 hover:bg-white dark:hover:bg-gray-700 rounded-full transition duration-200">
                 <div class="flex gap-3 text-xl items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-current group-hover:text-purple-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
