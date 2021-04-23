@@ -1,7 +1,7 @@
 <template>
   <section class="navbar">
     <div class="navbar-item">
-      <router-link to="/"><p class="navbar-link app-title">My FPL Helper</p></router-link>
+      <router-link to="/"><p class="app-title">My FPL Helper</p></router-link>
     </div>
     <div class="navbar-item"></div>
     <div v-if="loggedIn" class="navbar-item">
