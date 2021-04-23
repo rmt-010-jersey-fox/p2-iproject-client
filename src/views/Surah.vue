@@ -34,7 +34,7 @@ export default {
       return this.$store.state.surahQurans
     }
   },
-   methods: {
+  methods: {
     toHomePage () {
       this.$router.push('/').catch(() => {})
     }

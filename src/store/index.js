@@ -146,14 +146,14 @@ export default new Vuex.Store({
           access_token: localStorage.access_token
         }
       })
-      .then((data) => {
-        console.log(data.data)
-        context.commit('FETCH_SURAH', data.data)
-        router.push('/allsurah').catch(() => {})
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+        .then((data) => {
+          console.log(data.data)
+          context.commit('FETCH_SURAH', data.data)
+          router.push('/allsurah').catch(() => {})
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
 
     fatchFavoriteSurah (context, payload) {
@@ -162,14 +162,14 @@ export default new Vuex.Store({
           access_token: localStorage.access_token
         }
       })
-      .then((data) => {
-        console.log(data.data)
-        context.commit('FETCH_FAV_SURAH', data.data)
-        router.push('/favoritesurah').catch(() => {})
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+        .then((data) => {
+          console.log(data.data)
+          context.commit('FETCH_FAV_SURAH', data.data)
+          router.push('/favoritesurah').catch(() => {})
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
 
     getSurah (context, payload) {
@@ -341,40 +341,40 @@ export default new Vuex.Store({
           access_token: localStorage.access_token
         }
       })
-      .then(({ data }) => {
-        console.log(data);
-        console.log('Surah berhasil ditambahkan ke dalam Favorite')
-        context.dispatch('getAllSurah')
-        router.push('/allSurah').catch(() => {})
+        .then(({ data }) => {
+          console.log(data)
+          console.log('Surah berhasil ditambahkan ke dalam Favorite')
+          context.dispatch('getAllSurah')
+          router.push('/allSurah').catch(() => {})
 
-        // Sweetalert
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
 
-        Toast.fire({
-          icon: 'success',
-          title: 'Add Surah Favorite in successfully'
+          Toast.fire({
+            icon: 'success',
+            title: 'Add Favorite Surah is successfully'
+          })
         })
-      })
-      .catch( err => {
-        console.log(err)
+        .catch(err => {
+          console.log(err)
 
-         // Sweetalert
-         Swal.fire({
-          icon: 'error',
-          title: 'Please try again',
-          text: `${err.response.data.message}`
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
         })
-      })
     },
 
     deleteFavoriteSurah (context, payload) {
@@ -385,14 +385,38 @@ export default new Vuex.Store({
           access_token: localStorage.access_token
         }
       })
-      .then(({ data }) => {
-        console.log('Favorite Surah berhasil didelete')
-        context.dispatch('fatchFavoriteSurah')
+        .then(({ data }) => {
+          console.log('Favorite Surah berhasil didelete')
+          context.dispatch('fatchFavoriteSurah')
 
-      })
-      .catch(err => {
-        console.log(err)
-      })
+          // Sweetalert
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Delete Favorite Surah is successfully'
+          })
+        })
+        .catch(err => {
+          console.log(err)
+
+          // Sweetalert
+          Swal.fire({
+            icon: 'error',
+            title: 'Please try again',
+            text: `${err.response.data.message}`
+          })
+        })
     },
 
     logout (context) {

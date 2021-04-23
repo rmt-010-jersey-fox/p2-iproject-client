@@ -24,7 +24,6 @@
 <script>
 import CardFavSurah from '../components/CardFavSurah'
 
-
 export default {
   name: 'FavoriteSurah',
   components: {

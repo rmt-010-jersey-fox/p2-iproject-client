@@ -22,7 +22,7 @@ export default {
     readSurah () {
       const payload = {
         surah: this.surahQuran.SurahId,
-        ayat: ""
+        ayat: ''
       }
 
       this.$store.dispatch('getSurah', payload)

@@ -86,7 +86,7 @@ export default {
     fatchFavoriteSurah () {
       this.$store.dispatch('fatchFavoriteSurah')
     },
-     toHomePage () {
+    toHomePage () {
       this.$router.push('/').catch(() => {})
     }
   }
