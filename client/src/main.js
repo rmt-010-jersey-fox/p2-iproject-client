@@ -3,9 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
-import moment from 'moment'
+import UIkit from 'uikit'
+import Icons from 'uikit/dist/js/uikit-icons'
 
-Vue.prototype.moment = moment
+// loads the Icon plugin
+UIkit.use(Icons)
 Vue.config.productionTip = false
 
 new Vue({

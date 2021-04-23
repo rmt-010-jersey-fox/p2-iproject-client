@@ -80,6 +80,22 @@ export default new Vuex.Store({
           context.dispatch('fetchTimeline')
         })
     },
+    addTimeline (context, payload) {
+      console.log(payload);
+      axios({
+        url: `/timeline`,
+        method: 'POST',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          status: payload
+        }
+      })
+      .then(({data})=> {
+        context.dispatch('fetchTimeline')
+      })
+    },
     addFavorite (context, payload) {
       axios({
         url: `/favorites/${payload.TimelineId}`,
@@ -136,6 +152,21 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+    patchLike (context, payload) {
+      axios({
+        url: `/timeline/${payload.id}`,
+        method: 'PATCH',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          likes: payload.likes
+        }
+      })
+      .then(({data}) => {
+        context.dispatch('fetchTimeline')
+      })
     }
   },
   modules: {
