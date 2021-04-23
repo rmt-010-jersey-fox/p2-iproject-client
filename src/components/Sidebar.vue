@@ -21,12 +21,28 @@
               label="General"
             ></b-menu-item>
             <b-menu-item
+              @click="category('sports')"
+              icon="newspaper"
+              label="sports"
+            ></b-menu-item>
+            <b-menu-item
+              @click="category('business')"
+              icon="newspaper"
+              label="business"
+            ></b-menu-item>
+            <b-menu-item
+              @click="category('entertainment')"
+              icon="newspaper"
+              label="entertainment"
+            ></b-menu-item>
+          </b-menu-list>
+          <b-menu-list label="Actions">
+            <b-menu-item
               @click="forwardReadlists"
               icon="book"
               label="Readlists"
             ></b-menu-item>
-          </b-menu-list>
-          <b-menu-list label="Actions">
+            <br />
             <b-button
               label="Sign Out"
               type="is-dark"
