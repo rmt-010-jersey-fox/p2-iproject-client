@@ -84,6 +84,6 @@ export default {
   margin-top: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 75%;
+  max-height: 90%;
 }
 </style>

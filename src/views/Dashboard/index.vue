@@ -45,11 +45,7 @@
         <!-- Loop post Goes here -->
         <v-col sm="3" v-for="(post, i) in userPosts" :key="i">
           <v-card color="white" rounded="xl" flat>
-            <v-img
-              width="300"
-              height="250"
-              :src="'https://maipren-server.herokuapp.com/' + post.filePath"
-            ></v-img>
+            <v-img width="300" height="250" :src="post.filePath"></v-img>
             <v-row class="mt-1" justify="center" align="center">
               <v-card-subtitle>{{ post.caption }}</v-card-subtitle>
               <v-btn icon depressed small @click.prevent="editCaption(post.id)">

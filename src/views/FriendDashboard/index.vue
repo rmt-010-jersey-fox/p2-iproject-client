@@ -26,11 +26,7 @@
       <v-row align="center" justify="center">
         <v-col sm="3" v-for="(post, i) in currentFriend.Posts" :key="i">
           <v-card color="white" rounded="xl">
-            <v-img
-              width="300"
-              height="250"
-              :src="'https://maipren-server.herokuapp.com/' + post.filePath"
-            ></v-img>
+            <v-img width="300" height="250" :src="post.filePath"></v-img>
             <v-row class="mt-1" justify="center" align="center">
               <v-card-subtitle>{{ post.caption }}</v-card-subtitle>
             </v-row>
