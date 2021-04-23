@@ -1,30 +1,7 @@
 <template>
-    <div>
-    <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Travelers</b-navbar-brand>
-      <b-navbar-nav class="ml-auto">
-      <div class="row">
-        <div class="col-sm">
-        <b-button style="margin: 10px"
-        @click.prevent="doLogOut"
-        size="sm"
-        class="my-2 my-sm-0"
-        type="button"
-        >LOGOUT
-        </b-button>
-        <b-button
-        @click.prevent="loginPage"
-        size="sm"
-        class="my-2 my-sm-0"
-        type="button"
-        >LOGIN
-        </b-button>
-        </div>
-      </div>
-      </b-navbar-nav>
-    </b-navbar>
-  </div>
+<div>
+<Navbar />
+
       <div>
         <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
           <div class="col-md">
@@ -50,8 +27,6 @@
               <p class="ml-4 mb-4">{{ new Date().toISOString().split('T')[0] }}</p>
             </div>
           </div>
-           <b-button @click="goChat" variant="outline-secondary">Chat With Other Travelers</b-button>
-           <b-button @click="goAddPage"  variant="outline-secondary">Or Wanna Save Trip for latter</b-button>
         </div>
       </div>
     </div>
@@ -61,11 +36,13 @@
 <script>
 import { mapState } from 'vuex'
 import TripTodo from '@/components/TripTodo.vue'
+import Navbar from '@/components/Navbar.vue'
 
 export default {
   name: 'Home',
   components: {
-    TripTodo
+    TripTodo,
+    Navbar
   },
   data () {
     return {
@@ -82,20 +59,6 @@ export default {
   methods: {
     changeCity () {
       this.$store.dispatch('getWeather', { city: this.city })
-    },
-
-    goChat () {
-      this.$router.push('/chat-room')
-    },
-
-    goAddPage () {
-      this.$router.push('/add-page')
-    },
-
-    doLogOut () {
-      localStorage.removeItem('access_token')
-      localStorage.removeItem('username')
-      this.$router.push('/login')
     }
   },
 

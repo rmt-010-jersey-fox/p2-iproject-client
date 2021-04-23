@@ -1,16 +1,13 @@
 <template>
+<div>
+<Navbar />
 <div class="row rounded-lg overflow-hidden shadow">
   <UserBox />
-    <!-- Chat Box-->
     <div class="col-7 px-0">
       <div class="px-4 py-5 chat-box bg-white">
-
         <MessageCards v-for="(msg, i) in messages"
         :key="i" :message="msg"/>
-
       </div>
-
-      <!-- Typing area -->
       <form action="#" class="bg-light">
         <div class="input-group">
           <input type="text" v-model="inputMsg"
@@ -20,21 +17,23 @@
           @keyup.enter.prevent="sendMessage">
         </div>
       </form>
-
     </div>
   </div>
+</div>
 
 </template>
 
 <script>
 import UserBox from '@/components/UserBox.vue'
 import MessageCards from '@/components/MessageCards.vue'
+import Navbar from '@/components/Navbar.vue'
 
 export default {
   name: 'ChatRoom',
   components: {
     UserBox,
-    MessageCards
+    MessageCards,
+    Navbar
   },
   data () {
     return {

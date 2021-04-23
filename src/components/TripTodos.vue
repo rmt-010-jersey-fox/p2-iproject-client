@@ -44,12 +44,21 @@
             />
           </div>
         </div>
+            <b-button pill variant="outline-secondary" @click="goDelete(todos.id)" style="padding: 1px; margin: 5px;">delete</b-button>
       </div>
 </template>
 
 <script>
 export default {
-  props: ['todos']
+  props: ['todos'],
+  methods: {
+    goDelete (id) {
+      this.$store.dispatch('deleteTodo', id)
+      this.$nextTick(() => {
+        this.$store.dispatch('showAllTrips')
+      })
+    }
+  }
 }
 </script>
 

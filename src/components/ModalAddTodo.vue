@@ -25,6 +25,8 @@ export default {
   methods: {
     addTodo (id) {
       this.$store.dispatch('addTodo', { title: this.todoTitle, description: this.todoDescription, id })
+      this.modalShow = false
+      this.$store.dispatch('showAllTrips')
     }
   }
 }

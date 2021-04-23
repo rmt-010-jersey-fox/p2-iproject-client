@@ -51,12 +51,12 @@ export default new Vuex.Store({
 
     setUserTrips (state, payload) {
       state.userTrips = payload
-      console.log(state.userTrips, 'userTrips di state')
+      // console.log(state.userTrips, 'userTrips di state')
     },
 
     setTodo (state, payload) {
       state.todo.push(payload)
-      console.log(state.todo, 'state TOdo')
+      // console.log(state.todo, 'state TOdo')
     }
   },
   actions: {
@@ -145,6 +145,27 @@ export default new Vuex.Store({
         .then(({ data }) => {
           // console.log(data)
           context.commit('setTodo', data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    deleteTodo (context, id) {
+      // console.log(id, 'ID TO DELETE')
+      axios.delete(`trips/todos/${id}`)
+        .then(resp => {
+          console.log(resp)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
+    deleteTrip (context, id) {
+      axios.delete(`trips/${id}`)
+        .then(res => {
+          console.log(res)
         })
         .catch(err => {
           console.log(err)

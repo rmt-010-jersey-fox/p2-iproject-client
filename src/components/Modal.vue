@@ -58,7 +58,7 @@
 </template>
 
 <script>
-// import axios from "../API/BaseURL";
+
 export default {
   data () {
     return {
@@ -101,6 +101,7 @@ export default {
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing')
+        this.$router.push('/trips')
       })
     }
   }

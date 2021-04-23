@@ -50,6 +50,7 @@
             />
           </div>
         </div>
+        <b-button pill variant="outline-secondary" @click="goDelete(trip.id)" style="padding: 1px; margin: 5px;">delete</b-button>
       </div>
         <ModalAddTodo :tripId="trip.id"/>
     </div>
@@ -68,16 +69,17 @@ export default {
   methods: {
     addTodo (id) {
       this.$store.dispatch('addTodo', id)
+    },
+    goDelete (id) {
+      this.$store.dispatch('deleteTrip', id)
+      this.$nextTick(() => {
+        this.$store.dispatch('showAllTrips')
+      })
     }
   },
   components: {
     ModalAddTodo,
     TripTodos
-  },
-  data () {
-    return {
-      modalShow: false
-    }
   }
 }
 </script>
