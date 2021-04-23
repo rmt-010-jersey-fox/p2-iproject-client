@@ -50,11 +50,13 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === "Signin" && localStorage.access_token) {
-    next({ path: "/" });
+    next({ path: "/news" });
   } else if (to.name === "Signup" && localStorage.access_token) {
-    next({ path: "/" });
+    next({ path: "/news" });
   } else if (to.name === "Readlists" && !localStorage.access_token) {
-    next({ path: "/" });
+    next({ path: "/news" });
+  } else if (to.path === "/") {
+    next({ path: "/news" });
   } else {
     next();
   }
