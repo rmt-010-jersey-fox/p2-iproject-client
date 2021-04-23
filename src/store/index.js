@@ -27,7 +27,8 @@ const store = new Vuex.Store({
     carts: [],
     booking: {},
     serviceId: undefined,
-    appointment: {}
+    appointment: {},
+    unsplash: ''
   },
   mutations: {
     setLogin (state, payload) {
@@ -41,6 +42,9 @@ const store = new Vuex.Store({
     },
     setCards (state, payload) {
       state.cards = payload.cards
+    },
+    setUnsplash (state, payload) {
+      state.unsplash = payload
     },
     setBooking (state, payload) {
       state.booking = payload
@@ -126,6 +130,22 @@ const store = new Vuex.Store({
       })
         .then(({ data }) => {
           context.commit('setCards', { cards: data })
+        })
+        .catch(err => {
+          toast.fire({
+            icon: 'error',
+            title: err.response.data.message,
+            background: 'mistyrose'
+          })
+        })
+    },
+    fetchUnsplash (context) {
+      axios({
+        method: 'GET',
+        url: 'https://api.unsplash.com/search/photos?query=barbershop&client_id=odCJxdIU8KcDeonB2J1RpeOaowHseMYaAfv3af5jdM8'
+      })
+        .then((data) => {
+          context.commit('setUnsplash', data.data.results[Math.floor(Math.random() * 10)].urls.full)
         })
         .catch(err => {
           toast.fire({

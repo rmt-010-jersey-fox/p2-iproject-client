@@ -1,5 +1,5 @@
 <template>
-  <header class="masthead">
+  <header class="masthead" :style="{ 'background-image': 'url(' + this.$store.state.unsplash + ')' }">
   <div class="container">
     <div class="masthead-heading text-uppercase">Mes's Haircuts and Hairstyles</div>
     <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>

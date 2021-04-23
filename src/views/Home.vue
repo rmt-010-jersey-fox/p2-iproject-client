@@ -27,6 +27,7 @@ export default {
   components: { Header, CardForEach },
   created () {
     this.$store.dispatch('fetchCard')
+    this.$store.dispatch('fetchUnsplash')
   },
   computed: {
     cards () {
