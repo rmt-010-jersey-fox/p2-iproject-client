@@ -73,10 +73,10 @@ export default {
   },
   methods: {
     forwardAll() {
-      this.$router.push({ path: "/" });
+      this.$router.push({ path: "/news" });
     },
     category(category) {
-      this.$router.push({ path: `/${category}` });
+      this.$router.push({ path: `/news/${category}` });
     },
     forwardReadlists() {
       this.$router.push({ path: "/readlists" });

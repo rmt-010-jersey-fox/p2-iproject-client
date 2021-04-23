@@ -25,8 +25,8 @@ export default {
       this.$store.state.readlists.forEach((el) => {
         el.News.statusColor =
           el.status === "done"
-            ? "has-background-success"
-            : "has-background-info";
+            ? "has-background-success-light"
+            : "has-background-info-light";
       });
       return this.$store.state.readlists;
     },

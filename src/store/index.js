@@ -54,6 +54,7 @@ export default new Vuex.Store({
   actions: {
     getSearchList(context, payload) {
       const keywordsURI = encodeURI(payload);
+
       fetch(`${CURRENTSAPI_URL}?keywords=${keywordsURI}&apiKey=${API_KEY}`)
         .then((r) => r.json())
         .then((data) => {
@@ -63,9 +64,11 @@ export default new Vuex.Store({
           const currentRoute = router.currentRoute;
 
           if (currentRoute.name !== "SearchPage") {
-            console.log(currentRoute);
             router.push({ path: "/search" });
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
     erasedNews(context, payload) {
@@ -78,9 +81,8 @@ export default new Vuex.Store({
         },
       })
         .then((res) => res.json())
-        .then((data) => {
+        .then(() => {
           this.dispatch("getReadlists");
-          console.log(data);
         });
     },
     updateNews(context, payload) {
@@ -97,8 +99,7 @@ export default new Vuex.Store({
         body: JSON.stringify(data),
       })
         .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
+        .then(() => {
           this.dispatch("getReadlists");
         });
     },
@@ -119,7 +120,6 @@ export default new Vuex.Store({
         .catch((err) => console.log(err));
     },
     addReadlist(context, payload) {
-      console.log(payload);
       const data = {
         title: payload.title,
         description: payload.description,
@@ -245,7 +245,7 @@ export default new Vuex.Store({
             localStorage.setItem("username", data.username);
             localStorage.setItem("email", data.email);
             context.commit("SET_LOGIN", data);
-            router.push({ path: "/" });
+            router.push({ path: "/news" });
           } else {
             Notification.open({
               duration: 1000,
@@ -288,7 +288,7 @@ export default new Vuex.Store({
             localStorage.setItem("username", data.username);
             localStorage.setItem("email", data.email);
             context.commit("SET_LOGIN", data);
-            router.push({ path: "/" });
+            router.push({ path: "/news" });
           }
         })
         .catch((err) => {
