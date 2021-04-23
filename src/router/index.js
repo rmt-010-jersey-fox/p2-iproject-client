@@ -5,6 +5,7 @@ import Readlists from "../views/Readlists.vue";
 import Signin from "../views/Signin.vue";
 import Signup from "../views/Signup.vue";
 import SearchPage from "../views/SearchPage.vue";
+import CategoryPage from "../views/NewsCategory.vue";
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/:category",
+    name: "CategoryPage",
+    component: CategoryPage,
   },
   {
     path: "/search",
