@@ -61,16 +61,23 @@ export function getMemesHot({ commit }) {
 
 export function getMemeById ({commit}, { id, router}) {
     axios
-    .get(`${baseURL}memes/${id}`)
+    .get(`${baseURL}memes/${id}`, {
+        headers: {
+        access_token: localStorage.access_token
+    }})
     .then((response) => {
         commit('SET_MEMEBYID', response.data)
-        router.push('/memes/update')
+        // console.log(response.data)
+        console.log('masuk sini')
+        router.push('/memes/edit')
     })
 }
 
 export function getUserProfile({ commit }) {
+    // console.log(localStorage.access_token)
     axios
-        .get(`${baseURL}user/profile`, {headers: {
+        .get(`${baseURL}user/profile`, {
+            headers: {
             access_token: localStorage.access_token
         }})
         .then(res => {
@@ -185,8 +192,8 @@ export function updateMeme({ state, dispatch }, {id, router}) {
         }
     })
     .then((response) => {
-        dispatch('getMemes')
-        router.push('/')
+        dispatch('getUserProfile')
+        router.push('/profile')
     })
     .catch((error) => console.log(error))
 }
@@ -199,7 +206,8 @@ export function deleteMeme ({dispatch}, {id}) {
         }
     })
     .then((response) => {
-        dispatch('getMemes')
+        console.log('Ke delete kok')
+        dispatch('getUserProfile')
     })
     .catch((error) => console.log(error))
 }

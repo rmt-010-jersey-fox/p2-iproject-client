@@ -45,7 +45,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 export default {
-  name: "Update",
+  name: "EditMeme",
   components: {
     Navbar,
   },

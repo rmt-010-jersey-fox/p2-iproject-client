@@ -1,9 +1,9 @@
 <template>
-  <div class="card mb-3">
+  <div class="card mb-3" style="width: 700px; height: 700px">
     <div class="card-header">
       <h4>Nama user</h4>
     </div>
-    <img src="http://arah.in/memes-8" class="card-img-top" alt="..." />
+    <img src="http://arah.in/memes-8" class="card-img-top"  alt="..." />
     <div class="card-body">
       <h5 class="card-title">Ini adalah title</h5>
       <h5 class="card-subtitle mb-2">
@@ -26,7 +26,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  
+};
 </script>
 
 <style>

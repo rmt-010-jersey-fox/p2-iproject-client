@@ -8,3 +8,6 @@ export const SET_MEMES = (state, memes) => {
 export const SET_MEMEBYID = (state, item) => {
     state.item = item
 }
+export const SET_USERMEMES = (state, usermeme) => {
+    state.usermeme = usermeme
+}
