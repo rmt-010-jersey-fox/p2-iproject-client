@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <!-- CSS Animate -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Qurantara</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="sticky-top">
+      <nav
+        class="navbar navbar-expand-lg navbar-light shadow"
+        style="background-color: #ebf9f8"
+      >
+        <div class="container">
+          <a
+            class="navbar-brand"
+            href="#"
+            style="font-weight: bold; color: #3e9ca5"
+            >Qurantara</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle primer-color"
+                  style="color: #3e9ca5"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Al-Quran
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item primer-color" href="#"
+                      >Baca Al-Quran</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item primer-color" href="#"
+                      >Belajar Al-Quran</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item primer-color" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link primer-color" style="color: #3e9ca5" href="#"
+                  >Hadist</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link primer-color" style="color: #3e9ca5" href="#"
+                  >Jadwal Solat</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link primer-color" style="color: #3e9ca5" href="#"
+                  >Tentang</a
+                >
+              </li>
+            </ul>
+            <div>
+              <button class="btn btn-outline-primer">Login</button>
+              <button class="btn btn-primer">Register</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Carousel -->
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="height: 60vh">
+            <img
+              src="https://images.unsplash.com/photo-1596125160970-6f02eeba00d3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+              class="d-block w-100 img-fluid"
+              alt="Al-Quran"
+            />
+            <div
+              class="carousel-caption d-none d-md-block title-slide text-start"
+            >
+              <h1>Al-Quran</h1>
+              <p>
+                Kitab (Al-Qur'an) ini tidak ada keraguan padanya; petunjuk bagi
+                <br />
+                mereka yang bertakwa. (Q.S A-Baqarah: 2)
+              </p>
+              <p>
+                <a class="btn btn-primer" href="#">Baca Quran</a>
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item" style="height: 60vh">
+            <img
+              src="https://images.unsplash.com/photo-1573322867455-fc97c490c14c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+              class="d-block w-100 img-fluid"
+              alt="..."
+            />
+            <div
+              class="carousel-caption d-none d-md-block title-slide text-start"
+            >
+              <h1>Al-Hadist</h1>
+              <p>
+                "Belajarlah kamu semua, dan mengajarlah kamu semua, dan <br />
+                hormatilah guru-gurumu, serta berlaku baiklah terhadap orang
+                <br />
+                yang mengajarkanmu." (HR Tabrani)
+              </p>
+              <p>
+                <a class="btn btn-primer" href="#">Baca Hadist</a>
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item" style="height: 60vh">
+            <img
+              src="https://images.unsplash.com/photo-1559353679-2693987e9656?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+              class="d-block w-100 img-fluid"
+              alt="..."
+            />
+            <div
+              class="carousel-caption d-none d-md-block title-slide text-start"
+            >
+              <h1>Third slide label</h1>
+              <p>
+                Some representative placeholder content for the third slide.
+              </p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- Fitur -->
+      <div class="container mt-5 mb-5 text-center" style="height: 40vh">
+        <div class="row">
+          <div class="col animate__pulse">
+            <img
+              class="mb-3"
+              src="./assets/icon/Group.png"
+              alt=""
+              style="height: 150px"
+            />
+            <h4 style="color: #3e9ca5">Al-Quran</h4>
+          </div>
+          <div class="col">
+            <img
+              class="mb-3"
+              src="./assets/icon/icon-many-quran.svg"
+              alt=""
+              style="height: 150px"
+            />
+            <h4 style="color: #3e9ca5">Hadist</h4>
+          </div>
+          <div class="col">
+            <img
+              class="mb-3"
+              src="./assets/icon/icon-kabah.svg"
+              alt=""
+              style="height: 150px"
+            />
+            <h4 style="color: #3e9ca5">Jadwal Solat</h4>
+          </div>
+          <div class="col">
+            <img
+              class="mb-3"
+              src="./assets/icon/icon-hadits-open.svg"
+              alt=""
+              style="height: 150px"
+            />
+            <h4 style="color: #3e9ca5">Doa-doa Harian</h4>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Login -->
+    <div id="form-login">
+      <div class="container mt-5 md-5">
+        <div class="row align-items-center">
+          <div class="col-md-8 text-center">
+            <div class="container">
+              <img src="./assets/icon/5131730.jpg" alt="" style="height: 400px;">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-light border-radius shadow" style="height: 400px;">
+              <div class="card-body">
+                <form @submit.prevent="login" id="login">
+                  <center>
+                    <h3
+                      class="mb-3 mt-3"
+                      style="font-weight: bold; color: #3e9ca5"
+                    >
+                      Login User
+                    </h3>
+                    <hr style="border: 1px solid black" />
+                  </center>
+                  <div class="mb-3">
+                    <label for="email" class="form-label"
+                      >Email address:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      v-model="email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      v-model="password"
+                      required
+                    />
+                  </div>
+                  <div class="row">
+                    <div class="col d-grid gap-2">
+                      <button type="submit" class="btn btn-primer">
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <hr />
+                <div>
+                  <p>Don't Have Any Account ? <a href="#form-register">Register</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Register  -->
+    <div id="form-register">
+      <div class="container mt-5 mb-5">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card bg-light border-radius shadow" style="height: 400px;">
+              <div class="card-body">
+                <form @submit.prevent="register" id="register">
+                  <center>
+                    <h3 class="mb-3 mt-3" style="font-weight: bold; color: #3e9ca5">
+                      Register User
+                    </h3>
+                    <hr style="border: 1px solid black" />
+                  </center>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email address:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      v-model="email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      v-model="password"
+                      required
+                    />
+                  </div>
+                  <div class="col d-grid gap-2">
+                    <button type="submit" class="btn btn-primer">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+                <hr />
+                <div>
+                  <p>I Have Account ! <a href="#form-login">Login</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 text-center">
+            <div class="container">
+              <img src="./assets/icon/5138493.jpg" alt="" style="height: 400px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Search Quran -->
+    <div class="container mt-5 mb-5">
+      <div class="row shadow" >
+        <div class="col-6">
+          <img class="border-radius" src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" alt="" style="height: 400px;">
+        </div>
+        <div class="col-6 border-radius shadow" style="background-color: #3e9ca5">
+          <h3 class="text-center mt-3" style="color: white; font-weight: bold">Cari Surah</h3>
+          <hr style="border: 3px solid rgb(255, 255, 255)" />
+          <form action="">
+            <div class="mb-3">
+              <label for="surah" class="form-label" style="color: white">Surat:</label>
+              <input
+                type="number"
+                class="form-control"
+                v-model="surah"
+                required
+              />
+              <div class="form-text" style="color: white">Referensi nomor surat (1-114) <a  target="_blank" href="https://id.wikipedia.org/wiki/Surah">Link</a></div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label" style="color: white">Nomor Ayat:</label>
+              <input
+                type="number"
+                class="form-control"
+                v-model="ayat"
+                required
+              />
+            </div>
+            <div class="col d-grid gap-2">
+              <button type="submit" class="btn btn-warning">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Jadwal Solat -->
+    <div class="container">
+      <div class="row">
+        <div class="col border-radius shadow" style="background-color: #EBF9F8">
+          <h3 class="text-center mt-3" style="font-weight: bold; color: #3e9ca5">Jadwal Solat</h3>
+          <hr style="border: 2px solid #3e9ca5" />
+          <h4>Date: 21/04/2021</h4>
+          <h4>Location: Jakarta</h4>
+          <table class="table text-center">
+            <thead style="background-color: #3e9ca5">
+              <tr>
+                <th scope="col">Imsak</th>
+                <th scope="col">Subuh</th>
+                <th scope="col">Terbit</th>
+                <th scope="col">Dhuha</th>
+                <th scope="col">Zuhur</th>
+                <th scope="col">Ashar</th>
+                <th scope="col">Magrib</th>
+                <th scope="col">Isya</th>
+              </tr>
+            </thead>
+            <tbody style="background-color: white">
+              <tr>
+                <td>04:27</td>
+                <td>04:37</td>
+                <td>05:50</td>
+                <td>06:18</td>
+                <td>11:55</td>
+                <td>15:14</td>
+                <td>17:53</td>
+                <td>19:03</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row mb-3">
+            <div class="col mb-2">
+              Cek jadwal daerah lain:
+            </div>
+            <form action="" class="row">
+              <div class="col">
+                <input type="text" class="form-control" id="input-kota" placeholder="Nama Kota">
+              </div>
+              <div class="col">
+                <input type="date" class="form-control" id="input-tanggal" placeholder="Tanggal">
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-warning">Lihat</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Hadist Quran -->
+    <div class="container mt-5 mb-5">
+      <div class="row shadow">
+        <div class="col-6">
+          <img class="border-radius" src="./assets/icon/hadist.jpg" alt="" style="height: 400px;">
+        </div>
+        <div class="col-6 shadow border-radius" style="background-color: #3e9ca5">
+          <h3 class="text-center mt-3" style="color: white; font-weight: bold">Cari Hadist</h3>
+          <hr style="border: 3px solid rgb(255, 255, 255)" />
+          <form action="">
+            <div class="mb-3">
+              <label for="kitab-hadist" class="form-label" style="color: white">Kitab Hadist:</label>
+              <select id="kitab-hadist" class="form-select" required>
+                <option selected disabled>Select Hadist</option>
+                <option value="bukhari">Bukhari</option>
+                <option value="ahmad">Ahmad</option>
+                <option value="muslim">Muslim</option>
+                <option value="abu-daud">Abu Daud</option>
+                <option value="darimi">Darimi</option>
+                <option value="ibnu-maja">Ibnu Maja</option>
+                <option value="nasai">Nasai</option>
+                <option value="malik">Malik</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label" style="color: white">Nomor Hadist:</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="nomor"
+                required
+              />
+            </div>
+            <div class="col d-grid gap-2">
+              <button type="submit" class="btn btn-warning">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Daftar List Al-Quran -->
+		<div class="container mb-5">
+			<div class="row border-radius shadow" style="background-color: #EBF9F8">
+					<div class="text-center mt-4">
+						<h1 style="font-weight: bold; color: #3e9ca5" >All Surah</h1>
+						<hr class="garis-gelap">
+					</div>
+				<!-- Card Surah -->
+				<div class="row text-center">
+					<div class="col-3 mb-3 border-radius">
+						<div class="card border-radius shadow" style="width: 16rem;">
+							<div class="card-body">
+								<h5 class="card-title" style="font-weight: bold;">1. Surah Al-Fatihah (Pembuka)</h5>
+								<p class="card-text">Makkiyah</p>
+								<p class="card-text">Jumah : 7 Ayat</p>
+                <div>
+                  <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-book-half"></i> Read</a>
+                  <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-bookmark-heart"></i> Favorite</a>
+                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- List Surah Al-Quran -->
+		<div class="container mb-5">
+			<div class="row border-radius shadow" style="background-color: #3e9ca5">
+					<div class="text-center mt-4">
+						<h1 style="font-weight: bold; color: white" >Surah Al-Fatihah</h1>
+						<hr class="garis">
+					</div>
+				<!-- Card Surah -->
+        <div class="col">
+					<!-- Tabel Ayat -->
+					<table class="table table-light table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Ayat</th>
+								<th scope="col">Arab</th>
+								<th scope="col">Sounds</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>
+                  <p>
+                    <q>
+                    ﻿بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                    </q>
+                  </p>
+                  <p>Bismillaahir Rahmaanir Raheem</p>
+                  <p>Artinya: Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</p>
+                </td>
+								<td>
+                  <audio controls>
+                    <source src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3" type="audio/mpeg">
+                  </audio>
+                </td>
+							</tr>
+              <tr>
+								<th scope="row">2</th>
+								<td>
+                  <p>
+                    <q>
+                      الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+                    </q>
+                  </p>
+                  <p>Alhamdu lillaahi Rabbil 'aalameen</p>
+                  <p>Artinya: Segala puji bagi Allah, Tuhan seluruh alam.</p>
+                </td>
+								<td>
+                  <audio controls>
+                    <source src="https://cdn.islamic.network/quran/audio/128/ar.alafasy/2.mp3" type="audio/mpeg">
+                  </audio>
+                </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+    <!-- Daftar List Al-Quran Favorite -->
+		<div class="container mb-5">
+			<div class="row border-radius shadow" style="background-color: #EBF9F8">
+					<div class="text-center mt-4">
+						<h1 style="font-weight: bold; color: #3e9ca5" >My Favorites Surah</h1>
+						<hr class="garis-gelap">
+					</div>
+				<!-- Card Surah -->
+				<div class="row text-center">
+					<div class="col-3 mb-3 border-radius">
+						<div class="card border-radius shadow" style="width: 16rem;">
+							<div class="card-body">
+								<h5 class="card-title" style="font-weight: bold;">1. Surah Al-Fatihah (Pembuka)</h5>
+								<p class="card-text">Makkiyah</p>
+								<p class="card-text">Jumah : 7 Ayat</p>
+                <div>
+                  <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-book-half"></i> Read</a>
+                  <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></i> Remove</a>
+                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <!-- Hadist Hasil Search -->
+		<div class="container mb-5">
+			<div class="row border-radius shadow" style="background-color: #3e9ca5">
+					<div class="text-center mt-4">
+						<h1 style="font-weight: bold; color: white" >Hadist</h1>
+						<hr class="garis">
+					</div>
+				<!-- Card Hadist -->
+        <div class="col mb-3">
+          <div class="card">
+            <div class="card-header">
+              H.R Muslim No. 1
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p><q>
+                  وَهُوَ الْأَثَرُ الْمَشْهُورُعَنْ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مَنْ حَدَّثَ عَنِّي بِحَدِيثٍ يُرَى أَنَّهُ كَذِبٌ فَهُوَ أَحَدُ الْكَاذِبِينَ حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ حَدَّثَنَا وَكِيعٌ عَنْ شُعْبَةَ عَنْ الْحَكَمِ عَنْ عَبْدِ الرَّحْمَنِ بْنِ أَبِي لَيْلَى عَنْ سَمُرَةَ بْنِ جُنْدَبٍ ح و حَدَّثَنَا أَبُو بَكْرِ بْنُ أَبِي شَيْبَةَ أَيْضًا حَدَّثَنَا وَكِيعٌ عَنْ شُعْبَةَ وَسُفْيَانَ عَنْ حَبِيبٍ عَنْ مَيْمُونِ بْنِ أَبِي شَبِيبٍ عَنْ الْمُغِيرَةِ بْنِ شُعْبَةَ قَالَا قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ذَلِكَ
+                </q></p>
+                <p>
+                  Artinya: 
+                  "Dan ia merupakan atsar yang masyhur dari Rasulullah shallallahu 'alaihi wasallam, \"Barangsiapa menceritakan hadits dariku, yang mana riwayat itu diduga adalah kebohongan, maka dia (perawi) adalah salah satu dari para pembohong tersebut.\" Telah menceritakan kepada kami [Abu Bakar bin Abu Syaibah] telah menceritakan kepada kami [Waki'] dari [Syu'bah] dari [al Hakam] dari [Abdurrahman bin Abu Laila] dari [Samurah bin Jundab]. (dalam riwayat lain disebutkan) dan juga telah menceritakan kepada kami [Abu Bakar bin Abu Syaibah] telah menceritakan kepada kami [Waki'] dari [Syu'bah] dan [Sufyan] dari [Habib] dari [Maimun bin Abu Syabib] dari [al-Mughirah bin Syu'bah] keduanya berkata, \"Rasulullah shallallahu 'alaihi wasallam bersabda tentang hal tersebut.\""
+                </p>
+                <footer class="blockquote-footer">H.R Muslim No. 1</footer>
+              </blockquote>
+            </div>
+          </div>
+				</div>
+			</div>
+		</div>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
