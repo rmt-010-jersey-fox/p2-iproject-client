@@ -4,6 +4,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Comment from '../views/Comment.vue'
+import Action from '../views/Action.vue'
+import AddComment from '../views/AddComment.vue'
+import EditComment from '../views/EditComment.vue'
 
 
 Vue.use(VueRouter)
@@ -28,6 +31,21 @@ const routes = [
     path: '/comment',
     name: 'Comment',
     component: Comment
+  },
+  {
+    path: '/action',
+    name: 'Action',
+    component: Action
+  },
+  {
+    path: '/addComment',
+    name: 'AddComment',
+    component: AddComment
+  },
+  {
+    path: '/editComment/:id',
+    name: 'EditComment',
+    component: EditComment
   },
   {
     path: '/about',

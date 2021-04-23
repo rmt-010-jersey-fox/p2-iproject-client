@@ -18,7 +18,7 @@
                   <a style="color:#8167a9;" :href="article.url" target="_blank">Read Full Article</a>
                 </div>
               </li>
-                  <button type="button" @click.prevent="comments" class="btn btn-dark">Discuss This Article Here</button>
+                  <button type="button" @click.prevent="addComment(article.title)" class="btn btn-dark">Discuss This Article Here</button>
             </ul>
           </div>		
         </div>
@@ -29,6 +29,12 @@
 
 export default {
   name: 'Home',
+  methods: {
+    addComment(title) {
+      console.log(title, "di home comment")
+      this.$store.commit('showComment', title)
+    }
+  },
   computed: {
     articles() {
       // console.log(this.$store.state.articles, "computed")

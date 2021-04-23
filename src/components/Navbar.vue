@@ -20,8 +20,9 @@
                   </li>
 
 
-                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+                  <!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                    @click.prevent="changePage('/action')"
                     >What Can We Do</a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">Action</a>
@@ -29,7 +30,7 @@
                       <a class="dropdown-item" href="#">Something else here</a>
                       <a class="dropdown-item" href="#">Another action</a>
                     </div>
-                  </li>
+                  </li> -->
                   <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                     <a
                      class="nav-link"
@@ -68,7 +69,7 @@ export default {
  methods: {
     logout() {
         localStorage.clear()
-        this.$router.push('/')
+        this.$router.push('/login')
     },
     changePage(val) {
       this.$router.push(val)
