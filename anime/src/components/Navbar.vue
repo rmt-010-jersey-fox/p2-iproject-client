@@ -1,12 +1,9 @@
 <template>
-  <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation" style="background: linear-gradient(
-    90deg,
-    rgb(176, 118, 243) 0%,
-    rgb(218, 126, 241) 35%
-  )">
+  <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <div class="navbar-item">
-          <h4 class="navbar-item title is-4 has-text-dark">Anime News</h4>
+        <div class="navbar-item pr-0">
+          <router-link class="navbar-item title is-4 has-text-dark" to="/">Anime News
+          </router-link>
         </div>
 
         <a role="button" @click.prevent= "active" :class= "class1" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -20,15 +17,25 @@
         <div class="navbar-start">
           <div class="buttons">
           <router-link class="button is-large is-light" v-if="isLogin" to="/addAnime">
-            <span class="icon is-large">
+                <span class="icon is-large">
                   <i class="fas fa-heart"></i>
+                </span>
+          </router-link>
+          <router-link class="button is-large is-light" v-if="isLogin" to="/quotes">
+              <span>
+                    <i class="fas fa-paw"></i>
+                </span>
+          </router-link>
+          <router-link class="button is-large is-light" v-if="isLogin" to="/manga">
+              <span>
+                    <i class="fab fa-mandalorian"></i>
                 </span>
           </router-link>
           </div>
         </div>
 
         <div class="navbar-end">
-          <h6 class="navbar-item is-italic has-text-centered" v-if="isLogin">Welcome, {{username}} Have a nice day! 😍 </h6>
+          <h6 class="navbar-item is-italic has-text-centered" v-if="isLogin">Welcome, Have a nice day! 😍 </h6>
           <div class="navbar-item">
             <div class="buttons">
               <button class="navbar-item button is-danger" v-if="isLogin" @click.prevent="logout">Logout</button>
@@ -71,7 +78,7 @@ export default {
         if (result.isConfirmed) {
           this.$swal.fire(
             'logging out',
-            'Thank you admin, have a nice day',
+            'Thank you bro, have a nice day',
             'success'
           )
           this.$store.commit('CHANGE_IS_LOGIN', false)

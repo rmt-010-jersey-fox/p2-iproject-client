@@ -9,7 +9,7 @@
       <div class="box">
         <div class="columns">
           <div class="column is-8">
-            <p class="title is-4 pb-1">{{list.name}}</p>
+            <p class="title is-4 pb-1">{{list.title}}</p>
             <ol class="subtitle" style="list-style-type: none" >
               <li class="is-size-6"><b>status :</b> <b>{{list.status}}</b></li>
               <li class="is-size-6"><b>duration :</b> <b>{{list.duration}}</b></li>
@@ -84,14 +84,6 @@ export default {
     }
   },
   props: ['list']
-  // computed: {
-  //   priceRp: function () {
-  //     let rupiah = ''
-  //     const priceReverse = this.list.price.toString().split('').reverse().join('')
-  //     for (let i = 0; i < priceReverse.length; i++) if (i % 3 === 0) rupiah += priceReverse.substr(i, 3) + '.'
-  //     return 'Rp. ' + rupiah.split('', rupiah.length - 1).reverse().join('')
-  //   }
-  // }
 }
 </script>
 

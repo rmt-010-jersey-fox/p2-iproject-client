@@ -80,8 +80,8 @@ export default {
         //   this.$store.commit('FETCH_PRODUCTS', res.data)
           this.$swal.fire({
             icon: 'success',
-            title: `Welcome, ${localStorage.username}`,
-            text: 'Happy Shopping!',
+            title: 'Welcome, Brother',
+            text: 'Nice to meet you',
             timer: 5000
           })
           this.$router.push('/')

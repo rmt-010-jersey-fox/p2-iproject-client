@@ -6,6 +6,8 @@ import Register from '../views/Register.vue'
 import AddAnime from '../views/AddAnime.vue'
 import NotFound from '../views/NotFound.vue'
 import EditAnime from '../views/EditAnime.vue'
+import Quotes from '../views/Quotes.vue'
+import Manga from '../views/Manga.vue'
 
 Vue.use(VueRouter)
 
@@ -47,6 +49,16 @@ const routes = [
     path: '*',
     name: 'NotFound',
     component: NotFound
+  },
+  {
+    path: '/quotes',
+    name: 'Quotes',
+    component: Quotes
+  },
+  {
+    path: '/manga',
+    name: 'Manga',
+    component: Manga
   }
 ]
 
@@ -56,11 +68,11 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   const authenticated = localStorage.access_token
-//   if (to.name !== 'Login' && !authenticated) next({ name: 'Login' })
-//   else if (to.name === 'Login' && authenticated) next({ next: 'Home' })
-//   else next()
-// })
+router.beforeEach((to, from, next) => {
+  const authenticated = localStorage.access_token
+  if (to.name !== 'Login' && to.name === 'Home' && to.name !== 'Register' && !authenticated) next({ name: 'Login' })
+  else if (to.name === 'Login' && to.name === 'Register' && authenticated) next({ next: 'Home' })
+  else next()
+})
 
 export default router

@@ -32,7 +32,7 @@
             <div class="field">
               <label class="label">score</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Input score Anime" v-model= "score">
+                <input class="input" type="number" placeholder="Input score Anime" v-model= "score">
               </div>
             </div>
             <div class="field is-grouped">
@@ -77,7 +77,7 @@ export default {
           this.$swal.fire({
             icon: 'success',
             title: 'Add success',
-            text: `Successing add Anime "${res.data.name}"`,
+            text: `Successing add Anime "${res.data.title}"`,
             timer: 5000
           })
           this.$store.dispatch('fetchAnime')

@@ -3,7 +3,7 @@
     <div style="height: 1rem"/>
     <div class="container  is-flex is-align-items-center is-justify-content-center" style="min-height: 100vh">
       <div class="column p-5 is-6">
-          <form class="box" @submit.prevent= "editAnime(anime)">
+          <form class="box" @submit.prevent= "editAnime">
             <h5 class="subtitle is-5">Edit the Anime here:</h5>
             <div class="field">
               <label class="label">title</label>
@@ -20,19 +20,19 @@
             <div class="field">
               <label class="label">Status</label>
               <div class="control">
-                <input class="input" type="number" placeholder="Edit Status" v-model= "animeStatus">
+                <input class="input" type="text" placeholder="Edit Status" v-model= "animeStatus">
               </div>
             </div>
             <div class="field">
               <label class="label">Duration</label>
               <div class="control">
-                <input class="input" type="number" placeholder="Edit Duration" v-model= "animeDuration">
+                <input class="input" type="text" placeholder="Edit Duration" v-model= "animeDuration">
               </div>
             </div>
             <div class="field">
               <label class="label">Score</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Edit Score" v-model= "animeScore">
+                <input class="input" type="number" placeholder="Edit Score" v-model= "animeScore">
               </div>
             </div>
             <div class="field is-grouped">
@@ -53,14 +53,14 @@
 export default {
   name: 'EditAnime',
   methods: {
-    editAnime (value) {
+    editAnime () {
       const obj = {
         id: this.$route.params.id,
-        title: value.title,
-        image_url: value.image_url,
-        status: value.status,
-        duration: value.duration,
-        score: value.score
+        title: this.$store.state.anime.title,
+        image_url: this.$store.state.anime.image_url,
+        status: this.$store.state.anime.status,
+        duration: this.$store.state.anime.duration,
+        score: this.$store.state.anime.score
       }
       // console.log(obj)
       this.$store.dispatch('editAnime', obj)
