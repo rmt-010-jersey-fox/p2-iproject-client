@@ -1,0 +1,61 @@
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+.primer-color {
+  color: #3e9ca5;
+}
+
+.primer-color:hover {
+  background-color: rgba(84, 189, 199, 0.164);
+  color: #3e9ca5;
+  border-radius: 5px;
+}
+
+.border-radius {
+  border-radius: 10px;
+}
+
+.garis {
+  border: 2px solid #ffffff;
+  border-radius: 3px;
+}
+
+.garis-gelap {
+  border: 2px solid #3e9ca5;
+  border-radius: 3px;
+}
+
+q {
+  quotes:"\201C" "\201D";
+ font-family:Droid Arabic Naskh, san-serif;
+ font-size:26px;
+}
+
+.btn-primer {
+  background-color: #3e9ca5;
+  color: #fff;
+  border: 1px solid #3e9ca5;
+}
+
+.btn-primer:hover {
+  background-color: #317f86;
+  color: #fff;
+  border: 1px solid #317f86;
+}
+
+.btn-outline-primer {
+  color: #3e9ca5;
+  background-color: none;
+  border: 1px solid #3e9ca5;
+}
+
+.btn-outline-primer:hover {
+  background-color: #3e9ca5;
+  color: #fff;
+  border: 1px solid #3e9ca5;
+}
+
+.title-slide h1 {
+  font-weight: bold;
+}
