@@ -1,16 +1,17 @@
 <template>
   <section>
-    <h3 class="subtitle">With Material Design Icons</h3>
     <form @submit.prevent="onSubmit">
       <b-field>
         <b-input
           placeholder="Search..."
           type="search"
           icon="magnify"
+          v-model="keywords"
           icon-clickable
           @icon-click="searchIconClick"
         >
         </b-input>
+        <b-button native-type="submit">search</b-button>
       </b-field>
     </form>
   </section>
@@ -19,9 +20,17 @@
 <script>
 export default {
   name: "Search",
+  data() {
+    return {
+      keywords: "",
+    };
+  },
   methods: {
+    onSubmit() {
+      this.$store.dispatch("getSearchList", this.keywords);
+    },
     searchIconClick() {
-      alert("You wanna make a search?");
+      this.onSubmit();
     },
     clearIconClick() {
       this.email = "";

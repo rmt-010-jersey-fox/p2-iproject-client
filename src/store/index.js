@@ -18,9 +18,12 @@ export default new Vuex.Store({
     sidebarOpen: false,
     news: {},
     readlists: [],
-    location: {},
+    searchList: [],
   },
   mutations: {
+    SET_SEARCHLIST(state, payload) {
+      state.searchList = payload;
+    },
     SET_READLISTS(state, payload) {
       state.readlists = payload;
     },
@@ -49,6 +52,22 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    getSearchList(context, payload) {
+      const keywordsURI = encodeURI(payload);
+      fetch(`${CURRENTSAPI_URL}?keywords=${keywordsURI}&apiKey=${API_KEY}`)
+        .then((r) => r.json())
+        .then((data) => {
+          context.commit("SET_SEARCHLIST", data.news);
+        })
+        .then(() => {
+          const currentRoute = router.currentRoute;
+
+          if (currentRoute.name !== "SearchPage") {
+            console.log(currentRoute);
+            router.push({ path: "/search" });
+          }
+        });
+    },
     erasedNews(context, payload) {
       const id = payload;
       fetch(`${SERVER_URL}/readlists/${id}`, {

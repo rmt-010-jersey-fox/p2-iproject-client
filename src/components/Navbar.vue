@@ -25,13 +25,16 @@
       >
         <b-button type="is-light">Sign Up</b-button>
       </b-navbar-item>
+      <b-navbar-item> <Search> </Search> </b-navbar-item>
     </template>
   </b-navbar>
 </template>
 
 <script>
+import Search from "../components/Search";
 export default {
   name: "Navbar",
+  components: { Search },
   methods: {
     sidebarOpen() {
       this.$store.commit("SIDEPANEL_CTRL");

@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Readlists from "../views/Readlists.vue";
 import Signin from "../views/Signin.vue";
 import Signup from "../views/Signup.vue";
+import SearchPage from "../views/SearchPage.vue";
 
 Vue.use(VueRouter);
 
@@ -13,7 +14,11 @@ const routes = [
     name: "Home",
     component: Home,
   },
-
+  {
+    path: "/search",
+    name: "SearchPage",
+    component: SearchPage,
+  },
   {
     path: "/readlists",
     name: "Readlists",
