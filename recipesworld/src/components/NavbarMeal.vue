@@ -1,6 +1,6 @@
 <template>
         <!-- Food Navbar -->
-    <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="container-fluid navbar navbar-expand-lg navbar-dark" style="background-color:#540b0e" >
       <div class="container-fluid">
         <router-link to="/" class="navbar-brand" href="#">Home</router-link>
         <router-link to="/meals" class="navbar-brand" href="#">Meals</router-link>

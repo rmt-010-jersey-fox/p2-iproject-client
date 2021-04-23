@@ -4,7 +4,7 @@
     :mealsCategories="mealsCategories"
     />
     <!-- Recipes Cards -->
-    <div class="container" style="color: bisque;">
+    <div class="container" style="color: black;">
       <h1>{{category}}</h1>
       <div class="row">
         <MealsCard

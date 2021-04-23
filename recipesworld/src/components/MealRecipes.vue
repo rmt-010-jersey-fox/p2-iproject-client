@@ -1,6 +1,6 @@
 <template>
     <!-- Meals -->
-    <div class="container" style="color: bisque;">
+    <div class="container" style="color: black;">
       <div class = "text-center mt-5">
         <h1>{{recipes.name}}</h1>
       </div>
@@ -15,7 +15,7 @@
 
         <div class="col-md-4">
           <h5>
-            Ingridients:
+            Ingredients:
           </h5>
            <div
            v-for="(ingridient, i) in recipes.ingridients"

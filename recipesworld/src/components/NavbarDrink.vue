@@ -1,6 +1,6 @@
 <template>
   <!-- Drink Navbar -->
-  <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="container-fluid navbar navbar-expand-lg navbar-dark" style="background-color:#540b0e">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand" href="#">Home</router-link>
       <router-link to="/drinks" class="navbar-brand" href="#">Drinks</router-link>
@@ -26,15 +26,15 @@
         </form> -->
       </div>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <router-link to="/login" class="btn btn-danger" aria-current="page" href="#" v-if="!isLogin">Login</router-link>
-            <a @click="logout" class="btn btn-danger" aria-current="page" href="#" v-else-if="isLogin">Logout</a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <router-link to="/login" class="nav-link active" aria-current="page" href="#" v-if="!isLogin">Login</router-link>
+              <a @click="logout" class="nav-link active" aria-current="page" href="#" v-else-if="isLogin">Logout</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
   </nav>
 </template>
 

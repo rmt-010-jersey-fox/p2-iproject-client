@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-4 p-5">
     <img :src="meal.strMealThumb" width="300">
-    <h5 @click="searchedMeal(meal.strMeal)" class="mt-3">{{meal.strMeal}}</h5>
+    <h5 @click="searchedMeal(meal.strMeal)" class="mt-3"><u>{{meal.strMeal}}</u></h5>
   </div>
 </template>
 
