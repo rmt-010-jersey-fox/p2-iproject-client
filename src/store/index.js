@@ -26,7 +26,8 @@ const store = new Vuex.Store({
     cards: [],
     carts: [],
     booking: {},
-    serviceId: undefined
+    serviceId: undefined,
+    appointment: {}
   },
   mutations: {
     setLogin (state, payload) {
@@ -43,6 +44,9 @@ const store = new Vuex.Store({
     },
     setBooking (state, payload) {
       state.booking = payload
+    },
+    setAppointment (state, payload) {
+      state.appointment = payload.appointment
     },
     setServiceId (state, payload) {
       state.serviceId = payload
@@ -131,6 +135,47 @@ const store = new Vuex.Store({
           })
         })
     },
+    fetchAppointment (context) {
+      axios({
+        method: 'GET',
+        url: '/appointments',
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+        .then(({ data }) => {
+          context.commit('setAppointment', { appointment: data })
+        })
+        .catch(err => {
+          toast.fire({
+            icon: 'error',
+            title: err.response.data.message,
+            background: 'mistyrose'
+          })
+        })
+    },
+    deleteAppointment (context) {
+      if (confirm('Cancel This Appointment?')) {
+        axios({
+          method: 'DELETE',
+          url: '/appointments',
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
+          .then(({ data }) => {
+            context.commit('setAppointment', {})
+            router.push({ name: 'Home' })
+          })
+          .catch(err => {
+            toast.fire({
+              icon: 'error',
+              title: err.response.data.message,
+              background: 'mistyrose'
+            })
+          })
+      }
+    },
     formAppointment (context, id) {
       context.commit('setServiceId', id)
       router.push({ name: 'Add' })
@@ -143,21 +188,21 @@ const store = new Vuex.Store({
           access_token: localStorage.access_token
         },
         data: {
-          ServiceId: payload.ServiceId,
-          BarberId: payload.username,
+          ServiceId: context.state.serviceId,
+          BarberId: payload.BarberId,
           date: payload.date,
           scheduleStart: payload.scheduleStart
         }
       })
         .then(({ data }) => {
-          router.push({ name: 'Home' })
-
           toast.fire({
             icon: 'success',
             iconColor: 'blue',
             title: 'Success, you ready have an Appointment!',
             background: 'azure'
           })
+          this.fetchAppointment()
+          router.push({ name: 'Home' })
         })
         .catch((err) => {
           toast.fire({

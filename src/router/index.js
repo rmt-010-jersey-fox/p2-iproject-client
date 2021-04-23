@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Appointment from '../views/Appointment.vue'
 import Register from '../views/Register.vue'
 import Booking from '../views/Booking.vue'
 import Add from '../views/Add.vue'
@@ -23,6 +24,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
+  },
+  {
+    path: '/appointment',
+    name: 'Appointment',
+    component: Appointment
   },
   {
     path: '/booking',

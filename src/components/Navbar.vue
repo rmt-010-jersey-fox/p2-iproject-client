@@ -11,7 +11,9 @@
       </router-link>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item"><a v-if="isLogin" class="nav-link js-scroll-trigger" href="#appointment">Appointment</a></li>
+          <router-link :to="{ name: 'Appointment' }">
+            <li class="nav-item"><a v-if="isLogin" class="nav-link js-scroll-trigger" href="#appointment">Appointment</a></li>
+          </router-link>
           <router-link :to="{ name: 'Register' }">
             <li class="nav-item"><a v-if="!isLogin" class="nav-link js-scroll-trigger" href="#register">Register</a></li>
           </router-link>
