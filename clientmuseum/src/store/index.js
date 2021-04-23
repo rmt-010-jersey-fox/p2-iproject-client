@@ -16,11 +16,18 @@ export default new Vuex.Store({
   actions: {
     fecthArt(context){
       axios
-        .get('/artworks')
+        .get('/artworks',{
+          headers: {
+            access_token: localStorage.access_token
+            }
+        })
         .then(({data})=>{
           context.commit(`FETCH_ARTWORKS`, data)
         })
-        .catch(console.log)
+        .catch((err)=>{
+      
+          console.log(err,'>>>>>>>>>>');
+        })
     },
     loginForm(context,payload){
       axios
@@ -31,7 +38,21 @@ export default new Vuex.Store({
           localStorage.setItem('access_token', data.access_token)
           router.push('/')
         })
-        .catch(console.log)
+        .catch((err)=>{
+          console.log(err);
+        })
+    },
+    registerForm(context, payload){
+     
+      axios
+        .post('/register', payload)
+        .then(({data})=>{
+          // console.log(data);
+          router.push('/login')
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
     }
   },
   modules: {

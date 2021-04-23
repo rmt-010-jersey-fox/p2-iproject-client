@@ -1,9 +1,8 @@
 <template>
   <div>
-      
-    
+   
     <carousel>
-      <div 
+       <div 
       v-for="artwork in artworks"
       :key="artwork.id">
         <div class="card" >
@@ -16,6 +15,8 @@
         </div>
       </div>
     </carousel>
+
+  
   </div>
 </template>
 
