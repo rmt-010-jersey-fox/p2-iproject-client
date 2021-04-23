@@ -187,39 +187,33 @@ export default new Vuex.Store({
               .then(function(response) {
                 return response.json();
               })
-              .then(function(data) {
+              .then(function(quote) {
                 const index = Math.floor((Math.random() * 1500) + 0)
-                console.log(data[index]);
+                console.log(quote[index]);
+                axios.put(`/booking/${id}`, {}, {
+                  headers : {
+                    token : localStorage.token
+                  }
+                })
+                .then((data)=> {
+                  Swal.fire(
+                    'You booking is canceled!',
+                    `${quote[index].text}`,
+                    'success'
+                  )
+                  resolve(data)
+                })
+                .catch(err => {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
+                  reject(err)
+                })
               });
-            Swal.fire(
-              'Canceled!',
-              'Your file has been deleted.',
-              'success'
-            )
           }
         })
-
-        // axios.put(`/booking/${id}`, {}, {
-        //   headers : {
-        //     token : localStorage.token
-        //   }
-        // })
-        // .then((data)=> {
-        //   Swal.fire({
-        //     icon: 'success',
-        //     title: 'Booking is canceled',
-        //     text: ':(',
-        //   })
-        //   resolve(data)
-        // })
-        // .catch(err => {
-        //   Swal.fire({
-        //     icon: 'error',
-        //     title: 'Oops...',
-        //     text: 'Something went wrong!',
-        //   })
-        //   reject(err)
-        // })
       })
     },
 
