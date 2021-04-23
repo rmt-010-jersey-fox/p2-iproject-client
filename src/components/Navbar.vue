@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a @click.prevent="backToHome" class="navbar-brand" style="cursor: pointer;">
       <img src="../../public/paperplane.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
       Trip-Planer
     </a>
@@ -28,6 +28,9 @@ export default {
     loggingOff () {
       localStorage.clear()
       this.$router.push('/login')
+    },
+    backToHome () {
+      this.$router.push('/')
     }
   }
 }

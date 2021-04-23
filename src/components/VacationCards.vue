@@ -78,7 +78,7 @@ export default {
       this.$router.push(`/edit-vacation/${this.vacation.id}`)
     },
     convert (value) {
-      console.log(value)
+      // console.log(value)
       return convertTime(value)
     },
     details () {

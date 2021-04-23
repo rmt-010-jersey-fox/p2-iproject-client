@@ -57,7 +57,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to.name, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PANAH NAVGUARD')
+  // console.log(to.name, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PANAH NAVGUARD')
   if ((to.name === 'Register' || to.name === 'Login') && localStorage.access_token) {
     next({ name: 'Home' })
   } else if ((to.name !== 'Register' && to.name !== 'Login') && !localStorage.access_token) {

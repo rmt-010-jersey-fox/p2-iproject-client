@@ -26,8 +26,10 @@
                 <label for="inputPassword">Password</label>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
-              <button class="btn btn-lg btn-warning btn-block text-uppercase" @click="goToLogin">Cancel</button>
+              <div style="display: flex; justify-content: space-around">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
+                <button class="btn btn-lg btn-warning btn-block text-uppercase" @click="goToLogin">Cancel</button>
+              </div>
             </form>
           </div>
         </div>

@@ -15,9 +15,10 @@
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" v-model="payload.password">
                 <label for="inputPassword">Password</label>
               </div>
-
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Login">Sign in</button>
-              <button class="btn btn-lg btn-success btn-block text-uppercase" @click="goToRegister">Register</button>
+              <div style="display: flex; justify-content: space-around">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Login">Sign in</button>
+                <button class="btn btn-lg btn-success btn-block text-uppercase" @click="goToRegister">Register</button>
+              </div>
             </form>
           </div>
         </div>

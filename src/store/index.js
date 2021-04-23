@@ -62,7 +62,11 @@ export default new Vuex.Store({
     },
     fetchPhotos (context, payload) {
       return axios
-        .get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${payload}&maxheight=1600&key=AIzaSyDdhXP71_k54Ne9EqpdixcsjyhqSAz9Yqc`)
+        .get(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${payload}&maxheight=1600&key=AIzaSyDdhXP71_k54Ne9EqpdixcsjyhqSAz9Yqc`, {
+          headers: {
+            access_token: localStorage.access_token
+          }
+        })
         .then(data => {
           context.commit('getPhotos', data)
         })
