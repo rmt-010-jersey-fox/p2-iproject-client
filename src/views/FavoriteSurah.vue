@@ -6,29 +6,40 @@
         <h1 style="font-weight: bold; color: #3e9ca5" >My Favorites Surah</h1>
         <hr class="garis-gelap">
       </div>
-    <!-- Card Surah -->
-    <div class="row text-center">
-      <div class="col-3 mb-3 border-radius">
-        <div class="card border-radius shadow" style="width: 16rem;">
-          <div class="card-body">
-            <h5 class="card-title" style="font-weight: bold;">1. Surah Al-Fatihah (Pembuka)</h5>
-            <p class="card-text">Makkiyah</p>
-            <p class="card-text">Jumah : 7 Ayat</p>
-            <div>
-              <a href="#" class="btn btn-warning btn-sm"><i class="bi bi-book-half"></i> Read</a>
-              <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Remove</a>
-            </div>
-          </div>
-        </div>
+      <div class="text-center mb-2">
+        <button class="btn btn-danger" @click.prevent='toHomePage'>Home</button>
       </div>
+    <!-- Card Favorite Surah -->
+    <div class="row text-center">
+      <CardFavSurah
+      v-for="favoriteSurah in favoriteSurahs"
+      :key="favoriteSurah.id"
+      :favoriteSurah="favoriteSurah"
+      ></CardFavSurah>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import CardFavSurah from '../components/CardFavSurah'
+
+
 export default {
-  name: 'FavoriteSurah'
+  name: 'FavoriteSurah',
+  components: {
+    CardFavSurah
+  },
+  computed: {
+    favoriteSurahs () {
+      return this.$store.state.favoriteSurahs
+    }
+  },
+  methods: {
+    toHomePage () {
+      this.$router.push('/').catch(() => {})
+    }
+  }
 }
 </script>
 

@@ -10,7 +10,8 @@ export default new Vuex.Store({
     ayatSurahs: [],
     hadists: [],
     jadwalSolat: {},
-    surahQurans: []
+    surahQurans: [],
+    favoriteSurahs: []
   },
   mutations: {
     FETCH_AYAT (state, data) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     FETCH_SURAH (state, data) {
       state.surahQurans = data
+    },
+    FETCH_FAV_SURAH (state, data) {
+      state.favoriteSurahs = data
     },
     FETCH_HADIST (state, data) {
       state.hadists = data
@@ -31,7 +35,7 @@ export default new Vuex.Store({
       axios.post('/login', payload)
         .then(({ data }) => {
           localStorage.setItem('access_token', data.access_token)
-          router.push('/')
+          router.push('/').catch(() => {})
 
           // Sweetalert
           const Toast = Swal.mixin({
@@ -67,7 +71,7 @@ export default new Vuex.Store({
       axios.post('/register', payload)
         .then(({ data }) => {
           console.log('Berhasil Register')
-          router.push('/login')
+          router.push('/login').catch(() => {})
 
           // Sweetalert
           const Toast = Swal.mixin({
@@ -104,7 +108,7 @@ export default new Vuex.Store({
         .then((response) => {
           console.log(response)
           localStorage.setItem('access_token', response.data.access_token)
-          router.push('/')
+          router.push('/').catch(() => {})
 
           // Sweetalert
           const Toast = Swal.mixin({
@@ -145,7 +149,23 @@ export default new Vuex.Store({
       .then((data) => {
         console.log(data.data)
         context.commit('FETCH_SURAH', data.data)
-        router.push('/allsurah')
+        router.push('/allsurah').catch(() => {})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },
+
+    fatchFavoriteSurah (context, payload) {
+      axios.get('/favorites', {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+      .then((data) => {
+        console.log(data.data)
+        context.commit('FETCH_FAV_SURAH', data.data)
+        router.push('/favoritesurah').catch(() => {})
       })
       .catch((err) => {
         console.log(err)
@@ -354,6 +374,24 @@ export default new Vuex.Store({
           title: 'Please try again',
           text: `${err.response.data.message}`
         })
+      })
+    },
+
+    deleteFavoriteSurah (context, payload) {
+      console.log(payload)
+
+      axios.delete(`/favorites/${payload.id}`, {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+      .then(({ data }) => {
+        console.log('Favorite Surah berhasil didelete')
+        context.dispatch('fatchFavoriteSurah')
+
+      })
+      .catch(err => {
+        console.log(err)
       })
     },
 

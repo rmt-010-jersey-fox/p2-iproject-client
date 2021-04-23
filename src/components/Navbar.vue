@@ -8,7 +8,7 @@
         <div class="container">
           <a
             class="navbar-brand"
-            href="#"
+            @click.prevent="toHomePage"
             style="font-weight: bold; color: #3e9ca5"
             >Qurantara</a
           >
@@ -39,8 +39,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item primer-color" href="#quran"
+                    <a @click.prevent="getAllSurah" class="dropdown-item primer-color" href="#quran"
                       >Baca Al-Quran</a
+                    >
+                  </li>
+                  <li>
+                    <a @click.prevent="fatchFavoriteSurah" class="dropdown-item primer-color" href="#quran"
+                      >My Favorite Surah</a
                     >
                   </li>
                 </ul>
@@ -74,6 +79,15 @@ export default {
     },
     toCartItemPage () {
       this.$router.push('/cart').catch(() => {})
+    },
+    getAllSurah () {
+      this.$store.dispatch('getAllSurah')
+    },
+    fatchFavoriteSurah () {
+      this.$store.dispatch('fatchFavoriteSurah')
+    },
+     toHomePage () {
+      this.$router.push('/').catch(() => {})
     }
   }
 }
