@@ -13,6 +13,7 @@
         <CardSongList v-for="song in songs"
         :key="song.id"
         :song="song"
+        :playlists="playlists"
         />
       </div>
     </section>
@@ -34,10 +35,11 @@ export default {
     Navbar,
     HFooter
   },
-  computed: mapState(['songs']),
-  methods: mapActions(['fetchSongs']),
+  computed: mapState(['songs', 'playlists']),
+  methods: mapActions(['fetchSongs', 'fetchPlaylists']),
   created () {
     this.fetchSongs()
+    this.fetchPlaylists()
   }
 }
 </script>

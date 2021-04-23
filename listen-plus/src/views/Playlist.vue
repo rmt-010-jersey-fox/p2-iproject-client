@@ -8,7 +8,7 @@
           <h4>My Playlist</h4>
         </div>
       </div>
-      <div>
+      <div id="nav">
       <router-link to="/add">Add Playlist</router-link>
       </div>
       <!-- Content -->
@@ -29,7 +29,7 @@ import Navbar from '@/components/Navbar'
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: 'Home',
+  name: 'Playlist',
   components: {
     PlaylistCard,
     Navbar
@@ -41,3 +41,10 @@ export default {
   }
 }
 </script>
+
+<style>
+#nav a {
+  font-weight: bold;
+  color: #000000;
+}
+</style>

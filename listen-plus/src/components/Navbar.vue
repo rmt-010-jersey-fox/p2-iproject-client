@@ -18,6 +18,9 @@
         </router-link>
       </div>
       <div class="col-1">
+        <button class="clickable-btn circle-icon" @click.prevent="logOut()"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
+      <div class="col-1">
         <router-link to="/register">
           <button class="clickable-btn circle-icon"><i class="fas fa-user-tie"></i></button>
         </router-link>
@@ -26,9 +29,6 @@
         <router-link to="/login">
           <button class="clickable-btn circle-icon"><i class="fas fa-sign-in-alt"></i></button>
         </router-link>
-      </div>
-      <div class="col-1">
-          <button class="clickable-btn circle-icon" @click.prevent="logOut()"><i class="fas fa-sign-out-alt"></i></button>
       </div>
     </div>
   <!-- Website Name -->

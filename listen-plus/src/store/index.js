@@ -37,9 +37,6 @@ export default new Vuex.Store({
     },
     SEARCHRESULT_LYRICS (state, payload) {
       state.lyrics = payload
-    },
-    CLEAR_SEARCHRESULT (state, payload) {
-      state.songSearchResults = payload
     }
   },
   actions: {
@@ -104,20 +101,26 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          context.dispatch('fetchPlaylist')
+          Swal.fire({
+            title: 'Success',
+            text: 'Successfully Adding Playlist',
+            icon: 'success'
+          })
           router.push('/playlist')
         })
-        .catch(console.log)
+        .catch((err) => {
+          console.log(err.response, '<<< errornyaa')
+        })
     },
     addSongToPlaylist (context, payload) {
       axios.put(`/playlist/${payload.id}`, {
+        name: payload.name
+      }, {
         headers: {
           token: localStorage.getItem('token')
-        },
-        data: {
-          name: payload.name
         }
-      })
+      }
+      )
         .then(() => {
           Swal.fire({
             title: 'Success',
@@ -151,8 +154,7 @@ export default new Vuex.Store({
           return newFetch
         })
         .then(() => {
-          context.dispatch('fetchPlaylist')
-          router.push('/playlist')
+          context.dispatch('fetchPlaylists')
         })
         .catch(console.log)
     },
@@ -171,10 +173,11 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     searchSong (context, payload) {
-      context.commit('CLEAR_SEARCHRESULT', [])
-      axios.get('/search', {
-        data: {
-          keywords: payload.keywords
+      axios.post('/search', {
+        keywords: payload.keywords
+      }, {
+        headers: {
+          token: localStorage.getItem('token')
         }
       })
         .then(({ data }) => {
@@ -190,16 +193,13 @@ export default new Vuex.Store({
       }
       axios.post('/songs', newData)
         .then(() => {
-          context.dispatch('fetchSongs')
           router.push('/')
         })
         .catch(console.log)
     },
     fetchLyrics (context, payload) {
-      axios.get('/lyrics', {
-        data: {
-          keywords: payload.keywords
-        }
+      axios.post('/lyrics', {
+        keywords: payload.keywords
       })
         .then(({ data }) => {
           context.commit('SEARCHRESULT_LYRICS', data)

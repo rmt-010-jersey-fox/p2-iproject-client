@@ -24,19 +24,12 @@
 export default {
   name: 'CardToAdd',
   props: ['song'],
-  data () {
-    return {
-      track_title: '',
-      artist: '',
-      album_title: ''
-    }
-  },
   methods: {
     addToSong () {
       this.$store.dispatch('addToSong', {
-        track_title: this.track_title,
-        artist: this.artist,
-        album_title: this.album_title
+        track_title: this.song.track_title,
+        artist: this.song.artist,
+        album_title: this.song.album_title
       })
     }
   }

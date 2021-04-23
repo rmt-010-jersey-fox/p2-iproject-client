@@ -5,7 +5,7 @@
       <div class="container d-flex justify-content-center">
         <div class="add-form col-5 text-center pt-3">
             <h2>Add Playlist</h2>
-           <form id="update-form" @submit.prevent="addPlaylist">
+           <form id="add-form" @submit.prevent="addPlaylist">
             <div class="form-group">
               <label for="name">Name :</label>
               <input v-model="name" type="text" class="form-control" id="add-name">

@@ -14,11 +14,14 @@
       <div class="col-2 p-3">
         <div class="song-action d-grid gap-5">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item">{{ playlists.name }}</a></li>
-            </ul>
+            <select v-model="playlistName" name="select-playlists">
+              <option v-for="playlist in playlists"
+              :key="playlist.name"
+              :value="playlist.name"
+              >
+              {{ playlist.name }}
+              </option>
+            </select>
           </div>
           <button class="btn" @click="addSongToPlaylist" style="background-color: #EDDDC6;">Add To Playlist</button>
         </div>
@@ -29,17 +32,18 @@
 
 <script>
 export default {
-  name: 'Card',
+  name: 'CardSongList',
   props: ['song', 'playlists'],
   data () {
     return {
-      name: ''
+      playlistName: 'choose playlist'
     }
   },
   methods: {
-    addSongToPlaylist (id) {
-      this.$store.dispatch('addSongToPlaylist', { id }, {
-        name: this.name
+    addSongToPlaylist () {
+      this.$store.dispatch('addSongToPlaylist', {
+        name: this.playlistName,
+        id: this.song.id
       })
     }
   }

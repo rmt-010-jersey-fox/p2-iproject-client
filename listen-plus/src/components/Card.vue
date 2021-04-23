@@ -24,15 +24,10 @@
 export default {
   name: 'Card',
   props: ['song'],
-  data () {
-    return {
-      keywords: ''
-    }
-  },
   methods: {
     fetchLyrics () {
       this.$store.dispatch('fetchLyrics', {
-        keywords: this.track_title
+        keywords: this.song.track_title
       })
     }
   }
