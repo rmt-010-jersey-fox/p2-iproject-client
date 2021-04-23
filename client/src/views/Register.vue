@@ -7,26 +7,26 @@
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input
-              v-model="email" 
+              v-model="email"
               type="text" placeholder="email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input 
+              <input
               v-model="password"
               type="password" placeholder="Password" />
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input 
+              <input
               v-model="birth_year"
               type="date" placeholder="" />
             </div>
-            <input 
+            <input
             @click.prevent="register()"
             type="submit" value="Submit" class="btn solid" />
           </form>
-          
+
         </div>
       </div>
 
@@ -38,7 +38,7 @@
               You can post anything you like without revealing who you are and just be responsible!
             </p>
             <button
-            @click.prevent="login" 
+            @click.prevent="login"
             class="btn transparent" id="sign-up-btn">
               Sign In
             </button>
@@ -83,7 +83,7 @@ export default {
       this.$store.dispatch('register', payload)
     },
     login () {
-      this.$router.push({name: 'Login'})
+      this.$router.push({ name: 'Login' })
     }
   }
 }
@@ -215,7 +215,7 @@ form.sign-in-form {
   position: absolute;
   height: 100%;
   width: 100%;
-  top: ;
+  top: 10;
   left: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

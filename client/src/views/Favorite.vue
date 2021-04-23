@@ -1,11 +1,6 @@
 <template>
 <section id="home-page" class="container">
-    <button
-        @click.prevent="logout"
-        class="btn btn-danger" style="position: absolute; top: 10px; right: 10px;">logout</button>
-        <button
-        @click.prevent="feedsPage"
-        class="btn btn-primary" style="position: absolute; top: 10px; right: 90px;">Feeds</button>
+    <Navbar></Navbar>
 
     <div class="row justify-content-center mt-5 pt-5">
       <div class="col-4 mt-5">
@@ -13,10 +8,7 @@
       </div>
       <div class="col-6">
         <h4>
-          <b>Post Bookmarks</b>
-          <button
-          @click.prevent="home"
-          type="button" class="btn btn-primary float-right btn-sm text-light">Back Home</button>
+          <b>Bookmarks</b>
         </h4>
         <ul class="list-unstyled" v-for="favorite in favorites" :key="favorite.id">
           <li class="media d-flex align-items-center bg-white rounded p-2 shadow mt-3">
@@ -41,8 +33,12 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar'
 export default {
   name: 'Favorite',
+  components: {
+    Navbar
+  },
   computed: {
     favorites () {
       return this.$store.state.favorite

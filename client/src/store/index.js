@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     timelines: [],
     favorite: [],
-    feeds: []
+    feeds: [],
+    language: ''
   },
   mutations: {
     fetchTimeline (state, payload) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     fetchFeeds (state, payload) {
       state.feeds = payload
+    },
+    languange (state, payload) {
+      state.language = payload
     }
   },
   actions: {
@@ -81,9 +85,9 @@ export default new Vuex.Store({
         })
     },
     addTimeline (context, payload) {
-      console.log(payload);
+      console.log(payload)
       axios({
-        url: `/timeline`,
+        url: '/timeline',
         method: 'POST',
         headers: {
           access_token: localStorage.getItem('access_token')
@@ -92,9 +96,9 @@ export default new Vuex.Store({
           status: payload
         }
       })
-      .then(({data})=> {
-        context.dispatch('fetchTimeline')
-      })
+        .then(({ data }) => {
+          context.dispatch('fetchTimeline')
+        })
     },
     addFavorite (context, payload) {
       axios({
@@ -164,9 +168,25 @@ export default new Vuex.Store({
           likes: payload.likes
         }
       })
-      .then(({data}) => {
-        context.dispatch('fetchTimeline')
+        .then(({ data }) => {
+          context.dispatch('fetchTimeline')
+        })
+    },
+    sentimentPost (context, payload) {
+      console.log(payload, '<< payload')
+      axios({
+        url: '/sentim',
+        method: 'POST',
+        headers: {
+          access_token: localStorage.getItem('access_token')
+        },
+        data: {
+          status: payload.status
+        }
       })
+        .then(data => {
+          console.log(data)
+        })
     }
   },
   modules: {

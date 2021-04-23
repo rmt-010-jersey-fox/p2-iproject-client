@@ -1,33 +1,27 @@
 <template>
-  <section id="home-page" class="container">
-        <button
-        @click.prevent="logout"
-        class="btn btn-danger" style="position: absolute; top: 10px; right: 10px;">logout</button>
-        <button
-        @click.prevent="feedsPage"
-        class="btn btn-primary" style="position: absolute; top: 10px; right: 90px;">Feeds</button>
+  <section id="home-page" class="container-sm">
+    <Navbar></Navbar>
         <div class="row justify-content-center mt-5 pt-5">
         <div class="col-4 mt-5">
-          <div class="container border border-primary rounded ">
+          <div class="container border-primary rounded ">
             <form>
             <div class="form-group">
-              <input 
+              <input
               v-model="status"
               type="email" class="form-control" style="height:100px" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Post it!!">
             </div>
-            <button 
+            <button
             @click.prevent="addTimeline()"
             type="submit" class="btn btn-primary">Submit</button>
           </form>
           </div>
         </div>
-        <div class="col-6 border border-primary" >
-            <h4>
+        <div class="col-6 border-primary shadow" >
+          <div class="card-header p-2">
+            <h4 class="card-title fs-6 mb-0">
             <b>Anonymous Timeline</b>
-            <button
-            @click.prevent="listBookmarks"
-            type="button" class="btn btn-primary float-right btn-sm text-light">Bookmarks</button>
             </h4>
+          </div>
             <ul class="list-unstyled" v-for="timeline in timelines.status" :key="timeline.id">
             <li class="media d-flex align-items-center bg-white rounded p-2 shadow mt-3">
                 <div class="media-body p-1">
@@ -39,12 +33,12 @@
                     <span class="text-muted">{{timeline.UserId}}</span>
                     <button
                     @click.prevent="addFavorites(timeline.id)"
-                    class="mt-2 btn btn btn-outline-success float-right p-2 rounded" style="font-size:10px">Add To Favorite</button>
+                    class="mt-2 btn btn btn-outline-primary float-right p-2 rounded" style="font-size:10px">Add To Favorite</button>
                     <button
                     @click.prevent="deleteTimeline(timeline.id)"
-                    class="mt-2 btn btn btn-outline-success float-right p-2 rounded" style="font-size:10px">Delete</button>
+                    class="mt-2 btn btn btn-outline-danger float-right p-2 rounded" style="font-size:10px">Delete</button>
                     <button
-                    @click.prevent="patchLike(likes + 1)"
+                    @click.prevent="patchLike(timeline.likes + 1, timeline.id)"
                     class="mt-2 btn btn btn-outline-success float-right p-2 rounded" style="font-size:10px">Likes</button>
                 </div>
                 <div class="text-left">
@@ -59,9 +53,13 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar'
 export default {
   name: 'Home',
-  data() {
+  components: {
+    Navbar
+  },
+  data () {
     return {
       status: '',
       likes: 0
@@ -76,8 +74,8 @@ export default {
     this.$store.dispatch('fetchTimeline')
   },
   methods: {
-    addTimeline() {
-      let payload = this.status
+    addTimeline () {
+      const payload = this.status
       this.$store.dispatch('addTimeline', payload)
     },
     deleteTimeline (id) {
@@ -98,9 +96,15 @@ export default {
     logout () {
       this.$store.dispatch('logout')
     },
-    patchLike() {
-      const payload = this.likes
-      console.log(payload);
+    patchLike (likes, id) {
+      const payload = {
+        likes: likes,
+        id: id
+      }
+      this.$store.dispatch('patchLike', payload)
+    },
+    changeSentim () {
+      this.$router.push({ name: 'Sentim' })
     }
   }
 }

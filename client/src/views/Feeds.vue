@@ -1,11 +1,6 @@
 <template>
   <section id="home-page" class="container">
-    <button
-        @click.prevent="logout"
-        class="btn btn-danger" style="position: absolute; top: 10px; right: 10px;">logout</button>
-        <button
-        @click.prevent="feedsPage"
-        class="btn btn-primary" style="position: absolute; top: 10px; right: 90px;">Feeds</button>
+    <Navbar></Navbar>
     <div class="row justify-content-center mt-5 pt-5">
       <div class="col-4 mt-5">
         <img src="../assets/feeds.svg" alt="music" class="img-fluid mt-5">
@@ -13,9 +8,6 @@
       <div class="col-6">
         <h4>
           <b>Feeds</b>
-          <button
-          @click.prevent="home"
-          type="button" class="btn btn-primary float-right btn-sm text-light">Back Home</button>
         </h4>
         <ul class="list-unstyled" v-for="feed in feeds" :key="feed.id">
           <li class="media d-flex align-items-center bg-white rounded p-2 shadow mt-3">
@@ -38,8 +30,12 @@
 </template>
 
 <script>
+import Navbar from '../components/Navbar'
 export default {
   name: 'Feeds',
+  components: {
+    Navbar
+  },
   created () {
     this.$store.dispatch('fetchFeeds')
   },

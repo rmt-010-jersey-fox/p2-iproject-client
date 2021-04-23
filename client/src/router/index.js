@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
 import Favorite from '../views/Favorite.vue'
 import Feeds from '../views/Feeds.vue'
+import Sentim from '../views/Sentim.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/feeds',
     name: 'Feeds',
     component: Feeds
+  },
+  {
+    path: '/sentim',
+    name: 'Sentim',
+    component: Sentim
   }
 ]
 

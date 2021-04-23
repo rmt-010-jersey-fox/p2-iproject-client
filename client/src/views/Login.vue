@@ -7,20 +7,20 @@
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input
-              v-model="email" 
+              v-model="email"
               type="text" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input
-              v-model="password"  
+              v-model="password"
               type="password" placeholder="Password" />
             </div>
-            <input 
+            <input
             @click.prevent="login()"
             type="submit" value="Login" class="btn solid" />
           </form>
-          
+
         </div>
       </div>
 
@@ -32,7 +32,7 @@
               You can post anything you like without revealing who you are and just be responsible!
             </p>
             <button
-            @click.prevent="register" 
+            @click.prevent="register"
             class="btn transparent" id="sign-up-btn">
               Sign up
             </button>
