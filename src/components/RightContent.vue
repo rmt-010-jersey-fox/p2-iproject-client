@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: "RightContent",
   methods: {
     getMeme() {
       this.$store.dispatch("getMemes");
