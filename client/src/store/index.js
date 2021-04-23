@@ -12,7 +12,8 @@ export default new Vuex.Store({
     games: [],
     wishlist: [],
     detailGame: {},
-    filterGame: []
+    filterGame: [],
+    avatar: ''
   },
   mutations: {
     setLogin (state, value) {
@@ -37,6 +38,9 @@ export default new Vuex.Store({
     },
     DETAILS_GAME (state, payload) {
       state.detailGame = payload
+    },
+    setAvatar (state, payload) {
+      state.avatar = payload
     }
   },
   getters: {
@@ -113,6 +117,8 @@ export default new Vuex.Store({
           console.log(data)
           context.commit('setUser', data)
           localStorage.setItem('access_token', data.access_token)
+          localStorage.setItem('username', data.username)
+          localStorage.setItem('email', data.email)
           router.push({ name: 'Home' }).catch(_ => {})
         })
         .catch(err => console.log(err))
@@ -122,7 +128,7 @@ export default new Vuex.Store({
         .post('/users/signup', newUserData)
         .then(({ data }) => {
           console.log(data, 'Success Sign Up')
-          router.push({ name: 'Home' })
+          router.push({ name: 'Home' }).catch(_ => {})
         })
         .catch(err => console.log(err))
     },
@@ -145,8 +151,11 @@ export default new Vuex.Store({
         .then(({ data }) => {
           console.log('Success Login', data)
           localStorage.setItem('access_token', data.access_token)
+          localStorage.setItem('username', data.username)
+          localStorage.setItem('email', data.email)
           context.commit('setUser', data)
           context.commit('setLogin', true)
+          router.go(0)
           router.push({ name: 'Home' }).catch(_ => {})
         })
         .catch((err) => console.log(err))

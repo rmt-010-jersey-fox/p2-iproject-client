@@ -17,7 +17,7 @@
 <script>
 import CategoryCard from '../components/CategoryCard'
 export default {
-  name: 'Xbox',
+  name: 'Playstation',
   components: {
     CategoryCard
   },

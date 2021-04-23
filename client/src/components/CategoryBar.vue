@@ -5,32 +5,24 @@
       <div class="row" style="height: 5rem;">
         <div class="col-12">
           <div class="row text-center">
-            <div id="dropdown" class="dropdown">
-              <!-- <button class="btn btn-danger dropdown-toggle m-2" type="button" data-bs-toggle="dropdown" style="width: 10rem;">
-                Genre
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Adventure</a></li>
-                <li><a class="dropdown-item" href="#">FPS</a></li>
-              </ul> -->
-
+            <div id="dropdown" class="dropdown active">
               <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" style="width: 10rem;">
                 Platforms
               </button>
               <ul class="dropdown-menu">
-                <li><router-link class="dropdown-item" :to="{ name: 'Category', params: { categoryId: '48,9,16,7' }}">Playstation</router-link></li>
-                <li><router-link class="dropdown-item" to="/playstation">Xbox</router-link></li>
-                <li><router-link class="dropdown-item" to="/playstation">PC</router-link></li>
+                <li><router-link
+                  class="dropdown-item"
+                  :to="{ name: 'Playstation', params: { categoryId: '48,9,16,7' }}">Playstation</router-link></li>
+                <li><router-link
+                  class="dropdown-item"
+                  :to="{ name: 'Xbox', params: { categoryId: '11,12,49' }}">Xbox</router-link></li>
+                <li><router-link
+                  class="dropdown-item"
+                  :to="{ name: 'PC', params: { categoryId: '6' }}">PC</router-link></li>
               </ul>
             </div>
           </div>
         </div>
-        <!-- <div class="container col-6">
-          <div id="trending-games" class="item">
-            <a href="#" class="mt-2">Trending Games</a>
-          </div>
-        </div> -->
       </div>
     </div>
   </section>

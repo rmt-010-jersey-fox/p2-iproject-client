@@ -1,6 +1,7 @@
 <template>
   <div
-    class="card bg-dark text-white game-card"
+    @click="detailGame(category.id)"
+    class="card bg-dark text-white game-card zoom"
     data-bs-toggle="tooltip"
     :title="category.name">
       <img
@@ -14,7 +15,7 @@
       <div class="card-img-overlay">
       <i class="fas fa-heart wishlist"
         style="font-size: 20px;"
-        @click="wishlist(game)">
+        @click="wishlist(category)">
       </i>
       <a v-if="!category.cover" href="http://www.freepik.com"><p style="font-size:10px;">Designed by pch.vector / Freepik</p></a>
     </div>
@@ -27,11 +28,12 @@ export default {
   props: ['category'],
   methods: {
     wishlist (vaf) {
-      // if (!localStorage.access_token) this.$router.push({ name: 'SignUp' })
-      // else this.$store.dispatch('addWishlist', { id: vaf.id, name: vaf.name })
+      if (!localStorage.access_token) this.$router.push({ name: 'SignUp' })
+      else this.$store.dispatch('addWishlist', { id: vaf.id, name: vaf.name })
     },
     detailGame (gameId) {
-      // this.$router.push({ name: 'DetailGame', params: { id: gameId } })
+      console.log('clik')
+      this.$router.push({ name: 'DetailGame', params: { id: gameId } })
     }
   }
 }
@@ -59,5 +61,17 @@ export default {
   .wishlist:hover {
     /* colo: #3e8e41; */
     color: rgb(255, 5, 5);
+  }
+
+  .card-img {
+    max-height: 264px;
+  }
+
+  .zoom {
+    transition: transform .2s;  /* Animation */
+  }
+
+  .zoom:hover {
+    transform: scale(1.05);     /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   }
 </style>

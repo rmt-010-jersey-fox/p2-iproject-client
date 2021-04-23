@@ -11,9 +11,9 @@
       <img
         v-else src="../assets/NO_picture.jpg"
         class="card-img auto-crop" alt="defaultImage">
-    <div class="card-img-overlay">
+    <div class="card-img">
       <i class="fas fa-heart wishlist"
-        style="font-size: 25px;"
+        style="font-size: 20px;"
         @click="wishlist(game)">
       </i>
       <a v-if="!game.cover" href="http://www.freepik.com"><p style="font-size:10px;">Designed by pch.vector / Freepik</p></a>
@@ -51,8 +51,8 @@ export default {
   .wishlist {
     position: absolute;
     z-index: 10;
-    top: -8px;
-    right: -5px;
+    top: -5px;
+    right: -7px;
     height: 25px;
     width: 25px;
   }

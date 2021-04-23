@@ -40,8 +40,18 @@ const routes = [
   },
   {
     path: '/category/:categoryId',
-    name: 'Category',
+    name: 'Playstation',
     component: _ => import('../views/FilterByPlaystation.vue')
+  },
+  {
+    path: '/category/:categoryId',
+    name: 'Xbox',
+    component: _ => import('../views/FilterByXbox.vue')
+  },
+  {
+    path: '/category/:categoryId',
+    name: 'PC',
+    component: _ => import('../views/FilterByPC.vue')
   },
   {
     path: '*',

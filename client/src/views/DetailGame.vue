@@ -13,7 +13,7 @@
           src="../assets/NO_picture.jpg"
           alt="default.jpg">
       </div>
-      <div class="col-8" style="height: 569px;">
+      <div class="col-8 txt mt-2" style="height: 569px;">
         <h1>{{ detailGame.detailGame.detail[0].name}}</h1>
         <h5>Developers: {{ detailGame.detailGame.developer }}</h5>
         <h5>Platforms: {{ detailGame.detailGame.platform }}</h5>
@@ -41,6 +41,4 @@ export default {
 </script>
 
 <style scoped>
-  .detailCard {
-  }
 </style>

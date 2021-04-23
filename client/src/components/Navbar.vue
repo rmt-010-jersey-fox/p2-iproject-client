@@ -2,7 +2,7 @@
   <nav class="navbar navbar-dark bg-dark" style="height: 6rem;">
     <div class="container text-center">
       <div class="col-4">
-        <router-link class="navbar-brand" to="/" >gammingDB</router-link>
+        <router-link class="navbar-brand" to="/" style="color: #BB2D3B; font-size:2em ;" >gammingDB</router-link>
       </div>
       <!-- <div class="col-4">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -149,5 +149,27 @@ export default {
     border-radius: 3em;
     padding: 10px 20px 25px 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+  }
+
+  .chip img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  .fas {
+    color: #BB2D3B;
   }
 </style>
