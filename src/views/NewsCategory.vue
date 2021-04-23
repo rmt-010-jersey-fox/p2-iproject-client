@@ -1,7 +1,7 @@
 <template>
   <div class="hero is-fullheight">
     <div class="hero is-fullheight is-light p-5">
-      <h1 class="title">{{ category }}</h1>
+      <h1 class="title">{{ category.toUpperCase() }}</h1>
       <div class="columns is-multiline">
         <Card v-for="(news, i) in newss" :key="i" :news="news"></Card>
       </div>
