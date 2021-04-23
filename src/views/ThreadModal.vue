@@ -11,35 +11,32 @@
 		<div class="central-meta item">
 			<div class="user-post">
 				<div class="friend-info">
-					<figure>
-						<img :src="thread.User.image" alt="">
+					<!-- <figure v-if="thread">
+						<img :src="getThread.User.image" alt="" >
+					</figure> -->
+					<figure v-if="!thread">
+						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="" v-if="!thread">
 					</figure>
 					<div class="friend-name">
-						<div class="more">
-							<div class="more-post-optns"><i class="ti-more-alt"></i>
-								<ul>
-									<li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-									<li><i class="fa fa-trash-o"></i>Delete Post</li>
-									<li><i class="fa fa-flag"></i>Report</li>
-									<li><i class="fa fa-address-card-o"></i>Boost This Post</li>
-									<li><i class="fa fa-clock-o"></i>Schedule Post</li>
-									<li><i class="fa fa-wpexplorer"></i>Select as featured</li>
-									<li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
-								</ul>
-							</div>
-						</div>
-						<ins><a href="time-line.html" title="">{{ thread.User.fullname }}</a></ins>
-						<span>published: {{ getPublished }}</span>
+						<!-- <ins  v-if="thread"><a title="">{{ getThread.User.fullname }}</a></ins> -->
+						<ins  v-if="!thread"><a title=""></a></ins>
+						<span v-if="getPublished">published: {{ getPublished }}</span>
 					</div>
 					
 					<div class="post-meta">
 						<figure>
-							<img :src="thread.image" alt="">
+							<img v-if="thread" :src="getThread.image" alt="">
+							<img src="" v-if="!thread" alt="">
 						</figure>	
+						<!-- <figure>
+						</figure>	 -->
 						<div class="description">
-							<center> <h1>{{ thread.title }}</h1> </center> 
-							{{ thread.content }}
+							<center> <h1>{{ getThread.title }}</h1> </center> 
+							{{ getThread.content }}
 						</div>
+						<!-- <div class="description">
+							<center> <h1></h1> </center> 
+						</div> -->
 						
 						<div class="we-video-info">
 							
@@ -134,7 +131,18 @@ export default {
   computed: {
 	  ...mapState(['thread']),
 	  getPublished() {
-		  return this.thread.createdAt.split('T').join(' ')
+		  if(!this.getThread){
+			  return ''
+		  } else {
+			  return this.getThread.createdAt.split('T').join(' ')
+		  }
+	  },
+	  getThread() {
+		  if(!this.thread){
+			  return { User: { fullname: 'dummy', image: 'dummy'}, image: 'dummy', title: 'dummy', content: 'dummy', createdAt: 'dummy'}
+		  } else {
+			  return this.thread
+		  }
 	  }
   }
 }

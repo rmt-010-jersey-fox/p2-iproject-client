@@ -1,4 +1,5 @@
 <template>
+
   <div class="col-lg-6 col-md-6">
     <div class="central-meta">
       <div class="blog-post">
@@ -18,17 +19,17 @@
                 </ul>
               </div>
             </div> -->
-            <ins><a title="" href="time-line.html">{{ thread.User.fullname }}</a></ins>
+            <ins><a title="">{{ thread.User.fullname }}</a></ins>
             <span><i class="fa fa-globe"></i> {{ getDate }} </span>
           </div>
           <div class="post-meta">
             <figure>
-              <a title="" href="">
+              <a title="" data-bs-toggle="modal" data-bs-target="#threadModal">
                 <img alt="" :src="thread.image">	
               </a>
             </figure>												
             <div class="description">
-              <a data-ripple="" class="learnmore" data-bs-toggle="modal" data-bs-target="#threadModal" @click.prevent="getThread(thread.id)">View Thread</a>
+              <a data-ripple="" class="learnmore" @click.prevent="getThread(thread.id)">View Thread</a>
               <h2><a  title=""></a>
               {{ thread.title }}
               </h2>
@@ -41,15 +42,22 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
+// import Thread from '../views/Thread'
 export default {
   name: 'ThreadCard',
   props: ['thread'],
+  // components: { Thread },
   methods: {
     getThread(id) {
+      // console.log(id)
         this.$store.dispatch('getThread', id)
+        setTimeout(() => { 
+          this.$router.push({ name: 'Thread'})
+         }, 500);
     }
   },
   computed: {

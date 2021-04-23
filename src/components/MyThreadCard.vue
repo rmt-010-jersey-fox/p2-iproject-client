@@ -21,7 +21,7 @@
           </div>
           <div class="post-meta">
             <figure>
-              <a title="" href="">
+              <a title="" data-bs-toggle="modal" data-bs-target="#threadModal">
                 <img alt="" :src="myThread.image">	
               </a>
             </figure>												

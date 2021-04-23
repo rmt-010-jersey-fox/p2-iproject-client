@@ -29,7 +29,7 @@ export default new Vuex.Store({
     },
     getUser (commit, payload) {
       // console.log(data)
-      this.state.user = data
+      this.state.user = payload
     },
     getEvents (commit, data) {
       // console.log(data, "COMMIT")
@@ -39,6 +39,7 @@ export default new Vuex.Store({
       this.state.threads = data
     },
     getThread (commit, data) {
+      console.log(data)
       this.state.thread = data
     },
     myThreads (commit, data) {
@@ -70,10 +71,13 @@ export default new Vuex.Store({
     },
     getUser (context, payload) {
       axios.get(`/users/${payload.id}`, {
-        headers: { access_token: localStorage.access_token }
-      }).then(({ data }) => {
-        context.commit('getUser', data)
-      })
+          headers: { access_token: localStorage.access_token }
+        }).then(({ data }) => {
+           context.commit('getUser', data)
+      //   console.log(data, "GET USER")
+        }).catch(err => {
+          console.log(err)
+        })
     },
     getThread (context, data) {
       axios.get(`/threads/${data}`, {

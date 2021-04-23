@@ -41,6 +41,8 @@ export default {
       this.$store.dispatch('login', data)
         .then(({ data }) => {
           // console.log(data)
+          this.$store.commit('login', data)
+          this.$store.dispatch('getUser', data)
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -48,9 +50,9 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
-          this.$store.commit('login', data)
-          this.$store.dispatch('getUser', data)
-          this.$router.replace({ name: 'ThreadList' })
+          setTimeout(() => {
+            this.$router.replace({ name: 'ThreadList' })
+          }, 1000)
         }).catch(err => {
           console.log(err)
           // alert(err)
