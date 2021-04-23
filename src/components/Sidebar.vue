@@ -36,7 +36,7 @@
               label="Entertaiment"
             ></b-menu-item>
             <b-menu-item
-              @click="category('science and technology')"
+              @click="category('science')"
               icon="chemical-weapon"
               label="Science & Tech"
             ></b-menu-item>
@@ -74,6 +74,9 @@ export default {
   methods: {
     forwardAll() {
       this.$router.push({ path: "/" });
+    },
+    category(category) {
+      this.$router.push({ path: `/${category}` });
     },
     forwardReadlists() {
       this.$router.push({ path: "/readlists" });
