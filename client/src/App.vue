@@ -32,7 +32,7 @@ export default {
 }
 
 body {
-  background-color: antiquewhite;
+  background-color: whitesmoke;
 }
 
 #nav {

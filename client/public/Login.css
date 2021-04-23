@@ -1,0 +1,160 @@
+.u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 875px;
+}
+
+.u-section-1 .u-text-1 {
+  font-family: "Architects Daughter";
+  margin: 52px 269px 0 346px;
+}
+
+.u-section-1 .u-group-1 {
+  min-height: 325px;
+  width: 500px;
+  background-image: none;
+  height: 550px;
+  margin: 46px 0 0 auto;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 40px 60px;
+}
+
+.u-section-1 .u-text-2 {
+  font-weight: 400;
+  text-transform: none;
+  font-size: 3rem;
+  margin: 46px 0 0;
+}
+
+.u-section-1 .u-form-1 {
+  height: 248px;
+  margin-top: 27px;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.u-section-1 .u-form-group-1 {
+  margin-left: auto;
+}
+
+.u-section-1 .u-input-1 {
+  font-size: 1.25rem;
+}
+
+.u-section-1 .u-form-group-2 {
+  margin-left: auto;
+}
+
+.u-section-1 .u-input-2 {
+  font-size: 1.25rem;
+}
+
+.u-section-1 .u-form-group-3 {
+  margin-left: auto;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: solid;
+  text-transform: uppercase;
+  margin-left: auto;
+  font-size: 1.25rem;
+  font-weight: 700;
+  width: 100%;
+  letter-spacing: 2px;
+}
+
+.u-section-1 .u-image-1 {
+  width: 490px;
+  height: 439px;
+  margin: -506px auto 60px 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-text-1 {
+    margin-right: 285px;
+    margin-left: 285px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: 554px;
+    height: auto;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: 0;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-left: initial;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-1 {
+    margin-right: 218px;
+    margin-left: 218px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: 426px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-text-1 {
+    margin-right: 164px;
+    margin-left: 164px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: 383px;
+  }
+
+  .u-section-1 .u-text-2 {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 741px;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: -48px;
+    margin-left: 420px;
+    margin-right: 420px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: 340px;
+    margin-top: 102px;
+    margin-right: auto;
+    margin-left: 400px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-1 .u-text-2 {
+    font-size: 2.375rem;
+    width: auto;
+  }
+
+  .u-section-1 .u-image-1 {
+    width: 340px;
+    height: 302px;
+    margin-left: 400px;
+  }
+}
