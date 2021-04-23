@@ -1,7 +1,7 @@
 <template>
     <div>
-        <Banner/>
-        <Tagline/>
+        <!-- <Banner/> -->
+        <!-- <Tagline/> -->
         <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -58,6 +58,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.row {
+    height: 80vh;
+    padding-top: 100px;
+}
 </style>

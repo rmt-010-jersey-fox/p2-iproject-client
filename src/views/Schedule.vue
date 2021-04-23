@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="height:80vh">
         <!-- {{schedule}} -->
         <div class="card mt-5">
         <div class="card-body">

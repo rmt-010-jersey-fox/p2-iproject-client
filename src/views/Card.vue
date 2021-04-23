@@ -48,7 +48,7 @@ export default {
           .catch(er => {
             console.log(err)
           })
-        }
+        },
     },
     created() {
       this.searchMaterial()
