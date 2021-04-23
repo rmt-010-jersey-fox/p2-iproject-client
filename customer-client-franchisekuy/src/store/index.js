@@ -15,7 +15,8 @@ export default new Vuex.Store({
         cart: [],
         transactions: [],
         locations: [],
-        news: []
+        news: [],
+        quotes: []
     },
     mutations: {
         setPage(state, payload) {
@@ -41,7 +42,11 @@ export default new Vuex.Store({
         },
         fetchNew(state, payload) {
             state.news = payload.data
+        },
+        fetchQuote(state, payload) {
+            state.quotes = payload.data
         }
+
     },
     actions: {
         login(context, payload) {
@@ -369,13 +374,32 @@ export default new Vuex.Store({
         getNew(context, payload) {
             axios({
                     method: 'get',
-                    url: '/new',
+                    url: '/news/',
                     headers: {
                         access_token: localStorage.access_token
                     }
                 })
                 .then(response => {
                     context.commit('fetchNew', response)
+                })
+                .catch(({ response }) => {
+                    Swal.fire(
+                        'Oops!',
+                        response.data.errors[0],
+                        'error'
+                    )
+                })
+        },
+        getQuote(context, payload) {
+            axios({
+                    method: 'get',
+                    url: '/quotes/',
+                    headers: {
+                        access_token: localStorage.access_token
+                    }
+                })
+                .then(response => {
+                    context.commit('fetchQuote', response)
                 })
                 .catch(({ response }) => {
                     Swal.fire(

@@ -35,9 +35,15 @@
            </a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="#" @click.prevent="">
+           <a class="nav-link" href="#" @click.prevent="modals.news = true">
              <i class="now-ui-icons education_atom"></i>
              <p>News</p>
+           </a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#" @click.prevent="modals.quotes = true">
+             <i class="now-ui-icons ui-2_chat-round"></i>
+             <p>Quotes</p>
            </a>
          </li>
          <li class="nav-item">
@@ -209,9 +215,6 @@
                     </b-col>
                   </b-row>
                 </b-container>
-                <!-- <card class="text-right">
-                  <p class="card-text"></p>
-                </card> -->
               <div slot="footer" class="card-footer text-right mb-2">
                 <p class="mr-4 pr-4">
                 Subtotal : {{subtotal}}
@@ -223,6 +226,69 @@
       </b-container>
       <template slot="footer">
         <Button type="danger" @click.native="modals.transaction = false">Close</Button>
+      </template>
+    </modal>
+    <!-- modal News -->
+    <modal :show.sync="modals.news" headerClasses="justify-content-center" modal-classes="modal-lg">
+      <h4 slot="header" class="title title-up">News</h4>
+      <b-container>
+        <b-row>
+          <b-col cols="12" v-for="(datas, id) in news" :key="id" :set="subtotal=0">
+             <card>
+               {{datas.title}}
+                <b-container fluid>
+                  <b-row  class="border-top border-secondary mt-2 pt-2" :set="subtotal=0">
+                    <b-col cols="3">
+                      <img slot="image" class="card-img-right" :src="datas.urlToImage" alt="Card image cap">
+                    </b-col>
+                    <b-col cols="9">
+                        <p class="card-title"> By: {{ datas.author }}</p>
+                        <p class="card-title"> 0n: {{ datas.source }}</p>
+                        <p class="card-title"> At: {{ datas.publishedAt }}</p>
+                        <p class="card-text"><b> {{ datas.content }}</b></p>
+                        <!-- <p class="card-text">Price: Rp {{ data.quantity*data.Product.price }}</p> -->
+                    </b-col>
+                  </b-row>
+                </b-container>
+              <div slot="footer" class="card-footer text-right mb-2">
+                <p class="mr-4 pr-4">
+                Catch this on: <b>{{datas.url}}</b>
+                </p>
+              </div>
+              </card>
+          </b-col>
+        </b-row>
+      </b-container>
+      <template slot="footer">
+        <Button type="danger" @click.native="modals.news = false">Close</Button>
+      </template>
+    </modal>
+    <!-- modal Quotes -->
+    <modal :show.sync="modals.quotes" headerClasses="justify-content-center" modal-classes="modal-lg">
+      <h4 slot="header" class="title title-up">Quotes</h4>
+      <b-container>
+        <b-row>
+          <b-col cols="12" v-for="(datas, id) in quotes" :key="id" :set="subtotal=0">
+             <card>
+              Quote by {{datas.author}}
+                <b-container fluid>
+                  <b-row  class="border-top border-secondary mt-2 pt-2" :set="subtotal=0">
+                    <b-col cols="9">
+                        <p class="card-text"><b> {{ datas.text }}</b></p>
+                        <!-- <p class="card-text">Price: Rp {{ data.quantity*data.Product.price }}</p> -->
+                    </b-col>
+                  </b-row>
+                </b-container>
+              <div slot="footer" class="card-footer text-right mb-2">
+                <p class="mr-4 pr-4">
+                </p>
+              </div>
+              </card>
+          </b-col>
+        </b-row>
+      </b-container>
+      <template slot="footer">
+        <Button type="danger" @click.native="modals.quotes = false">Close</Button>
       </template>
     </modal>
 <HFooter></HFooter>
@@ -261,7 +327,9 @@ export default {
       modals: {
         carts: false,
         wishlist: false,
-        transaction: false
+        transaction: false,
+        news: false,
+        quotes: false
       },
       isFiltered: false,
       isLoggedIn: false
@@ -275,6 +343,8 @@ export default {
       this.$store.dispatch('getWishlist')
       this.$store.dispatch('getCart')
       this.$store.dispatch('getTransaction')
+      this.$store.dispatch('getNew')
+      this.$store.dispatch('getQuote')
     }
     if (localStorage.getItem('access_token')) {
       this.isLoggedIn = true
@@ -406,7 +476,7 @@ export default {
     },
   },
   computed: {
-        ...mapState(['banners', 'products', 'wishlist', 'cart', 'transactions', 'locations'])
+        ...mapState(['banners', 'products', 'wishlist', 'cart', 'transactions', 'locations', 'news', 'quotes'])
   }
 }
 </script>
