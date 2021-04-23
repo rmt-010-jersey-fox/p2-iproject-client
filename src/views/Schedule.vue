@@ -20,7 +20,7 @@
                     <td>{{sch.BuddyMaterial.Material.topic}}</td>
                     <td>{{sch.BuddySchedule.User.first_name}} {{sch.BuddySchedule.User.last_name}}</td>
                     <td>{{sch.BuddySchedule.day}} {{sch.BuddySchedule.time}}</td>
-                    <td>{{sch.bookingDate}}</td>
+                    <td>{{format_date(sch.bookingDate)}}</td>
                     <td>{{sch.status}}</td>
                     <td>
                       <button @click.prevent="cancel(sch.id)" type="button" class="btn btn-light">Cancel</button>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import moment from 'moment' 
 export default {
     name : 'Schedule',
     computed : {
@@ -43,6 +44,11 @@ export default {
         }
     },
     methods : {
+        format_date(value){
+         if (value) {
+           return moment(String(value)).format('YYYY/MM/DD')
+          }
+        },
         getSchedule() {
             this.$store.dispatch('schedule')
         },
