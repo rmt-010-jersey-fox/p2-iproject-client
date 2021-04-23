@@ -314,6 +314,49 @@ export default new Vuex.Store({
         })
     },
 
+    addFavoriteSurah (context, payload) {
+      // console.log(payload)
+      axios.post('/favorites', payload, {
+        headers: {
+          access_token: localStorage.access_token
+        }
+      })
+      .then(({ data }) => {
+        console.log(data);
+        console.log('Surah berhasil ditambahkan ke dalam Favorite')
+        context.dispatch('getAllSurah')
+        router.push('/allSurah').catch(() => {})
+
+        // Sweetalert
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Add Surah Favorite in successfully'
+        })
+      })
+      .catch( err => {
+        console.log(err)
+
+         // Sweetalert
+         Swal.fire({
+          icon: 'error',
+          title: 'Please try again',
+          text: `${err.response.data.message}`
+        })
+      })
+    },
+
     logout (context) {
       localStorage.removeItem('access_token')
       router.push('/login')
