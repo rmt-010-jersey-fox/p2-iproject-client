@@ -50,7 +50,9 @@ export default {
                 email : this.email,
                 password : this.password
             }
-           this.$store.dispatch('login', data) 
+           this.$store.dispatch('login', data)
+           .then(data => {this.$router.push({name : 'Homepage'})})
+           .catch(err => {console.log(err)})
         }
     }
 }

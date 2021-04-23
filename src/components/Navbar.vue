@@ -5,11 +5,11 @@
         <!-- <div class="row"> -->
           <div class="col-sm-4"></div>
           <div class="col-sm-4">
-              <router-link to="/login">Login  |</router-link>
-              <router-link to="/about">  Logout  |</router-link>
-              <!-- <router-link to="/register">  Register  |</router-link> -->
-              <router-link to="/homepage">  Home  |</router-link>
-              <router-link to="/schedule">  My Schedule</router-link>
+              <router-link v-if="!isLogin" to="/login">Login  </router-link>
+              <a href="#" @click.prevent="logout" v-if="isLogin">  Logout  </a>
+              <router-link v-if="!isLogin" to="/register">  Register  |</router-link>
+              <router-link v-if="isLogin" to="/homepage">  Home  </router-link>
+              <router-link v-if="isLogin" to="/schedule">  My Schedule</router-link>
           </div>
           <div class="col-sm-4"></div>
         </div>
@@ -19,7 +19,25 @@
 
 <script>
 export default {
-    name : "Navbar"
+    name : "Navbar",
+    computed : {
+      isLogin() {
+        return this.$store.state.isLogin
+      }
+    },
+    methods : {
+      cekLogin() {
+        this.$store.commit('login')
+      },
+      logout() {
+        localStorage.clear()
+        this.cekLogin();
+        this.$router.push({name : "Login"})
+      }
+    },
+    created(){
+      this.cekLogin()
+    }
 }
 </script>
 

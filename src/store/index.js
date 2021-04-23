@@ -84,14 +84,18 @@ export default new Vuex.Store({
     },
 
     login({commit}, data) {
-      axios.post('/login', data)
-      .then(({data}) => {
-        localStorage.setItem("token", data.token)
-        commit('login', data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+        return new Promise((resolve, reject) => {
+          axios.post('/login', data)
+          .then(({data}) => {
+            localStorage.setItem("token", data.token)
+            commit('login', data)
+            resolve(data)
+          })
+          .catch(err => {
+            console.log(err)
+            reject(err)
+          })
+        })
     },
 
     getmaterials({commit}) {
