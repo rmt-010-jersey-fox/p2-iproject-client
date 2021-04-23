@@ -19,7 +19,7 @@ export default {
 </script>
 <style>
 html,body {
-background-image: url(https://i.pinimg.com/564x/e7/8a/4e/e78a4ed8bdc63c195970778ee913fe53.jpg);
+background-image: url(https://wallpapercave.com/wp/yLgXBk0.jpg);
 }
 
 #app {
