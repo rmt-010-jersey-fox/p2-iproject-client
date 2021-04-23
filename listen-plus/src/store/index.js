@@ -130,7 +130,14 @@ export default new Vuex.Store({
           context.dispatch('fetchPlaylist')
           router.push('/playlist')
         })
-        .catch(console.log)
+        .catch(() => {
+          Swal.fire({
+            title: 'Error',
+            text: 'Login First',
+            icon: 'error'
+          })
+          router.push('/login')
+        })
     },
     delete (context, payload) {
       Swal.fire({
