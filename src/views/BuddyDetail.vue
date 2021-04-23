@@ -15,6 +15,7 @@
                             {{schedule.status}}
                         </li>
                     </ul>
+                <small style="color:#3F5DB9">Please be noticed that you can only book for one week ahead</small>
 
                 <!-- <a href=""  class="btn btn-primary mt-3">Meet Buddy</a> -->
             <!-- <button @click.prevent="Booking" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -33,7 +34,7 @@
                 <button type="submit" class="btn btn-primary">Meet Buddy!</button>
             </form>
 
-            <br><b>Portfolio : </b>
+            <br><b>Portfolio: </b>
             <div v-for="(porto, i) in result.Github" :key="i" class="card" style="width: 22rem; margin-top: 10px">
             <div class="card-body">
                 <h5 class="card-title">{{porto.name}}</h5>
@@ -52,6 +53,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name : 'BuddyDetail',
     data() {

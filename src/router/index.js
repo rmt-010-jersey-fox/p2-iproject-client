@@ -6,6 +6,7 @@ import Homepage   from '../views/Homepage.vue'
 import Card   from '../views/Card.vue'
 import BuddyDetail   from '../views/BuddyDetail.vue'
 import Schedule   from '../views/Schedule.vue'
+import Register   from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,11 @@ const routes = [
       path: '/login',
       name: 'Login',
       component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/schedule',
@@ -53,6 +59,21 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  console.log("toooo : ", to)
+  if(to.name === "Homepage" && !localStorage.token) {
+    next({name : 'Login'})
+  } else if(to.name === "Schedule" && !localStorage.token){
+    next({name : 'Login'})
+  } else if(to.name === "Card" && !localStorage.token){
+    next({name : 'Login'})
+  } else if(to.name === "BuddyDetail" && !localStorage.token){
+    next({name : 'Login'})
+  } else {
+    next()
+  }
 })
 
 export default router

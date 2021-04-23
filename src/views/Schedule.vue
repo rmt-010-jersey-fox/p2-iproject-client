@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="height:80vh">
         <!-- {{schedule}} -->
         <div class="card mt-5">
         <div class="card-body">
@@ -10,6 +10,7 @@
                     <th scope="col">Topic</th>
                     <th scope="col">Buddy</th>
                     <th scope="col">Time</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -19,6 +20,7 @@
                     <td>{{sch.BuddyMaterial.Material.topic}}</td>
                     <td>{{sch.BuddySchedule.User.first_name}} {{sch.BuddySchedule.User.last_name}}</td>
                     <td>{{sch.BuddySchedule.day}} {{sch.BuddySchedule.time}}</td>
+                    <td>{{format_date(sch.bookingDate)}}</td>
                     <td>{{sch.status}}</td>
                     <td>
                       <button @click.prevent="cancel(sch.id)" type="button" class="btn btn-light">Cancel</button>
@@ -33,6 +35,7 @@
 </template>
 
 <script>
+import moment from 'moment' 
 export default {
     name : 'Schedule',
     computed : {
@@ -41,6 +44,11 @@ export default {
         }
     },
     methods : {
+        format_date(value){
+         if (value) {
+           return moment(String(value)).format('YYYY/MM/DD')
+          }
+        },
         getSchedule() {
             this.$store.dispatch('schedule')
         },

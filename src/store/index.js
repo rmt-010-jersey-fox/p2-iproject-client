@@ -84,14 +84,18 @@ export default new Vuex.Store({
     },
 
     login({commit}, data) {
-      axios.post('/login', data)
-      .then(({data}) => {
-        localStorage.setItem("token", data.token)
-        commit('login', data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+        return new Promise((resolve, reject) => {
+          axios.post('/login', data)
+          .then(({data}) => {
+            localStorage.setItem("token", data.token)
+            commit('login', data)
+            resolve(data)
+          })
+          .catch(err => {
+            console.log(err)
+            reject(err)
+          })
+        })
     },
 
     getmaterials({commit}) {
@@ -116,9 +120,13 @@ export default new Vuex.Store({
         }
       })
       .then(data => {
-          // console.log(data)
+          console.log(data)
+          // let getAvatar = data.forEach(el => {
+          //     axios.get(`https://ui-avatars.com/api/?name=${el.User.first_name}+${el.User.last_name}`)
+          // });
           this.commit('search', data)
       })
+      // .then()
       .catch(err => {
           console.log(err)
       })
@@ -165,26 +173,46 @@ export default new Vuex.Store({
 
     cancelBooking({commit}, id) {
       return new Promise((resolve, reject)=> {
-        axios.put(`/booking/${id}`, {}, {
-          headers : {
-            token : localStorage.token
+        Swal.fire({
+          title: 'Are you sure to cancel this?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, cancel it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch("https://type.fit/api/quotes")
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(quote) {
+                const index = Math.floor((Math.random() * 1500) + 0)
+                console.log(quote[index]);
+                axios.put(`/booking/${id}`, {}, {
+                  headers : {
+                    token : localStorage.token
+                  }
+                })
+                .then((data)=> {
+                  Swal.fire(
+                    'You booking is canceled!',
+                    `${quote[index].text}`,
+                    'success'
+                  )
+                  resolve(data)
+                })
+                .catch(err => {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
+                  reject(err)
+                })
+              });
           }
-        })
-        .then((data)=> {
-          Swal.fire({
-            icon: 'success',
-            title: 'Booking is canceled',
-            text: ':(',
-          })
-          resolve(data)
-        })
-        .catch(err => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-          })
-          reject(err)
         })
       })
     },
@@ -211,6 +239,24 @@ export default new Vuex.Store({
             text: 'You cannot delete your upcoming schedule. Cancel it instead',
           })
           reject(err)
+        })
+      })
+    },
+
+    register({commit}, data){
+      axios.post('/register', data)
+      .then(() => {
+           Swal.fire({
+            icon: 'success',
+            title: 'Register is success',
+            text: 'congratulation',
+          })
+      })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Sorry, something is wrong',
+          text: ':(',
         })
       })
     }
