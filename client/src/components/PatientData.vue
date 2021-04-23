@@ -7,18 +7,20 @@
           <td>{{ patient.Disease.name }}</td>
           <td>{{ patient.Disease.level_of_risk }}</td>
           <td>
-              <div class="submit-checkout" v-if="patient.status == false">
+              <div class="status-patient" v-if="patient.status == false">
                     <button type="submit" class="btn-sm btn-danger btn-block" @click.prevent="changeStatusToTrue(patient.id)">Under Surveillance</button>
               </div>
-              <div class="submit-checkout" v-if="patient.status == true">
+              <div class="status-patient" v-if="patient.status == true">
                     <button type="submit" class="btn-sm btn-success btn-block" @click.prevent="changeStatusToFalse(patient.id)">Ready to be dispatched</button>
               </div>
+          <td>{{ patient.User.role }}
+          </td>
           <td>
-             <div class="submit-checkout">
+             <div class="status-patient">
                   <br>
                     <button type="submit" class="btn-sm btn-warning btn-block" @click.prevent="toEditPatientPage(patient.id)">Edit</button>
               </div>
-              <div class="delete-checkout">
+              <div class="delete-patient">
                   <br>
                     <button class="btn-sm btn-dark btn-block" @click.prevent="deletePatient(patient.id)">Delete</button>
               </div>

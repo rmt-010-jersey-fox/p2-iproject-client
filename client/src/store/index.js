@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     diseases: [],
     patients: [],
+    weathers: [],
     patient: {
       id: '',
       name: '',
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     getDiseaseData (state, payload) {
       state.diseases = payload
+    },
+    getWeatherData (state, payload) {
+      state.weathers = payload
     },
     toEditPatientPage (state, payload) {
       state.patient.id = payload.id
@@ -214,6 +218,17 @@ export default new Vuex.Store({
         .then(response => {
           console.log(response)
           router.push('/')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getWeatherData (context, payload) {
+      axios
+        .get('/weather', { headers: { access_token: localStorage.access_token } })
+        .then(response => {
+          console.log(response.data)
+          context.commit('getWeatherData', response.data)
         })
         .catch(err => {
           console.log(err)

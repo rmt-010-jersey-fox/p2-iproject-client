@@ -5,7 +5,7 @@
     </div>
     <div>
         <div class="container-fluid d-flex justify-content-md-center bg-light" id="patient-page1">
-            <div class="row justify-content-md-center">
+            <div class="row d-flex justify-content-md-center">
                 <h1 style="text-align: center;">Patient List</h1>
                 <table class="table-light table-bordered">
                     <thead>
@@ -17,6 +17,7 @@
                           <th scope="col">Disease</th>
                           <th scope="col">Risk</th>
                           <th scope="col">Status</th>
+                          <th scope="col">Department</th>
                           <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -56,13 +57,15 @@ export default {
 </script>
 <style scoped>
 #patient-page1 {
-    padding: 50px;
-    max-width: 700px;
+    margin: 50px;
     width: 100%;
-    height: 100%;
+    height: 50%;
     display: inline-flex;
-    margin-top: 20px;
     align-content: center;
     background-color:lightcoral;
+}
+
+.table-light {
+   text-align: center;
 }
 </style>

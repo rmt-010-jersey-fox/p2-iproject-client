@@ -16,30 +16,18 @@ export default {
 </script>
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 10px;
+  min-height: 100vh;
+  font-family: lucida -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 #footer {
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  bottom: 0%;
   width: 100%;
-  height: 50px;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  height: 2.5rem;
 }
 </style>

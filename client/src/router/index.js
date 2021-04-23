@@ -65,6 +65,14 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (!localStorage.access_token && to.name === 'Home') {
     next({ name: 'Login' })
+  } else if (!localStorage.access_token && to.name === 'EditPatientData') {
+    next({ name: 'Login' })
+  } else if (!localStorage.access_token && to.name === 'AddPatientData') {
+    next({ name: 'Login' })
+  } else if (!localStorage.access_token && to.name === 'AddDisease') {
+    next({ name: 'Login' })
+  } else if (!localStorage.access_token && to.name === 'DiseaseList') {
+    next({ name: 'Login' })
   } else if (localStorage.access_token && to.name === 'Register') {
     next({ name: 'Home' })
   } else if (localStorage.access_token && to.name === 'Login') {

@@ -52,13 +52,14 @@ export default {
 </script>
 <style scoped>
 #disease-page1 {
-    padding: 50px;
-    max-width: 700px;
+    margin: 50px;
     width: 100%;
-    height: 100%;
+    height: 50%;
     display: inline-flex;
-    margin-top: 20px;
     align-content: center;
     background-color:lightcoral;
+}
+.table-light {
+   text-align: center;
 }
 </style>
