@@ -79,10 +79,11 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    getThread (context, data) {
-      axios.get(`/threads/${data}`, {
+    getThread (context, payload) {
+      axios.get(`/threads/${payload.id}`, {
         headers: { access_token: localStorage.access_token }
       }).then(({ data }) => {
+        // console.log(data)
         context.commit('getThread', data)
       })
     },

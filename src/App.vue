@@ -6,7 +6,7 @@
       <AddEvent/>
       <AddThread/>
       <EditThread/>
-      <!-- <Thread/> -->
+      <ThreadModal/>
       <router-view/>
     </div>
   </div>
@@ -16,12 +16,12 @@
 import Navbar from './components/Navbar'
 import AddEvent from './components/AddEvent'
 import AddThread from './components/AddThread'
-// import Thread from './views/Thread'
+import ThreadModal from './views/ThreadModal'
 import EditThread from './components/EditThread'
 import HFooter from 'vue-hacktiv-footer'
 export default {
   name: 'App',
-  components: { Navbar , AddEvent, AddThread, EditThread, HFooter },
+  components: { Navbar , AddEvent, AddThread, EditThread, HFooter, ThreadModal },
   created () {
     if (localStorage.access_token) {
       this.$store.dispatch('changeIsLogin', true)

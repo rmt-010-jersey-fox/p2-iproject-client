@@ -11,22 +11,22 @@
 		<div class="central-meta item">
 			<div class="user-post">
 				<div class="friend-info">
-					<!-- <figure v-if="thread">
+					<figure>
 						<img :src="getThread.User.image" alt="" >
-					</figure> -->
-					<figure v-if="!thread">
-						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="" v-if="!thread">
 					</figure>
+					<!-- <figure v-if="!getThread">
+						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="" v-if="!thread">
+					</figure> -->
 					<div class="friend-name">
-						<!-- <ins  v-if="thread"><a title="">{{ getThread.User.fullname }}</a></ins> -->
-						<ins  v-if="!thread"><a title=""></a></ins>
+						<ins><a title="">{{ getThread.User.fullname }}</a></ins>
+						<!-- <ins  v-if="!thread"><a title=""></a></ins> -->
 						<span v-if="getPublished">published: {{ getPublished }}</span>
 					</div>
 					
 					<div class="post-meta">
 						<figure>
-							<img v-if="thread" :src="getThread.image" alt="">
-							<img src="" v-if="!thread" alt="">
+							<img :src="getThread.image" alt="">
+							<!-- <img src="" v-if="!thread" alt=""> -->
 						</figure>	
 						<!-- <figure>
 						</figure>	 -->
@@ -131,7 +131,7 @@ export default {
   computed: {
 	  ...mapState(['thread']),
 	  getPublished() {
-		  if(!this.getThread){
+		  if(!this.thread){
 			  return ''
 		  } else {
 			  return this.getThread.createdAt.split('T').join(' ')
