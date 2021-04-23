@@ -21,6 +21,7 @@
           <li><a @click.prevent="$router.push({ name: 'EventsList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-calendar-alt"></i>Events</a></li>
           <li><a @click.prevent="$router.push({ name: 'ThreadList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-fire"></i>Hot Thread</a></li>
           <li><a @click.prevent="$router.push({ name: 'PopularGames' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-gamepad"></i>Popular Games in 2021</a></li>
+          <li><a  title="" data-ripple=""><i class="fa fa-comments"></i>Live Chat</a></li>
         </ul>
       </div>
       <!-- <div class="widget">

@@ -24,11 +24,12 @@
           </div>
           <div class="post-meta">
             <figure>
-              <a title="" data-bs-toggle="modal" data-bs-target="#threadModal">
+              <a title="" data-bs-toggle="modal" data-bs-target="#threadModal" @click.prevent="getThreadModal(thread.id)">
                 <img alt="" :src="thread.image">	
               </a>
             </figure>												
             <div class="description">
+              <!-- <a data-ripple="" class="learnmore" @click.prevent="getThread(thread.id)" >View Thread</a> -->
               <a data-ripple="" class="learnmore" @click.prevent="getThread(thread.id)">View Thread</a>
               <h2><a  title=""></a>
               {{ thread.title }}
@@ -54,10 +55,13 @@ export default {
   methods: {
     getThread(id) {
       // console.log(id)
-        this.$store.dispatch('getThread', id)
+        this.$store.dispatch('getThread', {id})
         setTimeout(() => { 
           this.$router.push({ name: 'Thread'})
          }, 500);
+    },
+    getThreadModal(id) {
+      this.$store.dispatch('getThread', {id})
     }
   },
   computed: {

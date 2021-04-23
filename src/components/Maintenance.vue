@@ -1,46 +1,37 @@
 <template>
-<div class="modal fade" id="threadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-        <!-- <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="btn btn-primary" class="fa fa-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div> -->
-        <div class="modal-body">
-    		<section>
+	<div class="col-lg-9">
+      <section>
 		<div class="central-meta item">
 			<div class="user-post">
 				<div class="friend-info">
 					<figure>
-						<img :src="getThread.User.image" alt="" >
+						<img :src="thread.User.image" alt="" >
 					</figure>
-					<!-- <figure v-if="!getThread">
+					<!-- <figure v-if="!thread">
 						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="" v-if="!thread">
 					</figure> -->
 					<div class="friend-name">
-						<ins><a title="">{{ getThread.User.fullname }}</a></ins>
-						<!-- <ins  v-if="!thread"><a title=""></a></ins> -->
+						<!-- <ins  v-if="thread"><a title="">{{ thread.User.fullname }}</a></ins> -->
+						<ins  v-if="!thread"><a title=""></a></ins>
 						<span v-if="getPublished">published: {{ getPublished }}</span>
 					</div>
 					
 					<div class="post-meta">
 						<figure>
-							<img :src="getThread.image" alt="">
-							<!-- <img src="" v-if="!thread" alt=""> -->
+							<img v-if="thread.image" :src="thread.image" alt="">
+							<img v-if="!thread.image" src=""  alt="">
 						</figure>	
 						<!-- <figure>
 						</figure>	 -->
 						<div class="description">
-							<center> <h1>{{ getThread.title }}</h1> </center> 
-							{{ getThread.content }}
+							<center> <h1>{{ thread.title }}</h1> </center> 
+							{{ thread.content }}
 						</div>
 						<!-- <div class="description">
 							<center> <h1></h1> </center> 
 						</div> -->
 						
 						<div class="we-video-info">
-							
-							
 						</div>	
 					</div>
 					<!-- <div class="coment-area" style="display: block">
@@ -117,11 +108,8 @@
 				</div>
 			</div>
 		</div>
-			</section>
-		</div>
-		</div>
-	</div>
-</div>
+	</section>
+	  </div>
 </template>
 
 <script>
@@ -131,7 +119,7 @@ export default {
   computed: {
 	  ...mapState(['thread']),
 	  getPublished() {
-		  if(!this.thread){
+		  if(!this.getThread){
 			  return ''
 		  } else {
 			  return this.getThread.createdAt.split('T').join(' ')
