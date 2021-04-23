@@ -247,6 +247,24 @@ export default new Vuex.Store({
           reject(err)
         })
       })
+    },
+
+    register({commit}, data){
+      axios.post('/register', data)
+      .then(() => {
+           Swal.fire({
+            icon: 'success',
+            title: 'Register is success',
+            text: 'congratulation',
+          })
+      })
+      .catch(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Sorry, something is wrong',
+          text: ':(',
+        })
+      })
     }
 
   },
