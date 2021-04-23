@@ -2,7 +2,12 @@
   <section>
     <form class="myForm">
       
-        <h1 style="color:#8167a9;">Add Comment</h1><br>
+        <h1 style="color:#8167a9;">Edit Comment</h1><br>
+        <input type="hidden" 
+          class="form-control" 
+          v-model="id"
+          name="id"
+        >
         <input type="hidden" 
           class="form-control" 
           v-model="articleTitle"
@@ -15,37 +20,38 @@
           v-model="comment"
           >
         </div>
-        <button type="button" @click.prevent="addComment" class="btn btn-dark">Submit</button>
+        <button type="button" @click.prevent="editComment" class="btn btn-dark">Submit</button>
     </form>
   </section>
 </template>
 
 <script>
 export default {
- name: 'AddComment',
- data: () => ({
-      articleTitle: '',
-      comment: '',
+    name:'EditComment',
+    data: () => ({
+        id: '',
+        articleTitle: '',
+        comment: '',
     }),
     methods: {
-        updatedData() {
-        // console.log(this.showComment, "<<title updated data")
-        this.articleTitle = this.showComment
-        // console.log(this.articleTitle, "<<<this.article title")
-        },
-        addComment() {
+      updatedData() {
+        this.id = this.specificComment.id
+        this.articleTitle = this.specificComment.articleTitle
+      },
+        editComment() {
             // console.log('masuk comment')
-            this.$store.dispatch('addComment', {
+            this.$store.dispatch('editComment', {
+                id: this.id,
                 articleTitle: this.articleTitle,
                 comment: this.comment,
             })
         }
     },
     computed: {
-        showComment () {
-            // console.log(this.$store.state.comments, "<<di computed add")
-            return this.$store.state.comments
-        }
+      specificComment() {
+        console.log(this.$store.state.specificComment, "<<<computed")
+        return this.$store.state.specificComment
+      }
     },
     created () {
       this.updatedData()
@@ -55,7 +61,7 @@ export default {
 </script>
 
 <style>
- .myForm {
+.myForm {
   min-width: 500px;
   position: absolute;
   text-align: center;

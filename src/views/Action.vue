@@ -50,7 +50,7 @@
       </li>
     </ul>
     <div>
-      source: bisnis muda.id
+      source: bisnismuda.id
     </div>
   </div>
 </template>
@@ -78,5 +78,6 @@ img {
   width: 800px;
   height: 100%;
   margin-bottom: 50px;
+  margin-left: 130px;
 }
 </style>

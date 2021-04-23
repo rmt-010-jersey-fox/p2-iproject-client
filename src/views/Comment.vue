@@ -18,31 +18,9 @@
             <li class="list-group-item">{{comm.User.username}} :</li>
             <li class="list-group-item">{{comm.comment}}</li>
         </ul>
-        <div class="card-body">
-            <a class="card-link">Add Comment</a>
-            <div class="add-comment">
-            <input type="hidden" 
-            class="form-control" 
-            v-model="id"
-            name="id"
-            >
-            <input type="hidden" 
-            class="form-control" 
-            v-model="UserId"
-            name="UserId"
-            >
-            <input type="text" 
-            class="form-control" 
-            v-model="comment"
-            name="comment"
-            >
-            <input type="hidden" 
-            class="form-control" 
-            v-model="articleTitle"
-            name="articleTitle"
-            >
-            </div>
-            <button type="button" @click.prevent="addComment" class="btn btn-dark">Submit</button>
+        <div class="card-footer col text-center">
+          <button type="button" @click.prevent="getEditComment(comm.id)" class="btn btn-light mr-3">Edit</button>
+          <button type="button" @click.prevent="deleteComment(comm.id)" class="btn btn-light">Delete</button>
         </div>
     </div>
   </div>
@@ -73,11 +51,17 @@ export default {
             comment: this.comment,
             articleTitle: this.articleTitle
         })
-    }
+    },
+  deleteComment(id) {
+     this.$store.dispatch('deleteComment', id)
+   },
+   getEditComment(id) {
+     this.$store.dispatch('getEditComment', id)
+   }
 },
  computed: {
   comments () {
-    // console.log(this.$store.state.comments, "di computed")
+    console.log(this.$store.state.comments, "di computed")
     return this.$store.state.comments
   },
   articles () {
