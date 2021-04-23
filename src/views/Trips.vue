@@ -12,7 +12,7 @@
                     <div><img src="https://img.icons8.com/bubbles/100/000000/girl-with-glasses-art-palette.png" width="65" /></div>
                     <div><img src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-girl-gem.png" width="16" class="pic3" /><img src="https://img.icons8.com/bubbles/50/000000/girl-and-playing-card.png" width="16" class="pic4" /></div>
                     <div>
-                        <b-button v-b-modal.modal-add-todos><h4 class="project">Add new trip + </h4></b-button>
+                        <b-button v-b-modal.modal-prevent-closing><h4 class="project">Add new trip + </h4></b-button>
                     </div>
                     <div>
                         <p class="quote">Still not enough? Click on a tile to add a new trip.</p>

@@ -101,7 +101,7 @@ export default {
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing')
-        this.$router.push('/trips')
+        this.$store.dispatch('showAllTrips')
       })
     }
   }

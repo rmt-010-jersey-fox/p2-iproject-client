@@ -153,7 +153,7 @@ export default new Vuex.Store({
 
     deleteTodo (context, id) {
       // console.log(id, 'ID TO DELETE')
-      axios.delete(`trips/todos/${id}`)
+      axios.delete(`/trips/todos/${id}`)
         .then(resp => {
           console.log(resp)
         })
@@ -163,7 +163,7 @@ export default new Vuex.Store({
     },
 
     deleteTrip (context, id) {
-      axios.delete(`trips/${id}`)
+      axios.delete(`/trips/${id}`)
         .then(res => {
           console.log(res)
         })

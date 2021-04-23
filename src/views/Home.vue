@@ -2,12 +2,8 @@
 <div>
 <Navbar />
 
-      <div>
+      <div data-aos="fade-left">
         <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
-          <div class="col-md">
-          <TripTodo v-for="trip in userTrips" :key="trip.id"
-          :trip="trip"/>
-          </div>
           <div class="row d-flex justify-content-center px-3">
             <div class="card" style="background-image: url('https://i.imgur.com/dpqZJV5.jpg')">
               <form class="form-inline" @submit.prevent="changeCity">
@@ -35,13 +31,11 @@
 
 <script>
 import { mapState } from 'vuex'
-import TripTodo from '@/components/TripTodo.vue'
 import Navbar from '@/components/Navbar.vue'
 
 export default {
   name: 'Home',
   components: {
-    TripTodo,
     Navbar
   },
   data () {
