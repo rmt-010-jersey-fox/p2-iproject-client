@@ -17,9 +17,6 @@
               <div class="col-lg-8 col-md-7 col-sm-7 ">
                 <div class="mt-3 mb-2">
                   <form method="post">
-                    <!-- <input type="text" placeholder="Search...">
-                    <button type="submit"><i class="fa fa-search"></i></button> -->
-                    <!-- <a class="addnewforum" data-bs-toggle="modal" data-bs-target="#addThreadModal"  title=""><i class="fa fa-plus"></i> Add New</a> -->
                   </form>
                 </div>
               </div>

@@ -55,7 +55,7 @@ export default {
           }, 1000)
         }).catch(err => {
           console.log(err)
-          alert(err)
+          // alert(err)
           if (err.message === 'Request failed with status code 404'){
             Swal.fire({
               position: 'center',

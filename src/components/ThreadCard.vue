@@ -29,7 +29,7 @@
               </a>
             </figure>												
             <div class="description">
-              <a data-ripple="" class="learnmore" data-bs-toggle="modal" data-bs-target="#threadModal" @click.prevent="getThread(thread.id)">View Thread</a>
+              <a data-ripple="" class="learnmore" @click.prevent="getThread(thread.id)">View Thread</a>
               <h2><a  title=""></a>
               {{ thread.title }}
               </h2>
@@ -55,6 +55,9 @@ export default {
     getThread(id) {
       // console.log(id)
         this.$store.dispatch('getThread', id)
+        setTimeout(() => { 
+          this.$router.push({ name: 'Thread'})
+         }, 500);
     }
   },
   computed: {

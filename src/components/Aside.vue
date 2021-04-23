@@ -16,8 +16,9 @@
         </div>
         <ul class="menu-list">
           <!-- <li><a href="#" title="" data-ripple=""><i class="fa fa-home"></i>Home</a></li> -->
-          <li><a @click.prevent="$router.push({ name: 'MyThreadsList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa fa-comment"></i>Your Thread</a></li>
-          <li><a @click.prevent="$router.push({ name: 'EventsList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-calendar-day"></i>Events</a></li>
+          <li><a @click.prevent="$router.push({ name: 'MyThreadsList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa fa-comment"></i>My Threads</a></li>
+          <li><a @click.prevent="$router.push({ name: 'MyThreadsList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa fa-calendar-day"></i>My Events</a></li>
+          <li><a @click.prevent="$router.push({ name: 'EventsList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-calendar-alt"></i>Events</a></li>
           <li><a @click.prevent="$router.push({ name: 'ThreadList' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-fire"></i>Hot Thread</a></li>
           <li><a @click.prevent="$router.push({ name: 'PopularGames' }).catch(()=>{})" title="" data-ripple=""><i class="fa fa-gamepad"></i>Popular Games in 2021</a></li>
         </ul>

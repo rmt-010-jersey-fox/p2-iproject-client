@@ -11,16 +11,16 @@
 		<div class="central-meta item">
 			<div class="user-post">
 				<div class="friend-info">
-					<!-- <figure>
-						<img :src="getImage" alt="">
+					<!-- <figure v-if="thread">
+						<img :src="getThread.User.image" alt="" >
 					</figure> -->
-					<figure>
-						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="">
+					<figure v-if="!thread">
+						<img src="https://mediate.co.id/wp-content/uploads/2021/01/user-icon-600x600.jpg" alt="" v-if="!thread">
 					</figure>
 					<div class="friend-name">
-						<ins  v-if="thread"><a href="time-line.html" title="">{{ getThread.User.fullname }}</a></ins>
-						<ins  v-if="!thread"><a href="time-line.html" title=""></a></ins>
-						<span>published: {{ getPublished }}</span>
+						<!-- <ins  v-if="thread"><a title="">{{ getThread.User.fullname }}</a></ins> -->
+						<ins  v-if="!thread"><a title=""></a></ins>
+						<span v-if="getPublished">published: {{ getPublished }}</span>
 					</div>
 					
 					<div class="post-meta">
@@ -131,11 +131,15 @@ export default {
   computed: {
 	  ...mapState(['thread']),
 	  getPublished() {
-		  return this.getThread.createdAt.split('T').join(' ')
+		  if(!this.getThread){
+			  return ''
+		  } else {
+			  return this.getThread.createdAt.split('T').join(' ')
+		  }
 	  },
 	  getThread() {
 		  if(!this.thread){
-			  return { User: { fullname: ''}, image: '', title: '', content: ''}
+			  return { User: { fullname: 'dummy', image: 'dummy'}, image: 'dummy', title: 'dummy', content: 'dummy', createdAt: 'dummy'}
 		  } else {
 			  return this.thread
 		  }

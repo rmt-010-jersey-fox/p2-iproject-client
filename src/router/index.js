@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login'
+import Thread from '../components/Thread'
 import Register from '../views/Register'
 import EventsList from '../components/EventsList'
 import ThreadList from '../components/ThreadList'
@@ -35,6 +36,12 @@ const routes = [
         path: 'popularGames',
         name: 'PopularGames',
         component: PopularGames
+      },
+      ,
+      {
+        path: 'thread',
+        name: 'Thread',
+        component: Thread
       }
     ]
   },
