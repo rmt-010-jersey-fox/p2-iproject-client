@@ -18,18 +18,21 @@
         >
           title
           <b-form-input
+            label="title"
             v-model="title"
             :state="allState"
             required
           ></b-form-input>
           origin
           <b-form-input
+            label="origin"
             v-model="origin"
             :state="allState"
             required
           ></b-form-input>
           destination
           <b-form-input
+            label="destination"
             v-model="destination"
             :state="allState"
             required
@@ -44,7 +47,7 @@
           ></b-form-input>
           depature date
           <b-form-input
-            label="depature"
+            label="depature date"
             type="date"
             id="deptdate-input"
             v-model="depatureDate"

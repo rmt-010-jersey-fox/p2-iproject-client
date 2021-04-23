@@ -21,16 +21,34 @@
               <b-button @click="goRegisterPage" variant="outline-primary">Register</b-button>
               <a href="#" class="forgot">Forgot your email or password?</a>
           </form>
+          <GoogleLogin
+            :params="params"
+            :renderParams="renderParams"
+            :onSuccess="onSuccess"
+          ></GoogleLogin>
       </div>
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login'
+import axios from 'axios'
 export default {
+  components: {
+    GoogleLogin
+  },
   data () {
     return {
       form: {
         email: '',
         password: ''
+      },
+      params: {
+        client_id: '701067894054-1k90soaa36ke8b477e2pl9naip4n7gm1.apps.googleusercontent.com'
+      },
+      renderParams: {
+        width: 250,
+        height: 50,
+        longtitle: true
       }
     }
   },
@@ -49,6 +67,24 @@ export default {
     },
     goRegisterPage () {
       this.$router.push('/register')
+    },
+    onSuccess (googleUser) {
+      var idToken = googleUser.getAuthResponse().id_token
+
+      axios({
+        method: 'POST',
+        url: 'https://timetravelers.herokuapp.com/googleLogin',
+        data: {
+          googleToken: idToken
+        }
+      })
+        .then((response) => {
+          localStorage.setItem('access_token', response.data.access_token)
+          this.$router.push('/')
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }

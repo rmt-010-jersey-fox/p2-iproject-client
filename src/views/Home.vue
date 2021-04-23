@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      city: 'Jakarta'
+      city: ''
     }
   },
   computed: {
@@ -58,6 +58,7 @@ export default {
 
   created () {
     this.$store.dispatch('showAllTrips')
+    this.$store.dispatch('getWeather', { city: this.weather.city })
   },
 
   loginPage () {

@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     messages: [],
     weather: {
-      city: 'Jakarta',
+      city: '',
       weather: '',
       temp: '',
       ampm: ''
@@ -46,17 +46,14 @@ export default new Vuex.Store({
 
     addTripStat (state, payload) {
       state.addTrip = payload.addTrip
-      // console.log(state.addTrip, '<<<<<<')
     },
 
     setUserTrips (state, payload) {
       state.userTrips = payload
-      // console.log(state.userTrips, 'userTrips di state')
     },
 
     setTodo (state, payload) {
       state.todo.push(payload)
-      // console.log(state.todo, 'state TOdo')
     }
   },
   actions: {
@@ -92,8 +89,6 @@ export default new Vuex.Store({
       axios.get(`/weathers/${payload.city}`, {
       })
         .then(({ data }) => {
-          console.log(data)
-
           context.commit('setWeather', data)
         })
         .catch(err => {
