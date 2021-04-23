@@ -1,3 +1,15 @@
+# Firebase Link
+```
+https://lalaland-15277.web.app/
+```
+
+# login credentials for testing
+```
+email: admin@mail.com
+password: 1234
+```
+
+
 # p2-iproject-client
 
 ## Project setup
