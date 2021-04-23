@@ -1,5 +1,7 @@
 import axios from 'axios'
-const baseURL = 'http://localhost:3000/'
+// const baseURL = 'http://localhost:3000/'
+const baseURL = 'https://h8-8geg-server.herokuapp.com/'
+
 
 import Swal from 'sweetalert2'
 
